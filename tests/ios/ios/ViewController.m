@@ -27,24 +27,19 @@
 	NSString * testFile = nil;
 
 	testFile = @"lzma.7z";
-//	testFile = @"lzma_aes256.7z";
+	testFile = @"lzma_aes256.7z";
 	testFile = @"lzma_aes256_encfn.7z";
-//	testFile = @"lzma.exe";
-//	testFile = @"lzma_aes256.exe";
 
-//	testFile = @"lzma2.exe";
+	testFile = @"lzma2.7z";
+	testFile = @"lzma2_aes256.7z";
+	testFile = @"lzma2_aes256_encfn.7z";
+
 //	testFile = @"ppmd.7z";
 //	testFile = @"bzip2.7z";
-//	testFile = @"lzma2_aes256.7z";
-//	testFile = @"ppmd.exe";
 //	testFile = @"bzip2_aes256.7z";
-//	testFile = @"lzma2_aes256.exe";
 //	testFile = @"ppmd_aes256.7z";
 //	testFile = @"bzip2_aes256_encfn.7z";
-//	testFile = @"lzma2_aes256_encfn.7z";
-//	testFile = @"ppmd_aes256.exe";
 //	testFile = @"ppmd_aes256_encfn.7z";
-//	testFile = @"lzma2.7z";
 
 
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
