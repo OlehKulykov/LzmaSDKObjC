@@ -56,13 +56,11 @@ namespace LzmaSDKObjC
 		public CMyUnknownImp
 	{
 	private:
-		LzmaSDKObjC::OutFile * _outFileStreamSpec;
+		LzmaSDKObjC::OutFile * _outFileStreamRef;
 		LzmaSDKObjC::ICoder * _coder;
 		CMyComPtr<ISequentialOutStream> _outFileStream;
 
 		uint64_t _total;
-
-		UString _password;
 
 	public:
 		MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)

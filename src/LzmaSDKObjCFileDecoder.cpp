@@ -134,7 +134,17 @@ namespace LzmaSDKObjC
 
 	void FileDecoder::onExtractProgress(const float progress)
 	{
+		if (context && setFloatCallback2) setFloatCallback2(context, progress);
 		fprintf(stdout, "FileDecoder::onExtractProgress = %f \n", progress);
+	}
+
+	UString FileDecoder::onGetVoidCallback1()
+	{
+		UString r;
+		wchar_t * w = NULL;
+		if (context && getVoidCallback1) w = (wchar_t *)getVoidCallback1(context);
+		if (w) { r = w; free(w); }
+		return r;
 	}
 
 	static char _isOneTimeStaticInitialized = 0;
@@ -153,7 +163,8 @@ namespace LzmaSDKObjC
 		_itemsCount(0),
 		_iterateIndex(0),
 		context(NULL),
-		callback1(NULL)
+		getVoidCallback1(NULL),
+		setFloatCallback2(NULL)
 	{
 		_oneTimeStaticInitializer();
 	}

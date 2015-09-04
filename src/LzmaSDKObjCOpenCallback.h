@@ -52,7 +52,6 @@ namespace LzmaSDKObjC
 	{
 	private:
 		LzmaSDKObjC::ICoder * _coder;
-		UString _password;
 
 	public:
 		MY_UNKNOWN_IMP3(IArchiveOpenCallback, ICryptoGetTextPassword, ICryptoGetTextPassword2)

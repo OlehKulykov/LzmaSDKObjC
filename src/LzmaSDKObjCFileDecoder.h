@@ -56,7 +56,8 @@ namespace LzmaSDKObjC
 
 	public:
 		void * context;
-		LzmaSDKObjCCallback1 callback1;
+		LzmaSDKObjCGetVoidCallback getVoidCallback1;
+		LzmaSDKObjCSetFloatCallback setFloatCallback2;
 
 		uint32_t itemsCount() const;
 		void iterateStart();
@@ -72,6 +73,7 @@ namespace LzmaSDKObjC
 
 		// LzmaObjc::ICoder
 		virtual void onExtractProgress(const float progress);
+		virtual UString onGetVoidCallback1();
 
 		FileDecoder();
 		virtual ~FileDecoder();

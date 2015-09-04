@@ -38,8 +38,6 @@ NSString * const kLzmaSDKObjCFileExtXz = @"xz";
 
 @end
 
-@implementation LzmaSDKObjCReader
-
 static wchar_t * _LzmaSDKObjCReaderWepGW(NSString * we)
 {
 	const size_t len = we ? [we length] : 0;
@@ -63,13 +61,23 @@ static wchar_t * _LzmaSDKObjCReaderWepGW(NSString * we)
 	return NULL;
 }
 
-static void * _LzmaSDKObjCReaderWepClb(void * context)
+@implementation LzmaSDKObjCReader
+
+static void _LzmaSDKObjCSetFloatCallback(void * context, float value)
 {
 	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
 	if (r)
 	{
-		return r->_passwordGetter ? _LzmaSDKObjCReaderWepGW(r->_passwordGetter()) : NULL;
+		id<LzmaSDKObjCReaderDelegate> d = r.delegate;
+		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)])
+			[d onLzmaSDKObjCReader:r extractProgress:value];
 	}
+}
+
+static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
+{
+	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
+	if (r) return r->_passwordGetter ? _LzmaSDKObjCReaderWepGW(r->_passwordGetter()) : NULL;
 	return NULL;
 }
 
@@ -85,7 +93,7 @@ static void * _LzmaSDKObjCReaderWepClb(void * context)
 		else
 		{
 			_decoder->context = (__bridge void *)self;
-			_decoder->callback1 = _LzmaSDKObjCReaderWepClb;
+			_decoder->getVoidCallback1 = _LzmaSDKObjCReaderGetVoidCallback1;
 			if (_decoder->openFile([path UTF8String]))
 			{
 				return YES;
@@ -192,8 +200,13 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 
 - (BOOL) extract
 {
-	_decoder->extract();
-	return YES;
+	if (_decoder)
+	{
+		_decoder->context = (__bridge void *)self;
+		_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
+		_decoder->extract();
+	}
+	return NO;
 }
 
 - (BOOL) open:(NSError **) error

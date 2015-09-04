@@ -77,6 +77,7 @@
 #include <sys/time.h>
 #include <string.h>
 #include <wchar.h>
+#include <assert.h>
 
 typedef void *PVOID, *LPVOID;
 typedef PVOID HANDLE;

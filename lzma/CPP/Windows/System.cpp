@@ -9,7 +9,6 @@
 #include "System.h"
 
 #if defined(__APPLE__)
-#include <assert.h>
 #include <mach/mach_host.h>
 #endif
 

@@ -30,6 +30,17 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExt7z;
 
 LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
 
+@class LzmaSDKObjCReader;
+
+@protocol LzmaSDKObjCReaderDelegate <NSObject>
+
+@optional
+- (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *) reader
+			 extractProgress:(float) progress;
+
+@end
+
+
 @interface LzmaSDKObjCReader : NSObject
 
 @property (nonatomic, assign, readonly) LzmaSDKObjCFileType fileType;
@@ -37,6 +48,8 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
 @property (nonatomic, assign, readonly) NSURL * fileURL;
 
 @property (nonatomic, assign, readonly) NSUInteger itemsCount;
+
+@property (nonatomic, weak) id<LzmaSDKObjCReaderDelegate> delegate;
 
 @property (nonatomic, copy) NSString * (^passwordGetter)(void);
 

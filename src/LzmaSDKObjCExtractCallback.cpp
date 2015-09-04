@@ -161,8 +161,8 @@ namespace LzmaSDKObjC
 //		  }
 //	  }
 //
-	  _outFileStreamSpec = new LzmaSDKObjC::OutFile();
-	  CMyComPtr<ISequentialOutStream> outStreamLoc(_outFileStreamSpec);
+	  _outFileStreamRef = new LzmaSDKObjC::OutFile();
+	  CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
 //	  if (!_outFileStreamSpec->Open(fullProcessedPath, CREATE_ALWAYS))
 //	  {
 //		  PrintError("Can not open output file", fullProcessedPath);
@@ -260,33 +260,37 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)
 	{
-//  if (!PasswordIsDefined)
-//  {
-//	  // You can ask real password here from user
-//	  // Password = GetPassword(OutStream);
-//	  // PasswordIsDefined = true;
-//	  PrintError("Password is not defined");
-//	  return E_ABORT;
-//  }
-//  return StringToBstr(Password, password);
-
 		fprintf(stdout, "ExtractCallback::CryptoGetTextPassword \n");
-		return StringToBstr(_password, password);
+		if (_coder)
+		{
+			UString w = _coder->onGetVoidCallback1();
+			if (w.Len() > 0) return StringToBstr(w, password);
+		}
+		return E_ABORT;
 	}
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
 	{
-		*passwordIsDefined = 1;
-		return StringToBstr(_password, password);
-		return S_OK;
+		fprintf(stdout, "ExtractCallback::CryptoGetTextPassword2 \n");
+		if (passwordIsDefined) *passwordIsDefined = 0;
+		if (_coder)
+		{
+			UString w = _coder->onGetVoidCallback1();
+			if (w.Len() > 0)
+			{
+				if (passwordIsDefined) *passwordIsDefined = 1;
+				return StringToBstr(w, password);
+			}
+		}
+		return E_ABORT;
 	}
 
 	ExtractCallback::ExtractCallback() :
-		_outFileStreamSpec(NULL),
+		_outFileStreamRef(NULL),
 		_coder(NULL),
 		_total(0)
 	{
-		_password = L"1234";
+
 	}
 
 	ExtractCallback::~ExtractCallback()

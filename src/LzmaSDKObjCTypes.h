@@ -40,6 +40,7 @@ typedef enum _LzmaSDKObjCFileType
 }
 LzmaSDKObjCFileType;
 
-typedef void * (*LzmaSDKObjCCallback1)(void * context);
+typedef void * (*LzmaSDKObjCGetVoidCallback)(void * context);
+typedef void (*LzmaSDKObjCSetFloatCallback)(void * context, float value);
 
 #endif

@@ -33,6 +33,8 @@ namespace LzmaSDKObjC
 	public:
 		virtual void onExtractProgress(const float progress) = 0;
 
+		virtual UString onGetVoidCallback1() = 0;
+
 		virtual ~ICoder() { }
 	};
 }

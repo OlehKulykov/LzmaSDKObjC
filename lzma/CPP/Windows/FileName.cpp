@@ -4,8 +4,6 @@
 
 #include "FileName.h"
 
-#include <assert.h>
-
 #ifndef _UNICODE
 extern bool g_IsNT;
 #endif

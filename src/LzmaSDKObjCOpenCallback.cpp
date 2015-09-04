@@ -42,20 +42,34 @@ namespace LzmaSDKObjC
 	STDMETHODIMP OpenCallback::CryptoGetTextPassword(BSTR *password)
 	{
 		fprintf(stdout, "OpenCallback::CryptoGetTextPassword \n");
-		return StringToBstr(_password, password);
+		if (_coder)
+		{
+			UString w = _coder->onGetVoidCallback1();
+			if (w.Len() > 0) return StringToBstr(w, password);
+		}
+		return E_ABORT;
 	}
 
 	STDMETHODIMP OpenCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
 	{
-		*passwordIsDefined = 1;
-		return StringToBstr(_password, password);
-		return S_OK;
+		fprintf(stdout, "OpenCallback::CryptoGetTextPassword2 \n");
+		if (passwordIsDefined) *passwordIsDefined = 0;
+		if (_coder)
+		{
+			UString w = _coder->onGetVoidCallback1();
+			if (w.Len() > 0)
+			{
+				if (passwordIsDefined) *passwordIsDefined = 1;
+				return StringToBstr(w, password);
+			}
+		}
+		return E_ABORT;
 	}
 
 	OpenCallback::OpenCallback() :
 		_coder(NULL)
 	{
-		_password = L"1234";
+
 	}
 	
 	OpenCallback::~OpenCallback()

@@ -7,7 +7,6 @@
 #include "../Common/MyWindows.h"
 #include "Defs.h"
 #include "FileName.h"
-#include <assert.h>
 
 #define FILE_ATTRIBUTE_READONLY             1
 #define FILE_ATTRIBUTE_HIDDEN               2

@@ -9,8 +9,6 @@
 #include "InOutTempBuffer.h"
 #include "StreamUtils.h"
 
-#include <assert.h>
-
 using namespace NWindows;
 using namespace NFile;
 #if defined (__APPLE__)
