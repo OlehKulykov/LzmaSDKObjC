@@ -29,7 +29,7 @@
 
 #include "LzmaSDKObjCTypes.h"
 
-#if defined(LZMASDKOBJC)
+//#if defined(LZMASDKOBJC)
 
 /**
  @brief 12 = 4Kb min
@@ -50,6 +50,6 @@ LZMASDKOBJC_EXTERN void LzmaSDKObjCSetRWDecoderBufferSize(uint32_t blockSize);
 LZMASDKOBJC_EXTERN uint32_t LzmaSDKObjCGetRWDecoderBufferSize();
 
 
-#endif
+//#endif
 
 #endif
