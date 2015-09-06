@@ -16,6 +16,8 @@ The main advantages is:
 - Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
 - Track smoothed progress, which becomes possible with prev.
+- Support reading archive files with size more than 4GB, eg. **HugeFiles=on**
+- Support extracting files with size more than 4GB, eg. **HugeFiles=on**
 
 
 #### Features list (TODO/DONE)
