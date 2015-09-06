@@ -9,7 +9,7 @@
 #include "Lzma2Decoder.h"
 
 #if defined(LZMASDKOBJC)
-#include "../../../../src/LzmaSDKObjCCommon.h"
+#include "../../../../src/LzmaSDKObjC.h"
 #endif
 
 static HRESULT SResToHRESULT(SRes res)

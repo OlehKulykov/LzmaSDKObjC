@@ -21,7 +21,7 @@
  */
 
 
-#include "LzmaSDKObjCCommon.h"
+#include "LzmaSDKObjC.h"
 
 /**
  @brief 12 = 4  Kb min

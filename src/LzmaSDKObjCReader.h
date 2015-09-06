@@ -25,43 +25,112 @@
 
 #include "LzmaSDKObjCTypes.h"
 #include "LzmaSDKObjCItem.h"
-#include "LzmaSDKObjCCommon.h"
+#include "LzmaSDKObjC.h"
 
+/**
+ @brief Lower case string of the 7zip file extension.
+ @return 7z.
+ */
 LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExt7z;
 
+
+/**
+ @brief Lower case string of the Xz file extension.
+ @return xz.
+ */
 LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
+
 
 @class LzmaSDKObjCReader;
 
+
+/**
+ @brief Reader delegate. All methods is optional & called from main thread.
+ */
 @protocol LzmaSDKObjCReaderDelegate <NSObject>
 
 @optional
+/**
+ @brief Reports extract progress of file(s). Called after all internal buffers was writed.
+ Quality depends on size of the kLzmaSDKObjCStreamWriteSize, kLzmaSDKObjCDecoderWriteSize.
+ @param progress Extract progress [0.0; 1.0]
+ */
 - (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *) reader
 			 extractProgress:(float) progress;
 
 @end
 
 
+/**
+ @brief Lzma file reader/extractor.
+ */
 @interface LzmaSDKObjCReader : NSObject
 
+/**
+ @brief Type of the assigned archive.
+ */
 @property (nonatomic, assign, readonly) LzmaSDKObjCFileType fileType;
 
+
+/**
+ @brief URL to the archive file. 
+ */
 @property (nonatomic, assign, readonly) NSURL * fileURL;
 
+
+/**
+ @brief Number of the archive items.
+  @warning Available only after open archive.
+ */
 @property (nonatomic, assign, readonly) NSUInteger itemsCount;
 
+
+/**
+ @brief Archive reader delegate.
+ */
 @property (nonatomic, weak) id<LzmaSDKObjCReaderDelegate> delegate;
 
+
+/**
+ @brief Getter to the archive password.
+ */
 @property (nonatomic, copy) NSString * (^passwordGetter)(void);
 
+
+/**
+ @brief Initialize archive with file url.
+ Type detected from archive file extension.
+ */
 - (id) initWithFileURL:(NSURL *) fileURL;
 
+
+/**
+ @brief Initialize archive with file url with archive type.
+ */
 - (id) initWithFileURL:(NSURL *) fileURL andType:(LzmaSDKObjCFileType) type;
 
+
+/**
+ @brief Opens archive.
+ @param error Open error.
+ */
 - (BOOL) open:(NSError **) error;
 
+
+/**
+ @brief Iterate thought all archive items. 
+ Items created during iterating, so track, filter & store for extracting.
+ */
 - (BOOL) iterateWithHandler:(BOOL(^)(LzmaSDKObjCItem * item, NSError * error)) handler;
 
+
+/**
+ @brief Extracts array of items stored during iterating.
+ @param items Array with LzmaSDKObjCItem objects.
+ @param path Path to extract provided items.
+ @param isFullPaths Create directory structure for the file items(YES) or store all files to extract path(NO).
+ In case of just store to path, files with the same names will rewrite automaticaly.
+ */
 - (BOOL) extract:(NSArray *) items
 		  toPath:(NSString *) path
 		 withFullPaths:(BOOL) isFullPaths;
@@ -69,5 +138,9 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
 @end
 
 
+/**
+ @brief Get archive type from path by it's extension.
+ Using kLzmaSDKObjCFileExt7z & kLzmaSDKObjCFileExtXz.
+ */
 LZMASDKOBJC_EXTERN LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * fileURL);
 

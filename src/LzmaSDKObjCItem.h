@@ -23,20 +23,56 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ @brief Archive item class for the file or directory.
+ */
 @interface LzmaSDKObjCItem : NSObject
 
+
+/**
+ @brief Getter for check archive item is encrypted with password or not.
+ */
 @property (nonatomic, assign, readonly) BOOL isEncrypted;
 
+
+/**
+ @brief Check archive item is directory.
+ */
 @property (nonatomic, assign, readonly) BOOL isDirectory;
 
+
+/**
+ @brief Getter for the file name.
+ @warning If item is directory this propoerty return nil.
+ */
 @property (nonatomic, strong, readonly) NSString * fileName;
 
+
+/**
+ @brief Getter for the directory path where item located or nil.
+ @code
+ // If full item path is=dir1/subdir2/readme.txt
+ // then directoryPath=dir1/subdir2
+ @endcode
+ */
 @property (nonatomic, strong, readonly) NSString * directoryPath;
 
+
+/**
+ @brief Getter for the modification date if available, or nil.
+ */
 @property (nonatomic, strong, readonly) NSDate * modificationDate;
 
+
+/**
+ @brief Getter for the creating date if available, or nil.
+ */
 @property (nonatomic, strong, readonly) NSDate * creationDate;
 
+
+/**
+ @brief Getter for the last access date time if available, or nil.
+ */
 @property (nonatomic, strong, readonly) NSDate * accessDate;
 
 @end

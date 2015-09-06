@@ -5,7 +5,7 @@
 #include "StreamUtils.h"
 
 #if defined(LZMASDKOBJC)
-#include "../../../../src/LzmaSDKObjCCommon.h"
+#include "../../../../src/LzmaSDKObjC.h"
 #else
 static const UInt32 kBlockSize = ((UInt32)1 << 31);
 #endif

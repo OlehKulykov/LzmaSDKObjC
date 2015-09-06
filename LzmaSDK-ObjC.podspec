@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 # Common settings
   s.name         = "LzmaSDK-ObjC"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description  = <<-DESC
 - Lzma/*.7z
@@ -31,10 +31,10 @@ Pod::Spec.new do |s|
 
 # Platforms
   s.ios.deployment_target = "5.0"
-#  s.osx.deployment_target = "10.7"
+  s.osx.deployment_target = "10.7"
 
 # Build  
-  s.public_header_files = 'src/LzmaSDKObjCTypes.h', 'src/LzmaSDKObjCReader.h', 'src/LzmaSDKObjCItem.h', 'src/LzmaSDKObjCCommon.h'
+  s.public_header_files = 'src/LzmaSDKObjCTypes.h', 'src/LzmaSDKObjCReader.h', 'src/LzmaSDKObjCItem.h', 'src/LzmaSDKObjC.h'
   s.source_files = 'src/*.{h,cpp,mm}',
     'lzma/CPP/7zip/*.{h}',
     'lzma/CPP/7zip/Crypto/*.{h}',

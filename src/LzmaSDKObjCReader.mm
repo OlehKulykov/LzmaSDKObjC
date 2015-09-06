@@ -70,7 +70,10 @@ static void _LzmaSDKObjCSetFloatCallback(void * context, float value)
 	{
 		id<LzmaSDKObjCReaderDelegate> d = r.delegate;
 		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)])
-			[d onLzmaSDKObjCReader:r extractProgress:value];
+		{
+			if ([NSThread isMainThread]) [d onLzmaSDKObjCReader:r extractProgress:value];
+			else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCReader:r extractProgress:value]; });
+		}
 	}
 }
 
