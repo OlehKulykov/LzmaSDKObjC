@@ -1,9 +1,22 @@
-# Lzma SDK Objective-C
 [![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/?q=LzmaSDK-ObjC)
 [![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/?q=LzmaSDK-ObjC)
 
 
-Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
+Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code. 
+Available for iOS and MacOS.
+
+#### Description
+It's not yet another wrapper arround C part of the Lzma library with all it's limitations.
+
+The main advantages is:
+- List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
+- List, extract **encrypted** (*password protected*) **7z** files (**Lzma** & **Lzma2** *compression method*).
+- List, extract **encrypted** (password protected) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
+- Manage memory allocations during listing/extracting.
+- Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
+- Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
+- Track smoothed progress, which becomes possible with prev.
+
 
 #### Features list (TODO/DONE)
 - [ ] **Lzma/*.7z**
