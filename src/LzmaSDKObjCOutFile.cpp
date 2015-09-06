@@ -67,6 +67,16 @@ namespace LzmaSDKObjC
 		return (_f != NULL);
 	}
 
+	void OutFile::close()
+	{
+		DEBUG_LOG("OutFile::close()")
+		if (_f)
+		{
+			fclose(_f);
+			_f = NULL;
+		}
+	}
+
 	OutFile::OutFile() :
 		_f(NULL)
 	{
@@ -75,8 +85,8 @@ namespace LzmaSDKObjC
 
 	OutFile::~OutFile()
 	{
-		if (_f) fclose(_f);
-		DEBUG_LOG("OutFile::~OutFile() close")
+		this->close();
+		DEBUG_LOG("OutFile::~OutFile()")
 	}
 	
 }

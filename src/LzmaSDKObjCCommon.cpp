@@ -23,10 +23,29 @@
 
 #include "LzmaSDKObjCCommon.h"
 
-//#if defined(LZMASDKOBJC)
+/**
+ @brief 12 = 4  Kb min
+ @brief 13 = 8  Kb
+ @brief 14 = 16 Kb
+ @brief 15 = 32 Kb
+ @brief 16 = 64 Kb
+ @brief 17 = 128 Kb
+ @brief 18 = 256 Kb
+ @brief 19 = 512 Kb
+ @brief 20 = 1 Mb
+ @brief 21 = 2 Mb
+ @brief 22 = 4 Mb
+ @brief 31 = 1 Gb
+ */
 
-static uint32_t _LzmaSDKObjCGetRWDecoderBufferSize = LZMASDKOBJC_DEFAULT_BUFFER_SIZE;
-void LzmaSDKObjCSetRWDecoderBufferSize(uint32_t blockSize) { _LzmaSDKObjCGetRWDecoderBufferSize = blockSize; }
-uint32_t LzmaSDKObjCGetRWDecoderBufferSize() { return _LzmaSDKObjCGetRWDecoderBufferSize; }
+unsigned int kLzmaSDKObjCStreamReadSize = ((unsigned int)1 << 16);
 
-//#endif
+
+unsigned int kLzmaSDKObjCStreamWriteSize = ((unsigned int)1 << 16);
+
+
+unsigned int kLzmaSDKObjCDecoderReadSize = ((unsigned int)1 << 16);
+
+
+unsigned int kLzmaSDKObjCDecoderWriteSize = ((unsigned int)1 << 18);
+

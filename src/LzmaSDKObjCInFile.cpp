@@ -59,6 +59,16 @@ namespace LzmaSDKObjC
 		return (_f != NULL);
 	}
 
+	void InFile::close()
+	{
+		DEBUG_LOG("InFile::close()")
+		if (_f)
+		{
+			fclose(_f);
+			_f = NULL;
+		}
+	}
+
 	InFile::InFile() :
 		_f(NULL)
 	{
@@ -67,8 +77,8 @@ namespace LzmaSDKObjC
 	
 	InFile::~InFile()
 	{
-		if (_f) fclose(_f);
-		DEBUG_LOG("InFile::~InFile() close")
+		this->close();
+		DEBUG_LOG("InFile::~InFile()")
 	}
 	
 }

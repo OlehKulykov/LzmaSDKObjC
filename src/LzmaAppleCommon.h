@@ -29,7 +29,7 @@
 #define __APPLE__ 1
 #endif
 
-#define __LZMASDKOBJC_OMIT_UNUSED_CODE__ 1
+#define LZMASDKOBJC_OMIT_UNUSED_CODE 1
 
 #ifndef _UNICODE
 #define _UNICODE 1

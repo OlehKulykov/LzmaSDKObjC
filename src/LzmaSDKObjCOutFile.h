@@ -54,6 +54,7 @@ namespace LzmaSDKObjC
 		STDMETHOD(SetSize)(UInt64 newSize);
 
 		bool open(const char * path);
+		void close();
 
 		OutFile();
 		virtual ~OutFile();

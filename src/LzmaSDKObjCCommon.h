@@ -24,32 +24,37 @@
 #ifndef __LZMASDKOBJCCOMMON_H__
 #define __LZMASDKOBJCCOMMON_H__
 
-#include <stdint.h>
-#include <inttypes.h>
-
 #include "LzmaSDKObjCTypes.h"
 
-//#if defined(LZMASDKOBJC)
+/**
+ @detailed
+ - CFilterCoder allocate buff for reading, was (1 << 20)
+ - ISequentialOutStream max read block size, or available size, was (1 << 31)
+ */
+LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
+
 
 /**
- @brief 12 = 4Kb min
+ @detailed
+ - ISequentialOutStream max write block size, or available size, was (1 << 31)
  */
-#define LZMASDKOBJC_DEFAULT_BUFFER_SIZE ((uint32_t)1 << 13)
+LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamWriteSize;
+
 
 /**
- @brief Set sream read/write block buffer size.
- @detailed Affect to the exteracted block size sended to output.
- Ammount of data size to write to the output file/stream.
+ @detailed
+ - Lzma CDecoder in buffer, buff with coded data, was (1 << 20)
+ - Lzma2 CDecoder in buffer, buff with coded data, was (1 << 20)
  */
-LZMASDKOBJC_EXTERN void LzmaSDKObjCSetRWStreamBlockSize(uint32_t blockSize);
-LZMASDKOBJC_EXTERN uint32_t LzmaSDKObjCGetRWStreamBlockSize();
+LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderReadSize;
 
 
+/**
+ @detailed
+ - Lzma CDecoder out buffer, buff for decoded data, was (1 << 22)
+ - Lzma2 CDecoder out buffer, buff for decoded data, was (1 << 22)
+ */
+LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderWriteSize;
 
-LZMASDKOBJC_EXTERN void LzmaSDKObjCSetRWDecoderBufferSize(uint32_t blockSize);
-LZMASDKOBJC_EXTERN uint32_t LzmaSDKObjCGetRWDecoderBufferSize();
-
-
-//#endif
 
 #endif

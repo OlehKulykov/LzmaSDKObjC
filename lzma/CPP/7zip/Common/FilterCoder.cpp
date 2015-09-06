@@ -23,7 +23,7 @@
 */
 
 #if defined(LZMASDKOBJC)
-static UInt32 kBufSize = LZMASDKOBJC_DEFAULT_BUFFER_SIZE;
+static const UInt32 kBufSize = kLzmaSDKObjCStreamReadSize;
 #else
 static const UInt32 kBufSize = 1 << 20;
 #endif

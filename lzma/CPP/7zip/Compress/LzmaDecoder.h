@@ -8,10 +8,6 @@
 #include "../../Common/MyCom.h"
 #include "../ICoder.h"
 
-#if defined(LZMASDKOBJC)
-#include "../../../../src/LzmaSDKObjCCommon.h"
-#endif
-
 namespace NCompress {
 namespace NLzma {
 

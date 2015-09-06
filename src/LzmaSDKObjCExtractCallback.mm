@@ -272,17 +272,16 @@ namespace LzmaSDKObjC
 //	  }
 //  }
 //
-//  if (_outFileStream != NULL)
-//  {
-//	  if (_processedFileInfo.MTimeDefined)
-//		  _outFileStreamSpec->SetMTime(&_processedFileInfo.MTime);
-//	  RINOK(_outFileStreamSpec->Close());
-//  }
-//  _outFileStream.Release();
-//  if (_extractMode && _processedFileInfo.AttribDefined)
-//	  SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
-//  PrintNewLine();
-  return S_OK;
+		if (_outFileStream != NULL && _outFileStreamRef)
+		{
+			_outFileStreamRef->close();
+		}
+		_outFileStream.Release();
+		_outFileStreamRef = NULL;
+		//  if (_extractMode && _processedFileInfo.AttribDefined)
+		//	  SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
+		//  PrintNewLine();
+		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)

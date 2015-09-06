@@ -8,6 +8,10 @@
 
 #include "LzmaDecoder.h"
 
+#if defined(LZMASDKOBJC)
+#include "../../../../src/LzmaSDKObjCCommon.h"
+#endif
+
 static HRESULT SResToHRESULT(SRes res)
 {
   switch(res)
@@ -26,8 +30,8 @@ namespace NLzma {
 
 CDecoder::CDecoder(): _inBuf(0), _propsWereSet(false), _outSizeDefined(false),
 #if defined(LZMASDKOBJC)
-	_inBufSize(LzmaSDKObjCGetRWDecoderBufferSize()),
-	_outBufSize(LzmaSDKObjCGetRWDecoderBufferSize()),
+	_inBufSize(kLzmaSDKObjCDecoderReadSize),
+	_outBufSize(kLzmaSDKObjCDecoderWriteSize),
 #else
     _inBufSize(1 << 20),
     _outBufSize(1 << 22),

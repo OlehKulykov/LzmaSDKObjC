@@ -53,6 +53,7 @@ namespace LzmaSDKObjC
 		STDMETHOD(Read)(void *data, UInt32 size, UInt32 *processedSize);
 
 		bool open(const char * p);
+		void close();
 
 		InFile();
 		virtual ~InFile();
