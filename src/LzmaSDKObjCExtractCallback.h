@@ -58,9 +58,13 @@ namespace LzmaSDKObjC
 	private:
 		LzmaSDKObjC::OutFile * _outFileStreamRef;
 		LzmaSDKObjC::ICoder * _coder;
+		IInArchive * _archive;
 		CMyComPtr<ISequentialOutStream> _outFileStream;
 
+		AString _dstPath;
+//		AString _tmpPath;
 		uint64_t _total;
+		bool _isFullPath;
 
 	public:
 		MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)
@@ -77,6 +81,9 @@ namespace LzmaSDKObjC
 		STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
 
 		void setCoder(LzmaSDKObjC::ICoder * coder) { _coder = coder; }
+		void setArchive(IInArchive * a) { _archive = a; }
+
+		bool prepare(const char * extractPath, bool isFullPath);
 
 		ExtractCallback();
 		virtual ~ExtractCallback();

@@ -9,13 +9,19 @@
 #import "ViewController.h"
 #import "LzmaSDKObjCReader.h"
 
-@interface ViewController ()
+@interface ViewController () <LzmaSDKObjCReaderDelegate>
 
 @property (nonatomic, strong) LzmaSDKObjCReader * reader;
 
 @end
 
 @implementation ViewController
+
+- (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *) reader
+			 extractProgress:(float) progress
+{
+	NSLog(@"DELEGATE, extractProgress = %f", progress);
+}
 
 - (IBAction) on1:(id)sender
 {
@@ -45,6 +51,7 @@
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
+	_reader.delegate = self;
 
 	_reader.passwordGetter = ^NSString*(void){
 		return @"1234";
@@ -53,12 +60,16 @@
 	NSError * error = nil;
 	[_reader open:&error];
 
+	NSMutableArray * items = [NSMutableArray array];
 	[_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
 		NSLog(@"\n%@", item);
+		if (item) [items addObject:item];
 		return YES;
 	}];
 
-	[_reader extract];
+	[_reader extract:items
+			  toPath:@"/Volumes/Data/1/"
+	   withFullPaths:YES];
 }
 
 - (void)viewDidLoad {

@@ -66,7 +66,10 @@ namespace LzmaSDKObjC
 
 		bool readIteratorProperty(PROPVARIANT * property, const uint32_t identifier);
 
-		void extract();
+		bool extract(const uint32_t * itemsIndices,
+					 const uint32_t itemsCount,
+					 const char * path,
+					 bool isWithFullPaths);
 
 		bool findCodec(const LzmaSDKObjCFileType type);
 		bool openFile(const char * path);

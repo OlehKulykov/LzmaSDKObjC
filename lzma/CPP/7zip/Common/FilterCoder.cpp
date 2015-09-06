@@ -7,6 +7,10 @@
 #include "FilterCoder.h"
 #include "StreamUtils.h"
 
+#if defined(LZMASDKOBJC)
+#include "../../../../src/LzmaSDKObjCCommon.h"
+#endif
+
 /*
   AES filters need 16-bytes alignment for HARDWARE-AES instructions.
   So we call IFilter::Filter(, size), where (size != 16 * N) only for last data block.
@@ -18,8 +22,11 @@
   So the encoder and decoder write such last bytes without change.
 */
 
-
+#if defined(LZMASDKOBJC)
+static UInt32 kBufSize = LZMASDKOBJC_DEFAULT_BUFFER_SIZE;
+#else
 static const UInt32 kBufSize = 1 << 20;
+#endif
 
 STDMETHODIMP CFilterCoder::SetInBufSize(UInt32 , UInt32 size) { _inBufSize = size; return S_OK; }
 STDMETHODIMP CFilterCoder::SetOutBufSize(UInt32 , UInt32 size) { _outBufSize = size; return S_OK; }

@@ -23,8 +23,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "LzmaSDKObjCTypes.h"
-#import "LzmaSDKObjCItem.h"
+#include "LzmaSDKObjCTypes.h"
+#include "LzmaSDKObjCItem.h"
+#include "LzmaSDKObjCCommon.h"
 
 LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExt7z;
 
@@ -61,7 +62,9 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
 
 - (BOOL) iterateWithHandler:(BOOL(^)(LzmaSDKObjCItem * item, NSError * error)) handler;
 
-- (BOOL) extract;
+- (BOOL) extract:(NSArray *) items
+		  toPath:(NSString *) path
+		 withFullPaths:(BOOL) isFullPaths;
 
 @end
 

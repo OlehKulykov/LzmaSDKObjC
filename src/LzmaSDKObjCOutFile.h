@@ -45,13 +45,15 @@ namespace LzmaSDKObjC
 	class OutFile :  public IOutStream, public CMyUnknownImp
 	{
 	private:
-		
+		FILE * _f;
 	public:
 		MY_UNKNOWN_IMP1(IOutStream)
 
 		STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 		STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
 		STDMETHOD(SetSize)(UInt64 newSize);
+
+		bool open(const char * path);
 
 		OutFile();
 		virtual ~OutFile();

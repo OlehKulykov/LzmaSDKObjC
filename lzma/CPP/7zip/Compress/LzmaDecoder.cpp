@@ -25,8 +25,13 @@ namespace NCompress {
 namespace NLzma {
 
 CDecoder::CDecoder(): _inBuf(0), _propsWereSet(false), _outSizeDefined(false),
+#if defined(LZMASDKOBJC)
+	_inBufSize(LzmaSDKObjCGetRWDecoderBufferSize()),
+	_outBufSize(LzmaSDKObjCGetRWDecoderBufferSize()),
+#else
     _inBufSize(1 << 20),
     _outBufSize(1 << 22),
+#endif
     FinishStream(false),
     NeedMoreInput(false)
 {

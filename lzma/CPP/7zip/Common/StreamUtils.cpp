@@ -4,8 +4,11 @@
 
 #include "StreamUtils.h"
 
-#if defined(__APPLE__)
-static const UInt32 kBlockSize = ((UInt32)1 << 20);
+#if defined(LZMASDKOBJC)
+#include "../../../../src/LzmaSDKObjCCommon.h"
+static UInt32 kBlockSize = LZMASDKOBJC_DEFAULT_BUFFER_SIZE;
+void LzmaSDKObjCSetRWStreamBlockSize(uint32_t blockSize) { kBlockSize = blockSize; }
+uint32_t LzmaSDKObjCGetRWStreamBlockSize() { return kBlockSize; }
 #else
 static const UInt32 kBlockSize = ((UInt32)1 << 31);
 #endif

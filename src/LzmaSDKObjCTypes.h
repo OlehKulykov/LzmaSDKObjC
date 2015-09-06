@@ -43,4 +43,12 @@ LzmaSDKObjCFileType;
 typedef void * (*LzmaSDKObjCGetVoidCallback)(void * context);
 typedef void (*LzmaSDKObjCSetFloatCallback)(void * context, float value);
 
+#if defined(DEBUG) || defined(_DEBUG)
+#define DEBUG_LOG(M, ...) fprintf(stdout, "DEBUG %d: " M "\n", __LINE__, ##__VA_ARGS__);
+#define DEBUG_ERR(M, ...) fprintf(stderr, "ERROR %d: " M "\n", __LINE__, ##__VA_ARGS__);
+#else
+#define DEBUG_LOG(M, ...)
+#define DEBUG_ERR(M, ...)
+#endif
+
 #endif

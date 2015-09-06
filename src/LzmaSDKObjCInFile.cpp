@@ -28,8 +28,9 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP InFile::Read(void * data, uint32_t size, uint32_t * processedSize)
 	{
-		if (size > 0)
+		if (_f && size > 0)
 		{
+			DEBUG_LOG("InFile::Read = %u", size)
 			const size_t r = fread(data, 1, size, _f);
 			if (processedSize) *processedSize = r;
 		}
@@ -38,10 +39,13 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP InFile::Seek(Int64 offset, uint32_t seekOrigin, UInt64 *newPosition)
 	{
-		if (fseeko(_f, offset, seekOrigin) == 0)
+		if (_f)
 		{
-			if (newPosition) *newPosition = ftello(_f);
-			return S_OK;
+			if (fseeko(_f, offset, seekOrigin) == 0)
+			{
+				if (newPosition) *newPosition = ftello(_f);
+				return S_OK;
+			}
 		}
 		return S_FALSE;
 	}
@@ -64,6 +68,7 @@ namespace LzmaSDKObjC
 	InFile::~InFile()
 	{
 		if (_f) fclose(_f);
+		DEBUG_LOG("InFile::~InFile() close")
 	}
 	
 }

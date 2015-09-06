@@ -56,28 +56,36 @@ STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject);
 
 namespace LzmaSDKObjC
 {
-	void FileDecoder::extract()
+	bool FileDecoder::extract(const uint32_t * itemsIndices,
+							  const uint32_t itemsCount,
+							  const char * path,
+							  bool isWithFullPaths)
 	{
 		this->cleanExtractCallbackRef();
 
 		LzmaSDKObjC::ExtractCallback * extractCallback = new LzmaSDKObjC::ExtractCallback();
-		if (!extractCallback) return;
+		if (!extractCallback) return false;
+		if (!extractCallback->prepare(path, isWithFullPaths)) return false;
+
 		_extractCallbackRef = extractCallback;
 		extractCallback->setCoder(this);
+		extractCallback->setArchive(_archive);
 
 		_extractCallback = extractCallback;
 
-		UInt32 indexes[1] = { 0 };
+		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, false, _extractCallback);
+		extractCallback->setArchive(NULL);
 
-		HRESULT result = _archive->Extract(indexes, 1, false, _extractCallback);
 		if (result == S_OK)
 		{
-			printf("Extract OK");
+			DEBUG_LOG("Extract OK")
 		}
 		else
 		{
-			printf("Extract Error");
+			DEBUG_LOG("Extract Error")
 		}
+
+		return (result == S_OK);
 	}
 
 	bool FileDecoder::readIteratorProperty(PROPVARIANT * property, const uint32_t identifier)
@@ -135,14 +143,13 @@ namespace LzmaSDKObjC
 	void FileDecoder::onExtractProgress(const float progress)
 	{
 		if (context && setFloatCallback2) setFloatCallback2(context, progress);
-		fprintf(stdout, "FileDecoder::onExtractProgress = %f \n", progress);
+		DEBUG_LOG("FileDecoder::onExtractProgress = %f", progress)
 	}
 
 	UString FileDecoder::onGetVoidCallback1()
 	{
+		wchar_t * w = (context && getVoidCallback1) ? (wchar_t *)getVoidCallback1(context) : NULL;
 		UString r;
-		wchar_t * w = NULL;
-		if (context && getVoidCallback1) w = (wchar_t *)getVoidCallback1(context);
 		if (w) { r = w; free(w); }
 		return r;
 	}

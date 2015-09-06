@@ -20,21 +20,22 @@
  *   THE SOFTWARE.
  */
 
-
+#include <Foundation/Foundation.h>
 #include "LzmaSDKObjCExtractCallback.h"
-
+#include "../lzma/CPP/Windows/PropVariant.h"
 
 namespace LzmaSDKObjC
 {
 	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes)
 	{
-		fprintf(stdout, "ExtractCallback::ReportExtractResult\n");
+		DEBUG_LOG("ExtractCallback::ReportExtractResult")
+
 		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize)
 	{
-		fprintf(stdout, "ExtractCallback::SetRatioInfo\n");
+		DEBUG_LOG("ExtractCallback::SetRatioInfo")
 		return S_OK;
 	}
 
@@ -42,7 +43,7 @@ namespace LzmaSDKObjC
 	{
 		_total = size;
 		if (_coder) _coder->onExtractProgress(0);
-		fprintf(stdout, "ExtractCallback::SetTotal = %llu\n", _total);
+		DEBUG_LOG("ExtractCallback::SetTotal = %llu", _total)
 		return S_OK;
 	}
 
@@ -54,7 +55,7 @@ namespace LzmaSDKObjC
 			const float progress = (_total > 0) ? (float)(complete / _total) : 0;
 			if (_coder) _coder->onExtractProgress(progress);
 		}
-		fprintf(stdout, "ExtractCallback::SetCompleted = %llu\n", *completeValue);
+		DEBUG_LOG("ExtractCallback::SetCompleted = %llu", *completeValue)
 		return S_OK;
 	}
 
@@ -156,21 +157,48 @@ namespace LzmaSDKObjC
 //	  {
 //		  if (!DeleteFileAlways(fullProcessedPath))
 //		  {
-//			  PrintError("Can not delete output file", fullProcessedPath);
-//			  return E_ABORT;
-//		  }
-//	  }
-//
-	  _outFileStreamRef = new LzmaSDKObjC::OutFile();
-	  CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
-//	  if (!_outFileStreamSpec->Open(fullProcessedPath, CREATE_ALWAYS))
-//	  {
-//		  PrintError("Can not open output file", fullProcessedPath);
-//		  return E_ABORT;
-//	  }
-	  _outFileStream = outStreamLoc;
-	  *outStream = outStreamLoc.Detach();
-//  }
+		//			  PrintError("Can not delete output file", fullProcessedPath);
+		//			  return E_ABORT;
+		//		  }
+		//	  }
+		//
+		if (!_archive) return E_ABORT;
+		NWindows::NCOM::CPropVariant pathProp;
+		RINOK(_archive->GetProperty(index, kpidPath, &pathProp));
+
+		PROPVARIANT isDirProp;
+		RINOK(_archive->GetProperty(index, kpidIsDir, &isDirProp));
+
+		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return E_ABORT;
+
+		NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal length:wcslen(pathProp.bstrVal) * sizeof(wchar_t) encoding:NSUTF32LittleEndianStringEncoding];
+		if (!archivePath || [archivePath length] == 0) return E_ABORT;
+
+		NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
+		NSString * fileName = [archivePath lastPathComponent];
+		if (!fileName || [fileName length] == 0) return E_ABORT;
+
+		if (_isFullPath)
+		{
+			NSString * subPath = [archivePath stringByDeletingLastPathComponent];
+			if (subPath && [subPath length]) fullPath = [fullPath stringByAppendingPathComponent:subPath];
+		}
+
+		fullPath = [fullPath stringByAppendingPathComponent:fileName];
+
+		_outFileStreamRef = new LzmaSDKObjC::OutFile();
+		if (!_outFileStreamRef) return E_ABORT;
+		if (!_outFileStreamRef->open([fullPath UTF8String])) return E_ABORT;
+
+		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
+		//	  if (!_outFileStreamSpec->Open(fullProcessedPath, CREATE_ALWAYS))
+		//	  {
+		//		  PrintError("Can not open output file", fullProcessedPath);
+		//		  return E_ABORT;
+		//	  }
+		_outFileStream = outStreamLoc;
+		*outStream = outStreamLoc.Detach();
+		//  }
   return S_OK;
 	}
 
@@ -257,10 +285,9 @@ namespace LzmaSDKObjC
   return S_OK;
 	}
 
-
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)
 	{
-		fprintf(stdout, "ExtractCallback::CryptoGetTextPassword \n");
+		DEBUG_LOG("ExtractCallback::CryptoGetTextPassword")
 		if (_coder)
 		{
 			UString w = _coder->onGetVoidCallback1();
@@ -271,7 +298,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
 	{
-		fprintf(stdout, "ExtractCallback::CryptoGetTextPassword2 \n");
+		DEBUG_LOG("ExtractCallback::CryptoGetTextPassword2")
 		if (passwordIsDefined) *passwordIsDefined = 0;
 		if (_coder)
 		{
@@ -285,17 +312,46 @@ namespace LzmaSDKObjC
 		return E_ABORT;
 	}
 
+	bool ExtractCallback::prepare(const char * extractPath, bool isFullPath)
+	{
+		_dstPath = extractPath;
+		_isFullPath = isFullPath;
+
+		NSString * path = [NSString stringWithUTF8String:extractPath];
+
+		NSFileManager * manager = [[NSFileManager alloc] init];
+		BOOL isDir = NO;
+		if ([manager fileExistsAtPath:path isDirectory:&isDir])
+		{
+			if (!isDir) return false;
+		}
+		else
+		{
+			NSError * error = nil;
+			if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error] || error) return false;
+		}
+
+//		NSString * tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
+//		if ([manager fileExistsAtPath:tmpPath]) return false;
+//		if ([manager changeCurrentDirectoryPath:tmpPath]) return false;
+//		_tmpPath = [tmpPath UTF8String];
+
+		return true;
+	}
+
 	ExtractCallback::ExtractCallback() :
 		_outFileStreamRef(NULL),
 		_coder(NULL),
-		_total(0)
+		_archive(NULL),
+		_total(0),
+		_isFullPath(false)
 	{
 
 	}
 
 	ExtractCallback::~ExtractCallback()
 	{
-		
+
 	}
 	
 }

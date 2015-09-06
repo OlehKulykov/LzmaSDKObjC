@@ -198,13 +198,25 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 	return NO;
 }
 
-- (BOOL) extract
+- (BOOL) extract:(NSArray *) items
+		  toPath:(NSString *) path
+		 withFullPaths:(BOOL) isFullPaths
 {
-	if (_decoder)
+	const uint32_t count = items ? (uint32_t)[items count] : 0;
+	if (count && path && _decoder)
 	{
-		_decoder->context = (__bridge void *)self;
-		_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
-		_decoder->extract();
+		BOOL isOK = NO;
+		uint32_t * itemsIndices = (uint32_t *)malloc(sizeof(uint32_t) * count);
+		if (itemsIndices)
+		{
+			uint32_t index = 0;
+			for (LzmaSDKObjCItem * item in items) itemsIndices[index++] = item->_index;
+			_decoder->context = (__bridge void *)self;
+			_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
+			if (_decoder->extract(itemsIndices, count, [path UTF8String], (bool)isFullPaths)) isOK = YES;
+			free(itemsIndices);
+		}
+		return isOK;
 	}
 	return NO;
 }

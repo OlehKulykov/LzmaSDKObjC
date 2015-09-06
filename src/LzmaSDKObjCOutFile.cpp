@@ -29,30 +29,54 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP OutFile::Write(const void *data, UInt32 size, UInt32 *processedSize)
 	{
-		fprintf(stdout, "OutFile::Write = %u\n", size);
+		if (_f)
+		{
+			DEBUG_LOG("OutFile::Write = %u", size)
+			const size_t writed = fwrite(data, 1, size, _f);
+			if (processedSize) *processedSize = writed;
+		}
 		return S_OK;
 	}
 
 	STDMETHODIMP OutFile::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition)
 	{
-		fprintf(stdout, "OutFile::Seek = %llu\n", offset);
-		return S_OK;
+		if (_f)
+		{
+			DEBUG_LOG("OutFile::Seek = %llu", offset)
+			if (fseeko(_f, offset, seekOrigin) == 0)
+			{
+				if (newPosition) *newPosition = ftello(_f);
+				return S_OK;
+			}
+		}
+		return S_FALSE;
 	}
 
 	STDMETHODIMP OutFile::SetSize(UInt64 newSize)
 	{
-		fprintf(stdout, "OutFile::SetSize = %llu\n", newSize);
+		DEBUG_LOG("OutFile::SetSize = %llu", newSize)
 		return S_OK;
 	}
 
-	OutFile::OutFile()
+	bool OutFile::open(const char * path)
 	{
-		
+		if (path)
+		{
+			_f = fopen(path, "w+b");
+		}
+		return (_f != NULL);
+	}
+
+	OutFile::OutFile() :
+		_f(NULL)
+	{
+
 	}
 
 	OutFile::~OutFile()
 	{
-		
+		if (_f) fclose(_f);
+		DEBUG_LOG("OutFile::~OutFile() close")
 	}
 	
 }
