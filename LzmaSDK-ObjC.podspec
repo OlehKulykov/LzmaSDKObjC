@@ -36,11 +36,14 @@ Pod::Spec.new do |s|
 # Build  
   s.public_header_files = 'src/LzmaSDKObjCTypes.h', 'src/LzmaSDKObjCReader.h', 'src/LzmaSDKObjCItem.h', 'src/LzmaSDKObjCCommon.h'
   s.source_files = 'src/*.{h,cpp,mm}',
+    'lzma/CPP/7zip/*.{h}',
+    'lzma/CPP/7zip/Crypto/*.{h}',
     'lzma/CPP/7zip/Crypto/7zAes.cpp',
     'lzma/CPP/7zip/Crypto/7zAesRegister.cpp',
     'lzma/CPP/7zip/Crypto/MyAes.cpp',
     'lzma/CPP/7zip/Crypto/MyAesReg.cpp',
     'lzma/CPP/7zip/Crypto/RandGen.cpp',
+    'lzma/CPP/7zip/Archive/7z/*.{h}',
     'lzma/CPP/7zip/Archive/7z/7zRegister.cpp',
     'lzma/CPP/7zip/Archive/7z/7zSpecStream.cpp',
     'lzma/CPP/7zip/Archive/7z/7zExtract.cpp',
@@ -55,14 +58,17 @@ Pod::Spec.new do |s|
     'lzma/CPP/7zip/Archive/7z/7zIn.cpp',
     'lzma/CPP/7zip/Archive/7z/7zHandler.cpp',
     'lzma/CPP/7zip/Archive/7z/StdAfx.cpp',
+    'lzma/CPP/7zip/Archive/*.{h}',
     'lzma/CPP/7zip/Archive/XzHandler.cpp',
     'lzma/CPP/7zip/Archive/LzmaHandler.cpp',
     'lzma/CPP/7zip/Archive/ArchiveExports.cpp',
     'lzma/CPP/7zip/Archive/DllExports2.cpp',
+    'lzma/CPP/7zip/Archive/Common/*.{h}',
     'lzma/CPP/7zip/Archive/Common/ItemNameUtils.cpp',
     'lzma/CPP/7zip/Archive/Common/CoderMixer2.cpp',
     'lzma/CPP/7zip/Archive/Common/DummyOutStream.cpp',
     'lzma/CPP/7zip/Archive/Common/HandlerOut.cpp',
+    'lzma/CPP/7zip/Compress/*.{h}',
     'lzma/CPP/7zip/Compress/BcjCoder.cpp',
     'lzma/CPP/7zip/Compress/BcjRegister.cpp',
     'lzma/CPP/7zip/Compress/CopyCoder.cpp',
@@ -73,6 +79,7 @@ Pod::Spec.new do |s|
     'lzma/CPP/7zip/Compress/Lzma2Decoder.cpp',
     'lzma/CPP/7zip/Compress/Lzma2Encoder.cpp',
     'lzma/CPP/7zip/Compress/Lzma2Register.cpp',
+    'lzma/CPP/7zip/Common/*.{h}',
     'lzma/CPP/7zip/Common/LimitedStreams.cpp',
     'lzma/CPP/7zip/Common/StreamObjects.cpp',
     'lzma/CPP/7zip/Common/InOutTempBuffer.cpp',
@@ -88,6 +95,7 @@ Pod::Spec.new do |s|
     'lzma/CPP/7zip/Common/CreateCoder.cpp',
     'lzma/CPP/7zip/Common/FileStreams.cpp',
     'lzma/CPP/7zip/Common/LockedStream.cpp',
+    'lzma/CPP/Windows/*.{h}',
     'lzma/CPP/Windows/PropVariantConv.cpp',
     'lzma/CPP/Windows/System.cpp',
     'lzma/CPP/Windows/PropVariant.cpp',
@@ -95,6 +103,7 @@ Pod::Spec.new do |s|
     'lzma/CPP/Windows/FileFind.cpp',
     'lzma/CPP/Windows/FileDir.cpp',
     'lzma/CPP/Windows/DLL.cpp',
+    'lzma/CPP/Common/*.{h}',
     'lzma/CPP/Common/Sha256Reg.cpp',
     'lzma/CPP/Common/XzCrc64Reg.cpp',
     'lzma/CPP/Common/CrcReg.cpp',
@@ -105,6 +114,7 @@ Pod::Spec.new do |s|
     'lzma/CPP/Common/StringConvert.cpp',
     'lzma/CPP/Common/IntToString.cpp',
     'lzma/CPP/Common/MyWindows.cpp',
+    'lzma/C/*.{h}',
     'lzma/C/AesOpt.c',
     'lzma/C/Aes.c',
     'lzma/C/XzCrc64Opt.c',
@@ -133,7 +143,7 @@ Pod::Spec.new do |s|
     'lzma/C/Threads.c'
   
   s.compiler_flags = '-DLZMASDKOBJC=1'
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Crypto" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/7z" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Compress" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Windows" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/C"' }
+#  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Crypto" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/7z" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Compress" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Windows" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/C"' }
   s.libraries    = 'stdc++'
 #  s.framework = 'CoreFoundation'
   s.requires_arc = true
