@@ -33,8 +33,8 @@
 	NSString * testFile = nil;
 
 	testFile = @"lzma.7z";
-	testFile = @"lzma_aes256.7z";
-	testFile = @"lzma_aes256_encfn.7z";
+//	testFile = @"lzma_aes256.7z";
+//	testFile = @"lzma_aes256_encfn.7z";
 
 	testFile = @"lzma2.7z";
 	testFile = @"lzma2_aes256.7z";
