@@ -6,7 +6,7 @@ Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code.
 Available for iOS and MacOS.
 
 #### Description
-It's not yet another wrapper arround C part of the Lzma library with all it's limitations.
+It's not yet another wrapper around C part of the Lzma library with all it's limitations.
 
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
