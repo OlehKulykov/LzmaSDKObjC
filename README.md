@@ -17,8 +17,51 @@ The main advantages is:
 - Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
 - Track smoothed progress, which becomes possible with prev.
-- Support reading archive files with size more than 4GB, eg. **HugeFiles=on**
-- Support extracting files with size more than 4GB, eg. **HugeFiles=on**
+- Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. **HugeFiles=on**
+
+
+#### Example
+------------
+```objc
+// select full path to archive file.
+NSString * archivePath = <path to archive>;
+
+// Create and hold strongly reader object.
+self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
+
+// Optionaly: assign weak delegate for tracking extract progress.
+_reader.delegate = self;
+
+// If achive encrypted - define password getter handler.
+// NOTES:
+// - Encrypted file needs password for extract process.
+// - Encrypted file with encrypted header needs password for list(iterate) and extract archive items.
+_reader.passwordGetter = ^NSString*(void){
+  return @"password to my achive";
+};
+
+// Open archive, with or without error. Error can be nil.
+NSError * error = nil;
+if (![_reader open:&error])
+{
+  NSLog(@"Open error: %@", error);
+}
+
+// Iterate all archive items, track what items do you need & hold them in array.
+NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
+[_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
+	NSLog(@"\n%@", item);
+	if (item) [items addObject:item]; // if needs this item - store to array.
+	return YES; // YES - continue iterate, NO - stop iteration
+}];
+
+// Extract selected items from prev. step.
+// YES - create subfolders structure for the item.
+// NO - place item file to the root of path(in this case items with the same names will be overwrited automaticaly).
+[_reader extract:items
+          toPath:@"/extract/path"
+    withFullPaths:YES]; 
+```
 
 
 #### Features list (TODO/DONE)
