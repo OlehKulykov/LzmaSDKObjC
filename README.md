@@ -17,7 +17,8 @@ The main advantages is:
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
 - Track smoothed progress, which becomes possible with prev.
-- Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. **HugeFiles=on**
+- Support reading archive files with size more than 4GB and extracting files with size more than 4GB.
+- Unicode support.
 
 
 ### Installation with [CocoaPods]
