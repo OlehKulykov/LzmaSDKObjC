@@ -13,9 +13,9 @@ The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (*password protected*) **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (password protected) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
-- Manage memory allocations during listing/extracting.
-- Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
-- Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
+- Manage memory allocations during listing/extracting. See below section: **Tune up speed, performance and disk IO operations**.
+- Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
+- Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
 - Track smoothed progress, which becomes possible with prev.
 - Support reading archive files with size more than 4GB and extracting files with size more than 4GB.
 - Unicode support.
