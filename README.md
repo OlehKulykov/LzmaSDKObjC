@@ -77,6 +77,7 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 Original C++ part of the [LZMA SDK] was patched to have a possibility to tune up default(*hardcoded*) settings.
 For list and extract functionality was defined next global variables: ```kLzmaSDKObjCStreamReadSize```, ```kLzmaSDKObjCStreamWriteSize```, ```kLzmaSDKObjCDecoderReadSize``` and ```kLzmaSDKObjCDecoderWriteSize```.
 This variables holds size values in bytes, so, for the single reader object summary of this 4's values will be allocated.
+
 Keep in mind: operations with **memory much more faster** than **disk IO operations**, so read below situations:
 ```c
 switch (<what do I need ?>)
