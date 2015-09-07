@@ -5,7 +5,7 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ [LZMA SDK] code. 
 Available for iOS and MacOS.
 
-#### Description
+### Description
 ----------------
 It's not yet another wrapper around C part of the Lzma library with all it's limitations. Based on C++ [LZMA SDK] version 15.06 (1506 - latest for now) and patched for iOS & MacOS platforms.
 
@@ -20,8 +20,16 @@ The main advantages is:
 - Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. **HugeFiles=on**
 
 
-#### Example
-------------
+### Installation with [CocoaPods]
+#### Podfile
+```ruby
+pod 'LzmaSDK-ObjC'
+```
+
+
+### Example
+-----------
+#### List and extract
 ```objc
 // select full path to archive file.
 NSString * archivePath = <path to archive>;
@@ -64,8 +72,44 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 ```
 
 
-#### Features list (TODO/DONE)
-------------------------------
+### Tune up speed, performance and disk IO operations
+-----------------------------------------------------
+Original C++ part of the [LZMA SDK] was patched to have a possibility to tune up default(*hardcoded*) settings.
+For list and extract functionality was defined next global variables: ```kLzmaSDKObjCStreamReadSize```, ```kLzmaSDKObjCStreamWriteSize```, ```kLzmaSDKObjCDecoderReadSize``` and ```kLzmaSDKObjCDecoderWriteSize```.
+This variables holds size values in bytes, so, for the single reader object summary of this 4's values will be allocated.
+Keep in mind: operations with **memory much more faster** than **disk IO operations**, so read below situations:
+```c
+switch (<what do I need ?>)
+{
+	case <I need faster list and extract>:
+		//TODO: Increase stream and decoder size of buffers
+		Result:
+			1. more allocated memory
+			2. less IO read/write operations and less delays
+			3. less smoothed progress
+			4. more CPU load (do a job, not distracted to read/write data)
+		break;
+
+	case <I need use less memory or more smoothed progress>:
+		//TODO: Decrease stream and decoder size of buffers
+		Result:
+			1. less allocated memory
+			2. more IO read/write operations and more delays
+			3. more smoothed progress
+			4. less CPU load (wait for read/write data)
+		break;
+
+	default:
+		//TODO: use current settings
+		break;
+	};
+```
+> NOTE: Modify global variables **before** creating & using reader object.
+> NOTE: This allocation sizes dosn't affet to memory allocated for the archive dictionary.
+
+
+### Features list (TODO/DONE)
+-----------------------------
 - [ ] **Lzma/*.7z**
   - [x] **List**
     - [x] Regular archive. ```tests/files/lzma.7z```
@@ -91,8 +135,8 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 - [ ] **Omit unused code**, reduce buildable, original code size.
 
 
-#### License
-------------
+### License
+-----------
 By using this all you are accepting original [LZMA SDK] and with MIT license (*see below*):
 
 The MIT License (MIT)
@@ -119,3 +163,4 @@ THE SOFTWARE.
 
 
 [LZMA SDK]:http://www.7-zip.org/sdk.html
+[CocoaPods]:https://cocoapods.org/pods/LzmaSDK-ObjC
