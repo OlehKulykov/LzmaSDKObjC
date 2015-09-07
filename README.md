@@ -106,6 +106,7 @@ switch (<what do I need ?>)
 	};
 ```
 > NOTE: Modify global variables **before** creating & using reader object.
+
 > NOTE: This allocation sizes dosn't affet to memory allocated for the archive dictionary.
 
 
