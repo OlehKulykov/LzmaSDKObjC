@@ -1,5 +1,5 @@
-[![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/?q=LzmaSDK-ObjC)
-[![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/?q=LzmaSDK-ObjC)
+[![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
+[![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 
 
 Lzma SDK for Objective-C based on extended functionality of the C++ [LZMA SDK] code. 
@@ -165,4 +165,4 @@ THE SOFTWARE.
 
 
 [LZMA SDK]:http://www.7-zip.org/sdk.html
-[CocoaPods]:https://cocoapods.org/pods/LzmaSDK-ObjC
+[CocoaPods]:http://cocoapods.org/pods/LzmaSDK-ObjC
