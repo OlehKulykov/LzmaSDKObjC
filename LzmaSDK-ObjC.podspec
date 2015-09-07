@@ -5,15 +5,17 @@ Pod::Spec.new do |s|
   s.version      = "0.0.2"
   s.summary      = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description  = <<-DESC
-It's not yet another wrapper arround C part of the Lzma library with all it's limitations.
+It's not yet another wrapper around C part of the LZMA SDK with all it's limitations. 
+Based on C++ LZMA SDK version 15.06 (1506 - latest for now) and patched for iOS & MacOS platforms.
 The main advantages is:
  - List, extract 7z files (Lzma & Lzma2 compression method).
  - List, extract encrypted (password protected) 7z files (Lzma & Lzma2 compression method).
  - List, extract encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z files (Lzma & Lzma2 compression method).
  - Manage memory allocations during listing/extracting.
- - Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
+ - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
  - Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).
  - Track smoothed progress, which becomes possible with prev.
+ - Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. HugeFiles=on
                       DESC
   s.homepage     = "https://github.com/OlehKulykov/LzmaSDK-ObjC"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

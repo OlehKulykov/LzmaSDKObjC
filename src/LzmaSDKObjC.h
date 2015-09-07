@@ -29,9 +29,9 @@
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
  *   Changes on version 0.0.2 (current):
- *   - Define memory size allocation for list & extract functionality.
+ *   - Define memory size allocation for list and extract functionality.
  *   - Fix closing last extracted file before deallocating reader.
- *   - Code descriptions.
+ *   - Code description.
  *
  *   Version 0.0.1:
  *   - Implemented list and extract of the Lzma & Lzma2 7z files.

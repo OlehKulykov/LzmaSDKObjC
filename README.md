@@ -7,14 +7,14 @@ Available for iOS and MacOS.
 
 ### Description
 ----------------
-It's not yet another wrapper around C part of the Lzma library with all it's limitations. Based on C++ [LZMA SDK] version 15.06 (1506 - latest for now) and patched for iOS & MacOS platforms.
+It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. Based on C++ [LZMA SDK] version 15.06 (1506 - latest for now) and patched for iOS & MacOS platforms.
 
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (*password protected*) **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (password protected) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
 - Manage memory allocations during listing/extracting.
-- Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
+- Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*).
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*).
 - Track smoothed progress, which becomes possible with prev.
 - Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. **HugeFiles=on**
@@ -107,7 +107,7 @@ switch (<what do I need ?>)
 ```
 > NOTE: Modify global variables **before** creating & using reader object.
 
-> NOTE: This allocation sizes dosn't affet to memory allocated for the archive dictionary.
+> NOTE: This allocation sizes doesn't affet to memory allocated for the archive dictionary.
 
 
 ### Features list (TODO/DONE)
