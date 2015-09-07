@@ -25,11 +25,6 @@
 
 - (IBAction) on1:(id)sender
 {
-//	self.reader = [[LzmaObjcReader alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Volumes/Data/1/1.7z"]];
-//	[_reader open:nil];
-//	[_reader read:nil];
-//	self.reader = nil;
-
 	NSString * testFile = nil;
 
 	testFile = @"lzma.7z";
@@ -49,7 +44,7 @@
 
 
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
-	archivePath = @"/Volumes/Data/1/1.7z";
+//	archivePath = @"/Volumes/Data/1/1.7z";
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
 	_reader.delegate = self;
@@ -59,7 +54,10 @@
 	};
 
 	NSError * error = nil;
-	[_reader open:&error];
+	if (![_reader open:&error])
+	{
+		NSLog(@"Open error: %@", error);
+	}
 
 	NSMutableArray * items = [NSMutableArray array];
 	[_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){

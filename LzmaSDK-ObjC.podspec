@@ -5,24 +5,15 @@ Pod::Spec.new do |s|
   s.version      = "0.0.2"
   s.summary      = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description  = <<-DESC
-- Lzma/*.7z
-  - List
-    - Regular archive.
-    - Encrypted archive with AES256.
-    - Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
-  - Extract
-    - Regular archive.
-    - Encrypted archive with AES256.
-    - Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
-- Lzma2/*.7z
-  - List
-    - Regular archive.
-    - Encrypted archive with AES256.
-    - Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
-  - Extract
-    - Regular archive.
-    - Encrypted archive with AES256.
-    - Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
+It's not yet another wrapper arround C part of the Lzma library with all it's limitations.
+The main advantages is:
+ - List, extract 7z files (Lzma & Lzma2 compression method).
+ - List, extract encrypted (password protected) 7z files (Lzma & Lzma2 compression method).
+ - List, extract encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z files (Lzma & Lzma2 compression method).
+ - Manage memory allocations during listing/extracting.
+ - Setuped for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
+ - Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).
+ - Track smoothed progress, which becomes possible with prev.
                       DESC
   s.homepage     = "https://github.com/OlehKulykov/LzmaSDK-ObjC"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
