@@ -13,6 +13,10 @@
 #include "../../Common/Defs.h"
 #endif
 
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#include "../../../../src/LzmaAppleCommon.h"
+#endif
+
 #include "FileStreams.h"
 
 static inline HRESULT ConvertBoolToHRESULT(bool result)
@@ -29,8 +33,10 @@ static inline HRESULT ConvertBoolToHRESULT(bool result)
   #endif
 }
 
-
+#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 static const UInt32 kClusterSize = 1 << 18;
+#endif
+
 CInFileStream::CInFileStream():
   #ifdef SUPPORT_DEVICE_FILE
   VirtPos(0),

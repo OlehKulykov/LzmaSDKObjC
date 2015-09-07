@@ -9,6 +9,10 @@
 #include "../Common/StringConvert.h"
 #include "../Common/IntToString.h"
 
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#include "../../../src/LzmaAppleCommon.h"
+#endif
+
 #define NEED_NAME_WINDOWS_TO_UNIX 1
 
 #include "../Windows/Synchronization.h"

@@ -14,10 +14,18 @@
 
 #include "../Common/RegisterCodec.h"
 
+#if defined(__APPLE__)
+extern uint8_t g_NumCodecs;
+#else
 extern unsigned g_NumCodecs;
+#endif
 extern const CCodecInfo *g_Codecs[];
 
+#if defined(__APPLE__)
+extern uint8_t g_NumHashers;
+#else
 extern unsigned g_NumHashers;
+#endif
 extern const CHasherInfo *g_Hashers[];
 
 static void SetPropFromAscii(const char *s, PROPVARIANT *prop) throw()

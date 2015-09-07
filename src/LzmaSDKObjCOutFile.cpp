@@ -33,7 +33,7 @@ namespace LzmaSDKObjC
 		{
 			DEBUG_LOG("OutFile::Write = %u", size)
 			const size_t writed = fwrite(data, 1, size, _f);
-			if (processedSize) *processedSize = writed;
+			if (processedSize) *processedSize = (UInt32)writed;
 		}
 		return S_OK;
 	}

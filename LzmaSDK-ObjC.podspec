@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 # Common settings
   s.name         = "LzmaSDK-ObjC"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description  = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations. 
@@ -135,7 +135,7 @@ The main advantages is:
     'lzma/C/LzmaEnc.c',
     'lzma/C/Threads.c'
   
-  s.compiler_flags = '-DLZMASDKOBJC=1'
+  s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
 #  s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Crypto" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/7z" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Archive/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Compress" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/7zip/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Windows" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/CPP/Common" "${PODS_ROOT}/LzmaSDK-ObjC/lzma/C"' }
   s.libraries    = 'stdc++'
 #  s.framework = 'CoreFoundation'

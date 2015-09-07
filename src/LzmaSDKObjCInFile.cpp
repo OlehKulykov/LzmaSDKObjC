@@ -26,13 +26,13 @@
 namespace LzmaSDKObjC
 {
 
-	STDMETHODIMP InFile::Read(void * data, uint32_t size, uint32_t * processedSize)
+	STDMETHODIMP InFile::Read(void *data, UInt32 size, UInt32 *processedSize)
 	{
 		if (_f && size > 0)
 		{
 			DEBUG_LOG("InFile::Read = %u", size)
 			const size_t r = fread(data, 1, size, _f);
-			if (processedSize) *processedSize = r;
+			if (processedSize) *processedSize = (UInt32)r;
 		}
 		return S_OK;
 	}

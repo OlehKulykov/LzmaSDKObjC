@@ -12,6 +12,10 @@
 #include "StringConvert.h"
 #endif
 
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#include "../../../src/LzmaAppleCommon.h"
+#endif
+
 #include "MyString.h"
 
 #define MY_STRING_NEW(_T_, _size_) new _T_[_size_]

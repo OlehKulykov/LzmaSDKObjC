@@ -28,7 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 0.0.2 (current):
+ *   Changes on version 0.0.3 (current):
+ *   - Less static consts & variables.
+ *   - Exclude some unused code with preprocessor define.
+ *
+ *   Changes on version 0.0.2:
  *   - Define memory size allocation for list and extract functionality.
  *   - Fix closing last extracted file before deallocating reader.
  *   - Code description.

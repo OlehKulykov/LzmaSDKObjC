@@ -5,6 +5,10 @@
 #include "FileFind.h"
 #include "../Common/StringConvert.h"
 
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#include "../../../src/LzmaAppleCommon.h"
+#endif
+
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
@@ -170,7 +174,7 @@ static bool originalFilename(const UString & src, AString & res)
 }
 
 
-
+#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 // Warning this function cannot update "fileInfo.Name"
 static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
   struct stat stat_info;
@@ -212,6 +216,7 @@ static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
 //  }
   return 0;
 }
+#endif
 
 	/*
 static int fillin_CFileInfo(CFileInfo &fileInfo,const char *dir,const char *name) {
