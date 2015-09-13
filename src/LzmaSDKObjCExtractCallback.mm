@@ -66,140 +66,50 @@ namespace LzmaSDKObjC
 		*outStream = NULL;
 		_outFileStream.Release();
 
-//  _outFileStream.Release();
-//
-//  {
-//	  // Get Name
-//	  NCOM::CPropVariant prop;
-//	  RINOK(_archiveHandler->GetProperty(index, kpidPath, &prop));
-//
-//	  UString fullPath;
-//	  if (prop.vt == VT_EMPTY)
-//		  fullPath = kEmptyFileAlias;
-//	  else
-//	  {
-//		  if (prop.vt != VT_BSTR)
-//			  return E_FAIL;
-//		  fullPath = prop.bstrVal;
-//	  }
-//	  _filePath = fullPath;
-//  }
-//
-//  if (askExtractMode != NArchive::NExtract::NAskMode::kExtract)
-//	  return S_OK;
-//
-//  {
-//	  // Get Attrib
-//	  NCOM::CPropVariant prop;
-//	  RINOK(_archiveHandler->GetProperty(index, kpidAttrib, &prop));
-//	  if (prop.vt == VT_EMPTY)
-//	  {
-//		  _processedFileInfo.Attrib = 0;
-//		  _processedFileInfo.AttribDefined = false;
-//	  }
-//	  else
-//	  {
-//		  if (prop.vt != VT_UI4)
-//			  return E_FAIL;
-//		  _processedFileInfo.Attrib = prop.ulVal;
-//		  _processedFileInfo.AttribDefined = true;
-//	  }
-//  }
-//
-//  RINOK(IsArchiveItemFolder(_archiveHandler, index, _processedFileInfo.isDir));
-//
-//  {
-//	  // Get Modified Time
-//	  NCOM::CPropVariant prop;
-//	  RINOK(_archiveHandler->GetProperty(index, kpidMTime, &prop));
-//	  _processedFileInfo.MTimeDefined = false;
-//	  switch(prop.vt)
-//	  {
-//		  case VT_EMPTY:
-//			  // _processedFileInfo.MTime = _utcMTimeDefault;
-//			  break;
-//		  case VT_FILETIME:
-//			  _processedFileInfo.MTime = prop.filetime;
-//			  _processedFileInfo.MTimeDefined = true;
-//			  break;
-//		  default:
-//			  return E_FAIL;
-//	  }
-//
-//  }
-//  {
-//	  // Get Size
-//	  NCOM::CPropVariant prop;
-//	  RINOK(_archiveHandler->GetProperty(index, kpidSize, &prop));
-//	  UInt64 newFileSize;
-//	  /* bool newFileSizeDefined = */ ConvertPropVariantToUInt64(prop, newFileSize);
-//  }
-//
-//
-//  {
-//	  // Create folders for file
-//	  int slashPos = _filePath.ReverseFind_PathSepar();
-//	  if (slashPos >= 0)
-//		  CreateComplexDir(_directoryPath + us2fs(_filePath.Left(slashPos)));
-//  }
-//
-//  FString fullProcessedPath = _directoryPath + us2fs(_filePath);
-//  _diskFilePath = fullProcessedPath;
-//
-//  if (_processedFileInfo.isDir)
-//  {
-//	  CreateComplexDir(fullProcessedPath);
-//  }
-//  else
-//  {
-//	  NFind::CFileInfo fi;
-//	  if (fi.Find(fullProcessedPath))
-//	  {
-//		  if (!DeleteFileAlways(fullProcessedPath))
-//		  {
-		//			  PrintError("Can not delete output file", fullProcessedPath);
-		//			  return E_ABORT;
-		//		  }
-		//	  }
-		//
 		if (!_archive) return E_ABORT;
-		NWindows::NCOM::CPropVariant pathProp;
-		RINOK(_archive->GetProperty(index, kpidPath, &pathProp));
 
 		PROPVARIANT isDirProp;
 		RINOK(_archive->GetProperty(index, kpidIsDir, &isDirProp));
 
 		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return E_ABORT;
 
-		NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal length:wcslen(pathProp.bstrVal) * sizeof(wchar_t) encoding:NSUTF32LittleEndianStringEncoding];
-		if (!archivePath || [archivePath length] == 0) return E_ABORT;
-
-		NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
-		NSString * fileName = [archivePath lastPathComponent];
-		if (!fileName || [fileName length] == 0) return E_ABORT;
-
-		if (_isFullPath)
+		CMyComPtr<ISequentialOutStream> outStreamLoc;
+		if (_isTest)
 		{
-			NSString * subPath = [archivePath stringByDeletingLastPathComponent];
-			if (subPath && [subPath length]) fullPath = [fullPath stringByAppendingPathComponent:subPath];
+			_outCRCStreamRef = new COutStreamWithCRC();
+			if (!_outFileStreamRef) return E_ABORT;
+			_outCRCStreamRef->Init(true);
+			outStreamLoc = _outCRCStreamRef;
+		}
+		else
+		{
+			NWindows::NCOM::CPropVariant pathProp;
+			RINOK(_archive->GetProperty(index, kpidPath, &pathProp));
+
+			NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal length:wcslen(pathProp.bstrVal) * sizeof(wchar_t) encoding:NSUTF32LittleEndianStringEncoding];
+			if (!archivePath || [archivePath length] == 0) return E_ABORT;
+
+			NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
+			NSString * fileName = [archivePath lastPathComponent];
+			if (!fileName || [fileName length] == 0) return E_ABORT;
+
+			if (_isFullPath)
+			{
+				NSString * subPath = [archivePath stringByDeletingLastPathComponent];
+				if (subPath && [subPath length]) fullPath = [fullPath stringByAppendingPathComponent:subPath];
+			}
+
+			fullPath = [fullPath stringByAppendingPathComponent:fileName];
+
+			_outFileStreamRef = new LzmaSDKObjC::OutFile();
+			if (!_outFileStreamRef) return E_ABORT;
+			if (!_outFileStreamRef->open([fullPath UTF8String])) return E_ABORT;
+			outStreamLoc = _outFileStreamRef;
 		}
 
-		fullPath = [fullPath stringByAppendingPathComponent:fileName];
-
-		_outFileStreamRef = new LzmaSDKObjC::OutFile();
-		if (!_outFileStreamRef) return E_ABORT;
-		if (!_outFileStreamRef->open([fullPath UTF8String])) return E_ABORT;
-
-		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
-		//	  if (!_outFileStreamSpec->Open(fullProcessedPath, CREATE_ALWAYS))
-		//	  {
-		//		  PrintError("Can not open output file", fullProcessedPath);
-		//		  return E_ABORT;
-		//	  }
 		_outFileStream = outStreamLoc;
 		*outStream = outStreamLoc.Detach();
-		//  }
-  return S_OK;
+		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::PrepareOperation(Int32 askExtractMode)
@@ -272,16 +182,26 @@ namespace LzmaSDKObjC
 //	  }
 //  }
 //
+		HRESULT res = S_OK;
 		if (_outFileStream != NULL)
 		{
 			if (_outFileStreamRef) _outFileStreamRef->close();
+			if (_outCRCStreamRef)
+			{
+				PROPVARIANT prop = { 0 };
+				RINOK(_archive->GetProperty(0, kpidCRC, &prop));
+
+//				if (_decoder->readIteratorProperty(&prop, ))
+//					item->_crc = (uint32_t)_LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
+			}
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
+		_outCRCStreamRef = NULL;
 		//  if (_extractMode && _processedFileInfo.AttribDefined)
 		//	  SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
 		//  PrintNewLine();
-		return S_OK;
+		return res;
 	}
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)
@@ -340,10 +260,12 @@ namespace LzmaSDKObjC
 
 	ExtractCallback::ExtractCallback() :
 		_outFileStreamRef(NULL),
+		_outCRCStreamRef(NULL),
 		_coder(NULL),
 		_archive(NULL),
 		_total(0),
-		_isFullPath(false)
+		_isFullPath(false),
+		_isTest(false)
 	{
 
 	}

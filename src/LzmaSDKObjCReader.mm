@@ -22,8 +22,12 @@
 
 
 #import "LzmaSDKObjCReader.h"
+
 #include "LzmaSDKObjCFileDecoder.h"
+#include "LzmaSDKObjCCommon.h"
+
 #import "LzmaSDKObjCItem+Private.h"
+
 #include <wchar.h>
 
 NSString * const kLzmaSDKObjCFileExt7z = @"7z";
@@ -125,30 +129,6 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-static time_t _LzmaSDKObjCReaderFILETIMEToUnixTime(const FILETIME filetime)
-{
-	long long int t = filetime.dwHighDateTime;
-	t <<= 32;
-	t += (unsigned long)filetime.dwLowDateTime;
-	t -= 116444736000000000LL;
-	return (time_t)(t / 10000000);
-}
-
-static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
-{
-	switch (prop->vt)
-	{
-		case VT_UI8: return prop->uhVal.QuadPart;
-		case VT_UI4: return prop->ulVal;
-		case VT_UINT: return prop->uintVal;
-		case VT_I8: return prop->hVal.QuadPart;
-		case VT_UI1: return prop->bVal;
-		case VT_I4: return prop->lVal;
-		default:break;
-	}
-	return 0;
-}
-
 - (BOOL) iterateWithHandler:(BOOL(^)(LzmaSDKObjCItem * item, NSError * error)) handler
 {
 	if (_decoder && handler)
@@ -170,7 +150,7 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 				if (item)
 				{
 					item->_index = _decoder->iteratorIndex();
-					item->_orgSize = _LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
+					item->_orgSize = LzmaSDKObjCPROPVARIANTGetUInt64(&prop);
 					prop = { 0 };
 
 					if (name.vt == VT_BSTR && name.bstrVal)
@@ -178,15 +158,15 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidCTime))
-						if (prop.vt == VT_FILETIME) item->_cDate = _LzmaSDKObjCReaderFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_cDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidATime))
-						if (prop.vt == VT_FILETIME) item->_aDate = _LzmaSDKObjCReaderFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_aDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidMTime))
-						if (prop.vt == VT_FILETIME) item->_mDate = _LzmaSDKObjCReaderFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_mDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidEncrypted))
@@ -194,7 +174,7 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidCRC))
-						item->_crc = (uint32_t)_LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
+						item->_crc = (uint32_t)LzmaSDKObjCPROPVARIANTGetUInt64(&prop);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidIsDir))
@@ -210,12 +190,12 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 	return NO;
 }
 
-- (BOOL) extract:(NSArray *) items
-		  toPath:(NSString *) path
-		 withFullPaths:(BOOL) isFullPaths
+- (BOOL) process:(NSArray *) items
+		  toPath:(const char *) path
+   withFullPaths:(BOOL) isFullPaths
 {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
-	if (count && path && _decoder)
+	if (count && _decoder)
 	{
 		BOOL isOK = NO;
 		uint32_t * itemsIndices = (uint32_t *)malloc(sizeof(uint32_t) * count);
@@ -225,12 +205,25 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 			for (LzmaSDKObjCItem * item in items) itemsIndices[index++] = item->_index;
 			_decoder->context = (__bridge void *)self;
 			_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
-			if (_decoder->extract(itemsIndices, count, [path UTF8String], (bool)isFullPaths)) isOK = YES;
+			if (_decoder->process(itemsIndices, count, path, path ? (bool)isFullPaths : false)) isOK = YES;
 			free(itemsIndices);
 		}
 		return isOK;
 	}
 	return NO;
+}
+
+- (BOOL) extract:(NSArray *) items
+		  toPath:(NSString *) path
+   withFullPaths:(BOOL) isFullPaths
+{
+	const char * cPath = path ? [path UTF8String] : NULL;
+	return cPath ? [self process:items toPath:cPath withFullPaths:isFullPaths] : NO;
+}
+
+- (BOOL) test:(NSArray *) items
+{
+	return [self process:items toPath:NULL withFullPaths:NO];
 }
 
 - (BOOL) open:(NSError **) error

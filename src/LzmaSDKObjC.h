@@ -21,8 +21,8 @@
  */
 
 
-#ifndef __LZMASDKOBJCCOMMON_H__
-#define __LZMASDKOBJCCOMMON_H__
+#ifndef __LZMASDKOBJC_H__
+#define __LZMASDKOBJC_H__
 
 
 /*
@@ -31,6 +31,7 @@
  *   Changes on version 0.0.3 (current):
  *   - Less static consts & variables.
  *   - Exclude some unused code with preprocessor define.
+ *   - Test archive items CRC.
  *
  *   Changes on version 0.0.2:
  *   - Define memory size allocation for list and extract functionality.
@@ -44,7 +45,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 2
+#define LZMASDKOBJC_VERSION_PATCH 3
 
 
 #include "LzmaSDKObjCTypes.h"

@@ -46,7 +46,7 @@
 #include "../lzma/C/Aes.h"
 #include "../lzma/C/XzCrc64.h"
 
-#include "LzmaSDKObjCGUIDs.h"
+#include "LzmaSDKObjCCommon.h"
 #include "LzmaSDKObjCInFile.h"
 #include "LzmaSDKObjCOpenCallback.h"
 #include "LzmaSDKObjCOutFile.h"
@@ -56,16 +56,25 @@ STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject);
 
 namespace LzmaSDKObjC
 {
-	bool FileDecoder::extract(const uint32_t * itemsIndices,
+
+	bool FileDecoder::process(const uint32_t * itemsIndices,
 							  const uint32_t itemsCount,
-							  const char * path,
-							  bool isWithFullPaths)
+							  const char * path /* = NULL */,
+							  bool isWithFullPaths /* = false */)
 	{
 		this->cleanExtractCallbackRef();
 
 		LzmaSDKObjC::ExtractCallback * extractCallback = new LzmaSDKObjC::ExtractCallback();
 		if (!extractCallback) return false;
-		if (!extractCallback->prepare(path, isWithFullPaths)) return false;
+
+		if (path)
+		{
+			if (!extractCallback->prepare(path, isWithFullPaths)) return false;
+		}
+		else
+		{
+			extractCallback->setIsTest(true);
+		}
 
 		_extractCallbackRef = extractCallback;
 		extractCallback->setCoder(this);

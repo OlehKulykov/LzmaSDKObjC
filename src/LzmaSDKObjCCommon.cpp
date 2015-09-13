@@ -21,16 +21,33 @@
  */
 
 
-#ifndef __LZMASDKOBJCGUIDS_H__
-#define __LZMASDKOBJCGUIDS_H__
+#include "LzmaSDKObjCCommon.h"
 
-#include <stdio.h>
 
-#include "../lzma/CPP/Common/MyGuidDef.h"
-#include "LzmaSDKObjCTypes.h"
+const GUID LzmaSDKObjCCLSIDFormat7z = CONSTRUCT_GUID(0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x07, 0x00, 0x00);
 
-LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormat7z;
+const GUID LzmaSDKObjCCLSIDFormatXz = CONSTRUCT_GUID(0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x0C, 0x00, 0x00);
 
-LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormatXz;
+uint64_t LzmaSDKObjCPROPVARIANTGetUInt64(PROPVARIANT * prop)
+{
+	switch (prop->vt)
+	{
+		case VT_UI8: return prop->uhVal.QuadPart;
+		case VT_UI4: return prop->ulVal;
+		case VT_UINT: return prop->uintVal;
+		case VT_I8: return prop->hVal.QuadPart;
+		case VT_UI1: return prop->bVal;
+		case VT_I4: return prop->lVal;
+		default:break;
+	}
+	return 0;
+}
 
-#endif 
+time_t LzmaSDKObjCFILETIMEToUnixTime(const FILETIME filetime)
+{
+	long long int t = filetime.dwHighDateTime;
+	t <<= 32;
+	t += (unsigned long)filetime.dwLowDateTime;
+	t -= 116444736000000000LL;
+	return (time_t)(t / 10000000);
+}

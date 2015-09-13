@@ -21,12 +21,21 @@
  */
 
 
-#include "LzmaSDKObjCGUIDs.h"
+#ifndef __LZMASDKOBJCCOMMON_H__
+#define __LZMASDKOBJCCOMMON_H__
 
+#include <stdio.h>
 
-const GUID LzmaSDKObjCCLSIDFormat7z = CONSTRUCT_GUID(0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x07, 0x00, 0x00);
+#include "../lzma/CPP/Common/MyGuidDef.h"
+#include "../lzma/CPP/Common/MyWindows.h"
+#include "LzmaSDKObjCTypes.h"
 
-const GUID LzmaSDKObjCCLSIDFormatXz = CONSTRUCT_GUID(0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x0C, 0x00, 0x00);
+LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormat7z;
 
+LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormatXz;
 
+LZMASDKOBJC_EXTERN uint64_t LzmaSDKObjCPROPVARIANTGetUInt64(PROPVARIANT * prop);
 
+LZMASDKOBJC_EXTERN time_t LzmaSDKObjCFILETIMEToUnixTime(const FILETIME filetime);
+
+#endif 

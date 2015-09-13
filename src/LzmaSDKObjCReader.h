@@ -141,6 +141,13 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
 		  toPath:(NSString *) path
 		 withFullPaths:(BOOL) isFullPaths;
 
+
+/**
+ @brief Test archive items. Calculates CRC & compare with header value.
+ @param items Array with LzmaSDKObjCItem objects.
+ */
+- (BOOL) test:(NSArray *) items;
+
 @end
 
 
