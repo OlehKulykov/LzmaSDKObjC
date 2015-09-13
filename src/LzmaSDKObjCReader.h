@@ -41,6 +41,12 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExt7z;
 LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
 
 
+/**
+ @brief Error domain for the reader errors.
+ */
+LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
+
+
 @class LzmaSDKObjCReader;
 
 

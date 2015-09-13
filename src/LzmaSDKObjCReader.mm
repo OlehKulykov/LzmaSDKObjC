@@ -30,6 +30,8 @@ NSString * const kLzmaSDKObjCFileExt7z = @"7z";
 
 NSString * const kLzmaSDKObjCFileExtXz = @"xz";
 
+NSString * const kLzmaSDKObjCErrorDomain = @"LzmaSDKObjCReader";
+
 @interface LzmaSDKObjCReader()
 {
 @private
@@ -91,7 +93,10 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	{
 		if (isDir)
 		{
-			//TODO: error
+			if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+													code:-1
+												userInfo:@{ NSLocalizedDescriptionKey : @"Archive path is directory." }];
+			return NO;
 		}
 		else
 		{
@@ -103,14 +108,18 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 			}
 			else
 			{
-				if (error) *error = [NSError errorWithDomain:@"LzmaObjcReader" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"Can't open file path." }];
+				if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+														code:-1
+													userInfo:@{ NSLocalizedDescriptionKey : @"Can't open file path." }];
 				return NO;
 			}
 		}
 	}
 	else
 	{
-		//TODO: open URL
+		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+												code:-1
+											userInfo:@{ NSLocalizedDescriptionKey : @"File path doesn't exists." }];
 	}
 
 	return NO;
@@ -191,7 +200,7 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 					if (_decoder->readIteratorProperty(&prop, kpidIsDir))
 						if (prop.vt == VT_BOOL && prop.boolVal) item->_flags |= LzmaObjcItemFlagIsDir;
 				}
-				else error = [NSError errorWithDomain:@"" code:-1 userInfo:nil];
+				else error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain code:-1 userInfo:nil];
 			}
 			NWindows::NCOM::PropVariant_Clear(&name);
 		}
@@ -228,19 +237,25 @@ static uint64_t _LzmaSDKObjCReaderPROPVARIANTGetUInt64(PROPVARIANT * prop)
 {
 	if (!_decoder)
 	{
-		if (error) *error = [NSError errorWithDomain:@"LzmaObjcReader" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
+		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+												code:-1
+											userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
 		return NO;
 	}
 
 	if (!_decoder->findCodec(_fileType))
 	{
-		if (error) *error = [NSError errorWithDomain:@"LzmaObjcReader" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
+		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+												code:-1
+											userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
 		return NO;
 	}
 
 	if (!_fileURL)
 	{
-		if (error) *error = [NSError errorWithDomain:@"LzmaObjcReader" code:-1 userInfo:@{ NSLocalizedDescriptionKey : @"No file URL provided." }];
+		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+												code:-1
+											userInfo:@{ NSLocalizedDescriptionKey : @"No file URL provided." }];
 		return NO;
 	}
 

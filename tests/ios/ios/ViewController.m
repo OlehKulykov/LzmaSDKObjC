@@ -44,7 +44,7 @@
 
 
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
-//	archivePath = @"/Volumes/Data/1/1.7z";
+	archivePath = @"/Volumes/Data/1/1.7z";
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
 	_reader.delegate = self;
@@ -69,6 +69,9 @@
 	[_reader extract:items
 			  toPath:@"/Volumes/Data/1/"
 	   withFullPaths:YES];
+
+
+	self.reader = nil;
 }
 
 - (void)viewDidLoad {

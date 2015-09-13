@@ -272,9 +272,9 @@ namespace LzmaSDKObjC
 //	  }
 //  }
 //
-		if (_outFileStream != NULL && _outFileStreamRef)
+		if (_outFileStream != NULL)
 		{
-			_outFileStreamRef->close();
+			if (_outFileStreamRef) _outFileStreamRef->close();
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
