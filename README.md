@@ -24,7 +24,7 @@ The main advantages is:
 ### Installation with [CocoaPods]
 #### Podfile
 ```ruby
-pod 'LzmaSDK-ObjC'
+pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 ```
 
 
