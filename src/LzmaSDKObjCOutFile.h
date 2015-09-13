@@ -30,6 +30,7 @@
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
+#include "../lzma/C/7zCrc.h"
 
 #ifndef SAFE_FREE
 #define SAFE_FREE(m) if(m){free(m);m=NULL;}
@@ -46,6 +47,10 @@ namespace LzmaSDKObjC
 	{
 	private:
 		FILE * _f;
+		uint64_t _size;
+		uint32_t _crc;
+		uint32_t _index;
+
 	public:
 		MY_UNKNOWN_IMP1(IOutStream)
 
@@ -53,6 +58,10 @@ namespace LzmaSDKObjC
 		STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
 		STDMETHOD(SetSize)(UInt64 newSize);
 
+		uint64_t size() const { return _size; }
+		uint32_t crc() const { return _crc; }
+		uint32_t index() const { return _index; }
+		void setIndex(uint32_t i) { _index = i; }
 		bool open(const char * path);
 		void close();
 

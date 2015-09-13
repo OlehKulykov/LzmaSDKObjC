@@ -33,7 +33,6 @@
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
-#include "../lzma/CPP/7zip/Archive/Common/OutStreamWithCRC.h"
 
 #include "LzmaSDKObjCOutFile.h"
 #include "LzmaSDKObjCICoder.h"
@@ -58,7 +57,6 @@ namespace LzmaSDKObjC
 	{
 	private:
 		LzmaSDKObjC::OutFile * _outFileStreamRef;
-		COutStreamWithCRC * _outCRCStreamRef;
 		LzmaSDKObjC::ICoder * _coder;
 		IInArchive * _archive;
 		CMyComPtr<ISequentialOutStream> _outFileStream;

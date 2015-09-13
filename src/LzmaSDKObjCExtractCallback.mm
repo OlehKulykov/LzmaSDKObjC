@@ -73,13 +73,13 @@ namespace LzmaSDKObjC
 
 		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return E_ABORT;
 
-		CMyComPtr<ISequentialOutStream> outStreamLoc;
+		_outFileStreamRef = new LzmaSDKObjC::OutFile();
+		if (!_outFileStreamRef) return E_ABORT;
+		_outFileStreamRef->setIndex(index);
+
 		if (_isTest)
 		{
-			_outCRCStreamRef = new COutStreamWithCRC();
-			if (!_outFileStreamRef) return E_ABORT;
-			_outCRCStreamRef->Init(true);
-			outStreamLoc = _outCRCStreamRef;
+
 		}
 		else
 		{
@@ -101,11 +101,10 @@ namespace LzmaSDKObjC
 
 			fullPath = [fullPath stringByAppendingPathComponent:fileName];
 
-			_outFileStreamRef = new LzmaSDKObjC::OutFile();
-			if (!_outFileStreamRef) return E_ABORT;
 			if (!_outFileStreamRef->open([fullPath UTF8String])) return E_ABORT;
-			outStreamLoc = _outFileStreamRef;
 		}
+
+		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
 
 		_outFileStream = outStreamLoc;
 		*outStream = outStreamLoc.Detach();
@@ -185,19 +184,21 @@ namespace LzmaSDKObjC
 		HRESULT res = S_OK;
 		if (_outFileStream != NULL)
 		{
-			if (_outFileStreamRef) _outFileStreamRef->close();
-			if (_outCRCStreamRef)
+			if (_outFileStreamRef)
 			{
-				PROPVARIANT prop = { 0 };
-				RINOK(_archive->GetProperty(0, kpidCRC, &prop));
-
-//				if (_decoder->readIteratorProperty(&prop, ))
-//					item->_crc = (uint32_t)_LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
+				_outFileStreamRef->close();
 			}
+//			if (_outCRCStreamRef)
+//			{
+//				PROPVARIANT prop = { 0 };
+//				RINOK(_archive->GetProperty(0, kpidCRC, &prop));
+//
+////				if (_decoder->readIteratorProperty(&prop, ))
+////					item->_crc = (uint32_t)_LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
+//			}
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
-		_outCRCStreamRef = NULL;
 		//  if (_extractMode && _processedFileInfo.AttribDefined)
 		//	  SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
 		//  PrintNewLine();
@@ -260,7 +261,6 @@ namespace LzmaSDKObjC
 
 	ExtractCallback::ExtractCallback() :
 		_outFileStreamRef(NULL),
-		_outCRCStreamRef(NULL),
 		_coder(NULL),
 		_archive(NULL),
 		_total(0),
