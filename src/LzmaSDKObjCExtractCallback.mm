@@ -21,8 +21,12 @@
  */
 
 #include <Foundation/Foundation.h>
+
 #include "LzmaSDKObjCExtractCallback.h"
+#include "LzmaSDKObjCCommon.h"
+
 #include "../lzma/CPP/Windows/PropVariant.h"
+
 
 namespace LzmaSDKObjC
 {
@@ -113,19 +117,19 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::PrepareOperation(Int32 askExtractMode)
 	{
-//  _extractMode = false;
-//  switch (askExtractMode)
-//  {
-//	  case NArchive::NExtract::NAskMode::kExtract:  _extractMode = true; break;
-//  };
-//  switch (askExtractMode)
-//  {
-//	  case NArchive::NExtract::NAskMode::kExtract:  PrintString(kExtractingString); break;
-//	  case NArchive::NExtract::NAskMode::kTest:  PrintString(kTestingString); break;
-//	  case NArchive::NExtract::NAskMode::kSkip:  PrintString(kSkippingString); break;
-//  };
-//  PrintString(_filePath);
-  return S_OK;
+		//  _extractMode = false;
+		//  switch (askExtractMode)
+		//  {
+		//	  case NArchive::NExtract::NAskMode::kExtract:  _extractMode = true; break;
+		//  };
+		//  switch (askExtractMode)
+		//  {
+		//	  case NArchive::NExtract::NAskMode::kExtract:  PrintString(kExtractingString); break;
+		//	  case NArchive::NExtract::NAskMode::kTest:  PrintString(kTestingString); break;
+		//	  case NArchive::NExtract::NAskMode::kSkip:  PrintString(kSkippingString); break;
+		//  };
+		//  PrintString(_filePath);
+		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetOperationResult(Int32 operationResult)
@@ -186,16 +190,27 @@ namespace LzmaSDKObjC
 		{
 			if (_outFileStreamRef)
 			{
+				if (_isTest)
+				{
+					PROPVARIANT crcProp = { 0 };
+					res = _archive->GetProperty(_outFileStreamRef->index(), kpidCRC, &crcProp);
+
+					PROPVARIANT sizeProp = { 0 };
+					if (res == S_OK) res = _archive->GetProperty(_outFileStreamRef->index(), kpidSize, &sizeProp);
+					if (res == S_OK)
+					{
+						const uint64_t outSize = LzmaSDKObjCPROPVARIANTGetUInt64(&sizeProp);
+						const uint32_t outCRC = (uint32_t)LzmaSDKObjCPROPVARIANTGetUInt64(&crcProp);
+						if (outSize != _outFileStreamRef->size() ||
+							outCRC != _outFileStreamRef->crc())
+						{
+							res = S_FALSE;
+						}
+					}
+				}
+
 				_outFileStreamRef->close();
 			}
-//			if (_outCRCStreamRef)
-//			{
-//				PROPVARIANT prop = { 0 };
-//				RINOK(_archive->GetProperty(0, kpidCRC, &prop));
-//
-////				if (_decoder->readIteratorProperty(&prop, ))
-////					item->_crc = (uint32_t)_LzmaSDKObjCReaderPROPVARIANTGetUInt64(&prop);
-//			}
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;

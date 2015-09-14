@@ -66,9 +66,11 @@
 		return YES;
 	}];
 
-	[_reader extract:items
-			  toPath:@"/Volumes/Data/1/"
-	   withFullPaths:YES];
+	[_reader test:items];
+
+//	[_reader extract:items
+//			  toPath:@"/Volumes/Data/1/"
+//	   withFullPaths:YES];
 
 
 	self.reader = nil;

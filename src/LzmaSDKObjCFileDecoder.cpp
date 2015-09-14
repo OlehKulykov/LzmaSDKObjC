@@ -87,11 +87,11 @@ namespace LzmaSDKObjC
 
 		if (result == S_OK)
 		{
-			DEBUG_LOG("Extract OK")
+			DEBUG_LOG("Process OK")
 		}
 		else
 		{
-			DEBUG_LOG("Extract Error")
+			DEBUG_LOG("Process Error")
 		}
 
 		return (result == S_OK);

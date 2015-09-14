@@ -59,7 +59,7 @@ namespace LzmaSDKObjC
 		STDMETHOD(SetSize)(UInt64 newSize);
 
 		uint64_t size() const { return _size; }
-		uint32_t crc() const { return _crc; }
+		uint32_t crc() const { return CRC_GET_DIGEST(_crc); }
 		uint32_t index() const { return _index; }
 		void setIndex(uint32_t i) { _index = i; }
 		bool open(const char * path);
