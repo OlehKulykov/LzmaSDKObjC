@@ -34,13 +34,6 @@ namespace LzmaSDKObjC
 			DEBUG_LOG("OutFile::Write = %u", size)
 			const size_t writed = fwrite(data, 1, size, _f);
 			if (processedSize) *processedSize = (UInt32)writed;
-			_size += writed;
-		}
-		else
-		{
-			_crc = CrcUpdate(_crc, data, size);
-			_size += size;
-			if (processedSize) *processedSize = size;
 		}
 		return S_OK;
 	}
@@ -52,12 +45,14 @@ namespace LzmaSDKObjC
 			DEBUG_LOG("OutFile::Seek = %llu", offset)
 			if (fseeko(_f, offset, seekOrigin) == 0)
 			{
-				_size = ftello(_f);
-				if (newPosition) *newPosition = _size;
-				return S_OK;
+				if (newPosition) *newPosition = ftello(_f);
+			}
+			else
+			{
+				return S_FALSE;
 			}
 		}
-		return S_FALSE;
+		return S_OK;
 	}
 
 	STDMETHODIMP OutFile::SetSize(UInt64 newSize)
@@ -83,14 +78,10 @@ namespace LzmaSDKObjC
 			fclose(_f);
 			_f = NULL;
 		}
-		_size = 0;
-		_crc = CRC_INIT_VAL;
 	}
 
 	OutFile::OutFile() :
 		_f(NULL),
-		_size(0),
-		_crc(CRC_INIT_VAL),
 		_index(0)
 
 	{

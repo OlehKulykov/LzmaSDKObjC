@@ -26,6 +26,7 @@
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"
+#include "LzmaSDKObjCCommon.h"
 
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"

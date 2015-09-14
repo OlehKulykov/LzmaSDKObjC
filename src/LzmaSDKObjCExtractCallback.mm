@@ -190,25 +190,6 @@ namespace LzmaSDKObjC
 		{
 			if (_outFileStreamRef)
 			{
-				if (_isTest)
-				{
-					PROPVARIANT crcProp = { 0 };
-					res = _archive->GetProperty(_outFileStreamRef->index(), kpidCRC, &crcProp);
-
-					PROPVARIANT sizeProp = { 0 };
-					if (res == S_OK) res = _archive->GetProperty(_outFileStreamRef->index(), kpidSize, &sizeProp);
-					if (res == S_OK)
-					{
-						const uint64_t outSize = LzmaSDKObjCPROPVARIANTGetUInt64(&sizeProp);
-						const uint32_t outCRC = (uint32_t)LzmaSDKObjCPROPVARIANTGetUInt64(&crcProp);
-						if (outSize != _outFileStreamRef->size() ||
-							outCRC != _outFileStreamRef->crc())
-						{
-							res = S_FALSE;
-						}
-					}
-				}
-
 				_outFileStreamRef->close();
 			}
 		}
