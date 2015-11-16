@@ -29,7 +29,8 @@
 @interface LzmaSDKObjCItem()
 {
 @public
-	NSString * _path;
+	__strong NSString * _path;
+	
 	uint64_t _orgSize;
 	uint32_t _index;
 	uint32_t _crc;

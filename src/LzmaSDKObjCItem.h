@@ -45,7 +45,7 @@
  @brief Getter for the file name.
  @warning If item is directory this propoerty return nil.
  */
-@property (nonatomic, strong, readonly) NSString * fileName;
+@property (nonatomic, strong, readonly) NSString * _Nullable fileName;
 
 
 /**
@@ -55,25 +55,25 @@
  // then directoryPath=dir1/subdir2
  @endcode
  */
-@property (nonatomic, strong, readonly) NSString * directoryPath;
+@property (nonatomic, strong, readonly) NSString * _Nullable directoryPath;
 
 
 /**
  @brief Getter for the modification date if available, or nil.
  */
-@property (nonatomic, strong, readonly) NSDate * modificationDate;
+@property (nonatomic, strong, readonly) NSDate * _Nullable modificationDate;
 
 
 /**
  @brief Getter for the creating date if available, or nil.
  */
-@property (nonatomic, strong, readonly) NSDate * creationDate;
+@property (nonatomic, strong, readonly) NSDate * _Nullable creationDate;
 
 
 /**
  @brief Getter for the last access date time if available, or nil.
  */
-@property (nonatomic, strong, readonly) NSDate * accessDate;
+@property (nonatomic, strong, readonly) NSDate * _Nullable accessDate;
 
 @end
 
