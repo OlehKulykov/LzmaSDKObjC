@@ -31,20 +31,20 @@
  @brief Lower case string of the 7zip file extension.
  @return 7z.
  */
-LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExt7z;
+LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExt7z;
 
 
 /**
  @brief Lower case string of the Xz file extension.
  @return xz.
  */
-LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCFileExtXz;
+LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExtXz;
 
 
 /**
  @brief Error domain for the reader errors.
  */
-LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
+LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
 
 @class LzmaSDKObjCReader;
@@ -61,7 +61,7 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
  Quality depends on size of the kLzmaSDKObjCStreamWriteSize, kLzmaSDKObjCDecoderWriteSize.
  @param progress Extract progress [0.0; 1.0]
  */
-- (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *) reader
+- (void) onLzmaSDKObjCReader:(nonnull LzmaSDKObjCReader *) reader
 			 extractProgress:(float) progress;
 
 @end
@@ -81,7 +81,7 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
 /**
  @brief URL to the archive file. 
  */
-@property (nonatomic, assign, readonly) NSURL * fileURL;
+@property (nonatomic, strong, readonly) NSURL * _Nullable fileURL;
 
 
 /**
@@ -100,34 +100,34 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
 /**
  @brief Getter to the archive password.
  */
-@property (nonatomic, copy) NSString * (^passwordGetter)(void);
+@property (nonatomic, copy) NSString * _Nullable (^ _Nullable passwordGetter)(void);
 
 
 /**
  @brief Initialize archive with file url.
  Type detected from archive file extension.
  */
-- (id) initWithFileURL:(NSURL *) fileURL;
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL;
 
 
 /**
  @brief Initialize archive with file url with archive type.
  */
-- (id) initWithFileURL:(NSURL *) fileURL andType:(LzmaSDKObjCFileType) type;
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type;
 
 
 /**
  @brief Opens archive.
  @param error Open error.
  */
-- (BOOL) open:(NSError **) error;
+- (BOOL) open:(NSError * _Nullable * _Nullable) error;
 
 
 /**
  @brief Iterate thought all archive items. 
  Items created during iterating, so track, filter & store for extracting.
  */
-- (BOOL) iterateWithHandler:(BOOL(^)(LzmaSDKObjCItem * item, NSError * error)) handler;
+- (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler;
 
 
 /**
@@ -137,8 +137,8 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
  @param isFullPaths Create directory structure for the file items(YES) or store all files to extract path(NO).
  In case of just store to path, files with the same names will rewrite automaticaly.
  */
-- (BOOL) extract:(NSArray *) items
-		  toPath:(NSString *) path
+- (BOOL) extract:(nullable NSArray *) items
+		  toPath:(nullable NSString *) path
 		 withFullPaths:(BOOL) isFullPaths;
 
 
@@ -146,7 +146,7 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
  @brief Test archive items. Calculates CRC & compare with header value.
  @param items Array with LzmaSDKObjCItem objects.
  */
-- (BOOL) test:(NSArray *) items;
+- (BOOL) test:(nullable NSArray *) items;
 
 @end
 
@@ -155,5 +155,5 @@ LZMASDKOBJC_EXTERN NSString * const kLzmaSDKObjCErrorDomain;
  @brief Get archive type from path by it's extension.
  Using kLzmaSDKObjCFileExt7z & kLzmaSDKObjCFileExtXz.
  */
-LZMASDKOBJC_EXTERN LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * fileURL);
+LZMASDKOBJC_EXTERN LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL);
 

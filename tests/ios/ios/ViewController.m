@@ -17,7 +17,7 @@
 
 @implementation ViewController
 
-- (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *) reader
+- (void) onLzmaSDKObjCReader:(nonnull LzmaSDKObjCReader *) reader
 			 extractProgress:(float) progress
 {
 	NSLog(@"DELEGATE, extractProgress = %f", progress);

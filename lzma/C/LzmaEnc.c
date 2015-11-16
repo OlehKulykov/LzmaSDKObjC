@@ -376,10 +376,6 @@ typedef struct
   CLenPriceEnc repLenEnc;
 
   CSaveState saveState;
-
-  #ifndef _7ZIP_ST
-  Byte pad2[128];
-  #endif
 } CLzmaEnc;
 
 

@@ -30,16 +30,18 @@
 
 #include <wchar.h>
 
-NSString * const kLzmaSDKObjCFileExt7z = @"7z";
+NSString * const _Nonnull kLzmaSDKObjCFileExt7z = @"7z";
 
-NSString * const kLzmaSDKObjCFileExtXz = @"xz";
+NSString * const _Nonnull kLzmaSDKObjCFileExtXz = @"xz";
 
-NSString * const kLzmaSDKObjCErrorDomain = @"LzmaSDKObjCReader";
+NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjCReader";
 
 @interface LzmaSDKObjCReader()
 {
 @private
 	LzmaSDKObjC::FileDecoder * _decoder;
+	
+	__strong NSURL * _fileURL;
 }
 
 @end
@@ -129,8 +131,9 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-- (BOOL) iterateWithHandler:(BOOL(^)(LzmaSDKObjCItem * item, NSError * error)) handler
+- (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler
 {
+	NSParameterAssert(handler);
 	if (_decoder && handler)
 	{
 		_decoder->iterateStart();
@@ -213,20 +216,20 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-- (BOOL) extract:(NSArray *) items
-		  toPath:(NSString *) path
+- (BOOL) extract:(nullable NSArray *) items
+		  toPath:(nullable NSString *) path
    withFullPaths:(BOOL) isFullPaths
 {
 	const char * cPath = path ? [path UTF8String] : NULL;
 	return cPath ? [self process:items toPath:cPath withFullPaths:isFullPaths] : NO;
 }
 
-- (BOOL) test:(NSArray *) items
+- (BOOL) test:(nullable NSArray *) items
 {
 	return [self process:items toPath:NULL withFullPaths:NO];
 }
 
-- (BOOL) open:(NSError **) error
+- (BOOL) open:(NSError * _Nullable * _Nullable) error
 {
 	if (!_decoder)
 	{
@@ -248,7 +251,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	{
 		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 												code:-1
-											userInfo:@{ NSLocalizedDescriptionKey : @"No file URL provided." }];
+												userInfo:@{ NSLocalizedDescriptionKey : @"No file URL provided." }];
 		return NO;
 	}
 
@@ -258,16 +261,23 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
+- (NSURL *) fileURL
+{
+	return _fileURL;
+}
+
 - (NSUInteger) itemsCount
 {
 	return _decoder ? _decoder->itemsCount() : 0;
 }
 
-- (id) initWithFileURL:(NSURL *) fileURL
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL
 {
 	self = [super init];
 	if (self)
 	{
+		NSParameterAssert(fileURL);
+
 		_fileType = LzmaSDKObjCDetectFileType(fileURL);
 		_fileURL = fileURL;
 		
@@ -277,11 +287,13 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return self;
 }
 
-- (id) initWithFileURL:(NSURL *) fileURL andType:(LzmaSDKObjCFileType) type
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type
 {
 	self = [super init];
 	if (self)
 	{
+		NSParameterAssert(fileURL);
+
 		_fileURL = fileURL;
 		_fileType = type;
 
@@ -305,7 +317,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 @end
 
-LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * fileURL)
+LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL)
 {
 	if (fileURL)
 	{
