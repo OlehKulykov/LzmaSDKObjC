@@ -28,7 +28,13 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 0.0.3 (current):
+ *   Changes on version 0.0.5 (current):
+ *   - LzmaSDKObjCItem strong field references.
+ *
+ *   Changes on version 0.0.4:
+ *   - LzmaSDKObjCReader strong field references.
+ *
+ *   Changes on version 0.0.3:
  *   - Less static consts & variables.
  *   - Exclude some unused code with preprocessor define.
  *   - Test archive items CRC.
@@ -45,7 +51,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 3
+#define LZMASDKOBJC_VERSION_PATCH 5
 
 
 #include "LzmaSDKObjCTypes.h"
