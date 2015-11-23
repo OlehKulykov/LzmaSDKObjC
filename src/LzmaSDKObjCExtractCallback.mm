@@ -69,16 +69,25 @@ namespace LzmaSDKObjC
 	{
 		*outStream = NULL;
 		_outFileStream.Release();
+		_outFileStreamRef = NULL;
 
-		if (!_archive) return E_ABORT;
+		if (!_archive)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "No input archive");
+			return E_ABORT;
+		}
 
 		PROPVARIANT isDirProp;
 		RINOK(_archive->GetProperty(index, kpidIsDir, &isDirProp));
 
-		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return E_ABORT;
+		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return S_OK;
 
 		_outFileStreamRef = new LzmaSDKObjC::OutFile();
-		if (!_outFileStreamRef) return E_ABORT;
+		if (!_outFileStreamRef)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
+			return E_ABORT;
+		}
 		_outFileStreamRef->setIndex(index);
 
 		if (_isTest)
@@ -88,24 +97,66 @@ namespace LzmaSDKObjC
 		else
 		{
 			NWindows::NCOM::CPropVariant pathProp;
-			RINOK(_archive->GetProperty(index, kpidPath, &pathProp));
+			if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK)
+			{
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't read path property by index: %i", (int)index);
+				return E_ABORT;
+			}
 
 			NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal length:wcslen(pathProp.bstrVal) * sizeof(wchar_t) encoding:NSUTF32LittleEndianStringEncoding];
-			if (!archivePath || [archivePath length] == 0) return E_ABORT;
+			if (!archivePath || [archivePath length] == 0)
+			{
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path object");
+				return E_ABORT;
+			}
 
 			NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
 			NSString * fileName = [archivePath lastPathComponent];
-			if (!fileName || [fileName length] == 0) return E_ABORT;
+			if (!fileName || [fileName length] == 0)
+			{
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path file name");
+				return E_ABORT;
+			}
 
 			if (_isFullPath)
 			{
 				NSString * subPath = [archivePath stringByDeletingLastPathComponent];
-				if (subPath && [subPath length]) fullPath = [fullPath stringByAppendingPathComponent:subPath];
+				if (subPath && [subPath length])
+				{
+					NSFileManager * manager = [[NSFileManager alloc] init];
+					if (![manager changeCurrentDirectoryPath:fullPath])
+					{
+						this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't change current directory to: [%s]", [fullPath UTF8String]);
+						return E_ABORT;
+					}
+
+					BOOL isDir = NO;
+					NSError * error = nil;
+					if ([manager fileExistsAtPath:subPath isDirectory:&isDir])
+					{
+						if (!isDir)
+						{
+							this->setLastError(E_ABORT, __LINE__, __FILE__, "Destination path: [%s] exists in directory: [%s] and it's file", [subPath UTF8String], [fullPath UTF8String]);
+							return E_ABORT;
+						}
+					}
+					else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:NO attributes:nil error:&error] || error)
+					{
+						this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create subdirectory: [%s] in directory: [%s]", [subPath UTF8String], [fullPath UTF8String]);
+						return E_ABORT;
+					}
+
+					fullPath = [fullPath stringByAppendingPathComponent:subPath];
+				}
 			}
 
 			fullPath = [fullPath stringByAppendingPathComponent:fileName];
 
-			if (!_outFileStreamRef->open([fullPath UTF8String])) return E_ABORT;
+			if (!_outFileStreamRef->open([fullPath UTF8String]))
+			{
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
+				return E_ABORT;
+			}
 		}
 
 		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
@@ -209,6 +260,8 @@ namespace LzmaSDKObjC
 			UString w = _coder->onGetVoidCallback1();
 			if (w.Len() > 0) return StringToBstr(w, password);
 		}
+
+		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
 		return E_ABORT;
 	}
 
@@ -225,6 +278,8 @@ namespace LzmaSDKObjC
 				return StringToBstr(w, password);
 			}
 		}
+
+		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
 		return E_ABORT;
 	}
 
@@ -239,23 +294,26 @@ namespace LzmaSDKObjC
 		BOOL isDir = NO;
 		if ([manager fileExistsAtPath:path isDirectory:&isDir])
 		{
-			if (!isDir) return false;
+			if (!isDir)
+			{
+				this->setLastError(-1, __LINE__, __FILE__, "Extract path: [%s] exists and it's file", extractPath);
+				return false;
+			}
 		}
 		else
 		{
 			NSError * error = nil;
-			if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error] || error) return false;
+			if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error] || error)
+			{
+				this->setLastError(-1, __LINE__, __FILE__, "Can't create directory path: [%s]", [path UTF8String]);
+				return false;
+			}
 		}
-
-//		NSString * tmpPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
-//		if ([manager fileExistsAtPath:tmpPath]) return false;
-//		if ([manager changeCurrentDirectoryPath:tmpPath]) return false;
-//		_tmpPath = [tmpPath UTF8String];
 
 		return true;
 	}
 
-	ExtractCallback::ExtractCallback() :
+	ExtractCallback::ExtractCallback() : LzmaSDKObjC::LastErrorHolder(),
 		_outFileStreamRef(NULL),
 		_coder(NULL),
 		_archive(NULL),

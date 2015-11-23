@@ -33,6 +33,7 @@
 #include "../lzma/CPP/Common/MyString.h"
 
 #include "LzmaSDKObjCICoder.h"
+#include "LzmaSDKObjCError.h"
 
 #ifndef SAFE_FREE
 #define SAFE_FREE(m) if(m){free(m);m=NULL;}
@@ -48,7 +49,8 @@ namespace LzmaSDKObjC
 		public IArchiveOpenCallback,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,
-		public CMyUnknownImp
+		public CMyUnknownImp,
+		public LzmaSDKObjC::LastErrorHolder
 	{
 	private:
 		LzmaSDKObjC::ICoder * _coder;

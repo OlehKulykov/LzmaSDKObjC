@@ -37,6 +37,7 @@
 
 #include "LzmaSDKObjCOutFile.h"
 #include "LzmaSDKObjCICoder.h"
+#include "LzmaSDKObjCError.h"
 
 #ifndef SAFE_FREE
 #define SAFE_FREE(m) if(m){free(m);m=NULL;}
@@ -54,7 +55,8 @@ namespace LzmaSDKObjC
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,
 		public ICompressProgressInfo,
-		public CMyUnknownImp
+		public CMyUnknownImp,
+		public LzmaSDKObjC::LastErrorHolder
 	{
 	private:
 		LzmaSDKObjC::OutFile * _outFileStreamRef;

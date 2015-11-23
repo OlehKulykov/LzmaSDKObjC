@@ -40,7 +40,7 @@ NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjCReader";
 {
 @private
 	LzmaSDKObjC::FileDecoder * _decoder;
-	
+
 	__strong NSURL * _fileURL;
 }
 
@@ -99,10 +99,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	{
 		if (isDir)
 		{
-			if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-													code:-1
-												userInfo:@{ NSLocalizedDescriptionKey : @"Archive path is directory." }];
-			return NO;
+			_decoder->setLastError(-1, __LINE__, __FILE__, "Archive path is directory: [%s]", [path UTF8String]);
 		}
 		else
 		{
@@ -112,22 +109,14 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 			{
 				return YES;
 			}
-			else
-			{
-				if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-														code:-1
-													userInfo:@{ NSLocalizedDescriptionKey : @"Can't open file path." }];
-				return NO;
-			}
 		}
 	}
 	else
 	{
-		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-												code:-1
-											userInfo:@{ NSLocalizedDescriptionKey : @"File path doesn't exists." }];
+		_decoder->setLastError(-1, __LINE__, __FILE__, "File path doesn't exists: [%s]", [path UTF8String]);
 	}
 
+	if (error) *error = self.lastError;
 	return NO;
 }
 
@@ -136,6 +125,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	NSParameterAssert(handler);
 	if (_decoder && handler)
 	{
+		_decoder->clearLastError();
 		_decoder->iterateStart();
 		LzmaSDKObjCItem * item = nil;
 		NSError * error = nil;
@@ -193,13 +183,14 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-- (BOOL) process:(NSArray *) items
+- (BOOL) process:(NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(const char *) path
    withFullPaths:(BOOL) isFullPaths
 {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
 	if (count && _decoder)
 	{
+		_decoder->clearLastError();
 		BOOL isOK = NO;
 		uint32_t * itemsIndices = (uint32_t *)malloc(sizeof(uint32_t) * count);
 		if (itemsIndices)
@@ -216,7 +207,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-- (BOOL) extract:(nullable NSArray *) items
+- (BOOL) extract:(nullable NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(nullable NSString *) path
    withFullPaths:(BOOL) isFullPaths
 {
@@ -224,7 +215,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return cPath ? [self process:items toPath:cPath withFullPaths:isFullPaths] : NO;
 }
 
-- (BOOL) test:(nullable NSArray *) items
+- (BOOL) test:(nullable NSArray<LzmaSDKObjCItem *> *) items
 {
 	return [self process:items toPath:NULL withFullPaths:NO];
 }
@@ -239,26 +230,45 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 		return NO;
 	}
 
+	_decoder->clearLastError();
+
 	if (!_decoder->findCodec(_fileType))
 	{
-		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-												code:-1
-											userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
+		if (error) *error = self.lastError;
 		return NO;
 	}
 
 	if (!_fileURL)
 	{
-		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-												code:-1
-												userInfo:@{ NSLocalizedDescriptionKey : @"No file URL provided." }];
+		_decoder->setLastError(-1, __LINE__, __FILE__, "No file URL provided");
+		if (error) *error = self.lastError;
 		return NO;
 	}
 
 	NSString * path = [_fileURL path];
-	if (path) return [self openPath:path withError:error];
+	if (path)
+	{
+		if ([self openPath:path withError:error]) return YES;
+	}
+
+	if (error) *error = self.lastError;
 
 	return NO;
+}
+
+- (NSError *) lastError
+{
+	LzmaSDKObjC::Error * error = _decoder ? _decoder->lastError() : NULL;
+	if (error)
+	{
+		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+								   code:(NSInteger)error->code
+							   userInfo:@{ NSLocalizedDescriptionKey : [NSString stringWithUTF8String:error->description.Ptr() ? error->description.Ptr() : ""],
+										   @"file" : [NSString stringWithUTF8String:error->file.Ptr() ? error->file.Ptr() : ""],
+										   @"line" : [NSNumber numberWithInt:error->line],
+										   @"code" : [NSNumber numberWithLongLong:error->code] }];
+	}
+	return nil;
 }
 
 - (NSURL *) fileURL

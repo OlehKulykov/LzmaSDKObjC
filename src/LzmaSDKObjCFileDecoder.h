@@ -35,10 +35,11 @@
 #include "../lzma/CPP/Windows/PropVariant.h"
 
 #include "LzmaSDKObjCICoder.h"
+#include "LzmaSDKObjCError.h"
 
 namespace LzmaSDKObjC
 {
-	class FileDecoder : public LzmaSDKObjC::ICoder
+	class FileDecoder : public LzmaSDKObjC::LastErrorHolder, public LzmaSDKObjC::ICoder
 	{
 	private:
 		void * _openCallbackRef;

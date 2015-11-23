@@ -47,6 +47,7 @@ namespace LzmaSDKObjC
 			UString w = _coder->onGetVoidCallback1();
 			if (w.Len() > 0) return StringToBstr(w, password);
 		}
+		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
 		return E_ABORT;
 	}
 
@@ -64,10 +65,11 @@ namespace LzmaSDKObjC
 				return StringToBstr(w, password);
 			}
 		}
+		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
 		return E_ABORT;
 	}
 
-	OpenCallback::OpenCallback() :
+	OpenCallback::OpenCallback() : LzmaSDKObjC::LastErrorHolder(),
 		_coder(NULL)
 	{
 

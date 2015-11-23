@@ -29,14 +29,14 @@
 
 /**
  @brief Lower case string of the 7zip file extension.
- @return 7z.
+ @return @b 7z.
  */
 LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExt7z;
 
 
 /**
  @brief Lower case string of the Xz file extension.
- @return xz.
+ @return @b xz.
  */
 LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExtXz;
 
@@ -58,7 +58,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 @optional
 /**
  @brief Reports extract progress of file(s). Called after all internal buffers was writed.
- Quality depends on size of the kLzmaSDKObjCStreamWriteSize, kLzmaSDKObjCDecoderWriteSize.
+ Quality depends on size of the @b kLzmaSDKObjCStreamWriteSize, @b kLzmaSDKObjCDecoderWriteSize.
  @param progress Extract progress [0.0; 1.0]
  */
 - (void) onLzmaSDKObjCReader:(nonnull LzmaSDKObjCReader *) reader
@@ -72,8 +72,10 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
  */
 @interface LzmaSDKObjCReader : NSObject
 
+
 /**
- @brief Type of the assigned archive.
+ @brief Type of the assigned archive. Determined during initialization.
+ @warning Readonly property. If can't be determined - create reader with custom type.
  */
 @property (nonatomic, assign, readonly) LzmaSDKObjCFileType fileType;
 
@@ -104,56 +106,67 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
 
 /**
+ @brief Last error from operation.
+ */
+@property (nonatomic, strong, readonly) NSError * _Nullable lastError;
+
+
+/**
  @brief Initialize archive with file url.
- Type detected from archive file extension.
+ @warning Type detected from archive file extension using @b LzmaSDKObjCDetectFileType function.
+ @param fileURL File url to the archive. Can't be nil.
  */
 - (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL;
 
 
 /**
  @brief Initialize archive with file url with archive type.
+ @param fileURL File url to the archive. Can't be nil.
+ @param type Manualy defined type of the archive.
  */
 - (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type;
 
 
 /**
- @brief Opens archive.
- @param error Open error.
+ @brief Open archive.
+ @param error Open error. Same error can be received via @b lastError property.
  */
 - (BOOL) open:(NSError * _Nullable * _Nullable) error;
 
 
 /**
  @brief Iterate thought all archive items. 
- Items created during iterating, so track, filter & store for extracting.
+ Items created during each iteration, so track, filter & store for the next use.
  */
 - (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler;
 
 
 /**
- @brief Extracts array of items stored during iterating.
- @param items Array with LzmaSDKObjCItem objects.
+ @brief Extracts array of items stored during iteration.
+ @param items Array with @b LzmaSDKObjCItem objects.
  @param path Path to extract provided items.
  @param isFullPaths Create directory structure for the file items(YES) or store all files to extract path(NO).
  In case of just store to path, files with the same names will rewrite automaticaly.
  */
-- (BOOL) extract:(nullable NSArray *) items
+- (BOOL) extract:(nullable NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(nullable NSString *) path
 		 withFullPaths:(BOOL) isFullPaths;
 
 
 /**
  @brief Test archive items. Calculates CRC & compare with header value.
- @param items Array with LzmaSDKObjCItem objects.
+ @param items Array with @b LzmaSDKObjCItem objects.
  */
-- (BOOL) test:(nullable NSArray *) items;
+- (BOOL) test:(nullable NSArray<LzmaSDKObjCItem *> *) items;
 
 @end
 
 
 /**
  @brief Get archive type from path by it's extension.
- Using kLzmaSDKObjCFileExt7z & kLzmaSDKObjCFileExtXz.
+ @warning See supported file path extensions @b kLzmaSDKObjCFileExt7z and @b kLzmaSDKObjCFileExtXz.
+ Case is ignored.
+ @return Type by the path extension or @b LzmaSDKObjCFileTypeUndefined
  */
 LZMASDKOBJC_EXTERN LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL);
 

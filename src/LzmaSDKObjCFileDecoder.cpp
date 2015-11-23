@@ -65,11 +65,19 @@ namespace LzmaSDKObjC
 		this->cleanExtractCallbackRef();
 
 		LzmaSDKObjC::ExtractCallback * extractCallback = new LzmaSDKObjC::ExtractCallback();
-		if (!extractCallback) return false;
+		if (!extractCallback)
+		{
+			this->setLastError(-1, __LINE__, __FILE__, "Can't create extract object");
+			return false;
+		}
 
 		if (path)
 		{
-			if (!extractCallback->prepare(path, isWithFullPaths)) return false;
+			if (!extractCallback->prepare(path, isWithFullPaths))
+			{
+				this->setLastError(extractCallback);
+				return false;
+			}
 		}
 		else
 		{
@@ -91,6 +99,7 @@ namespace LzmaSDKObjC
 		}
 		else
 		{
+			this->setLastError(result, __LINE__, __FILE__, "Archive extract error");
 			DEBUG_LOG("Process Error")
 		}
 
@@ -107,23 +116,46 @@ namespace LzmaSDKObjC
 		this->cleanOpenCallbackRef();
 
 		LzmaSDKObjC::InFile * inFile = new LzmaSDKObjC::InFile();
-		if (!inFile) return false;
+		if (!inFile)
+		{
+			this->setLastError(-1, __LINE__, __FILE__, "Can't open file for reading: [%s]", path);
+			return false;
+		}
+
 		_inFile = inFile;
 
 		LzmaSDKObjC::OpenCallback * openCallback = new LzmaSDKObjC::OpenCallback();
-		if (!openCallback) return false;
+		if (!openCallback)
+		{
+			this->setLastError(-1, __LINE__, __FILE__, "Can't create open callback");
+			return false;
+		}
+
 		_openCallbackRef = openCallback;
 		openCallback->setCoder(this);
 		_openCallback = openCallback;
 
-		if (!inFile->open(path)) return false;
-		if (_archive->Open(_inFile, 0, _openCallback) == S_OK)
+		if (!inFile->open(path))
+		{
+			this->setLastError(-1, __LINE__, __FILE__, "Can't open file for reading: [%s]", path);
+			return false;
+		}
+
+		HRESULT res = _archive->Open(_inFile, 0, _openCallback);
+		if (res == S_OK)
 		{
 			UInt32 numItems = 0;
-			if (_archive->GetNumberOfItems(&numItems) != S_OK) return false;
+			res = _archive->GetNumberOfItems(&numItems);
+			if (res != S_OK)
+			{
+				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items");
+				return false;
+			}
 			_itemsCount = numItems;
 			return true;
 		}
+
+		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file");
 		return false;
 	}
 
@@ -136,11 +168,21 @@ namespace LzmaSDKObjC
 			{
 				case LzmaSDKObjCFileType7z: clsid = &LzmaSDKObjCCLSIDFormat7z; break;
 				case LzmaSDKObjCFileTypeXz: clsid = &LzmaSDKObjCCLSIDFormatXz; break;
-				default: return false; break;
+				default:
+					this->setLastError(-1, __LINE__, __FILE__, "Can't find codec for unsupported file type: %i", (int)type);
+					return false;
+					break;
 			}
-			if (CreateObject(clsid, &IID_IInArchive, (void **)&_archive) != S_OK) return false;
+
+			if (CreateObject(clsid, &IID_IInArchive, (void **)&_archive) != S_OK)
+			{
+				this->setLastError(-1, __LINE__, __FILE__, "Can't create archive object file type: %i", (int)type);
+				return false;
+			}
 			return (_archive != NULL);
 		}
+
+		this->setLastError(-1, __LINE__, __FILE__, "Type of the archive is undefined, create reader with manual type");
 		return false;
 	}
 
@@ -173,7 +215,7 @@ namespace LzmaSDKObjC
 		Crc64GenerateTable();
 	}
 
-	FileDecoder::FileDecoder() :
+	FileDecoder::FileDecoder() : LzmaSDKObjC::LastErrorHolder(),
 		_openCallbackRef(NULL),
 		_extractCallbackRef(NULL),
 		_itemsCount(0),

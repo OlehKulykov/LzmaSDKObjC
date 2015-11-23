@@ -27,8 +27,11 @@
 
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
+ *   Changes on version 0.0.6 (current):
+ *   - Add missed folder creation functionality during extract.
+ *   - Add initial error processing.
  *
- *   Changes on version 0.0.5 (current):
+ *   Changes on version 0.0.5:
  *   - LzmaSDKObjCItem strong field references.
  *
  *   Changes on version 0.0.4:
@@ -51,7 +54,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 5
+#define LZMASDKOBJC_VERSION_PATCH 6
 
 
 #include "LzmaSDKObjCTypes.h"
