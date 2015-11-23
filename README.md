@@ -32,11 +32,14 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 -----------
 #### List and extract
 ```objc
-// select full path to archive file.
+// select full path to archive file with 7z or xz extension
 NSString * archivePath = <path to archive>;
 
-// Create and hold strongly reader object.
+// 1.1 Create and hold strongly reader object.
 self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
+// 1.2 Or create with predefined archive type if path doesn't containes suitable extension
+self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]
+						 andType:LzmaSDKObjCFileType7z];
 
 // Optionaly: assign weak delegate for tracking extract progress.
 _reader.delegate = self;
@@ -55,6 +58,7 @@ if (![_reader open:&error])
 {
   NSLog(@"Open error: %@", error);
 }
+NSLog(@"Open error: %@", _reader.lastError);
 
 // Iterate all archive items, track what items do you need & hold them in array.
 NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
@@ -63,13 +67,15 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 	if (item) [items addObject:item]; // if needs this item - store to array.
 	return YES; // YES - continue iterate, NO - stop iteration
 }];
+NSLog(@"Iteration error: %@", _reader.lastError);
 
 // Extract selected items from prev. step.
-// YES - create subfolders structure for the item.
+// YES - create subfolders structure for the items.
 // NO - place item file to the root of path(in this case items with the same names will be overwrited automaticaly).
 [_reader extract:items
           toPath:@"/extract/path"
     withFullPaths:YES]; 
+NSLog(@"Extract error: %@", _reader.lastError);
 ```
 
 

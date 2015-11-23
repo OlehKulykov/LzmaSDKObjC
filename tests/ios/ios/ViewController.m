@@ -47,6 +47,7 @@
 //	archivePath = @"/Volumes/Data/1/1.7z";
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
+
 	_reader.delegate = self;
 
 	_reader.passwordGetter = ^NSString*(void){
@@ -58,6 +59,7 @@
 	{
 		NSLog(@"Open error: %@", error);
 	}
+	NSLog(@"Open error: %@", _reader.lastError);
 
 	NSMutableArray * items = [NSMutableArray array];
 	[_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
@@ -65,6 +67,7 @@
 		if (item) [items addObject:item];
 		return YES;
 	}];
+	NSLog(@"Iteration error: %@", _reader.lastError);
 
 	[_reader test:items];
 
