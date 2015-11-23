@@ -62,8 +62,8 @@
 /**
  @brief Size in bytes of the read block size per single request.
  @detailed
- - CFilterCoder allocate buff for reading, was (1 << 20)
- - ISequentialOutStream max read block size, or available size, was (1 << 31)
+ - @b CFilterCoder allocate buff for reading, was (1 << 20)
+ - @b ISequentialOutStream max read block size, or available size, was (1 << 31)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
@@ -72,7 +72,7 @@ LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
 /**
  @brief Size in bytes for write per single request.
  @detailed
- - ISequentialOutStream max write block size, or available size, was (1 << 31)
+ - @b ISequentialOutStream max write block size, or available size, was (1 << 31)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamWriteSize;
