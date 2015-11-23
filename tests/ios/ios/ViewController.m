@@ -44,22 +44,25 @@
 
 
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
-//	archivePath = @"/Volumes/Data/1/1.7z";
+//	archivePath = @"/Volumes/Data/1/example.7Z";
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
 
 	_reader.delegate = self;
 
 	_reader.passwordGetter = ^NSString*(void){
+		NSLog(@"Request password");
 		return @"1234";
 	};
 
 	NSError * error = nil;
 	if (![_reader open:&error])
 	{
-		NSLog(@"Open error: %@", error);
+		if (error) NSLog(@"Open error: %@", error);
 	}
-	NSLog(@"Open error: %@", _reader.lastError);
+
+	error = [_reader lastError];
+	if (error) NSLog(@"Open error: %@", error);
 
 	NSMutableArray * items = [NSMutableArray array];
 	[_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
@@ -69,11 +72,13 @@
 	}];
 	NSLog(@"Iteration error: %@", _reader.lastError);
 
-	[_reader test:items];
+	BOOL result = [_reader test:items];
+	NSLog(@"Test result: %@", result ? @"YES" : @"NO");
 
-//	[_reader extract:items
-//			  toPath:@"/Volumes/Data/1/"
-//	   withFullPaths:YES];
+	result = [_reader extract:items
+							 toPath:@"/Volumes/Data/1/"
+				withFullPaths:YES];
+	NSLog(@"Extract result: %@", result ? @"YES" : @"NO");
 
 
 	self.reader = nil;

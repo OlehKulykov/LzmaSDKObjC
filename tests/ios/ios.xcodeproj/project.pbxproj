@@ -134,6 +134,7 @@
 		3D5667131B9754F00022711D /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5667111B9754F00022711D /* Threads.c */; };
 		3D5667141B9754F00022711D /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5667111B9754F00022711D /* Threads.c */; };
 		3D75CDF21C0310450089DC7B /* LzmaSDKObjCError.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D75CDF01C0310450089DC7B /* LzmaSDKObjCError.mm */; };
+		3D75CDF51C03B99B0089DC7B /* OutStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75CDF31C03B99B0089DC7B /* OutStreamWithCRC.cpp */; };
 		3D75F1BD1B99AD5200ED4A1F /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B41B99AD5200ED4A1F /* 7zAes.cpp */; };
 		3D75F1BE1B99AD5200ED4A1F /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B41B99AD5200ED4A1F /* 7zAes.cpp */; };
 		3D75F1BF1B99AD5200ED4A1F /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B61B99AD5200ED4A1F /* 7zAesRegister.cpp */; };
@@ -340,6 +341,8 @@
 		3D5667191B9758610022711D /* 7zTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = 7zTypes.h; path = ../../../lzma/C/7zTypes.h; sourceTree = "<group>"; };
 		3D75CDF01C0310450089DC7B /* LzmaSDKObjCError.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCError.mm; path = ../../../src/LzmaSDKObjCError.mm; sourceTree = "<group>"; };
 		3D75CDF11C0310450089DC7B /* LzmaSDKObjCError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCError.h; path = ../../../src/LzmaSDKObjCError.h; sourceTree = "<group>"; };
+		3D75CDF31C03B99B0089DC7B /* OutStreamWithCRC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OutStreamWithCRC.cpp; path = ../../../lzma/CPP/7zip/Archive/Common/OutStreamWithCRC.cpp; sourceTree = "<group>"; };
+		3D75CDF41C03B99B0089DC7B /* OutStreamWithCRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutStreamWithCRC.h; path = ../../../lzma/CPP/7zip/Archive/Common/OutStreamWithCRC.h; sourceTree = "<group>"; };
 		3D75F1B41B99AD5200ED4A1F /* 7zAes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = 7zAes.cpp; path = ../../../lzma/CPP/7zip/Crypto/7zAes.cpp; sourceTree = "<group>"; };
 		3D75F1B51B99AD5200ED4A1F /* 7zAes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = 7zAes.h; path = ../../../lzma/CPP/7zip/Crypto/7zAes.h; sourceTree = "<group>"; };
 		3D75F1B61B99AD5200ED4A1F /* 7zAesRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = 7zAesRegister.cpp; path = ../../../lzma/CPP/7zip/Crypto/7zAesRegister.cpp; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				3D40676D1B983CCE00770216 /* CoderMixer2.h */,
 				3D1CF7D01B981F9D0070D564 /* DummyOutStream.cpp */,
 				3D1CF7D11B981F9D0070D564 /* DummyOutStream.h */,
+				3D75CDF31C03B99B0089DC7B /* OutStreamWithCRC.cpp */,
+				3D75CDF41C03B99B0089DC7B /* OutStreamWithCRC.h */,
 				3D1CF7961B981BC70070D564 /* HandlerOut.cpp */,
 				3D1CF7971B981BC70070D564 /* HandlerOut.h */,
 			);
@@ -927,6 +932,7 @@
 				3DCD9FAD1B9904F40076B308 /* LzmaSDKObjCOutFile.cpp in Sources */,
 				3D1CF7871B981A160070D564 /* XzDec.c in Sources */,
 				3D1CF78D1B981AA30070D564 /* XzEnc.c in Sources */,
+				3D75CDF51C03B99B0089DC7B /* OutStreamWithCRC.cpp in Sources */,
 				3DCCB6261B97BEE0003F67E0 /* LzmaEnc.c in Sources */,
 				3DCCB5C71B979DF2003F67E0 /* MyWindows.cpp in Sources */,
 				3D1CF7C61B981E360070D564 /* StringToInt.cpp in Sources */,

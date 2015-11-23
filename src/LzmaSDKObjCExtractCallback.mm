@@ -26,14 +26,13 @@
 #include "LzmaSDKObjCCommon.h"
 
 #include "../lzma/CPP/Windows/PropVariant.h"
-
+#include "../lzma/CPP/7zip/Archive/Common/DummyOutStream.h"
 
 namespace LzmaSDKObjC
 {
 	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes)
 	{
 		DEBUG_LOG("ExtractCallback::ReportExtractResult")
-
 		return S_OK;
 	}
 
@@ -63,6 +62,106 @@ namespace LzmaSDKObjC
 		return S_OK;
 	}
 
+	HRESULT ExtractCallback::getTestStream(uint32_t index, ISequentialOutStream **outStream)
+	{
+		CDummyOutStream * dummy = new CDummyOutStream();
+		if (!dummy)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out test stream");
+			return E_ABORT;
+		}
+
+		CMyComPtr<ISequentialOutStream> outStreamLoc = dummy;
+
+		_outFileStream = outStreamLoc;
+		*outStream = outStreamLoc.Detach();
+
+		return S_OK;
+	}
+
+	HRESULT ExtractCallback::getExtractStream(uint32_t index, ISequentialOutStream **outStream)
+	{
+		NWindows::NCOM::CPropVariant pathProp;
+		if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't read path property by index: %i", (int)index);
+			return E_ABORT;
+		}
+
+		NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal
+														  length:wcslen(pathProp.bstrVal) * sizeof(wchar_t)
+														encoding:NSUTF32LittleEndianStringEncoding];
+		if (!archivePath || [archivePath length] == 0)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path object");
+			return E_ABORT;
+		}
+
+		NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
+		NSString * fileName = [archivePath lastPathComponent];
+		if (!fileName || [fileName length] == 0)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path file name");
+			return E_ABORT;
+		}
+
+		if (_isFullPath)
+		{
+			NSString * subPath = [archivePath stringByDeletingLastPathComponent];
+			if (subPath && [subPath length] > 0)
+			{
+				NSFileManager * manager = [[NSFileManager alloc] init];
+				if (![manager changeCurrentDirectoryPath:fullPath])
+				{
+					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't change current directory to: [%s]", [fullPath UTF8String]);
+					return E_ABORT;
+				}
+
+				BOOL isDir = NO;
+				NSError * error = nil;
+				if ([manager fileExistsAtPath:subPath isDirectory:&isDir])
+				{
+					if (!isDir)
+					{
+						this->setLastError(E_ABORT, __LINE__, __FILE__, "Destination path: [%s] exists in directory: [%s] and it's file", [subPath UTF8String], [fullPath UTF8String]);
+						return E_ABORT;
+					}
+				}
+				else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:YES attributes:nil error:&error] || error)
+				{
+					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create subdirectory: [%s] in directory: [%s]", [subPath UTF8String], [fullPath UTF8String]);
+					return E_ABORT;
+				}
+
+				fullPath = [fullPath stringByAppendingPathComponent:subPath];
+			}
+		}
+
+		fullPath = [fullPath stringByAppendingPathComponent:fileName];
+
+		LzmaSDKObjC::OutFile * outFile = new LzmaSDKObjC::OutFile();
+		if (!outFile)
+		{
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
+			return E_ABORT;
+		}
+
+		if (!outFile->open([fullPath UTF8String]))
+		{
+			delete outFile;
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
+			return E_ABORT;
+		}
+
+		_outFileStreamRef = outFile;
+		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
+
+		_outFileStream = outStreamLoc;
+		*outStream = outStreamLoc.Detach();
+
+		return S_OK;
+	}
+
 	STDMETHODIMP ExtractCallback::GetStream(UInt32 index,
 											ISequentialOutStream **outStream,
 											Int32 askExtractMode)
@@ -78,171 +177,86 @@ namespace LzmaSDKObjC
 		}
 
 		PROPVARIANT isDirProp;
-		RINOK(_archive->GetProperty(index, kpidIsDir, &isDirProp));
+		HRESULT res = _archive->GetProperty(index, kpidIsDir, &isDirProp);
+		if (res != S_OK)
+		{
+			this->setLastError(res, __LINE__, __FILE__, "Can't get property of the item by index: %u", (unsigned int)index);
+			return res;
+		}
 
 		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return S_OK;
 
-		_outFileStreamRef = new LzmaSDKObjC::OutFile();
-		if (!_outFileStreamRef)
+		switch (_mode)
 		{
-			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
-			return E_ABORT;
-		}
-		_outFileStreamRef->setIndex(index);
+			case NArchive::NExtract::NAskMode::kExtract:
+				return this->getExtractStream(index, outStream);
+				break;
 
-		if (_isTest)
-		{
+			case NArchive::NExtract::NAskMode::kTest:
+				return this->getTestStream(index, outStream);
+				break;
 
-		}
-		else
-		{
-			NWindows::NCOM::CPropVariant pathProp;
-			if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK)
-			{
-				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't read path property by index: %i", (int)index);
-				return E_ABORT;
-			}
-
-			NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal length:wcslen(pathProp.bstrVal) * sizeof(wchar_t) encoding:NSUTF32LittleEndianStringEncoding];
-			if (!archivePath || [archivePath length] == 0)
-			{
-				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path object");
-				return E_ABORT;
-			}
-
-			NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
-			NSString * fileName = [archivePath lastPathComponent];
-			if (!fileName || [fileName length] == 0)
-			{
-				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path file name");
-				return E_ABORT;
-			}
-
-			if (_isFullPath)
-			{
-				NSString * subPath = [archivePath stringByDeletingLastPathComponent];
-				if (subPath && [subPath length])
-				{
-					NSFileManager * manager = [[NSFileManager alloc] init];
-					if (![manager changeCurrentDirectoryPath:fullPath])
-					{
-						this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't change current directory to: [%s]", [fullPath UTF8String]);
-						return E_ABORT;
-					}
-
-					BOOL isDir = NO;
-					NSError * error = nil;
-					if ([manager fileExistsAtPath:subPath isDirectory:&isDir])
-					{
-						if (!isDir)
-						{
-							this->setLastError(E_ABORT, __LINE__, __FILE__, "Destination path: [%s] exists in directory: [%s] and it's file", [subPath UTF8String], [fullPath UTF8String]);
-							return E_ABORT;
-						}
-					}
-					else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:NO attributes:nil error:&error] || error)
-					{
-						this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create subdirectory: [%s] in directory: [%s]", [subPath UTF8String], [fullPath UTF8String]);
-						return E_ABORT;
-					}
-
-					fullPath = [fullPath stringByAppendingPathComponent:subPath];
-				}
-			}
-
-			fullPath = [fullPath stringByAppendingPathComponent:fileName];
-
-			if (!_outFileStreamRef->open([fullPath UTF8String]))
-			{
-				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
-				return E_ABORT;
-			}
+			case NArchive::NExtract::NAskMode::kSkip:
+				return S_OK;
+				break;
 		}
 
-		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
-
-		_outFileStream = outStreamLoc;
-		*outStream = outStreamLoc.Detach();
-		return S_OK;
+		return E_FAIL;
 	}
 
 	STDMETHODIMP ExtractCallback::PrepareOperation(Int32 askExtractMode)
 	{
-		//  _extractMode = false;
-		//  switch (askExtractMode)
-		//  {
-		//	  case NArchive::NExtract::NAskMode::kExtract:  _extractMode = true; break;
-		//  };
-		//  switch (askExtractMode)
-		//  {
-		//	  case NArchive::NExtract::NAskMode::kExtract:  PrintString(kExtractingString); break;
-		//	  case NArchive::NExtract::NAskMode::kTest:  PrintString(kTestingString); break;
-		//	  case NArchive::NExtract::NAskMode::kSkip:  PrintString(kSkippingString); break;
-		//  };
-		//  PrintString(_filePath);
 		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetOperationResult(Int32 operationResult)
 	{
-//  switch (operationResult)
-//  {
-//	  case NArchive::NExtract::NOperationResult::kOK:
-//		  break;
-//	  default:
-//	  {
-//		  NumErrors++;
-//		  PrintString("  :  ");
-//		  const char *s = NULL;
-//		  switch (operationResult)
-//		  {
-//			  case NArchive::NExtract::NOperationResult::kUnsupportedMethod:
-//				  s = kUnsupportedMethod;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kCRCError:
-//				  s = kCRCFailed;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kDataError:
-//				  s = kDataError;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kUnavailable:
-//				  s = kUnavailableData;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kUnexpectedEnd:
-//				  s = kUnexpectedEnd;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kDataAfterEnd:
-//				  s = kDataAfterEnd;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kIsNotArc:
-//				  s = kIsNotArc;
-//				  break;
-//			  case NArchive::NExtract::NOperationResult::kHeadersError:
-//				  s = kHeadersError;
-//				  break;
-//		  }
-//		  if (s)
-//		  {
-//			  PrintString("Error : ");
-//			  PrintString(s);
-//		  }
-//		  else
-//		  {
-//			  char temp[16];
-//			  ConvertUInt32ToString(operationResult, temp);
-//			  PrintString("Error #");
-//			  PrintString(temp);
-//		  }
-//	  }
-//  }
-//
-		HRESULT res = S_OK;
+		HRESULT res = E_FAIL;
+		switch (operationResult)
+		{
+			case NArchive::NExtract::NOperationResult::kOK:
+				res = S_OK;
+				break;
+
+			case NArchive::NExtract::NOperationResult::kUnsupportedMethod:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kUnsupportedMethod");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kCRCError:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kCRCError");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kDataError:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kDataError");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kUnavailable:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kUnavailable");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kUnexpectedEnd:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kUnexpectedEnd");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kDataAfterEnd:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kDataAfterEnd");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kIsNotArc:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kIsNotArc");
+				break;
+
+			case NArchive::NExtract::NOperationResult::kHeadersError:
+				this->setLastError(operationResult, __LINE__, __FILE__, "kHeadersError");
+				break;
+
+			default:
+				break;
+		}
+
 		if (_outFileStream != NULL)
 		{
-			if (_outFileStreamRef)
-			{
-				_outFileStreamRef->close();
-			}
+			if (_outFileStreamRef) _outFileStreamRef->close();
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
@@ -318,8 +332,8 @@ namespace LzmaSDKObjC
 		_coder(NULL),
 		_archive(NULL),
 		_total(0),
-		_isFullPath(false),
-		_isTest(false)
+		_mode(NArchive::NExtract::NAskMode::kSkip),
+		_isFullPath(false)
 	{
 
 	}

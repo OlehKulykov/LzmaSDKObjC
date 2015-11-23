@@ -192,7 +192,8 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	{
 		_decoder->clearLastError();
 		BOOL isOK = NO;
-		uint32_t * itemsIndices = (uint32_t *)malloc(sizeof(uint32_t) * count);
+		const unsigned int indexesMemSize = count * sizeof(uint32_t);
+		uint32_t * itemsIndices = (uint32_t *)malloc(indexesMemSize);
 		if (itemsIndices)
 		{
 			uint32_t index = 0;
@@ -201,6 +202,10 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 			_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
 			if (_decoder->process(itemsIndices, count, path, path ? (bool)isFullPaths : false)) isOK = YES;
 			free(itemsIndices);
+		}
+		else
+		{
+			_decoder->setLastError(-1, __LINE__, __FILE__, "Can't allocate enough memory for items indexes: [%u] bytes", indexesMemSize);
 		}
 		return isOK;
 	}

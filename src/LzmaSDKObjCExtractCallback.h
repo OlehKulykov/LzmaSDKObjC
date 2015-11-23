@@ -65,10 +65,13 @@ namespace LzmaSDKObjC
 		CMyComPtr<ISequentialOutStream> _outFileStream;
 
 		AString _dstPath;
-//		AString _tmpPath;
 		uint64_t _total;
+		int32_t _mode;
 		bool _isFullPath;
-		bool _isTest;
+
+
+		HRESULT getTestStream(uint32_t index, ISequentialOutStream **outStream);
+		HRESULT getExtractStream(uint32_t index, ISequentialOutStream **outStream);
 
 	public:
 		MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)
@@ -86,7 +89,7 @@ namespace LzmaSDKObjC
 
 		void setCoder(LzmaSDKObjC::ICoder * coder) { _coder = coder; }
 		void setArchive(IInArchive * a) { _archive = a; }
-		void setIsTest(bool v) { _isTest = v; }
+		void setMode(int32_t mode) { _mode = mode; }
 
 		bool prepare(const char * extractPath, bool isFullPath);
 

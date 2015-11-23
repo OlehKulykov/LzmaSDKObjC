@@ -81,9 +81,7 @@ namespace LzmaSDKObjC
 	}
 
 	OutFile::OutFile() :
-		_f(NULL),
-		_index(0)
-
+		_f(NULL)
 	{
 
 	}

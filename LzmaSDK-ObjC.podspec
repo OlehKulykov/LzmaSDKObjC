@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 # Common settings
   s.name         = "LzmaSDK-ObjC"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description  = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations. 
@@ -61,6 +61,7 @@ The main advantages is:
     'lzma/CPP/7zip/Archive/Common/CoderMixer2.cpp',
     'lzma/CPP/7zip/Archive/Common/DummyOutStream.cpp',
     'lzma/CPP/7zip/Archive/Common/HandlerOut.cpp',
+    'lzma/CPP/7zip/Archive/Common/OutStreamWithCRC.cpp',
     'lzma/CPP/7zip/Compress/*.{h}',
     'lzma/CPP/7zip/Compress/BcjCoder.cpp',
     'lzma/CPP/7zip/Compress/BcjRegister.cpp',

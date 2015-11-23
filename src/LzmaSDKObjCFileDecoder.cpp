@@ -71,9 +71,14 @@ namespace LzmaSDKObjC
 			return false;
 		}
 
+		int32_t mode = NArchive::NExtract::NAskMode::kSkip;
 		if (path)
 		{
-			if (!extractCallback->prepare(path, isWithFullPaths))
+			if (extractCallback->prepare(path, isWithFullPaths))
+			{
+				mode = NArchive::NExtract::NAskMode::kExtract;
+			}
+			else
 			{
 				this->setLastError(extractCallback);
 				return false;
@@ -81,16 +86,17 @@ namespace LzmaSDKObjC
 		}
 		else
 		{
-			extractCallback->setIsTest(true);
+			mode = NArchive::NExtract::NAskMode::kTest;
 		}
 
 		_extractCallbackRef = extractCallback;
 		extractCallback->setCoder(this);
 		extractCallback->setArchive(_archive);
+		extractCallback->setMode(mode);
 
 		_extractCallback = extractCallback;
 
-		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, false, _extractCallback);
+		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, mode, _extractCallback);
 		extractCallback->setArchive(NULL);
 
 		if (result == S_OK)
