@@ -120,7 +120,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
 
 /**
- @brief Initialize archive with file url with archive type.
+ @brief Initialize archive with file url and archive type.
  @param fileURL File url to the archive. Can't be nil.
  @param type Manualy defined type of the archive.
  */
