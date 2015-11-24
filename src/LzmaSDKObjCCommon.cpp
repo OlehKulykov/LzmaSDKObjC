@@ -33,14 +33,30 @@ uint64_t LzmaSDKObjCPROPVARIANTGetUInt64(PROPVARIANT * prop)
 	switch (prop->vt)
 	{
 		case VT_UI8: return prop->uhVal.QuadPart;
-		case VT_UI4: return prop->ulVal;
+
+		case VT_HRESULT:
+		case VT_UI4:
+			return prop->ulVal;
+
 		case VT_UINT: return prop->uintVal;
 		case VT_I8: return prop->hVal.QuadPart;
 		case VT_UI1: return prop->bVal;
 		case VT_I4: return prop->lVal;
-		default:break;
+		case VT_INT: return prop->intVal;
+
+		default: break;
 	}
 	return 0;
+}
+
+bool LzmaSDKObjCPROPVARIANTGetBool(PROPVARIANT * prop)
+{
+	switch (prop->vt)
+	{
+		case VT_BOOL: return (prop->boolVal == 0) ? false : true;
+		default: break;
+	}
+	return (LzmaSDKObjCPROPVARIANTGetUInt64(prop) == 0) ? false : true;
 }
 
 time_t LzmaSDKObjCFILETIMEToUnixTime(const FILETIME filetime)

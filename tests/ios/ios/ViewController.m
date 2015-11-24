@@ -44,7 +44,7 @@
 
 
 	NSString * archivePath = [@"/Volumes/Data/Documents/LzmaSDK-ObjC/tests/files/" stringByAppendingPathComponent:testFile];
-//	archivePath = @"/Volumes/Data/1/example.7Z";
+//	archivePath = @"/Volumes/Data/1/2.7z";
 
 	self.reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:archivePath]];
 

@@ -150,7 +150,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
  */
 - (BOOL) extract:(nullable NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(nullable NSString *) path
-		 withFullPaths:(BOOL) isFullPaths;
+   withFullPaths:(BOOL) isFullPaths;
 
 
 /**

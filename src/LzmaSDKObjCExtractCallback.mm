@@ -139,25 +139,45 @@ namespace LzmaSDKObjC
 
 		fullPath = [fullPath stringByAppendingPathComponent:fileName];
 
-		LzmaSDKObjC::OutFile * outFile = new LzmaSDKObjC::OutFile();
-		if (!outFile)
+		PROPVARIANT isDirProp;
+		HRESULT res = _archive->GetProperty(index, kpidIsDir, &isDirProp);
+		if (res != S_OK)
 		{
-			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
-			return E_ABORT;
+			this->setLastError(res, __LINE__, __FILE__, "Can't get property of the item by index: %u", (unsigned int)index);
+			return res;
 		}
 
-		if (!outFile->open([fullPath UTF8String]))
+		if (LzmaSDKObjCPROPVARIANTGetBool(&isDirProp))
 		{
-			delete outFile;
-			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
-			return E_ABORT;
+			NSError * error = nil;
+			if (![[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error] || error)
+			{
+				this->setLastError(S_FALSE, __LINE__, __FILE__, "Can't create directory: [%s]", [fullPath UTF8String]);
+				return E_ABORT;
+			}
 		}
+		else
+		{
+			LzmaSDKObjC::OutFile * outFile = new LzmaSDKObjC::OutFile();
+			if (!outFile)
+			{
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
+				return E_ABORT;
+			}
 
-		_outFileStreamRef = outFile;
-		CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
+			if (!outFile->open([fullPath UTF8String]))
+			{
+				delete outFile;
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
+				return E_ABORT;
+			}
 
-		_outFileStream = outStreamLoc;
-		*outStream = outStreamLoc.Detach();
+			_outFileStreamRef = outFile;
+			CMyComPtr<ISequentialOutStream> outStreamLoc = _outFileStreamRef;
+
+			_outFileStream = outStreamLoc;
+			*outStream = outStreamLoc.Detach();
+		}
 
 		return S_OK;
 	}
@@ -175,16 +195,6 @@ namespace LzmaSDKObjC
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "No input archive");
 			return E_ABORT;
 		}
-
-		PROPVARIANT isDirProp;
-		HRESULT res = _archive->GetProperty(index, kpidIsDir, &isDirProp);
-		if (res != S_OK)
-		{
-			this->setLastError(res, __LINE__, __FILE__, "Can't get property of the item by index: %u", (unsigned int)index);
-			return res;
-		}
-
-		if (isDirProp.vt != VT_BOOL || isDirProp.boolVal) return S_OK;
 
 		switch (_mode)
 		{
