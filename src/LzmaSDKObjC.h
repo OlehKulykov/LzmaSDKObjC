@@ -28,6 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
+ *   Changes on version 0.0.8 (current):
+ *   - Update LZMA SDK to version 15.12.
+ *     Note: If you use XZ code from LZMA SDK, it's recommended to upgrade to new XZ code from 7-Zip 15.12.
+ *     That new code fixes some bugs.
+ *
  *   Changes on version 0.0.7 (current):
  *   - Enabled test functionality.
  *
@@ -58,7 +63,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 7
+#define LZMASDKOBJC_VERSION_PATCH 8
 
 
 #include "LzmaSDKObjCTypes.h"
