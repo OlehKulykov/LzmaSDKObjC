@@ -156,7 +156,7 @@ DWORD WINAPI GetFullPathName( LPCTSTR name, DWORD len, LPTSTR buffer, LPTSTR *la
 
 static Bool WINAPI RemoveDirectory(LPCSTR path) {
 	if (!path || !*path) {
-//		SetLastError(ERROR_PATH_NOT_FOUND);
+		//		SetLastError(ERROR_PATH_NOT_FOUND);
 		return FALSE;
 	}
 	const char * name = nameWindowToUnix(path);
@@ -484,7 +484,7 @@ namespace NWindows {
 			bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes)
 			{
 				if (!fileName) {
-//					SetLastError(ERROR_PATH_NOT_FOUND);
+					//					SetLastError(ERROR_PATH_NOT_FOUND);
 					TRACEN((printf("MySetFileAttributes(NULL,%d) : false-1\n",fileAttributes)))
 					return false;
 				}
@@ -554,7 +554,7 @@ namespace NWindows {
 			bool MyCreateDirectory(LPCTSTR pathName)
 			{
 				if (!pathName || !*pathName) {
-//					SetLastError(ERROR_PATH_NOT_FOUND);
+					//					SetLastError(ERROR_PATH_NOT_FOUND);
 					return false;
 				}
 
@@ -676,7 +676,7 @@ namespace NWindows {
 			bool DeleteFileAlways(LPCTSTR name)
 			{
 				if (!name || !*name) {
-//					SetLastError(ERROR_PATH_NOT_FOUND);
+					//					SetLastError(ERROR_PATH_NOT_FOUND);
 					return false;
 				}
 #ifdef _UNICODE
@@ -701,9 +701,9 @@ namespace NWindows {
 			static Bool RemoveDirectorySubItems2(const UString &pathPrefix, const NFind::CFileInfoW &fileInfo)
 			{
 				return false;
-//				if (fileInfo.IsDir())
-//					return RemoveDirectoryWithSubItems(pathPrefix + fileInfo.Name);
-//				return DeleteFileAlways(pathPrefix + fileInfo.Name);
+				//				if (fileInfo.IsDir())
+				//					return RemoveDirectoryWithSubItems(pathPrefix + fileInfo.Name);
+				//				return DeleteFileAlways(pathPrefix + fileInfo.Name);
 			}
 
 			Bool RemoveDirectoryWithSubItems(const UString &path)
@@ -748,15 +748,15 @@ namespace NWindows {
 				const UINT currentPage = CP_ACP;
 				CSysString sysPath;
 				if (!MyGetFullPathName(UnicodeStringToMultiByte(fileName,
-													currentPage), sysPath, fileNamePartStartIndex))
-				return false;
+																currentPage), sysPath, fileNamePartStartIndex))
+					return false;
 				assert(0);
-//    UString resultPath1 = MultiByteToUnicodeString(
-//												   sysPath.Left(fileNamePartStartIndex), currentPage);
-//    UString resultPath2 = MultiByteToUnicodeString(
-//												   sysPath.Mid(fileNamePartStartIndex), currentPage);
-//				fileNamePartStartIndex = resultPath1.Len();
-//				resultPath = resultPath1 + resultPath2;
+				//    UString resultPath1 = MultiByteToUnicodeString(
+				//												   sysPath.Left(fileNamePartStartIndex), currentPage);
+				//    UString resultPath2 = MultiByteToUnicodeString(
+				//												   sysPath.Mid(fileNamePartStartIndex), currentPage);
+				//				fileNamePartStartIndex = resultPath1.Len();
+				//				resultPath = resultPath1 + resultPath2;
 				return true;
 			}
 #endif
@@ -779,40 +779,40 @@ namespace NWindows {
 #endif
 
 
-//		/* needed to find .DLL/.so and SFX */
-//			Bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, UString &resultPath)
-//			{
-//				if (path != 0) {
-//					printf("NOT EXPECTED : MySearchPath : path != NULL\n");
-//					exit(EXIT_FAILURE);
-//				}
-//
-//				if (extension != 0) {
-//					printf("NOT EXPECTED : MySearchPath : extension != NULL\n");
-//					exit(EXIT_FAILURE);
-//				}
-//
-//				if (fileName == 0) {
-//					printf("NOT EXPECTED : MySearchPath : fileName == NULL\n");
-//					exit(EXIT_FAILURE);
-//				}
-//
-//				const char *p7zip_home_dir = getenv("P7ZIP_HOME_DIR");
-//				if (p7zip_home_dir) {
-//					AString file_path = p7zip_home_dir;
-//					file_path += UnicodeStringToMultiByte(fileName, CP_ACP);
-//
-//					TRACEN((printf("MySearchPath() fopen(%s)\n",(const char *)file_path)))
-//					FILE *file = fopen((const char *)file_path,"r");
-//					if (file) {
-//      // file is found
-//      fclose(file);
-//      resultPath = MultiByteToUnicodeString(file_path, CP_ACP);
-//      return true;
-//					}
-//				}
-//				return false;
-//			}
+			//		/* needed to find .DLL/.so and SFX */
+			//			Bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, UString &resultPath)
+			//			{
+			//				if (path != 0) {
+			//					printf("NOT EXPECTED : MySearchPath : path != NULL\n");
+			//					exit(EXIT_FAILURE);
+			//				}
+			//
+			//				if (extension != 0) {
+			//					printf("NOT EXPECTED : MySearchPath : extension != NULL\n");
+			//					exit(EXIT_FAILURE);
+			//				}
+			//
+			//				if (fileName == 0) {
+			//					printf("NOT EXPECTED : MySearchPath : fileName == NULL\n");
+			//					exit(EXIT_FAILURE);
+			//				}
+			//
+			//				const char *p7zip_home_dir = getenv("P7ZIP_HOME_DIR");
+			//				if (p7zip_home_dir) {
+			//					AString file_path = p7zip_home_dir;
+			//					file_path += UnicodeStringToMultiByte(fileName, CP_ACP);
+			//
+			//					TRACEN((printf("MySearchPath() fopen(%s)\n",(const char *)file_path)))
+			//					FILE *file = fopen((const char *)file_path,"r");
+			//					if (file) {
+			//      // file is found
+			//      fclose(file);
+			//      resultPath = MultiByteToUnicodeString(file_path, CP_ACP);
+			//      return true;
+			//					}
+			//				}
+			//				return false;
+			//			}
 
 #ifndef _UNICODE
 			bool MyGetTempPath(CSysString &path)
@@ -893,35 +893,35 @@ namespace NWindows {
 				 CRandom random;
 				 random.Init();
 				 */
-//				for (;;)
-//				{
-//					{
-//      CTempFileW tempFile;
-//      if (!tempFile.Create(prefix, dirName))
-//		  return false;
-//      if (!tempFile.Remove())
-//		  return false;
-//					}
-					/*
-					 uint32_t randomNumber = random.Generate();
-					 TCHAR randomNumberString[32];
-					 _stprintf(randomNumberString, _T("%04X"), randomNumber);
-					 dirName = prefix + randomNumberString;
-					 */
-//					if (NFind::DoesFileOrDirExist(dirName))
-//      continue;
-//					if (MyCreateDirectory(dirName))
-//      return true;
-//					if (::GetLastError() != ERROR_ALREADY_EXISTS)
-//      return false;
-//				}
+				//				for (;;)
+				//				{
+				//					{
+				//      CTempFileW tempFile;
+				//      if (!tempFile.Create(prefix, dirName))
+				//		  return false;
+				//      if (!tempFile.Remove())
+				//		  return false;
+				//					}
+				/*
+				 uint32_t randomNumber = random.Generate();
+				 TCHAR randomNumberString[32];
+				 _stprintf(randomNumberString, _T("%04X"), randomNumber);
+				 dirName = prefix + randomNumberString;
+				 */
+				//					if (NFind::DoesFileOrDirExist(dirName))
+				//      continue;
+				//					if (MyCreateDirectory(dirName))
+				//      return true;
+				//					if (::GetLastError() != ERROR_ALREADY_EXISTS)
+				//      return false;
+				//				}
 			}
 			
 			bool CTempDirectory::Create(LPCTSTR prefix)
 			{
 				return false;
-//				Remove();
-//				return (_mustBeDeleted = CreateTempDirectory(prefix, _tempDir));
+				//				Remove();
+				//				return (_mustBeDeleted = CreateTempDirectory(prefix, _tempDir));
 			}
 			
 			

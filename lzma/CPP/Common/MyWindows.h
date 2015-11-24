@@ -370,12 +370,19 @@ typedef VARIANT VARIANTARG;
 MY_EXTERN_C HRESULT VariantClear(VARIANTARG *prop);
 MY_EXTERN_C HRESULT VariantCopy(VARIANTARG *dest, const VARIANTARG *src);
 
+#ifndef CSTATPROP_DEFINED
+#define CSTATPROP_DEFINED 1
 typedef struct tagSTATPROPSTG
 {
-  LPOLESTR lpwstrName;
-  PROPID propid;
-  VARTYPE vt;
-} STATPROPSTG;
+	LPOLESTR lpwstrName;
+	union
+	{
+		PROPID PropID;
+		PROPID propid;
+	};
+	VARTYPE vt;
+} CStatProp, STATPROPSTG;
+#endif
 
 MY_EXTERN_C BSTR SysAllocStringByteLen(LPCSTR psz, UINT len);
 MY_EXTERN_C BSTR SysAllocStringLen(const OLECHAR *sz, UINT len);

@@ -19,9 +19,7 @@ using namespace NDir;
 
 static const size_t kTempBufSize = (1 << 20);
 
-#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 static CFSTR kTempFilePrefixString = FTEXT("7zt");
-#endif
 
 CInOutTempBuffer::CInOutTempBuffer(): _buf(NULL) { }
 

@@ -1,5 +1,5 @@
 /* Threads.c -- multithreading library
-2014-09-21 : Igor Pavlov : Public domain */
+ 2014-09-21 : Igor Pavlov : Public domain */
 
 #include "Precomp.h"
 
@@ -11,8 +11,8 @@
 
 static WRes GetError()
 {
-  DWORD res = GetLastError();
-  return (res) ? (WRes)(res) : 1;
+	DWORD res = GetLastError();
+	return (res) ? (WRes)(res) : 1;
 }
 
 WRes HandleToWRes(HANDLE h) { return (h != 0) ? 0 : GetError(); }
@@ -42,11 +42,11 @@ WRes Thread_Close(CThread *thread)
 #else
 WRes HandlePtr_Close(HANDLE *p)
 {
-  if (*p != NULL)
-    if (!CloseHandle(*p))
-      return GetError();
-  *p = NULL;
-  return 0;
+	if (*p != NULL)
+		if (!CloseHandle(*p))
+			return GetError();
+	*p = NULL;
+	return 0;
 }
 
 WRes Handle_WaitObject(HANDLE h) { return (WRes)WaitForSingleObject(h, INFINITE); }
@@ -69,22 +69,22 @@ WRes Thread_Create(CThread *p, THREAD_FUNC_TYPE func, LPVOID param)
 	p->_created = 1;
 	return 0; // SZ_OK;
 #else
-  /* Windows Me/98/95: threadId parameter may not be NULL in _beginthreadex/CreateThread functions */
-  
-  #ifdef UNDER_CE
-  
-  DWORD threadId;
-  *p = CreateThread(0, 0, func, param, 0, &threadId);
+	/* Windows Me/98/95: threadId parameter may not be NULL in _beginthreadex/CreateThread functions */
 
-  #else
+#ifdef UNDER_CE
 
-  unsigned threadId;
-  *p = (HANDLE)_beginthreadex(NULL, 0, func, param, 0, &threadId);
-   
-  #endif
+	DWORD threadId;
+	*p = CreateThread(0, 0, func, param, 0, &threadId);
 
-  /* maybe we must use errno here, but probably GetLastError() is also OK. */
-  return HandleToWRes(*p);
+#else
+
+	unsigned threadId;
+	*p = (HANDLE)_beginthreadex(NULL, 0, func, param, 0, &threadId);
+
+#endif
+
+	/* maybe we must use errno here, but probably GetLastError() is also OK. */
+	return HandleToWRes(*p);
 #endif
 }
 
@@ -98,8 +98,8 @@ WRes Event_Create(CEvent *p, BOOL manualReset, int signaled)
 	p->_created = 1;
 	return 0;
 #else
-  *p = CreateEvent(NULL, manualReset, (signaled ? TRUE : FALSE), NULL);
-  return HandleToWRes(*p);
+	*p = CreateEvent(NULL, manualReset, (signaled ? TRUE : FALSE), NULL);
+	return HandleToWRes(*p);
 #endif
 }
 
@@ -172,8 +172,8 @@ WRes Semaphore_Create(CSemaphore *p, UInt32 initCount, UInt32 maxCount)
 	p->_created  = 1;
 	return 0;
 #else
-  *p = CreateSemaphore(NULL, (LONG)initCount, (LONG)maxCount, NULL);
-  return HandleToWRes(*p);
+	*p = CreateSemaphore(NULL, (LONG)initCount, (LONG)maxCount, NULL);
+	return HandleToWRes(*p);
 #endif
 }
 
@@ -226,24 +226,24 @@ WRes CriticalSection_Init(CCriticalSection * lpCriticalSection)
 }
 #else
 static WRes Semaphore_Release(CSemaphore *p, LONG releaseCount, LONG *previousCount)
-  { return BOOLToWRes(ReleaseSemaphore(*p, releaseCount, previousCount)); }
+{ return BOOLToWRes(ReleaseSemaphore(*p, releaseCount, previousCount)); }
 WRes Semaphore_ReleaseN(CSemaphore *p, UInt32 num)
-  { return Semaphore_Release(p, (LONG)num, NULL); }
+{ return Semaphore_Release(p, (LONG)num, NULL); }
 WRes Semaphore_Release1(CSemaphore *p) { return Semaphore_ReleaseN(p, 1); }
 
 WRes CriticalSection_Init(CCriticalSection *p)
 {
-  /* InitializeCriticalSection can raise only STATUS_NO_MEMORY exception */
-  #ifdef _MSC_VER
-  __try
-  #endif
-  {
-    InitializeCriticalSection(p);
-    /* InitializeCriticalSectionAndSpinCount(p, 0); */
-  }
-  #ifdef _MSC_VER
-  __except (EXCEPTION_EXECUTE_HANDLER) { return 1; }
-  #endif
-  return 0;
+	/* InitializeCriticalSection can raise only STATUS_NO_MEMORY exception */
+#ifdef _MSC_VER
+	__try
+#endif
+	{
+		InitializeCriticalSection(p);
+		/* InitializeCriticalSectionAndSpinCount(p, 0); */
+	}
+#ifdef _MSC_VER
+	__except (EXCEPTION_EXECUTE_HANDLER) { return 1; }
+#endif
+	return 0;
 }
 #endif

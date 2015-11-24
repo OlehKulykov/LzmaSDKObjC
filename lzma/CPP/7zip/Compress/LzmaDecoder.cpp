@@ -8,13 +8,9 @@
 
 #include "LzmaDecoder.h"
 
-#if defined(LZMASDKOBJC)
-#include "../../../../src/LzmaSDKObjC.h"
-#endif
-
 static HRESULT SResToHRESULT(SRes res)
 {
-  switch(res)
+  switch (res)
   {
     case SZ_OK: return S_OK;
     case SZ_ERROR_MEM: return E_OUTOFMEMORY;
@@ -29,13 +25,8 @@ namespace NCompress {
 namespace NLzma {
 
 CDecoder::CDecoder(): _inBuf(0), _propsWereSet(false), _outSizeDefined(false),
-#if defined(LZMASDKOBJC)
-	_inBufSize(kLzmaSDKObjCDecoderReadSize),
-	_outBufSize(kLzmaSDKObjCDecoderWriteSize),
-#else
     _inBufSize(1 << 20),
     _outBufSize(1 << 22),
-#endif
     FinishStream(false),
     NeedMoreInput(false)
 {

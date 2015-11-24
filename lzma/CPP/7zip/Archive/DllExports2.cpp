@@ -22,11 +22,12 @@
 
 #include "IArchive.h"
 
-#if !defined(__APPLE__)
+#ifndef __APPLE__
 HINSTANCE g_hInstance;
 
 #define NT_CHECK_FAIL_ACTION return FALSE;
 
+//#ifdef _WIN32
 extern "C"
 BOOL WINAPI DllMain(
   #ifdef UNDER_CE

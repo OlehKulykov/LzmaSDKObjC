@@ -10,22 +10,13 @@
 
 #include "../Common/RegisterArc.h"
 
-#if defined(__APPLE__)
-static const uint8_t kNumArcsMax = 8;
-static uint8_t g_NumArcs = 0;
-static uint8_t g_DefaultArcIndex = 0;
-#else
 static const unsigned kNumArcsMax = 64;
 static unsigned g_NumArcs = 0;
 static unsigned g_DefaultArcIndex = 0;
-#endif
 static const CArcInfo *g_Arcs[kNumArcsMax];
 
 void RegisterArc(const CArcInfo *arcInfo) throw()
 {
-#if defined(DEBUG) || defined(_DEBUG)
-	assert(g_NumArcs < kNumArcsMax);
-#endif
   if (g_NumArcs < kNumArcsMax)
   {
     const char *p = arcInfo->Name;

@@ -18,8 +18,8 @@ class CInOutTempBuffer
 	NWindows::NFile::NDirectory::CTempFile _tempFile;
 	NC::NFile::NIO::COutFile _outFile;
 #else
-  NWindows::NFile::NDir::CTempFile _tempFile;
-  NWindows::NFile::NIO::COutFile _outFile;
+	NWindows::NFile::NDir::CTempFile _tempFile;
+	NWindows::NFile::NIO::COutFile _outFile;
 #endif
   Byte *_buf;
   size_t _bufPos;

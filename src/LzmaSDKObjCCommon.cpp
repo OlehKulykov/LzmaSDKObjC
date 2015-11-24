@@ -22,7 +22,7 @@
 
 
 #include "LzmaSDKObjCCommon.h"
-
+#include "../lzma/CPP/Common/MyGuidDef.h"
 
 const GUID LzmaSDKObjCCLSIDFormat7z = CONSTRUCT_GUID(0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x07, 0x00, 0x00);
 

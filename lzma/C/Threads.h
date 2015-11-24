@@ -1,5 +1,5 @@
 /* Threads.h -- multithreading library
-2013-11-12 : Igor Pavlov : Public domain */
+ 2013-11-12 : Igor Pavlov : Public domain */
 
 #ifndef __7Z_THREADS_H
 #define __7Z_THREADS_H
@@ -37,11 +37,11 @@ typedef HANDLE CThread;
 
 typedef
 #ifdef UNDER_CE
-  DWORD
+DWORD
 #else
-  unsigned
+unsigned
 #endif
-  THREAD_FUNC_RET_TYPE;
+THREAD_FUNC_RET_TYPE;
 
 #define THREAD_FUNC_CALL_TYPE MY_STD_CALL
 #define THREAD_FUNC_DECL THREAD_FUNC_RET_TYPE THREAD_FUNC_CALL_TYPE
