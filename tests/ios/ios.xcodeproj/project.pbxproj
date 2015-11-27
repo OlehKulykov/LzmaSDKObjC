@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3D9CBE291C08550C005A1286 /* MakeLzmaSDKObjCFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3D9CBE2A1C08550C005A1286 /* Build configuration list for PBXAggregateTarget "MakeLzmaSDKObjCFramework" */;
+			buildPhases = (
+				3D9CBE2D1C08552B005A1286 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = MakeLzmaSDKObjCFramework;
+			productName = MakeLzmaSDKObjCFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3D1CF7791B9818FD0070D564 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7781B9818FD0070D564 /* ArchiveExports.cpp */; };
 		3D1CF77B1B98194C0070D564 /* LzmaHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF77A1B98194C0070D564 /* LzmaHandler.cpp */; };
@@ -1237,6 +1251,9 @@
 					3D9CBD101C0845EE005A1286 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
+					3D9CBE291C08550C005A1286 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 				};
 			};
 			buildConfigurationList = 3D7DB0421B96CF9B00FE84A1 /* Build configuration list for PBXProject "ios" */;
@@ -1255,6 +1272,7 @@
 				3D7DB0461B96CF9B00FE84A1 /* ios */,
 				3D7DB05F1B96CF9B00FE84A1 /* iosTests */,
 				3D9CBD101C0845EE005A1286 /* LzmaSDKObjC */,
+				3D9CBE291C08550C005A1286 /* MakeLzmaSDKObjCFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -1285,6 +1303,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D9CBE2D1C08552B005A1286 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "######################\n# Options\n######################\n\nREVEAL_ARCHIVE_IN_FINDER=false\n\nFRAMEWORK_NAME=LzmaSDKObjC\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework\"\n\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework\"\n\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal\"\n\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework\"\n\n\n######################\n# Build Frameworks\n######################\n\nxcodebuild -project ${PROJECT_FILE_PATH} -target LzmaSDKObjC -sdk iphonesimulator -configuration ${CONFIGURATION} ONLY_ACTIVE_ARCH=NO clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\n\nxcodebuild -project ${PROJECT_FILE_PATH} -target LzmaSDKObjC -sdk iphoneos -configuration ${CONFIGURATION} ONLY_ACTIVE_ARCH=NO clean build CONFIGURATION_BUILD_DIR=${BUILD_DIR}/${CONFIGURATION}-iphoneos\n\n######################\n# Create directory for universal\n######################\n\nrm -rf \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${UNIVERSAL_LIBRARY_DIR}\"\n\nmkdir \"${FRAMEWORK}\"\n\n\n######################\n# Copy files Framework\n######################\n\ncp -r \"${DEVICE_LIBRARY_PATH}/.\" \"${FRAMEWORK}\"\n\n\n######################\n# Make an universal binary\n######################\n\nlipo \"${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}\" \"${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}\" -create -output \"${FRAMEWORK}/${FRAMEWORK_NAME}\" | echo\n\n\n######################\n# On Release, copy the result to release directory\n######################\nOUTPUT_DIR=\"${PROJECT_DIR}/Output/${FRAMEWORK_NAME}-${CONFIGURATION}-iphoneuniversal/\"\n\nrm -rf \"$OUTPUT_DIR\"\nmkdir -p \"$OUTPUT_DIR\"\n\ncp -r \"${FRAMEWORK}\" \"$OUTPUT_DIR\"\n\nif [ ${REVEAL_ARCHIVE_IN_FINDER} = true ]; then\nopen \"${OUTPUT_DIR}/\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D7DB0431B96CF9B00FE84A1 /* Sources */ = {
@@ -1847,6 +1881,20 @@
 			};
 			name = Release;
 		};
+		3D9CBE2B1C08550C005A1286 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D9CBE2C1C08550C005A1286 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1882,6 +1930,15 @@
 			buildConfigurations = (
 				3D9CBD1A1C0845EE005A1286 /* Debug */,
 				3D9CBD1B1C0845EE005A1286 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D9CBE2A1C08550C005A1286 /* Build configuration list for PBXAggregateTarget "MakeLzmaSDKObjCFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D9CBE2B1C08550C005A1286 /* Debug */,
+				3D9CBE2C1C08550C005A1286 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
