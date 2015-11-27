@@ -31,7 +31,7 @@ namespace LzmaSDKObjC
 	{
 		if (_f)
 		{
-			DEBUG_LOG("OutFile::Write = %u", size)
+			LZMASDK_DEBUG_LOG("OutFile::Write = %u", size)
 			const size_t writed = fwrite(data, 1, size, _f);
 			if (processedSize) *processedSize = (UInt32)writed;
 		}
@@ -42,7 +42,7 @@ namespace LzmaSDKObjC
 	{
 		if (_f)
 		{
-			DEBUG_LOG("OutFile::Seek = %llu", offset)
+			LZMASDK_DEBUG_LOG("OutFile::Seek = %llu", offset)
 			if (fseeko(_f, offset, seekOrigin) == 0)
 			{
 				if (newPosition) *newPosition = ftello(_f);
@@ -57,7 +57,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP OutFile::SetSize(UInt64 newSize)
 	{
-		DEBUG_LOG("OutFile::SetSize = %llu", newSize)
+		LZMASDK_DEBUG_LOG("OutFile::SetSize = %llu", newSize)
 		return S_OK;
 	}
 
@@ -72,7 +72,7 @@ namespace LzmaSDKObjC
 
 	void OutFile::close()
 	{
-		DEBUG_LOG("OutFile::close()")
+		LZMASDK_DEBUG_LOG("OutFile::close()")
 		if (_f)
 		{
 			fclose(_f);
@@ -89,7 +89,7 @@ namespace LzmaSDKObjC
 	OutFile::~OutFile()
 	{
 		this->close();
-		DEBUG_LOG("OutFile::~OutFile()")
+		LZMASDK_DEBUG_LOG("OutFile::~OutFile()")
 	}
 	
 }

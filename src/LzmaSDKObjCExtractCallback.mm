@@ -32,13 +32,13 @@ namespace LzmaSDKObjC
 {
 	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes)
 	{
-		DEBUG_LOG("ExtractCallback::ReportExtractResult")
+		LZMASDK_DEBUG_LOG("ExtractCallback::ReportExtractResult")
 		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize)
 	{
-		DEBUG_LOG("ExtractCallback::SetRatioInfo")
+		LZMASDK_DEBUG_LOG("ExtractCallback::SetRatioInfo")
 		return S_OK;
 	}
 
@@ -46,7 +46,7 @@ namespace LzmaSDKObjC
 	{
 		_total = size;
 		if (_coder) _coder->onExtractProgress(0);
-		DEBUG_LOG("ExtractCallback::SetTotal = %llu", _total)
+		LZMASDK_DEBUG_LOG("ExtractCallback::SetTotal = %llu", _total)
 		return S_OK;
 	}
 
@@ -58,7 +58,7 @@ namespace LzmaSDKObjC
 			const float progress = (_total > 0) ? (float)(complete / _total) : 0;
 			if (_coder) _coder->onExtractProgress(progress);
 		}
-		DEBUG_LOG("ExtractCallback::SetCompleted = %llu", *completeValue)
+		LZMASDK_DEBUG_LOG("ExtractCallback::SetCompleted = %llu", *completeValue)
 		return S_OK;
 	}
 
@@ -278,7 +278,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)
 	{
-		DEBUG_LOG("ExtractCallback::CryptoGetTextPassword")
+		LZMASDK_DEBUG_LOG("ExtractCallback::CryptoGetTextPassword")
 		if (_coder)
 		{
 			UString w = _coder->onGetVoidCallback1();
@@ -291,7 +291,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
 	{
-		DEBUG_LOG("ExtractCallback::CryptoGetTextPassword2")
+		LZMASDK_DEBUG_LOG("ExtractCallback::CryptoGetTextPassword2")
 		if (passwordIsDefined) *passwordIsDefined = 0;
 		if (_coder)
 		{

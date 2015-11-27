@@ -101,12 +101,12 @@ namespace LzmaSDKObjC
 
 		if (result == S_OK)
 		{
-			DEBUG_LOG("Process OK")
+			LZMASDK_DEBUG_LOG("Process OK")
 		}
 		else
 		{
 			this->setLastError(result, __LINE__, __FILE__, "Archive extract error");
-			DEBUG_LOG("Process Error")
+			LZMASDK_DEBUG_LOG("Process Error")
 		}
 
 		return (result == S_OK);
@@ -200,7 +200,7 @@ namespace LzmaSDKObjC
 	void FileDecoder::onExtractProgress(const float progress)
 	{
 		if (context && setFloatCallback2) setFloatCallback2(context, progress);
-		DEBUG_LOG("FileDecoder::onExtractProgress = %f", progress)
+		LZMASDK_DEBUG_LOG("FileDecoder::onExtractProgress = %f", progress)
 	}
 
 	UString FileDecoder::onGetVoidCallback1()

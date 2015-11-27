@@ -155,7 +155,205 @@
 		3D7DB0581B96CF9B00FE84A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D7DB0571B96CF9B00FE84A1 /* Images.xcassets */; };
 		3D7DB05B1B96CF9B00FE84A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7DB0591B96CF9B00FE84A1 /* LaunchScreen.xib */; };
 		3D7DB0671B96CF9B00FE84A1 /* iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7DB0661B96CF9B00FE84A1 /* iosTests.m */; };
-		3DC6A6DB1B9C5C5B007E043F /* LzmaSDKObjC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.cpp */; };
+		3D9CBD181C0845EE005A1286 /* LzmaSDKObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9CBD111C0845EE005A1286 /* LzmaSDKObjC.framework */; };
+		3D9CBD191C0845EE005A1286 /* LzmaSDKObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9CBD111C0845EE005A1286 /* LzmaSDKObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D9CBD361C0846CB005A1286 /* LzmaSDKObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC6A6D91B9C46D2007E043F /* LzmaSDKObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9CBD371C0846CB005A1286 /* LzmaSDKObjC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.mm */; };
+		3D9CBD381C0846CB005A1286 /* LzmaSDKObjCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DE3141C1B985DE10001CEE9 /* LzmaSDKObjCTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9CBD391C0846CB005A1286 /* LzmaAppleCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5881B9784E3003F67E0 /* LzmaAppleCommon.h */; };
+		3D9CBD3A1C0846CB005A1286 /* LzmaSDKObjCCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7FA1B9831E20070D564 /* LzmaSDKObjCCommon.h */; };
+		3D9CBD3B1C0846CB005A1286 /* LzmaSDKObjCCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7F91B9831E20070D564 /* LzmaSDKObjCCommon.cpp */; };
+		3D9CBD3C1C0846CB005A1286 /* LzmaSDKObjCICoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D338E031B9A2BC300949792 /* LzmaSDKObjCICoder.h */; };
+		3D9CBD3D1C0846CB005A1286 /* LzmaSDKObjCError.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75CDF11C0310450089DC7B /* LzmaSDKObjCError.h */; };
+		3D9CBD3E1C0846CB005A1286 /* LzmaSDKObjCError.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D75CDF01C0310450089DC7B /* LzmaSDKObjCError.mm */; };
+		3D9CBD3F1C0846CB005A1286 /* LzmaSDKObjCFileDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB58D1B97868E003F67E0 /* LzmaSDKObjCFileDecoder.h */; };
+		3D9CBD401C0846CB005A1286 /* LzmaSDKObjCFileDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB58C1B97868E003F67E0 /* LzmaSDKObjCFileDecoder.cpp */; };
+		3D9CBD411C0846CB005A1286 /* LzmaSDKObjCOpenCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3E2AA81B9894D60044083D /* LzmaSDKObjCOpenCallback.h */; };
+		3D9CBD421C0846CB005A1286 /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2AA71B9894D60044083D /* LzmaSDKObjCOpenCallback.cpp */; };
+		3D9CBD431C0846CB005A1286 /* LzmaSDKObjCInFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3E2AA51B988E290044083D /* LzmaSDKObjCInFile.h */; };
+		3D9CBD441C0846CB005A1286 /* LzmaSDKObjCInFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2AA41B988E290044083D /* LzmaSDKObjCInFile.cpp */; };
+		3D9CBD451C0846CB005A1286 /* LzmaSDKObjCOutFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCD9FAC1B9904F40076B308 /* LzmaSDKObjCOutFile.h */; };
+		3D9CBD461C0846CB005A1286 /* LzmaSDKObjCOutFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD9FAB1B9904F40076B308 /* LzmaSDKObjCOutFile.cpp */; };
+		3D9CBD471C0846CB005A1286 /* LzmaSDKObjCExtractCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCD9FAF1B9907620076B308 /* LzmaSDKObjCExtractCallback.h */; };
+		3D9CBD481C0846CB005A1286 /* LzmaSDKObjCExtractCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD9FAE1B9907620076B308 /* LzmaSDKObjCExtractCallback.mm */; };
+		3D9CBD491C0846CB005A1286 /* LzmaSDKObjCReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DE314181B9857560001CEE9 /* LzmaSDKObjCReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9CBD4A1C0846CB005A1286 /* LzmaSDKObjCReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DE314191B9857560001CEE9 /* LzmaSDKObjCReader.mm */; };
+		3D9CBD4B1C0846CB005A1286 /* LzmaSDKObjCItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3E2AAD1B98AB800044083D /* LzmaSDKObjCItem+Private.h */; };
+		3D9CBD4C1C0846CB005A1286 /* LzmaSDKObjCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D3E2AAA1B98A1710044083D /* LzmaSDKObjCItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9CBD4D1C0846CB005A1286 /* LzmaSDKObjCItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E2AAB1B98A1710044083D /* LzmaSDKObjCItem.mm */; };
+		3D9CBD4E1C0846D4005A1286 /* AesOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1CB1B99AEE400ED4A1F /* AesOpt.c */; };
+		3D9CBD4F1C0846D4005A1286 /* Aes.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1C71B99AEBB00ED4A1F /* Aes.c */; };
+		3D9CBD501C0846D4005A1286 /* Aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75F1C81B99AEBB00ED4A1F /* Aes.h */; };
+		3D9CBD511C0846D4005A1286 /* XzCrc64Opt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7BD1B981DA80070D564 /* XzCrc64Opt.c */; };
+		3D9CBD521C0846D4005A1286 /* Sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7B91B981D820070D564 /* Sha256.c */; };
+		3D9CBD531C0846D4005A1286 /* Sha256.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7BA1B981D820070D564 /* Sha256.h */; };
+		3D9CBD541C0846D4005A1286 /* Delta.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7B21B981D520070D564 /* Delta.c */; };
+		3D9CBD551C0846D4005A1286 /* Delta.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7B31B981D520070D564 /* Delta.h */; };
+		3D9CBD561C0846D4005A1286 /* 7zCrcOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7AF1B981D350070D564 /* 7zCrcOpt.c */; };
+		3D9CBD571C0846D4005A1286 /* CpuArch.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7AB1B981D0F0070D564 /* CpuArch.c */; };
+		3D9CBD581C0846D4005A1286 /* CpuArch.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7AC1B981D0F0070D564 /* CpuArch.h */; };
+		3D9CBD591C0846D4005A1286 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7A81B981CE50070D564 /* 7zCrc.c */; };
+		3D9CBD5A1C0846D4005A1286 /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7A41B981CAF0070D564 /* XzCrc64.c */; };
+		3D9CBD5B1C0846D4005A1286 /* XzCrc64.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7A51B981CAF0070D564 /* XzCrc64.h */; };
+		3D9CBD5C1C0846D4005A1286 /* Bra86.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7E61B98209E0070D564 /* Bra86.c */; };
+		3D9CBD5D1C0846D4005A1286 /* BraIA64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7B61B981D680070D564 /* BraIA64.c */; };
+		3D9CBD5E1C0846D4005A1286 /* Bra.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF79D1B981C190070D564 /* Bra.c */; };
+		3D9CBD5F1C0846D4005A1286 /* Bra.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF79E1B981C190070D564 /* Bra.h */; };
+		3D9CBD601C0846D4005A1286 /* XzEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF78C1B981AA30070D564 /* XzEnc.c */; };
+		3D9CBD611C0846D4005A1286 /* XzIn.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7891B981A730070D564 /* XzIn.c */; };
+		3D9CBD621C0846D4005A1286 /* Xz.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7851B981A160070D564 /* Xz.h */; };
+		3D9CBD631C0846D4005A1286 /* Xz.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF78F1B981AC90070D564 /* Xz.c */; };
+		3D9CBD641C0846D4005A1286 /* XzDec.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7861B981A160070D564 /* XzDec.c */; };
+		3D9CBD651C0846D4005A1286 /* 7zStream.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7821B9819EA0070D564 /* 7zStream.c */; };
+		3D9CBD661C0846D4005A1286 /* Alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6381B97BFA1003F67E0 /* Alloc.c */; };
+		3D9CBD671C0846D4005A1286 /* Alloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6391B97BFA1003F67E0 /* Alloc.h */; };
+		3D9CBD681C0846D4005A1286 /* MtCoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6341B97BF79003F67E0 /* MtCoder.c */; };
+		3D9CBD691C0846D4005A1286 /* MtCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6351B97BF79003F67E0 /* MtCoder.h */; };
+		3D9CBD6A1C0846D4005A1286 /* LzFind.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6301B97BF5F003F67E0 /* LzFind.c */; };
+		3D9CBD6B1C0846D4005A1286 /* LzFind.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6311B97BF5F003F67E0 /* LzFind.h */; };
+		3D9CBD6C1C0846D4005A1286 /* LzFindMt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB62C1B97BF3E003F67E0 /* LzFindMt.c */; };
+		3D9CBD6D1C0846D4005A1286 /* LzFindMt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB62D1B97BF3E003F67E0 /* LzFindMt.h */; };
+		3D9CBD6E1C0846D4005A1286 /* Lzma2Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6181B97BEE0003F67E0 /* Lzma2Dec.c */; };
+		3D9CBD6F1C0846D4005A1286 /* Lzma2Dec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6191B97BEE0003F67E0 /* Lzma2Dec.h */; };
+		3D9CBD701C0846D4005A1286 /* Lzma2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB61A1B97BEE0003F67E0 /* Lzma2Enc.c */; };
+		3D9CBD711C0846D4005A1286 /* Lzma2Enc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB61B1B97BEE0003F67E0 /* Lzma2Enc.h */; };
+		3D9CBD721C0846D4005A1286 /* LzmaDec.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB61C1B97BEE0003F67E0 /* LzmaDec.c */; };
+		3D9CBD731C0846D4005A1286 /* LzmaDec.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB61D1B97BEE0003F67E0 /* LzmaDec.h */; };
+		3D9CBD741C0846D4005A1286 /* LzmaEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB61E1B97BEE0003F67E0 /* LzmaEnc.c */; };
+		3D9CBD751C0846D4005A1286 /* LzmaEnc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB61F1B97BEE0003F67E0 /* LzmaEnc.h */; };
+		3D9CBD761C0846D4005A1286 /* 7zTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D5667191B9758610022711D /* 7zTypes.h */; };
+		3D9CBD771C0846D4005A1286 /* Threads.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D5667121B9754F00022711D /* Threads.h */; };
+		3D9CBD781C0846D4005A1286 /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D5667111B9754F00022711D /* Threads.c */; };
+		3D9CBD791C0846DE005A1286 /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B41B99AD5200ED4A1F /* 7zAes.cpp */; };
+		3D9CBD7A1C0846DE005A1286 /* 7zAes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75F1B51B99AD5200ED4A1F /* 7zAes.h */; };
+		3D9CBD7B1C0846DE005A1286 /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B61B99AD5200ED4A1F /* 7zAesRegister.cpp */; };
+		3D9CBD7C1C0846DE005A1286 /* MyAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B71B99AD5200ED4A1F /* MyAes.cpp */; };
+		3D9CBD7D1C0846DE005A1286 /* MyAes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75F1B81B99AD5200ED4A1F /* MyAes.h */; };
+		3D9CBD7E1C0846DE005A1286 /* MyAesReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1B91B99AD5200ED4A1F /* MyAesReg.cpp */; };
+		3D9CBD7F1C0846DE005A1286 /* RandGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75F1BA1B99AD5200ED4A1F /* RandGen.cpp */; };
+		3D9CBD801C0846DE005A1286 /* RandGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75F1BB1B99AD5200ED4A1F /* RandGen.h */; };
+		3D9CBD811C0846DE005A1286 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75F1BC1B99AD5200ED4A1F /* StdAfx.h */; };
+		3D9CBD821C0846EA005A1286 /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067921B9843F500770216 /* 7zRegister.cpp */; };
+		3D9CBD831C0846EA005A1286 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40678E1B9840B900770216 /* 7zSpecStream.cpp */; };
+		3D9CBD841C0846EA005A1286 /* 7zSpecStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40678F1B9840B900770216 /* 7zSpecStream.h */; };
+		3D9CBD851C0846EA005A1286 /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067781B983E1500770216 /* 7zExtract.cpp */; };
+		3D9CBD861C0846EA005A1286 /* 7zProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067741B983DE800770216 /* 7zProperties.cpp */; };
+		3D9CBD871C0846EA005A1286 /* 7zProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067751B983DE800770216 /* 7zProperties.h */; };
+		3D9CBD881C0846EA005A1286 /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067641B983B8C00770216 /* 7zDecode.cpp */; };
+		3D9CBD891C0846EA005A1286 /* 7zDecode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067651B983B8C00770216 /* 7zDecode.h */; };
+		3D9CBD8A1C0846EA005A1286 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067661B983B8C00770216 /* 7zEncode.cpp */; };
+		3D9CBD8B1C0846EA005A1286 /* 7zEncode.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067671B983B8C00770216 /* 7zEncode.h */; };
+		3D9CBD8C1C0846EA005A1286 /* 7zFolderInStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067601B983B6D00770216 /* 7zFolderInStream.cpp */; };
+		3D9CBD8D1C0846EA005A1286 /* 7zFolderInStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067611B983B6D00770216 /* 7zFolderInStream.h */; };
+		3D9CBD8E1C0846EA005A1286 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067541B9838D100770216 /* 7zUpdate.cpp */; };
+		3D9CBD8F1C0846EA005A1286 /* 7zUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067551B9838D100770216 /* 7zUpdate.h */; };
+		3D9CBD901C0846EA005A1286 /* 7zHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067501B98389100770216 /* 7zHeader.cpp */; };
+		3D9CBD911C0846EA005A1286 /* 7zHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067511B98389100770216 /* 7zHeader.h */; };
+		3D9CBD921C0846EA005A1286 /* 7zOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40674C1B98386C00770216 /* 7zOut.cpp */; };
+		3D9CBD931C0846EA005A1286 /* 7zOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40674D1B98386C00770216 /* 7zOut.h */; };
+		3D9CBD941C0846EA005A1286 /* 7zHandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067451B98380600770216 /* 7zHandlerOut.cpp */; };
+		3D9CBD951C0846EA005A1286 /* 7zIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067411B9837E300770216 /* 7zIn.cpp */; };
+		3D9CBD961C0846EA005A1286 /* 7zIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067421B9837E300770216 /* 7zIn.h */; };
+		3D9CBD971C0846EA005A1286 /* 7zHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40673D1B9837AC00770216 /* 7zHandler.cpp */; };
+		3D9CBD981C0846EA005A1286 /* 7zHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40673E1B9837AC00770216 /* 7zHandler.h */; };
+		3D9CBD991C0846EA005A1286 /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067951B98442600770216 /* StdAfx.cpp */; };
+		3D9CBD9A1C0846EA005A1286 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067961B98442600770216 /* StdAfx.h */; };
+		3D9CBD9B1C0846EE005A1286 /* XzHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF77E1B98196C0070D564 /* XzHandler.cpp */; };
+		3D9CBD9C1C0846EE005A1286 /* XzHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF77F1B98196C0070D564 /* XzHandler.h */; };
+		3D9CBD9D1C0846EE005A1286 /* LzmaHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF77A1B98194C0070D564 /* LzmaHandler.cpp */; };
+		3D9CBD9E1C0846EE005A1286 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7781B9818FD0070D564 /* ArchiveExports.cpp */; };
+		3D9CBD9F1C0846EE005A1286 /* DllExports2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7A11B981C5D0070D564 /* DllExports2.cpp */; };
+		3D9CBDA01C0846F3005A1286 /* ItemNameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067821B983E9E00770216 /* ItemNameUtils.cpp */; };
+		3D9CBDA11C0846F3005A1286 /* ItemNameUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067831B983E9E00770216 /* ItemNameUtils.h */; };
+		3D9CBDA21C0846F3005A1286 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40676C1B983CCE00770216 /* CoderMixer2.cpp */; };
+		3D9CBDA31C0846F3005A1286 /* CoderMixer2.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40676D1B983CCE00770216 /* CoderMixer2.h */; };
+		3D9CBDA41C0846F3005A1286 /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7D01B981F9D0070D564 /* DummyOutStream.cpp */; };
+		3D9CBDA51C0846F3005A1286 /* DummyOutStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7D11B981F9D0070D564 /* DummyOutStream.h */; };
+		3D9CBDA61C0846F3005A1286 /* OutStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D75CDF31C03B99B0089DC7B /* OutStreamWithCRC.cpp */; };
+		3D9CBDA71C0846F3005A1286 /* OutStreamWithCRC.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D75CDF41C03B99B0089DC7B /* OutStreamWithCRC.h */; };
+		3D9CBDA81C0846F3005A1286 /* HandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7961B981BC70070D564 /* HandlerOut.cpp */; };
+		3D9CBDA91C0846F3005A1286 /* HandlerOut.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7971B981BC70070D564 /* HandlerOut.h */; };
+		3D9CBDAA1C0846F9005A1286 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7DB1B9820300070D564 /* BcjCoder.cpp */; };
+		3D9CBDAB1C0846F9005A1286 /* BcjCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7DC1B9820300070D564 /* BcjCoder.h */; };
+		3D9CBDAC1C0846F9005A1286 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7DD1B9820300070D564 /* BcjRegister.cpp */; };
+		3D9CBDAD1C0846F9005A1286 /* CopyCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7CC1B981F510070D564 /* CopyCoder.cpp */; };
+		3D9CBDAE1C0846F9005A1286 /* CopyCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7CD1B981F510070D564 /* CopyCoder.h */; };
+		3D9CBDAF1C0846F9005A1286 /* CodecExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5FF1B97BD30003F67E0 /* CodecExports.cpp */; };
+		3D9CBDB01C0846F9005A1286 /* LzmaDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6011B97BD30003F67E0 /* LzmaDecoder.h */; };
+		3D9CBDB11C0846F9005A1286 /* LzmaDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6001B97BD30003F67E0 /* LzmaDecoder.cpp */; };
+		3D9CBDB21C0846F9005A1286 /* LzmaEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6021B97BD30003F67E0 /* LzmaEncoder.cpp */; };
+		3D9CBDB31C0846F9005A1286 /* LzmaEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6031B97BD30003F67E0 /* LzmaEncoder.h */; };
+		3D9CBDB41C0846F9005A1286 /* LzmaRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6041B97BD30003F67E0 /* LzmaRegister.cpp */; };
+		3D9CBDB51C0846F9005A1286 /* Lzma2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB60D1B97BE93003F67E0 /* Lzma2Decoder.cpp */; };
+		3D9CBDB61C0846F9005A1286 /* Lzma2Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB60E1B97BE93003F67E0 /* Lzma2Decoder.h */; };
+		3D9CBDB71C0846F9005A1286 /* Lzma2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB60F1B97BE93003F67E0 /* Lzma2Encoder.cpp */; };
+		3D9CBDB81C0846F9005A1286 /* Lzma2Encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6101B97BE93003F67E0 /* Lzma2Encoder.h */; };
+		3D9CBDB91C0846F9005A1286 /* Lzma2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6111B97BE93003F67E0 /* Lzma2Register.cpp */; };
+		3D9CBDBA1C0846FE005A1286 /* LimitedStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40678A1B98409900770216 /* LimitedStreams.cpp */; };
+		3D9CBDBB1C0846FE005A1286 /* LimitedStreams.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40678B1B98409900770216 /* LimitedStreams.h */; };
+		3D9CBDBC1C0846FE005A1286 /* StreamObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067861B983EF400770216 /* StreamObjects.cpp */; };
+		3D9CBDBD1C0846FE005A1286 /* StreamObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067871B983EF400770216 /* StreamObjects.h */; };
+		3D9CBDBE1C0846FE005A1286 /* InOutTempBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067701B983CF800770216 /* InOutTempBuffer.cpp */; };
+		3D9CBDBF1C0846FE005A1286 /* InOutTempBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067711B983CF800770216 /* InOutTempBuffer.h */; };
+		3D9CBDC01C0846FE005A1286 /* StreamBinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D40675C1B98392000770216 /* StreamBinder.cpp */; };
+		3D9CBDC11C0846FE005A1286 /* StreamBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D40675D1B98392000770216 /* StreamBinder.h */; };
+		3D9CBDC21C0846FE005A1286 /* VirtThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067581B98390300770216 /* VirtThread.cpp */; };
+		3D9CBDC31C0846FE005A1286 /* VirtThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067591B98390300770216 /* VirtThread.h */; };
+		3D9CBDC41C0846FE005A1286 /* OutBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067481B98384800770216 /* OutBuffer.cpp */; };
+		3D9CBDC51C0846FE005A1286 /* OutBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067491B98384800770216 /* OutBuffer.h */; };
+		3D9CBDC61C0846FE005A1286 /* MethodProps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7C01B981DD30070D564 /* MethodProps.cpp */; };
+		3D9CBDC71C0846FE005A1286 /* MethodProps.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7C11B981DD30070D564 /* MethodProps.h */; };
+		3D9CBDC81C0846FE005A1286 /* PropId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF79A1B981BF50070D564 /* PropId.cpp */; };
+		3D9CBDC91C0846FE005A1286 /* ProgressUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7921B981B3E0070D564 /* ProgressUtils.cpp */; };
+		3D9CBDCA1C0846FE005A1286 /* ProgressUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7931B981B3E0070D564 /* ProgressUtils.h */; };
+		3D9CBDCB1C0846FE005A1286 /* FilterCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB64A1B97C23D003F67E0 /* FilterCoder.cpp */; };
+		3D9CBDCC1C0846FE005A1286 /* FilterCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB64B1B97C23D003F67E0 /* FilterCoder.h */; };
+		3D9CBDCD1C0846FE005A1286 /* CWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6461B97C204003F67E0 /* CWrappers.cpp */; };
+		3D9CBDCE1C0846FE005A1286 /* CWrappers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6471B97C204003F67E0 /* CWrappers.h */; };
+		3D9CBDCF1C0846FE005A1286 /* StreamUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB6421B97C1CE003F67E0 /* StreamUtils.cpp */; };
+		3D9CBDD01C0846FE005A1286 /* StreamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB6431B97C1CE003F67E0 /* StreamUtils.h */; };
+		3D9CBDD11C0846FE005A1286 /* CreateCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB63E1B97C167003F67E0 /* CreateCoder.cpp */; };
+		3D9CBDD21C0846FE005A1286 /* CreateCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB63F1B97C167003F67E0 /* CreateCoder.h */; };
+		3D9CBDD31C0846FE005A1286 /* FileStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5F61B97BC0B003F67E0 /* FileStreams.cpp */; };
+		3D9CBDD41C0846FE005A1286 /* FileStreams.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5F71B97BC0B003F67E0 /* FileStreams.h */; };
+		3D9CBDD51C0846FE005A1286 /* LockedStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067AC1B98474E00770216 /* LockedStream.cpp */; };
+		3D9CBDD61C0846FE005A1286 /* LockedStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4067AD1B98474E00770216 /* LockedStream.h */; };
+		3D9CBDD71C084705005A1286 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7F21B98271C0070D564 /* PropVariantConv.cpp */; };
+		3D9CBDD81C084705005A1286 /* PropVariantConv.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7F31B98271C0070D564 /* PropVariantConv.h */; };
+		3D9CBDD91C084705005A1286 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7C81B981E680070D564 /* System.cpp */; };
+		3D9CBDDA1C084705005A1286 /* System.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7C91B981E680070D564 /* System.h */; };
+		3D9CBDDB1C084705005A1286 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5EC1B97BB51003F67E0 /* PropVariant.cpp */; };
+		3D9CBDDC1C084705005A1286 /* PropVariant.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5ED1B97BB51003F67E0 /* PropVariant.h */; };
+		3D9CBDDD1C084705005A1286 /* NtCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5EB1B97BB42003F67E0 /* NtCheck.h */; };
+		3D9CBDDE1C084705005A1286 /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5E71B97B9E0003F67E0 /* FileName.cpp */; };
+		3D9CBDDF1C084705005A1286 /* FileName.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5E81B97B9E0003F67E0 /* FileName.h */; };
+		3D9CBDE01C084705005A1286 /* FileFind.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5E61B97B746003F67E0 /* FileFind.h */; };
+		3D9CBDE11C084705005A1286 /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5E31B97B72E003F67E0 /* FileFind.cpp */; };
+		3D9CBDE21C084705005A1286 /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5DF1B97A83F003F67E0 /* FileDir.cpp */; };
+		3D9CBDE31C084705005A1286 /* FileDir.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5E01B97A83F003F67E0 /* FileDir.h */; };
+		3D9CBDE41C084705005A1286 /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5DB1B97A78D003F67E0 /* DLL.cpp */; };
+		3D9CBDE51C084705005A1286 /* DLL.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5DC1B97A78D003F67E0 /* DLL.h */; };
+		3D9CBDE61C08470A005A1286 /* Sha256Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067A41B9845E600770216 /* Sha256Reg.cpp */; };
+		3D9CBDE71C08470A005A1286 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067A51B9845E600770216 /* XzCrc64Reg.cpp */; };
+		3D9CBDE81C08470A005A1286 /* CrcReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D4067A11B9845D900770216 /* CrcReg.cpp */; };
+		3D9CBDE91C08470A005A1286 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7E21B9820750070D564 /* Wildcard.cpp */; };
+		3D9CBDEA1C08470A005A1286 /* Wildcard.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7E31B9820750070D564 /* Wildcard.h */; };
+		3D9CBDEB1C08470A005A1286 /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1CF7C41B981E360070D564 /* StringToInt.cpp */; };
+		3D9CBDEC1C08470A005A1286 /* StringToInt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D1CF7C51B981E360070D564 /* StringToInt.h */; };
+		3D9CBDED1C08470A005A1286 /* C_FileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5FA1B97BC62003F67E0 /* C_FileIO.cpp */; };
+		3D9CBDEE1C08470A005A1286 /* C_FileIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5FB1B97BC62003F67E0 /* C_FileIO.h */; };
+		3D9CBDEF1C08470A005A1286 /* MyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5D61B97A6F4003F67E0 /* MyString.cpp */; };
+		3D9CBDF01C08470A005A1286 /* MyString.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5D71B97A6F4003F67E0 /* MyString.h */; };
+		3D9CBDF11C08470A005A1286 /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5D21B97A668003F67E0 /* StringConvert.cpp */; };
+		3D9CBDF21C08470A005A1286 /* StringConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5D31B97A668003F67E0 /* StringConvert.h */; };
+		3D9CBDF31C08470A005A1286 /* IntToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5CC1B97A5E2003F67E0 /* IntToString.cpp */; };
+		3D9CBDF41C08470A005A1286 /* IntToString.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5CD1B97A5E2003F67E0 /* IntToString.h */; };
+		3D9CBDF51C08470A005A1286 /* MyInitGuid.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5CB1B97A5CE003F67E0 /* MyInitGuid.h */; };
+		3D9CBDF61C08470A005A1286 /* Defs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5CA1B97A5B7003F67E0 /* Defs.h */; };
+		3D9CBDF71C08470A005A1286 /* MyGuidDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5C91B979E03003F67E0 /* MyGuidDef.h */; };
+		3D9CBDF81C08470A005A1286 /* MyWindows.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCCB5C61B979DF2003F67E0 /* MyWindows.h */; };
+		3D9CBDF91C08470A005A1286 /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5C51B979DF2003F67E0 /* MyWindows.cpp */; };
+		3DC6A6DB1B9C5C5B007E043F /* LzmaSDKObjC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.mm */; };
 		3DCCB5C71B979DF2003F67E0 /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5C51B979DF2003F67E0 /* MyWindows.cpp */; };
 		3DCCB5C81B979DF2003F67E0 /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5C51B979DF2003F67E0 /* MyWindows.cpp */; };
 		3DCCB5CE1B97A5E2003F67E0 /* IntToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCB5CC1B97A5E2003F67E0 /* IntToString.cpp */; };
@@ -228,7 +426,28 @@
 			remoteGlobalIDString = 3D7DB0461B96CF9B00FE84A1;
 			remoteInfo = ios;
 		};
+		3D9CBD161C0845EE005A1286 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D7DB03F1B96CF9B00FE84A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D9CBD101C0845EE005A1286;
+			remoteInfo = LzmaSDKObjC;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D9CBD1D1C0845EF005A1286 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3D9CBD191C0845EE005A1286 /* LzmaSDKObjC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D1CF7781B9818FD0070D564 /* ArchiveExports.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArchiveExports.cpp; path = ../../../lzma/CPP/7zip/Archive/ArchiveExports.cpp; sourceTree = "<group>"; };
@@ -368,8 +587,10 @@
 		3D7DB0601B96CF9B00FE84A1 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7DB0651B96CF9B00FE84A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D7DB0661B96CF9B00FE84A1 /* iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iosTests.m; sourceTree = "<group>"; };
+		3D9CBD111C0845EE005A1286 /* LzmaSDKObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LzmaSDKObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D9CBD151C0845EE005A1286 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DC6A6D91B9C46D2007E043F /* LzmaSDKObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjC.h; path = ../../../src/LzmaSDKObjC.h; sourceTree = "<group>"; };
-		3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LzmaSDKObjC.cpp; path = ../../../src/LzmaSDKObjC.cpp; sourceTree = "<group>"; };
+		3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjC.mm; path = ../../../src/LzmaSDKObjC.mm; sourceTree = "<group>"; };
 		3DCCB5881B9784E3003F67E0 /* LzmaAppleCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaAppleCommon.h; path = ../../../src/LzmaAppleCommon.h; sourceTree = "<group>"; };
 		3DCCB58C1B97868E003F67E0 /* LzmaSDKObjCFileDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LzmaSDKObjCFileDecoder.cpp; path = ../../../src/LzmaSDKObjCFileDecoder.cpp; sourceTree = "<group>"; };
 		3DCCB58D1B97868E003F67E0 /* LzmaSDKObjCFileDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCFileDecoder.h; path = ../../../src/LzmaSDKObjCFileDecoder.h; sourceTree = "<group>"; };
@@ -448,10 +669,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D9CBD181C0845EE005A1286 /* LzmaSDKObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3D7DB05D1B96CF9B00FE84A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D9CBD0D1C0845EE005A1286 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -523,6 +752,7 @@
 			children = (
 				3D7DB0491B96CF9B00FE84A1 /* ios */,
 				3D7DB0631B96CF9B00FE84A1 /* iosTests */,
+				3D9CBD121C0845EE005A1286 /* LzmaSDKObjC */,
 				3D7DB0481B96CF9B00FE84A1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -532,6 +762,7 @@
 			children = (
 				3D7DB0471B96CF9B00FE84A1 /* ios.app */,
 				3D7DB0601B96CF9B00FE84A1 /* iosTests.xctest */,
+				3D9CBD111C0845EE005A1286 /* LzmaSDKObjC.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,11 +811,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3D9CBD121C0845EE005A1286 /* LzmaSDKObjC */ = {
+			isa = PBXGroup;
+			children = (
+				3D9CBD151C0845EE005A1286 /* Info.plist */,
+			);
+			path = LzmaSDKObjC;
+			sourceTree = "<group>";
+		};
 		3DCCB5871B9784D7003F67E0 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				3DC6A6D91B9C46D2007E043F /* LzmaSDKObjC.h */,
-				3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.cpp */,
+				3DC6A6DA1B9C5C5B007E043F /* LzmaSDKObjC.mm */,
 				3DE3141C1B985DE10001CEE9 /* LzmaSDKObjCTypes.h */,
 				3DCCB5881B9784E3003F67E0 /* LzmaAppleCommon.h */,
 				3D1CF7FA1B9831E20070D564 /* LzmaSDKObjCCommon.h */,
@@ -823,6 +1062,106 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		3D9CBD0E1C0845EE005A1286 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D9CBD961C0846EA005A1286 /* 7zIn.h in Headers */,
+				3D9CBD3F1C0846CB005A1286 /* LzmaSDKObjCFileDecoder.h in Headers */,
+				3D9CBD411C0846CB005A1286 /* LzmaSDKObjCOpenCallback.h in Headers */,
+				3D9CBD381C0846CB005A1286 /* LzmaSDKObjCTypes.h in Headers */,
+				3D9CBDEA1C08470A005A1286 /* Wildcard.h in Headers */,
+				3D9CBD9A1C0846EA005A1286 /* StdAfx.h in Headers */,
+				3D9CBDB01C0846F9005A1286 /* LzmaDecoder.h in Headers */,
+				3D9CBDE01C084705005A1286 /* FileFind.h in Headers */,
+				3D9CBDA11C0846F3005A1286 /* ItemNameUtils.h in Headers */,
+				3D9CBD5B1C0846D4005A1286 /* XzCrc64.h in Headers */,
+				3D9CBDD01C0846FE005A1286 /* StreamUtils.h in Headers */,
+				3D9CBDA31C0846F3005A1286 /* CoderMixer2.h in Headers */,
+				3D9CBDBB1C0846FE005A1286 /* LimitedStreams.h in Headers */,
+				3D9CBD3C1C0846CB005A1286 /* LzmaSDKObjCICoder.h in Headers */,
+				3D9CBD6F1C0846D4005A1286 /* Lzma2Dec.h in Headers */,
+				3D9CBD501C0846D4005A1286 /* Aes.h in Headers */,
+				3D9CBDF61C08470A005A1286 /* Defs.h in Headers */,
+				3D9CBD761C0846D4005A1286 /* 7zTypes.h in Headers */,
+				3D9CBDF81C08470A005A1286 /* MyWindows.h in Headers */,
+				3D9CBDBD1C0846FE005A1286 /* StreamObjects.h in Headers */,
+				3D9CBDEE1C08470A005A1286 /* C_FileIO.h in Headers */,
+				3D9CBD5F1C0846D4005A1286 /* Bra.h in Headers */,
+				3D9CBDAE1C0846F9005A1286 /* CopyCoder.h in Headers */,
+				3D9CBD711C0846D4005A1286 /* Lzma2Enc.h in Headers */,
+				3D9CBDCC1C0846FE005A1286 /* FilterCoder.h in Headers */,
+				3D9CBD771C0846D4005A1286 /* Threads.h in Headers */,
+				3D9CBD4B1C0846CB005A1286 /* LzmaSDKObjCItem+Private.h in Headers */,
+				3D9CBD451C0846CB005A1286 /* LzmaSDKObjCOutFile.h in Headers */,
+				3D9CBD431C0846CB005A1286 /* LzmaSDKObjCInFile.h in Headers */,
+				3D9CBD3D1C0846CB005A1286 /* LzmaSDKObjCError.h in Headers */,
+				3D9CBD9C1C0846EE005A1286 /* XzHandler.h in Headers */,
+				3D9CBDE51C084705005A1286 /* DLL.h in Headers */,
+				3D9CBD6B1C0846D4005A1286 /* LzFind.h in Headers */,
+				3D9CBDD81C084705005A1286 /* PropVariantConv.h in Headers */,
+				3D9CBD8F1C0846EA005A1286 /* 7zUpdate.h in Headers */,
+				3D9CBDA91C0846F3005A1286 /* HandlerOut.h in Headers */,
+				3D9CBD811C0846DE005A1286 /* StdAfx.h in Headers */,
+				3D9CBDDF1C084705005A1286 /* FileName.h in Headers */,
+				3D9CBDB61C0846F9005A1286 /* Lzma2Decoder.h in Headers */,
+				3D9CBD6D1C0846D4005A1286 /* LzFindMt.h in Headers */,
+				3D9CBDA71C0846F3005A1286 /* OutStreamWithCRC.h in Headers */,
+				3D9CBDC31C0846FE005A1286 /* VirtThread.h in Headers */,
+				3D9CBDD61C0846FE005A1286 /* LockedStream.h in Headers */,
+				3D9CBD731C0846D4005A1286 /* LzmaDec.h in Headers */,
+				3D9CBD891C0846EA005A1286 /* 7zDecode.h in Headers */,
+				3D9CBD801C0846DE005A1286 /* RandGen.h in Headers */,
+				3D9CBD841C0846EA005A1286 /* 7zSpecStream.h in Headers */,
+				3D9CBDF51C08470A005A1286 /* MyInitGuid.h in Headers */,
+				3D9CBD551C0846D4005A1286 /* Delta.h in Headers */,
+				3D9CBD531C0846D4005A1286 /* Sha256.h in Headers */,
+				3D9CBDF71C08470A005A1286 /* MyGuidDef.h in Headers */,
+				3D9CBD931C0846EA005A1286 /* 7zOut.h in Headers */,
+				3D9CBDE31C084705005A1286 /* FileDir.h in Headers */,
+				3D9CBDDA1C084705005A1286 /* System.h in Headers */,
+				3D9CBDEC1C08470A005A1286 /* StringToInt.h in Headers */,
+				3D9CBDC51C0846FE005A1286 /* OutBuffer.h in Headers */,
+				3D9CBDF41C08470A005A1286 /* IntToString.h in Headers */,
+				3D9CBD871C0846EA005A1286 /* 7zProperties.h in Headers */,
+				3D9CBDBF1C0846FE005A1286 /* InOutTempBuffer.h in Headers */,
+				3D9CBD671C0846D4005A1286 /* Alloc.h in Headers */,
+				3D9CBD391C0846CB005A1286 /* LzmaAppleCommon.h in Headers */,
+				3D9CBD491C0846CB005A1286 /* LzmaSDKObjCReader.h in Headers */,
+				3D9CBDCA1C0846FE005A1286 /* ProgressUtils.h in Headers */,
+				3D9CBD361C0846CB005A1286 /* LzmaSDKObjC.h in Headers */,
+				3D9CBDDC1C084705005A1286 /* PropVariant.h in Headers */,
+				3D9CBD471C0846CB005A1286 /* LzmaSDKObjCExtractCallback.h in Headers */,
+				3D9CBDAB1C0846F9005A1286 /* BcjCoder.h in Headers */,
+				3D9CBDF01C08470A005A1286 /* MyString.h in Headers */,
+				3D9CBD7D1C0846DE005A1286 /* MyAes.h in Headers */,
+				3D9CBD621C0846D4005A1286 /* Xz.h in Headers */,
+				3D9CBDDD1C084705005A1286 /* NtCheck.h in Headers */,
+				3D9CBD981C0846EA005A1286 /* 7zHandler.h in Headers */,
+				3D9CBDC71C0846FE005A1286 /* MethodProps.h in Headers */,
+				3D9CBDD21C0846FE005A1286 /* CreateCoder.h in Headers */,
+				3D9CBD7A1C0846DE005A1286 /* 7zAes.h in Headers */,
+				3D9CBD3A1C0846CB005A1286 /* LzmaSDKObjCCommon.h in Headers */,
+				3D9CBDA51C0846F3005A1286 /* DummyOutStream.h in Headers */,
+				3D9CBD691C0846D4005A1286 /* MtCoder.h in Headers */,
+				3D9CBD4C1C0846CB005A1286 /* LzmaSDKObjCItem.h in Headers */,
+				3D9CBD581C0846D4005A1286 /* CpuArch.h in Headers */,
+				3D9CBD8D1C0846EA005A1286 /* 7zFolderInStream.h in Headers */,
+				3D9CBDC11C0846FE005A1286 /* StreamBinder.h in Headers */,
+				3D9CBD751C0846D4005A1286 /* LzmaEnc.h in Headers */,
+				3D9CBDD41C0846FE005A1286 /* FileStreams.h in Headers */,
+				3D9CBD8B1C0846EA005A1286 /* 7zEncode.h in Headers */,
+				3D9CBDB31C0846F9005A1286 /* LzmaEncoder.h in Headers */,
+				3D9CBD911C0846EA005A1286 /* 7zHeader.h in Headers */,
+				3D9CBDF21C08470A005A1286 /* StringConvert.h in Headers */,
+				3D9CBDCE1C0846FE005A1286 /* CWrappers.h in Headers */,
+				3D9CBDB81C0846F9005A1286 /* Lzma2Encoder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		3D7DB0461B96CF9B00FE84A1 /* ios */ = {
 			isa = PBXNativeTarget;
@@ -831,10 +1170,12 @@
 				3D7DB0431B96CF9B00FE84A1 /* Sources */,
 				3D7DB0441B96CF9B00FE84A1 /* Frameworks */,
 				3D7DB0451B96CF9B00FE84A1 /* Resources */,
+				3D9CBD1D1C0845EF005A1286 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3D9CBD171C0845EE005A1286 /* PBXTargetDependency */,
 			);
 			name = ios;
 			productName = ios;
@@ -859,6 +1200,24 @@
 			productReference = 3D7DB0601B96CF9B00FE84A1 /* iosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		3D9CBD101C0845EE005A1286 /* LzmaSDKObjC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D9CBD1C1C0845EE005A1286 /* Build configuration list for PBXNativeTarget "LzmaSDKObjC" */;
+			buildPhases = (
+				3D9CBD0C1C0845EE005A1286 /* Sources */,
+				3D9CBD0D1C0845EE005A1286 /* Frameworks */,
+				3D9CBD0E1C0845EE005A1286 /* Headers */,
+				3D9CBD0F1C0845EE005A1286 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LzmaSDKObjC;
+			productName = LzmaSDKObjC;
+			productReference = 3D9CBD111C0845EE005A1286 /* LzmaSDKObjC.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -874,6 +1233,9 @@
 					3D7DB05F1B96CF9B00FE84A1 = {
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 3D7DB0461B96CF9B00FE84A1;
+					};
+					3D9CBD101C0845EE005A1286 = {
+						CreatedOnToolsVersion = 7.1.1;
 					};
 				};
 			};
@@ -892,6 +1254,7 @@
 			targets = (
 				3D7DB0461B96CF9B00FE84A1 /* ios */,
 				3D7DB05F1B96CF9B00FE84A1 /* iosTests */,
+				3D9CBD101C0845EE005A1286 /* LzmaSDKObjC */,
 			);
 		};
 /* End PBXProject section */
@@ -908,6 +1271,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3D7DB05E1B96CF9B00FE84A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D9CBD0F1C0845EE005A1286 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -961,7 +1331,7 @@
 				3D40674E1B98386C00770216 /* 7zOut.cpp in Sources */,
 				3DCCB6241B97BEE0003F67E0 /* LzmaDec.c in Sources */,
 				3DCCB5E11B97A83F003F67E0 /* FileDir.cpp in Sources */,
-				3DC6A6DB1B9C5C5B007E043F /* LzmaSDKObjC.cpp in Sources */,
+				3DC6A6DB1B9C5C5B007E043F /* LzmaSDKObjC.mm in Sources */,
 				3D1CF79B1B981BF50070D564 /* PropId.cpp in Sources */,
 				3DCCB6321B97BF5F003F67E0 /* LzFind.c in Sources */,
 				3DCCB6161B97BE93003F67E0 /* Lzma2Register.cpp in Sources */,
@@ -1139,6 +1509,119 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3D9CBD0C1C0845EE005A1286 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D9CBDDE1C084705005A1286 /* FileName.cpp in Sources */,
+				3D9CBDC41C0846FE005A1286 /* OutBuffer.cpp in Sources */,
+				3D9CBD641C0846D4005A1286 /* XzDec.c in Sources */,
+				3D9CBD521C0846D4005A1286 /* Sha256.c in Sources */,
+				3D9CBD631C0846D4005A1286 /* Xz.c in Sources */,
+				3D9CBD681C0846D4005A1286 /* MtCoder.c in Sources */,
+				3D9CBD9E1C0846EE005A1286 /* ArchiveExports.cpp in Sources */,
+				3D9CBD741C0846D4005A1286 /* LzmaEnc.c in Sources */,
+				3D9CBDD31C0846FE005A1286 /* FileStreams.cpp in Sources */,
+				3D9CBD661C0846D4005A1286 /* Alloc.c in Sources */,
+				3D9CBD5A1C0846D4005A1286 /* XzCrc64.c in Sources */,
+				3D9CBD821C0846EA005A1286 /* 7zRegister.cpp in Sources */,
+				3D9CBD371C0846CB005A1286 /* LzmaSDKObjC.mm in Sources */,
+				3D9CBD571C0846D4005A1286 /* CpuArch.c in Sources */,
+				3D9CBDA01C0846F3005A1286 /* ItemNameUtils.cpp in Sources */,
+				3D9CBDBC1C0846FE005A1286 /* StreamObjects.cpp in Sources */,
+				3D9CBD481C0846CB005A1286 /* LzmaSDKObjCExtractCallback.mm in Sources */,
+				3D9CBDD11C0846FE005A1286 /* CreateCoder.cpp in Sources */,
+				3D9CBDF11C08470A005A1286 /* StringConvert.cpp in Sources */,
+				3D9CBDCD1C0846FE005A1286 /* CWrappers.cpp in Sources */,
+				3D9CBD7E1C0846DE005A1286 /* MyAesReg.cpp in Sources */,
+				3D9CBD941C0846EA005A1286 /* 7zHandlerOut.cpp in Sources */,
+				3D9CBDD51C0846FE005A1286 /* LockedStream.cpp in Sources */,
+				3D9CBD441C0846CB005A1286 /* LzmaSDKObjCInFile.cpp in Sources */,
+				3D9CBD5D1C0846D4005A1286 /* BraIA64.c in Sources */,
+				3D9CBD851C0846EA005A1286 /* 7zExtract.cpp in Sources */,
+				3D9CBD4F1C0846D4005A1286 /* Aes.c in Sources */,
+				3D9CBD881C0846EA005A1286 /* 7zDecode.cpp in Sources */,
+				3D9CBD861C0846EA005A1286 /* 7zProperties.cpp in Sources */,
+				3D9CBD701C0846D4005A1286 /* Lzma2Enc.c in Sources */,
+				3D9CBD9F1C0846EE005A1286 /* DllExports2.cpp in Sources */,
+				3D9CBDF31C08470A005A1286 /* IntToString.cpp in Sources */,
+				3D9CBD6C1C0846D4005A1286 /* LzFindMt.c in Sources */,
+				3D9CBDE91C08470A005A1286 /* Wildcard.cpp in Sources */,
+				3D9CBDE71C08470A005A1286 /* XzCrc64Reg.cpp in Sources */,
+				3D9CBD721C0846D4005A1286 /* LzmaDec.c in Sources */,
+				3D9CBD921C0846EA005A1286 /* 7zOut.cpp in Sources */,
+				3D9CBDEB1C08470A005A1286 /* StringToInt.cpp in Sources */,
+				3D9CBD9D1C0846EE005A1286 /* LzmaHandler.cpp in Sources */,
+				3D9CBDA21C0846F3005A1286 /* CoderMixer2.cpp in Sources */,
+				3D9CBD8C1C0846EA005A1286 /* 7zFolderInStream.cpp in Sources */,
+				3D9CBDE61C08470A005A1286 /* Sha256Reg.cpp in Sources */,
+				3D9CBDE21C084705005A1286 /* FileDir.cpp in Sources */,
+				3D9CBDF91C08470A005A1286 /* MyWindows.cpp in Sources */,
+				3D9CBDE11C084705005A1286 /* FileFind.cpp in Sources */,
+				3D9CBD8E1C0846EA005A1286 /* 7zUpdate.cpp in Sources */,
+				3D9CBD6E1C0846D4005A1286 /* Lzma2Dec.c in Sources */,
+				3D9CBD611C0846D4005A1286 /* XzIn.c in Sources */,
+				3D9CBDED1C08470A005A1286 /* C_FileIO.cpp in Sources */,
+				3D9CBD401C0846CB005A1286 /* LzmaSDKObjCFileDecoder.cpp in Sources */,
+				3D9CBD831C0846EA005A1286 /* 7zSpecStream.cpp in Sources */,
+				3D9CBD541C0846D4005A1286 /* Delta.c in Sources */,
+				3D9CBD9B1C0846EE005A1286 /* XzHandler.cpp in Sources */,
+				3D9CBD561C0846D4005A1286 /* 7zCrcOpt.c in Sources */,
+				3D9CBDC81C0846FE005A1286 /* PropId.cpp in Sources */,
+				3D9CBDCF1C0846FE005A1286 /* StreamUtils.cpp in Sources */,
+				3D9CBD7F1C0846DE005A1286 /* RandGen.cpp in Sources */,
+				3D9CBD991C0846EA005A1286 /* StdAfx.cpp in Sources */,
+				3D9CBD6A1C0846D4005A1286 /* LzFind.c in Sources */,
+				3D9CBDB11C0846F9005A1286 /* LzmaDecoder.cpp in Sources */,
+				3D9CBD951C0846EA005A1286 /* 7zIn.cpp in Sources */,
+				3D9CBD901C0846EA005A1286 /* 7zHeader.cpp in Sources */,
+				3D9CBDAA1C0846F9005A1286 /* BcjCoder.cpp in Sources */,
+				3D9CBDBE1C0846FE005A1286 /* InOutTempBuffer.cpp in Sources */,
+				3D9CBDC21C0846FE005A1286 /* VirtThread.cpp in Sources */,
+				3D9CBDDB1C084705005A1286 /* PropVariant.cpp in Sources */,
+				3D9CBDBA1C0846FE005A1286 /* LimitedStreams.cpp in Sources */,
+				3D9CBDB21C0846F9005A1286 /* LzmaEncoder.cpp in Sources */,
+				3D9CBDD91C084705005A1286 /* System.cpp in Sources */,
+				3D9CBD5E1C0846D4005A1286 /* Bra.c in Sources */,
+				3D9CBDAF1C0846F9005A1286 /* CodecExports.cpp in Sources */,
+				3D9CBDAC1C0846F9005A1286 /* BcjRegister.cpp in Sources */,
+				3D9CBD3E1C0846CB005A1286 /* LzmaSDKObjCError.mm in Sources */,
+				3D9CBD5C1C0846D4005A1286 /* Bra86.c in Sources */,
+				3D9CBD791C0846DE005A1286 /* 7zAes.cpp in Sources */,
+				3D9CBD4E1C0846D4005A1286 /* AesOpt.c in Sources */,
+				3D9CBD601C0846D4005A1286 /* XzEnc.c in Sources */,
+				3D9CBDB41C0846F9005A1286 /* LzmaRegister.cpp in Sources */,
+				3D9CBD651C0846D4005A1286 /* 7zStream.c in Sources */,
+				3D9CBDC61C0846FE005A1286 /* MethodProps.cpp in Sources */,
+				3D9CBDE81C08470A005A1286 /* CrcReg.cpp in Sources */,
+				3D9CBDA61C0846F3005A1286 /* OutStreamWithCRC.cpp in Sources */,
+				3D9CBDD71C084705005A1286 /* PropVariantConv.cpp in Sources */,
+				3D9CBDA41C0846F3005A1286 /* DummyOutStream.cpp in Sources */,
+				3D9CBD7B1C0846DE005A1286 /* 7zAesRegister.cpp in Sources */,
+				3D9CBD8A1C0846EA005A1286 /* 7zEncode.cpp in Sources */,
+				3D9CBDA81C0846F3005A1286 /* HandlerOut.cpp in Sources */,
+				3D9CBD3B1C0846CB005A1286 /* LzmaSDKObjCCommon.cpp in Sources */,
+				3D9CBDAD1C0846F9005A1286 /* CopyCoder.cpp in Sources */,
+				3D9CBD461C0846CB005A1286 /* LzmaSDKObjCOutFile.cpp in Sources */,
+				3D9CBDEF1C08470A005A1286 /* MyString.cpp in Sources */,
+				3D9CBD421C0846CB005A1286 /* LzmaSDKObjCOpenCallback.cpp in Sources */,
+				3D9CBDC91C0846FE005A1286 /* ProgressUtils.cpp in Sources */,
+				3D9CBD4A1C0846CB005A1286 /* LzmaSDKObjCReader.mm in Sources */,
+				3D9CBDE41C084705005A1286 /* DLL.cpp in Sources */,
+				3D9CBD591C0846D4005A1286 /* 7zCrc.c in Sources */,
+				3D9CBD781C0846D4005A1286 /* Threads.c in Sources */,
+				3D9CBD7C1C0846DE005A1286 /* MyAes.cpp in Sources */,
+				3D9CBD511C0846D4005A1286 /* XzCrc64Opt.c in Sources */,
+				3D9CBDB91C0846F9005A1286 /* Lzma2Register.cpp in Sources */,
+				3D9CBDC01C0846FE005A1286 /* StreamBinder.cpp in Sources */,
+				3D9CBDCB1C0846FE005A1286 /* FilterCoder.cpp in Sources */,
+				3D9CBDB71C0846F9005A1286 /* Lzma2Encoder.cpp in Sources */,
+				3D9CBDB51C0846F9005A1286 /* Lzma2Decoder.cpp in Sources */,
+				3D9CBD4D1C0846CB005A1286 /* LzmaSDKObjCItem.mm in Sources */,
+				3D9CBD971C0846EA005A1286 /* 7zHandler.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1146,6 +1629,11 @@
 			isa = PBXTargetDependency;
 			target = 3D7DB0461B96CF9B00FE84A1 /* ios */;
 			targetProxy = 3D7DB0611B96CF9B00FE84A1 /* PBXContainerItemProxy */;
+		};
+		3D9CBD171C0845EE005A1286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D9CBD101C0845EE005A1286 /* LzmaSDKObjC */;
+			targetProxy = 3D9CBD161C0845EE005A1286 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1316,6 +1804,49 @@
 			};
 			name = Release;
 		};
+		3D9CBD1A1C0845EE005A1286 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LzmaSDKObjC/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = re.LzmaSDKObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3D9CBD1B1C0845EE005A1286 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LzmaSDKObjC/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = re.LzmaSDKObjC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1342,6 +1873,15 @@
 			buildConfigurations = (
 				3D7DB06E1B96CF9B00FE84A1 /* Debug */,
 				3D7DB06F1B96CF9B00FE84A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D9CBD1C1C0845EE005A1286 /* Build configuration list for PBXNativeTarget "LzmaSDKObjC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D9CBD1A1C0845EE005A1286 /* Debug */,
+				3D9CBD1B1C0845EE005A1286 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

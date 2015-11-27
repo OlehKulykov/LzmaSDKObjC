@@ -29,19 +29,19 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP OpenCallback::SetTotal(const UInt64 * files, const UInt64 * bytes)
 	{
-		DEBUG_LOG("OpenCallback::SetTotal")
+		LZMASDK_DEBUG_LOG("OpenCallback::SetTotal")
 		return S_OK;
 	}
 
 	STDMETHODIMP OpenCallback::SetCompleted(const UInt64 * files, const UInt64 * bytes)
 	{
-		DEBUG_LOG("OpenCallback::SetCompleted")
+		LZMASDK_DEBUG_LOG("OpenCallback::SetCompleted")
 		return S_OK;
 	}
 
 	STDMETHODIMP OpenCallback::CryptoGetTextPassword(BSTR *password)
 	{
-		DEBUG_LOG("OpenCallback::CryptoGetTextPassword")
+		LZMASDK_DEBUG_LOG("OpenCallback::CryptoGetTextPassword")
 		if (_coder)
 		{
 			UString w = _coder->onGetVoidCallback1();
@@ -53,7 +53,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP OpenCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
 	{
-		DEBUG_LOG("OpenCallback::CryptoGetTextPassword2")
+		LZMASDK_DEBUG_LOG("OpenCallback::CryptoGetTextPassword2")
 
 		if (passwordIsDefined) *passwordIsDefined = 0;
 		if (_coder)

@@ -28,7 +28,10 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 0.0.9 (current):
+ *   Changes on version 0.0.10 (current):
+ *   - Added iOS framework target
+ *   
+ *   Changes on version 0.0.9:
  *   - Extract empty archive folders
  *
  *   Changes on version 0.0.8:
@@ -66,16 +69,18 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 9
+#define LZMASDKOBJC_VERSION_PATCH 10
 
 
-#include "LzmaSDKObjCTypes.h"
+#import "LzmaSDKObjCTypes.h"
+#import "LzmaSDKObjCReader.h"
+
 
 /**
  @brief Size in bytes of the read block size per single request.
  @detailed
- - @b CFilterCoder allocate buff for reading, was (1 << 20)
- - @b ISequentialOutStream max read block size, or available size, was (1 << 31)
+ <li> @b CFilterCoder allocate buff for reading, was (1 << 20)
+ <li> @b ISequentialOutStream max read block size, or available size, was (1 << 31)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
@@ -84,7 +89,7 @@ LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
 /**
  @brief Size in bytes for write per single request.
  @detailed
- - @b ISequentialOutStream max write block size, or available size, was (1 << 31)
+ <li> @b ISequentialOutStream max write block size, or available size, was (1 << 31)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamWriteSize;
@@ -93,8 +98,8 @@ LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamWriteSize;
 /**
  @brief Size in bytes for internal decoder buffer for holding coded data.
  @detailed
- - Lzma CDecoder in buffer, buff with coded data, was (1 << 20)
- - Lzma2 CDecoder in buffer, buff with coded data, was (1 << 20)
+ <li> Lzma CDecoder in buffer, buff with coded data, was (1 << 20)
+ <li> Lzma2 CDecoder in buffer, buff with coded data, was (1 << 20)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderReadSize;
@@ -103,8 +108,8 @@ LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderReadSize;
 /**
  @brief Size in bytes for internal decoder buffer for holding decoded data.
  @detailed
- - Lzma CDecoder out buffer, buff for decoded data, was (1 << 22)
- - Lzma2 CDecoder out buffer, buff for decoded data, was (1 << 22)
+ <li> Lzma CDecoder out buffer, buff for decoded data, was (1 << 22)
+ <li> Lzma2 CDecoder out buffer, buff for decoded data, was (1 << 22)
  @warning This ammount of size will be allocated.
  */
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderWriteSize;

@@ -30,7 +30,7 @@ namespace LzmaSDKObjC
 	{
 		if (_f && size > 0)
 		{
-			DEBUG_LOG("InFile::Read = %u", size)
+			LZMASDK_DEBUG_LOG("InFile::Read = %u", size)
 			const size_t r = fread(data, 1, size, _f);
 			if (processedSize) *processedSize = (UInt32)r;
 		}
@@ -61,7 +61,7 @@ namespace LzmaSDKObjC
 
 	void InFile::close()
 	{
-		DEBUG_LOG("InFile::close()")
+		LZMASDK_DEBUG_LOG("InFile::close()")
 		if (_f)
 		{
 			fclose(_f);
@@ -78,7 +78,7 @@ namespace LzmaSDKObjC
 	InFile::~InFile()
 	{
 		this->close();
-		DEBUG_LOG("InFile::~InFile()")
+		LZMASDK_DEBUG_LOG("InFile::~InFile()")
 	}
 	
 }

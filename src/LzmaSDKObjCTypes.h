@@ -24,6 +24,11 @@
 #ifndef __LZMASDKOBJCTYPES_H__
 #define __LZMASDKOBJCTYPES_H__
 
+/**
+ no #include
+ */
+
+
 #if !defined(LZMASDKOBJC_EXTERN)
 #if defined(__cplusplus) || defined(_cplusplus)
 #define LZMASDKOBJC_EXTERN extern "C"
@@ -44,11 +49,11 @@ typedef void * (*LzmaSDKObjCGetVoidCallback)(void * context);
 typedef void (*LzmaSDKObjCSetFloatCallback)(void * context, float value);
 
 #if defined(DEBUG) || defined(_DEBUG)
-#define DEBUG_LOG(M, ...) fprintf(stdout, "DEBUG %d: " M "\n", __LINE__, ##__VA_ARGS__);
-#define DEBUG_ERR(M, ...) fprintf(stderr, "ERROR %d: " M "\n", __LINE__, ##__VA_ARGS__);
+#define LZMASDK_DEBUG_LOG(M, ...) fprintf(stdout, "LZMA DEBUG %d: " M "\n", __LINE__, ##__VA_ARGS__);
+#define LZMASDK_DEBUG_ERR(M, ...) fprintf(stderr, "LZMA ERROR %d: " M "\n", __LINE__, ##__VA_ARGS__);
 #else
-#define DEBUG_LOG(M, ...)
-#define DEBUG_ERR(M, ...)
+#define LZMASDK_DEBUG_LOG(M, ...)
+#define LZMASDK_DEBUG_ERR(M, ...)
 #endif
 
 #endif
