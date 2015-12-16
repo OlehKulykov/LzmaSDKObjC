@@ -1,0 +1,14 @@
+PODS:
+  - LzmaSDKObjC (0.1.0)
+
+DEPENDENCIES:
+  - LzmaSDKObjC (from `../`)
+
+EXTERNAL SOURCES:
+  LzmaSDKObjC:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LzmaSDKObjC: 584e1f118517ed82e8685e5364dad57a74fdc424
+
+COCOAPODS: 0.39.0
