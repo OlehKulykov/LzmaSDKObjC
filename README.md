@@ -24,6 +24,9 @@ The main advantages is:
 ### Installation with [CocoaPods]
 #### Podfile
 ```ruby
+use_frameworks!
+platform :ios, '8.0'
+
 pod 'LzmaSDKObjC', :inhibit_warnings => true
 ```
 
