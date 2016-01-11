@@ -1,5 +1,5 @@
-[![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDKObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDKObjC)
-[![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDKObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDKObjC)
+[![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDK-ObjC)
+[![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDK-ObjC)
 
 
 Lzma SDK for Objective-C based on extended functionality of the C++ [LZMA SDK] code. 
@@ -27,7 +27,7 @@ The main advantages is:
 use_frameworks!
 platform :ios, '8.0'
 
-pod 'LzmaSDKObjC', :inhibit_warnings => true
+pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 ```
 
 
@@ -35,9 +35,6 @@ pod 'LzmaSDKObjC', :inhibit_warnings => true
 -----------
 #### List and extract
 ```objc
-// import framework reader
-#import <LzmaSDKObjC/LzmaSDKObjCReader.h>
- 
 // select full path to archive file with 7z or xz extension
 NSString * archivePath = <path to archive>;
 
@@ -178,5 +175,5 @@ THE SOFTWARE.
 
 
 [LZMA SDK]:http://www.7-zip.org/sdk.html
-[CocoaPods]:http://cocoapods.org/pods/LzmaSDKObjC
+[CocoaPods]:http://cocoapods.org/pods/LzmaSDK-ObjC
 
