@@ -28,15 +28,21 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 0.1.0 (current):
- *   - iOS min version 8.0
- *   - Cocoapods framework
+ *   Changes on version 0.1.2 (current):
+ *   - Update C++ source to version 15.14 (1514 - latest for now).
+ *
+ *   Changes on version 0.1.1:
+ *   - Update C++ source to version 15.12.
+ *
+ *   Changes on version 0.1.0:
+ *   - iOS min version 8.0.
+ *   - Cocoapods framework.
  *
  *   Changes on version 0.0.10:
- *   - Added iOS framework target
+ *   - Added iOS framework target.
  *   
  *   Changes on version 0.0.9:
- *   - Extract empty archive folders
+ *   - Extract empty archive folders.
  *
  *   Changes on version 0.0.8:
  *   - Update LZMA SDK to version 15.12.
@@ -73,7 +79,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 0
 #define LZMASDKOBJC_VERSION_MINOR 1
-#define LZMASDKOBJC_VERSION_PATCH 1
+#define LZMASDKOBJC_VERSION_PATCH 2
 
 
 #import "LzmaSDKObjCTypes.h"
