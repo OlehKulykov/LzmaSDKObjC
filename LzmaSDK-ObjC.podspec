@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
 
 # This description is used to generate tags and improve search results.
@@ -37,7 +37,10 @@ The main advantages is:
   s.source           = { :git => "https://github.com/OlehKulykov/LzmaSDKObjC.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios, '8.0'
+# Platforms
+  s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.7"
+
   s.requires_arc = true
 
 #  s.resource_bundles = {
