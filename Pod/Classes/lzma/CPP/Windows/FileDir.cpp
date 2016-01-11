@@ -709,7 +709,7 @@ namespace NWindows {
 			Bool RemoveDirectoryWithSubItems(const UString &path)
 			{
 				NFind::CFileInfoW fileInfo;
-				UString pathPrefix = path + kDirDelimiter;
+				UString pathPrefix = path + WCHAR_PATH_SEPARATOR;
 				{
 					NFind::CEnumeratorW enumerator(pathPrefix + L"*");
 					while (enumerator.Next(fileInfo))

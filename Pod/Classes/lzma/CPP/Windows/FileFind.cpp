@@ -579,7 +579,7 @@ namespace NWindows {
       return true;
 				}
 			}
-			
+
 			bool CEnumerator::Next(CFileInfo &fileInfo, bool &found)
 			{
 				if (Next(fileInfo))
@@ -590,7 +590,7 @@ namespace NWindows {
 				found = false;
 				return (::GetLastError() == ERROR_NO_MORE_FILES);
 			}
-			
+
 			bool CEnumeratorW::NextAny(CFileInfoW &fileInfo)
 			{
 				if(_findFile.IsHandleAllocated())
@@ -598,7 +598,7 @@ namespace NWindows {
 				else
 					return _findFile.FindFirst(_wildcard, fileInfo);
 			}
-			
+
 			bool CEnumeratorW::Next(CFileInfoW &fileInfo)
 			{
 				while(true)
@@ -609,7 +609,7 @@ namespace NWindows {
       return true;
 				}
 			}
-			
+
 			bool CEnumeratorW::Next(CFileInfoW &fileInfo, bool &found)
 			{
 				if (Next(fileInfo))

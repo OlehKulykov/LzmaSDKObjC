@@ -166,7 +166,7 @@ namespace NWindows {
 					return false; /* BOOLToBool(::FindNextChangeNotification(_handle)); */
 				}
 			};
-			
+
 #ifndef UNDER_CE
 			bool MyGetLogicalDriveStrings(CSysStringVector &driveStrings);
 #ifndef _UNICODE

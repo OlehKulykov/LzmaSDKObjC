@@ -353,25 +353,25 @@ static bool GetCurDir(UString &path)
 	path = L"";
 	return true;
 #else
-  path.Empty();
-  DWORD needLength;
-  #ifndef _UNICODE
-  if (!g_IsNT)
-  {
-    TCHAR s[MAX_PATH + 2];
-    s[0] = 0;
-    needLength = ::GetCurrentDirectory(MAX_PATH + 1, s);
-    path = fs2us(fas2fs(s));
-  }
-  else
-  #endif
-  {
-    WCHAR s[MAX_PATH + 2];
-    s[0] = 0;
-    needLength = ::GetCurrentDirectoryW(MAX_PATH + 1, s);
-    path = s;
-  }
-  return (needLength > 0 && needLength <= MAX_PATH);
+	path.Empty();
+	DWORD needLength;
+#ifndef _UNICODE
+	if (!g_IsNT)
+	{
+		TCHAR s[MAX_PATH + 2];
+		s[0] = 0;
+		needLength = ::GetCurrentDirectory(MAX_PATH + 1, s);
+		path = fs2us(fas2fs(s));
+	}
+	else
+#endif
+	{
+		WCHAR s[MAX_PATH + 2];
+		s[0] = 0;
+		needLength = ::GetCurrentDirectoryW(MAX_PATH + 1, s);
+		path = s;
+	}
+	return (needLength > 0 && needLength <= MAX_PATH);
 #endif
 }
 

@@ -8,7 +8,6 @@
 #include "../../Common/MyCom.h"
 
 #include "../../Windows/Defs.h"
-#include "../../Windows/PropVariant.h"
 
 #include "../ICoder.h"
 

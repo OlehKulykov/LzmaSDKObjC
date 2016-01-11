@@ -514,6 +514,14 @@ ARCHIVE_INTERFACE(IArchiveAllowTail, 0x05)
     { if (index >= ARRAY_SIZE(k)) return E_INVALIDARG; \
     *propID = k[index]; *varType = k7z_PROPID_To_VARTYPE[(unsigned)*propID];  *name = 0; return S_OK; } \
 
+#if !defined(__APPLE__)
+struct CStatProp
+{
+  const char *Name;
+  UInt32 PropID;
+  VARTYPE vt;
+};
+#endif
 
 namespace NWindows {
 namespace NCOM {
@@ -522,12 +530,11 @@ BSTR AllocBstrFromAscii(const char *s) throw();
 }}
 
 #define IMP_IInArchive_GetProp_WITH_NAME(k) \
-(UInt32 index, BSTR *name, PROPID *propID, VARTYPE *varType) \
-{ if (index >= ARRAY_SIZE(k)) return E_INVALIDARG; \
-	const STATPROPSTG &srcItem = k[index]; \
-	*propID = srcItem.propid; *varType = srcItem.vt; \
-	if (srcItem.lpwstrName == 0) *name = 0; else *name = ::SysAllocString(srcItem.lpwstrName); return S_OK; } \
-
+  (UInt32 index, BSTR *name, PROPID *propID, VARTYPE *varType) \
+    { if (index >= ARRAY_SIZE(k)) return E_INVALIDARG; \
+    const CStatProp &prop = k[index]; \
+    *propID = (PROPID)prop.PropID; *varType = prop.vt; \
+    *name = NWindows::NCOM::AllocBstrFromAscii(prop.Name); return S_OK; } \
 
 #define IMP_IInArchive_Props \
   STDMETHODIMP CHandler::GetNumberOfProperties(UInt32 *numProps) \
