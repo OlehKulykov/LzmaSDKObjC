@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDKObjC"
-  s.version          = "0.1.3"
+  s.version          = "1.0.0"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
 
 # This description is used to generate tags and improve search results.

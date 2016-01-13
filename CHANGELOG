@@ -1,5 +1,8 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
+Changes on version 1.0.0 (current):
+- Stable reader.
+
 Changes on version 0.1.2 (current):
 - Update C++ source to version 15.14 (1514 - latest for now).
 
