@@ -35,7 +35,7 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 -----------
 #### List and extract
 
-##### Create and setup reader with archive path and/or archive type, optionaly delegate and optionaly password getter block, in case of encripted archive
+##### Create and setup reader with archive path and/or archive type, optionaly delegate and optionaly password getter block, in case of encrypted archive
 ```objc
 // select full path to archive file with 7z or xz extension
 NSString * archivePath = <path to archive>;
@@ -58,7 +58,7 @@ _reader.passwordGetter = ^NSString*(void){
 };
 ```
 
-##### Open archive, eg. findout type of achive, locate decoder and read archive header
+##### Open archive, eg. find out type of achive, locate decoder and read archive header
 ```objc
 // Open archive, with or without error. Error can be nil.
 NSError * error = nil;
@@ -69,7 +69,7 @@ if (![_reader open:&error])
 NSLog(@"Open error: %@", _reader.lastError);
 ```
 
-##### Iterate archive items, select and store required for future processing
+##### Iterate archive items, select and store required items for future processing
 ```objc
 // Iterate all archive items, track what items do you need & hold them in array.
 NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
