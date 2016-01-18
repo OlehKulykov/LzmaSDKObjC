@@ -34,6 +34,8 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 ### Example
 -----------
 #### List and extract
+
+##### Create and setup reader with archive path and/or archive type, optionaly delegate and optionaly password getter block, in case of encripted archive
 ```objc
 // select full path to archive file with 7z or xz extension
 NSString * archivePath = <path to archive>;
@@ -54,7 +56,10 @@ _reader.delegate = self;
 _reader.passwordGetter = ^NSString*(void){
   return @"password to my achive";
 };
+```
 
+##### Open archive, eg. findout type of achive, locate decoder and read archive header
+```objc
 // Open archive, with or without error. Error can be nil.
 NSError * error = nil;
 if (![_reader open:&error])
@@ -62,7 +67,10 @@ if (![_reader open:&error])
   NSLog(@"Open error: %@", error);
 }
 NSLog(@"Open error: %@", _reader.lastError);
+```
 
+##### Iterate archive items, select and store required for future processing
+```objc
 // Iterate all archive items, track what items do you need & hold them in array.
 NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 [_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
@@ -71,7 +79,10 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 	return YES; // YES - continue iterate, NO - stop iteration
 }];
 NSLog(@"Iteration error: %@", _reader.lastError);
+```
 
+##### Extract or test archive items
+```objc
 // Extract selected items from prev. step.
 // YES - create subfolders structure for the items.
 // NO - place item file to the root of path(in this case items with the same names will be overwrited automaticaly).
@@ -79,6 +90,10 @@ NSLog(@"Iteration error: %@", _reader.lastError);
           toPath:@"/extract/path"
     withFullPaths:YES]; 
 NSLog(@"Extract error: %@", _reader.lastError);
+
+// Test selected items from prev. step.
+[_reader test:items];
+NSLog(@"test error: %@", _reader.lastError);
 ```
 
 
