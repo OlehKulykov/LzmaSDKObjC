@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDKObjC"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
 
 # This description is used to generate tags and improve search results.
@@ -163,5 +163,5 @@ The main advantages is:
   s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
   s.libraries    = 'stdc++'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Inlineobjc'
 end

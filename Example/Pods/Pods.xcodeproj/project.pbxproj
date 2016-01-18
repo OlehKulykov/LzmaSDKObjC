@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		05259D8C8C873277FEFF0D75150CEE06 /* LzmaSDKObjC-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8925D45F71F52E9124C7750DAD2E9 /* LzmaSDKObjC-dummy.m */; };
+		3DC305B81C4D3A3600CE37C4 /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305B51C4D3A3600CE37C4 /* Bcj2Coder.cpp */; };
+		3DC305B91C4D3A3600CE37C4 /* Bcj2Coder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC305B61C4D3A3600CE37C4 /* Bcj2Coder.h */; };
+		3DC305BA1C4D3A3600CE37C4 /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305B71C4D3A3600CE37C4 /* Bcj2Register.cpp */; };
+		3DC305C01C4D3A6100CE37C4 /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305BD1C4D3A6100CE37C4 /* Bcj2Enc.c */; };
+		3DC305E51C4D3D4000CE37C4 /* Sort.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305E31C4D3D4000CE37C4 /* Sort.c */; };
+		3DC305E61C4D3D4000CE37C4 /* Sort.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC305E41C4D3D4000CE37C4 /* Sort.h */; };
+		3DC305E91C4D3DBE00CE37C4 /* InBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305E71C4D3DBE00CE37C4 /* InBuffer.cpp */; };
+		3DC305EA1C4D3DBE00CE37C4 /* InBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC305E81C4D3DBE00CE37C4 /* InBuffer.h */; };
+		3DC305EB1C4D3E1200CE37C4 /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = 3DC305BB1C4D3A6100CE37C4 /* Bcj2.c */; };
+		3DC305EC1C4D3E1900CE37C4 /* Bcj2.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DC305BC1C4D3A6100CE37C4 /* Bcj2.h */; };
 		3DCD50491C217D0900382C4A /* LzmaSDKObjCItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCD500F1C217D0900382C4A /* LzmaSDKObjCItem+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3DCD504C1C217D0900382C4A /* LzmaSDKObjCItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DCD50101C217D0900382C4A /* LzmaSDKObjCItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DCD504F1C217D0900382C4A /* LzmaSDKObjCItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD50111C217D0900382C4A /* LzmaSDKObjCItem.mm */; };
@@ -247,6 +257,16 @@
 		23A50E8E602E7DF06B717D1A7770FF28 /* LzmaSDKObjC.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LzmaSDKObjC.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		29ADB07849AA360DB6E63CE90DBC7D1F /* LzmaSDKObjC.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = LzmaSDKObjC.modulemap; sourceTree = "<group>"; };
 		345DFFBCB48E7D8669030D13BDC906A1 /* Pods-LzmaSDKObjC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LzmaSDKObjC_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		3DC305B51C4D3A3600CE37C4 /* Bcj2Coder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Coder.cpp; path = lzma/CPP/7zip/Compress/Bcj2Coder.cpp; sourceTree = "<group>"; };
+		3DC305B61C4D3A3600CE37C4 /* Bcj2Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bcj2Coder.h; path = lzma/CPP/7zip/Compress/Bcj2Coder.h; sourceTree = "<group>"; };
+		3DC305B71C4D3A3600CE37C4 /* Bcj2Register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Register.cpp; path = lzma/CPP/7zip/Compress/Bcj2Register.cpp; sourceTree = "<group>"; };
+		3DC305BB1C4D3A6100CE37C4 /* Bcj2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Bcj2.c; path = lzma/C/Bcj2.c; sourceTree = "<group>"; };
+		3DC305BC1C4D3A6100CE37C4 /* Bcj2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bcj2.h; path = lzma/C/Bcj2.h; sourceTree = "<group>"; };
+		3DC305BD1C4D3A6100CE37C4 /* Bcj2Enc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Bcj2Enc.c; path = lzma/C/Bcj2Enc.c; sourceTree = "<group>"; };
+		3DC305E31C4D3D4000CE37C4 /* Sort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Sort.c; path = lzma/C/Sort.c; sourceTree = "<group>"; };
+		3DC305E41C4D3D4000CE37C4 /* Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sort.h; path = lzma/C/Sort.h; sourceTree = "<group>"; };
+		3DC305E71C4D3DBE00CE37C4 /* InBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InBuffer.cpp; path = lzma/CPP/7zip/Common/InBuffer.cpp; sourceTree = "<group>"; };
+		3DC305E81C4D3DBE00CE37C4 /* InBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InBuffer.h; path = lzma/CPP/7zip/Common/InBuffer.h; sourceTree = "<group>"; };
 		3DCD500F1C217D0900382C4A /* LzmaSDKObjCItem+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LzmaSDKObjCItem+Private.h"; path = "src/LzmaSDKObjCItem+Private.h"; sourceTree = "<group>"; };
 		3DCD50101C217D0900382C4A /* LzmaSDKObjCItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCItem.h; path = src/LzmaSDKObjCItem.h; sourceTree = "<group>"; };
 		3DCD50111C217D0900382C4A /* LzmaSDKObjCItem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCItem.mm; path = src/LzmaSDKObjCItem.mm; sourceTree = "<group>"; };
@@ -568,6 +588,11 @@
 		3DCD50961C218A2400382C4A /* C */ = {
 			isa = PBXGroup;
 			children = (
+				3DC305E31C4D3D4000CE37C4 /* Sort.c */,
+				3DC305E41C4D3D4000CE37C4 /* Sort.h */,
+				3DC305BB1C4D3A6100CE37C4 /* Bcj2.c */,
+				3DC305BC1C4D3A6100CE37C4 /* Bcj2.h */,
+				3DC305BD1C4D3A6100CE37C4 /* Bcj2Enc.c */,
 				3DCD50971C218B1600382C4A /* 7zCrc.c */,
 				3DCD50981C218B1600382C4A /* 7zCrcOpt.c */,
 				3DCD50991C218B1600382C4A /* 7zStream.c */,
@@ -688,6 +713,8 @@
 		3DCD50F11C218CE800382C4A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3DC305E71C4D3DBE00CE37C4 /* InBuffer.cpp */,
+				3DC305E81C4D3DBE00CE37C4 /* InBuffer.h */,
 				3DCD517B1C218F3C00382C4A /* CreateCoder.cpp */,
 				3DCD517C1C218F3C00382C4A /* CreateCoder.h */,
 				3DCD517D1C218F3C00382C4A /* CWrappers.cpp */,
@@ -724,6 +751,9 @@
 		3DCD50F21C218CF400382C4A /* Compress */ = {
 			isa = PBXGroup;
 			children = (
+				3DC305B51C4D3A3600CE37C4 /* Bcj2Coder.cpp */,
+				3DC305B61C4D3A3600CE37C4 /* Bcj2Coder.h */,
+				3DC305B71C4D3A3600CE37C4 /* Bcj2Register.cpp */,
 				3DCD515B1C218EB800382C4A /* BcjCoder.cpp */,
 				3DCD515C1C218EB800382C4A /* BcjCoder.h */,
 				3DCD515D1C218EB800382C4A /* BcjRegister.cpp */,
@@ -973,6 +1003,7 @@
 				3DCD51F01C218FF700382C4A /* MyString.h in Headers */,
 				3DCD50491C217D0900382C4A /* LzmaSDKObjCItem+Private.h in Headers */,
 				3DCD50851C2188CE00382C4A /* LzmaSDKObjCError.h in Headers */,
+				3DC305B91C4D3A3600CE37C4 /* Bcj2Coder.h in Headers */,
 				3DCD516C1C218EB800382C4A /* BcjCoder.h in Headers */,
 				3DCD50DA1C218B1600382C4A /* Lzma2Enc.h in Headers */,
 				3DCD51741C218EB800382C4A /* Lzma2Encoder.h in Headers */,
@@ -995,15 +1026,18 @@
 				3DCD51B41C218F3C00382C4A /* VirtThread.h in Headers */,
 				3DCD51E81C218FF700382C4A /* C_FileIO.h in Headers */,
 				3DCD51AE1C218F3C00382C4A /* StreamBinder.h in Headers */,
+				3DC305EA1C4D3DBE00CE37C4 /* InBuffer.h in Headers */,
 				3DCD51CE1C218F8800382C4A /* PropVariant.h in Headers */,
 				3DCD51D01C218F8800382C4A /* PropVariantConv.h in Headers */,
 				3DCD50D01C218B1600382C4A /* CpuArch.h in Headers */,
 				3DCD51791C218EB800382C4A /* LzmaEncoder.h in Headers */,
 				3DCD512E1C218E1700382C4A /* 7zDecode.h in Headers */,
 				3DCD51071C218D7D00382C4A /* RandGen.h in Headers */,
+				3DC305E61C4D3D4000CE37C4 /* Sort.h in Headers */,
 				3DCD50871C2188CE00382C4A /* LzmaSDKObjCExtractCallback.h in Headers */,
 				3DCD51351C218E1700382C4A /* 7zHandler.h in Headers */,
 				3DCD50E81C218B1600382C4A /* XzCrc64.h in Headers */,
+				3DC305EC1C4D3E1900CE37C4 /* Bcj2.h in Headers */,
 				3DCD50921C2188CE00382C4A /* LzmaSDKObjCReader.h in Headers */,
 				3DCD51561C218E4E00382C4A /* HandlerOut.h in Headers */,
 				3DCD50E21C218B1600382C4A /* Sha256.h in Headers */,
@@ -1183,7 +1217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC305EB1C4D3E1200CE37C4 /* Bcj2.c in Sources */,
 				3DCD50C41C218B1600382C4A /* 7zStream.c in Sources */,
+				3DC305C01C4D3A6100CE37C4 /* Bcj2Enc.c in Sources */,
 				3DCD51EB1C218FF700382C4A /* IntToString.cpp in Sources */,
 				3DCD50C31C218B1600382C4A /* 7zCrcOpt.c in Sources */,
 				3DCD51F11C218FF700382C4A /* MyWindows.cpp in Sources */,
@@ -1207,6 +1243,7 @@
 				3DCD519E1C218F3C00382C4A /* FilterCoder.cpp in Sources */,
 				3DCD50D31C218B1600382C4A /* LzFind.c in Sources */,
 				3DCD51311C218E1700382C4A /* 7zExtract.cpp in Sources */,
+				3DC305B81C4D3A3600CE37C4 /* Bcj2Coder.cpp in Sources */,
 				3DCD51751C218EB800382C4A /* Lzma2Register.cpp in Sources */,
 				3DCD51361C218E1700382C4A /* 7zHandlerOut.cpp in Sources */,
 				3DCD51E71C218FF700382C4A /* C_FileIO.cpp in Sources */,
@@ -1227,6 +1264,7 @@
 				3DCD504F1C217D0900382C4A /* LzmaSDKObjCItem.mm in Sources */,
 				3DCD50E71C218B1600382C4A /* XzCrc64.c in Sources */,
 				3DCD51511C218E4E00382C4A /* CoderMixer2.cpp in Sources */,
+				3DC305E51C4D3D4000CE37C4 /* Sort.c in Sources */,
 				3DCD51F61C218FF700382C4A /* StringToInt.cpp in Sources */,
 				3DCD51CD1C218F8800382C4A /* PropVariant.cpp in Sources */,
 				3DCD51551C218E4E00382C4A /* HandlerOut.cpp in Sources */,
@@ -1234,6 +1272,7 @@
 				3DCD51391C218E1700382C4A /* 7zIn.cpp in Sources */,
 				3DCD50D51C218B1600382C4A /* LzFindMt.c in Sources */,
 				3DCD50D11C218B1600382C4A /* Delta.c in Sources */,
+				3DC305BA1C4D3A3600CE37C4 /* Bcj2Register.cpp in Sources */,
 				3DCD50E91C218B1600382C4A /* XzCrc64Opt.c in Sources */,
 				3DCD51F81C218FF700382C4A /* Wildcard.cpp in Sources */,
 				3DCD51591C218E4E00382C4A /* OutStreamWithCRC.cpp in Sources */,
@@ -1289,6 +1328,7 @@
 				3DCD50EC1C218B1600382C4A /* XzIn.c in Sources */,
 				3DCD51451C218E1700382C4A /* StdAfx.cpp in Sources */,
 				3DCD50881C2188CE00382C4A /* LzmaSDKObjCExtractCallback.mm in Sources */,
+				3DC305E91C4D3DBE00CE37C4 /* InBuffer.cpp in Sources */,
 				3DCD513E1C218E1700382C4A /* 7zProperties.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
