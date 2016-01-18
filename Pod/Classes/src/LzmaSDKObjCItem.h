@@ -22,6 +22,8 @@
 
 
 #import <Foundation/Foundation.h>
+#import <Inlineobjc/NSString+Inlineobjc.h>
+#import <Inlineobjc/NSArray+Inlineobjc.h>
 
 /**
  @brief Archive item class for the file or directory.

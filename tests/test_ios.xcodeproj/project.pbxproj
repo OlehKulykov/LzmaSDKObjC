@@ -40,6 +40,7 @@
 		3DC3058D1C4D2F6300CE37C4 /* ppmd_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DC305751C4D2F6300CE37C4 /* ppmd_aes256_encfn.7z */; };
 		3DC305AA1C4D2FF200CE37C4 /* LzmaSDKObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC305A21C4D2FC900CE37C4 /* LzmaSDKObjC.framework */; };
 		3DC305AB1C4D2FF200CE37C4 /* LzmaSDKObjC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC305A21C4D2FC900CE37C4 /* LzmaSDKObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DF71BF11C4D8BBA00B30137 /* LzmaSDKObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DC305A21C4D2FC900CE37C4 /* LzmaSDKObjC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,13 +57,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 4A83386BB00999FCC32428199EE73BE4;
 			remoteInfo = LzmaSDKObjC;
-		};
-		3DC305A31C4D2FC900CE37C4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DC3059A1C4D2FC900CE37C4 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 23A50E8E602E7DF06B717D1A7770FF28;
-			remoteInfo = "LzmaSDKObjC-LzmaSDKObjC";
 		};
 		3DC305A51C4D2FC900CE37C4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -82,7 +76,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 3DC3059A1C4D2FC900CE37C4 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = EDC206C19D4032BF1A9A4C5CCA49E395;
+			remoteGlobalIDString = B56FB9E01D45245EAB2A8C7D422337F1;
 			remoteInfo = LzmaSDKObjC;
 		};
 /* End PBXContainerItemProxy section */
@@ -143,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF71BF11C4D8BBA00B30137 /* LzmaSDKObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				3DC305A21C4D2FC900CE37C4 /* LzmaSDKObjC.framework */,
-				3DC305A41C4D2FC900CE37C4 /* LzmaSDKObjC.bundle */,
 				3DC305A61C4D2FC900CE37C4 /* Pods_LzmaSDKObjC_Example.framework */,
 				3DC305A81C4D2FC900CE37C4 /* Pods_LzmaSDKObjC_Tests.framework */,
 			);
@@ -321,13 +315,6 @@
 			fileType = wrapper.framework;
 			path = LzmaSDKObjC.framework;
 			remoteRef = 3DC305A11C4D2FC900CE37C4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DC305A41C4D2FC900CE37C4 /* LzmaSDKObjC.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = LzmaSDKObjC.bundle;
-			remoteRef = 3DC305A31C4D2FC900CE37C4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DC305A61C4D2FC900CE37C4 /* Pods_LzmaSDKObjC_Example.framework */ = {
@@ -552,6 +539,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = "../Example/Pods/**";
 				INFOPLIST_FILE = test_iosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.test-iosTests";
@@ -564,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				HEADER_SEARCH_PATHS = "../Example/Pods/**";
 				INFOPLIST_FILE = test_iosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "re.test-iosTests";

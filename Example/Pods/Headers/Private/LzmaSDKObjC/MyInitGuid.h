@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/lzma/CPP/Common/MyInitGuid.h

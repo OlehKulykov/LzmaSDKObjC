@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '965D4D396399233E5B46C771'
+               BlueprintIdentifier = '96C0409CE9D7F1B36FEC9064'
                BlueprintName = 'LzmaSDKObjC'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'LzmaSDKObjC.framework'>

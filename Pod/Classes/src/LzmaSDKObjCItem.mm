@@ -38,18 +38,18 @@
 
 - (NSString *) fileName
 {
-	return (_path && !self.isDirectory) ? [_path lastPathComponent] : nil;
+	return (NSStringIsNotEmpty(_path) && !self.isDirectory) ? [_path lastPathComponent] : nil;
 }
 
 - (NSString *) directoryPath
 {
-	if (_path)
+	if (NSStringIsNotEmpty(_path))
 	{
 		if (self.isDirectory) return _path;
 		else
 		{
 			NSString * path = [_path stringByDeletingLastPathComponent];
-			if ([path length]) return path;
+			if (NSStringIsNotEmpty(path)) return path;
 		}
 	}
 	return nil;

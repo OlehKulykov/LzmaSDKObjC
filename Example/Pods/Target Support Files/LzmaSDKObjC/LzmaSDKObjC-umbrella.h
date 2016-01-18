@@ -5,7 +5,6 @@
 #import "LzmaSDKObjCItem.h"
 #import "LzmaSDKObjC.h"
 
-
 FOUNDATION_EXPORT double LzmaSDKObjCVersionNumber;
 FOUNDATION_EXPORT const unsigned char LzmaSDKObjCVersionString[];
 

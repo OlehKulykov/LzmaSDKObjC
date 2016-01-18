@@ -1,6 +1,7 @@
 
 
 #import <XCTest/XCTest.h>
+
 #import <LzmaSDKObjC/LzmaSDKObjCReader.h>
 
 @interface test_iosTests : XCTestCase
@@ -23,11 +24,11 @@
 
 					   @"lzma2.7z",
 					   @"lzma2_aes256.7z",
-					   @"lzma2_aes256_encfn.7z",
+					   @"lzma2_aes256_encfn.7z"
 
-					   @"bzip2.7z",
-					   @"bzip2_aes256_encfn.7z",
-					   @"bzip2_aes256.7z"
+//					   @"bzip2.7z",
+//					   @"bzip2_aes256_encfn.7z",
+//					   @"bzip2_aes256.7z"
 
 //					   @"ppmd.7z",
 //					   @"ppmd_aes256.7z",
@@ -137,6 +138,19 @@
 		}];
 
 		XCTAssertTrue([items count] > 0, @"ERROR Can't read archive items");
+
+		for (LzmaSDKObjCItem * item in items)
+		{
+			XCTAssertTrue([item isKindOfClass:[LzmaSDKObjCItem class]], @"ERROR worong item class type");
+			if (item.isDirectory)
+			{
+				XCTAssertNotNil(item.directoryPath, @"ERROR item is dir, but no path provided");
+			}
+			else
+			{
+				XCTAssertNotNil(item.fileName, @"ERROR item is file, but no file name provided");
+			}
+		}
 
 		[self reader:reader extractItems:items];
 	}
