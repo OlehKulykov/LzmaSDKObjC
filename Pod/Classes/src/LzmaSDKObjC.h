@@ -28,7 +28,10 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 1.0.0 (current):
+ *   Changes on version 1.0.1 (current):
+ *   - - Lzma & lzma2 test reader.
+ *
+ *   Changes on version 1.0.0:
  *   - Stable reader.
  *
  *   Changes on version 0.1.2:
