@@ -23,6 +23,8 @@
 
 #import "LzmaSDKObjCItem.h"
 #import "LzmaSDKObjCItem+Private.h"
+#import <Inlineobjc/NSString+Inlineobjc.h>
+#import <Inlineobjc/NSArray+Inlineobjc.h>
 
 @implementation LzmaSDKObjCItem
 
