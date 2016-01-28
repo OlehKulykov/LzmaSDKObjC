@@ -8,14 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDKObjC"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
 Based on C++ LZMA SDK version 15.14 (1514 - latest for now) and patched for iOS & MacOS platforms.
@@ -31,21 +25,15 @@ The main advantages is:
                        DESC
 
   s.homepage         = "https://github.com/OlehKulykov/LzmaSDKObjC"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "OlehKulykov" => "info@resident.name" }
   s.source           = { :git => "https://github.com/OlehKulykov/LzmaSDKObjC.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
 # Platforms
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.7"
 
   s.requires_arc = true
-
-#  s.resource_bundles = {
-#    'LzmaSDKObjC' => ['Pod/Assets/*.png']
-#  }
 
   s.public_header_files = 'Pod/Classes/src/LzmaSDKObjCTypes.h',
     'Pod/Classes/src/LzmaSDKObjCReader.h',
