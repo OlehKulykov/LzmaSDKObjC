@@ -77,9 +77,7 @@ namespace LzmaSDKObjC
 				va_end(args);
 				_lastError->description = buff;
 
-#if defined(DEBUG) || defined(_DEBUG)
-				fprintf(stderr, "ERROR: code = %lli, file = \'%s\', line = %i, description = %s", code, file, line, buff);
-#endif
+				LZMASDK_DEBUG_LOG("ERROR: code = %lli, file = \'%s\', line = %i, description = %s", code, file, line, buff)
 			}
 		}
 	}

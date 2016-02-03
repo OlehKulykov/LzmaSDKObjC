@@ -1,6 +1,9 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
-Changes on version 1.0.2 (current):
+Changes on version 1.0.3 (current):
+- Ignore debug log messages via LZMASDKOBJC_NO_DEBUG_LOG.
+
+Changes on version 1.0.2:
 - Move additional includes to private part of the code.
 
 Changes on version 1.0.1:
