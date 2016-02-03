@@ -7,7 +7,8 @@ Available for iOS and MacOS.
 
 ### Description
 ----------------
-It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. Based on C++ [LZMA SDK] version 15.14 (1514 - latest for now) and patched for iOS & MacOS platforms.
+It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. 
+Based on C++ [LZMA SDK] version 15.14 (1514 - latest for now) and patched for iOS & Mac OS platforms.
 
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
