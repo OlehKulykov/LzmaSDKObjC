@@ -202,7 +202,7 @@ switch (<what do I need ?>)
 
 ### License
 -----------
-By using this all you are accepting original [LZMA SDK] and with MIT license (*see below*):
+By using this all you are accepting original [LZMA SDK] and MIT license (*see below*):
 
 The MIT License (MIT)
 
