@@ -31,11 +31,12 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 ```
 
 
-### Example
+### Example Objective-C and Swift
 -----------
 #### List and extract
 
 ##### Create and setup reader with archive path and/or archive type, optionaly delegate and optionaly password getter block, in case of encrypted archive
+##### Objective-C
 ```objc
 // select full path to archive file with 7z or xz extension
 NSString * archivePath = <path to archive>;
@@ -57,8 +58,20 @@ _reader.passwordGetter = ^NSString*(void){
   return @"password to my achive";
 };
 ```
+##### Swift
+```swift
+import LzmaSDK_ObjC
+...
+// replace path with your actual path to archive
+let archivePath = "path to archive"
+let reader: LzmaSDKObjCReader = LzmaSDKObjCReader(fileURL: NSURL(string: archivePath)!)
+reader.passwordGetter = {() -> String? in
+	return "password to my achive"
+}
+```
 
 ##### Open archive, eg. find out type of achive, locate decoder and read archive header
+##### Objective-C
 ```objc
 // Open archive, with or without error. Error can be nil.
 NSError * error = nil;
@@ -68,8 +81,19 @@ if (![_reader open:&error])
 }
 NSLog(@"Open error: %@", _reader.lastError);
 ```
+##### Swift
+```swift
+do {
+	try reader.open()
+}
+catch {
+// process exception
+}
+```
+
 
 ##### Iterate archive items, select and store required items for future processing
+##### Objective-C
 ```objc
 // Iterate all archive items, track what items do you need & hold them in array.
 NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
@@ -80,8 +104,17 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 }];
 NSLog(@"Iteration error: %@", _reader.lastError);
 ```
+##### Swift
+```swift
+var items = [LzmaSDKObjCItem]()
+reader.iterateWithHandler({(item: LzmaSDKObjCItem, error: NSError?) -> Bool in
+			items.append(item)
+			return true
+		})
+```
 
 ##### Extract or test archive items
+##### Objective-C
 ```objc
 // Extract selected items from prev. step.
 // YES - create subfolders structure for the items.
@@ -95,6 +128,11 @@ NSLog(@"Extract error: %@", _reader.lastError);
 [_reader test:items];
 NSLog(@"test error: %@", _reader.lastError);
 ```
+##### Swift
+```swift
+// Extract selected items from prev. step.
+reader.extract(items, toPath: "/extract/path", withFullPaths: true)
+````
 
 
 ### Tune up speed, performance and disk IO operations
