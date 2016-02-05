@@ -96,7 +96,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 /**
  @brief Archive reader delegate.
  */
-@property (nonatomic, weak) id<LzmaSDKObjCReaderDelegate> delegate;
+@property (nonatomic, weak) id<LzmaSDKObjCReaderDelegate> _Nullable delegate;
 
 
 /**
