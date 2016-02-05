@@ -334,12 +334,12 @@ unsigned GetRootPrefixSize(const wchar_t *s) throw()
 
 #else // _WIN32
 
-bool IsAbsolutePath(const wchar_t *s) { return IS_SEPAR(s[0]); }
+bool IsAbsolutePath(const wchar_t *s) throw() { return IS_SEPAR(s[0]); }
 
 #ifndef USE_UNICODE_FSTRING
 unsigned GetRootPrefixSize(CFSTR s) { return IS_SEPAR(s[0]) ? 1 : 0; }
 #endif
-unsigned GetRootPrefixSize(const wchar_t *s) { return IS_SEPAR(s[0]) ? 1 : 0; }
+unsigned GetRootPrefixSize(const wchar_t *s) throw() { return IS_SEPAR(s[0]) ? 1 : 0; }
 
 #endif // _WIN32
 
