@@ -70,6 +70,8 @@
 		37F0738EB60D28E4CB2F4F1A89605396 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F075B2247184532D24D77FE6EAE7B0B2 /* ArchiveExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 		3ACB93B21E1036C84DEA04F20C2BEB1A /* 7zFolderInStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B700A57FCFA01FD7C56C04D7FDA75D /* 7zFolderInStream.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		3BCCDCE8582B32F5F72D46E3188963D9 /* LzmaSDKObjCReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 020754E555F098585C0A7FEF7CD25F87 /* LzmaSDKObjCReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D1686021C6B9DCB00BA24BD /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FA7A6DC43F827D5C39369F2DFD7153 /* StdAfx.h */; };
+		3D1686031C6B9DCB00BA24BD /* Defs.h in Headers */ = {isa = PBXBuildFile; fileRef = C0D571D37F8B56F0AA5045B4A8EC67EC /* Defs.h */; };
 		3EFB745E8BE57399939736C23A5FABA5 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D97AC8793BDB75C71E13A4365D1365EE /* 7zSpecStream.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 		3FA866A9AFC84B3F32ED46594D1CAE1D /* Pods-LzmaSDKObjC_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B08E1EEA07C804D44845982D6B32BC0 /* Pods-LzmaSDKObjC_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		402C761F11ACF2BC8BE0163C14A4D29A /* Registry.h in Headers */ = {isa = PBXBuildFile; fileRef = 67E66F75C736296FEA5BA56D5B16A14E /* Registry.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -218,7 +220,6 @@
 		C53155EB1581D3718AAD5FEF0197EDDF /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 69143B686167BDC380BEE1276F3B5138 /* StdAfx.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 		C56220AAAA569AC7F16E8CE508B56ABC /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 559F14A4B829D0678554A2F88AAF2751 /* 7zAesRegister.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 		C59432FE597AFE04C99DBDDB9014B1C1 /* Lzma86.h in Headers */ = {isa = PBXBuildFile; fileRef = 87381F93D41C5D8460CC4E9D4BD09221 /* Lzma86.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C77FE47C733CC1EC8028DCFE4AC51438 /* Defs.h in Headers */ = {isa = PBXBuildFile; fileRef = C0D571D37F8B56F0AA5045B4A8EC67EC /* Defs.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C7AFCB18FC0F7541F2D6BD2A8BD18CD2 /* CodecExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D75EBBA79DE4588FD7E7E2ACE38A5293 /* CodecExports.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 		C8BC0E639E7DB75A2C96B38D2B0EBA8E /* MyAes.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FAA9B24148EF7A0C37DBF5C7EF5744 /* MyAes.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C8C80F8A36D1267A88A5C2D9E00FDCFB /* LzmaSDKObjCCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4A3614C91ABB97FFF1DA17340D97642 /* LzmaSDKObjCCommon.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
@@ -285,7 +286,6 @@
 		FF06F1F28CC261C39FCC64413ACDB1D9 /* DynamicBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = FE6C4047A8F87C7AFD2D89673BEA233D /* DynamicBuffer.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FF1474BC32B214E588EBC1B69D752A6D /* StreamObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 39B0608F5B4D5D8B48EEF2DA8EE9FAEC /* StreamObjects.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FF34CAD41E4B6E5EBED68AB429955604 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117D12CD50D8D8A367AA1D55FD118833 /* System.cpp */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
-		FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */ = {isa = PBXBuildFile; fileRef = 34FA7A6DC43F827D5C39369F2DFD7153 /* StdAfx.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FFCB48FAC2A067696746EFA18F1FE7B2 /* Bra.c in Sources */ = {isa = PBXBuildFile; fileRef = F42D22AED666BFE84B921B2F900D26FF /* Bra.c */; settings = {COMPILER_FLAGS = "-DLZMASDKOBJC=1 -DLZMASDKOBJC_OMIT_UNUSED_CODE=1"; }; };
 /* End PBXBuildFile section */
 
@@ -1250,8 +1250,7 @@
 				00B9F43BEACA729B97A14718C640A7E8 /* CpuArch.h in Headers */,
 				9DB73B224131E421D428F45F15A4AAF2 /* CreateCoder.h in Headers */,
 				0BFF96535A039C04925A722087579B04 /* CWrappers.h in Headers */,
-				C77FE47C733CC1EC8028DCFE4AC51438 /* Defs.h in Headers */,
-				C77FE47C733CC1EC8028DCFE4AC51438 /* Defs.h in Headers */,
+				3D1686031C6B9DCB00BA24BD /* Defs.h in Headers */,
 				79624A086EC21C82E1DEA54F20CDBBDB /* Delta.h in Headers */,
 				B85BF3B46E6F9BAAA623F29BEC238E3F /* DLL.h in Headers */,
 				08016F00458C44C81A59F393A545BAFC /* DummyOutStream.h in Headers */,
@@ -1354,14 +1353,7 @@
 				972018F6CA75171809E80531FE7AA7A9 /* Sha256.h in Headers */,
 				A28F9A1C867CA87C759188F03DA417B7 /* Shell.h in Headers */,
 				6587B2F41637357E062207641EC637C9 /* Sort.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
-				FF61EAFE218C860F90239824D9925CF6 /* StdAfx.h in Headers */,
+				3D1686021C6B9DCB00BA24BD /* StdAfx.h in Headers */,
 				697F9352EEE914C1966A85AC7BDBD640 /* StdInStream.h in Headers */,
 				2F2341C8D2141363B8B6F2BB1CD8D3B4 /* StdOutStream.h in Headers */,
 				1506F82E7C864E40F7009D994932F5E4 /* StreamBinder.h in Headers */,
@@ -1458,7 +1450,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
