@@ -1,5 +1,6 @@
 [![CocoaPods](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDK-ObjC)
 [![CocoaPods](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](https://cocoapods.org/pods/LzmaSDK-ObjC)
+[![Build Status](https://travis-ci.org/OlehKulykov/LzmaSDKObjC.svg?branch=master)](https://travis-ci.org/OlehKulykov/LzmaSDKObjC)
 
 
 It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. Based on C++ [LZMA SDK] version 15.14 (1514 - latest for now) and patched for iOS & Mac OS platforms.
