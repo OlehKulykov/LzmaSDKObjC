@@ -12,6 +12,7 @@ build/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+*.xcuserdata
 *.xccheckout
 profile
 *.moved-aside
@@ -31,3 +32,8 @@ Carthage
 # `pod install` in .travis.yml
 #
 # Pods/
+
+# Dev pod specific
+tests/ios/LzmaSDK-ObjC.xcworkspace
+tests/ios/Podfile.lock
+tests/ios/Pods

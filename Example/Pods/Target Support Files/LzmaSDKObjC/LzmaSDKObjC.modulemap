@@ -1,6 +1,0 @@
-framework module LzmaSDKObjC {
-  umbrella header "LzmaSDKObjC-umbrella.h"
-
-  export *
-  module * { export * }
-}
