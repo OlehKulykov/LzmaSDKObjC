@@ -3,7 +3,10 @@
 [![Build Status](https://travis-ci.org/OlehKulykov/LzmaSDKObjC.svg?branch=master)](https://travis-ci.org/OlehKulykov/LzmaSDKObjC)
 
 
-It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations. Based on C++ [LZMA SDK] version 15.14 (1514 - latest for now) and patched for iOS & Mac OS platforms.
+It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations.   
+Based on C++ [LZMA SDK] version 15.14 (1514 - latest for now) and patched for iOS & Mac OS platforms.   
+Can be used with Swift and Objective-C.
+
 
 ### Description
 ----------------
@@ -37,6 +40,38 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 #### List and extract
 
 ##### Create and setup reader with archive path and/or archive type, optionaly delegate and optionaly password getter block, in case of encrypted archive
+##### Swift
+```swift
+import LzmaSDK_ObjC
+...
+
+// select full path to archive file with 7z or xz extension
+let archivePath = "path to archive"
+
+// 1.1 Create reader object.
+let reader = LzmaSDKObjCReader(fileURL: NSURL(fileURLWithPath: archivePath)
+// 1.2 Or create with predefined archive type if path doesn't containes suitable extension
+let reader = LzmaSDKObjCReader(fileURL: NSURL(fileURLWithPath: archivePath), andType: LzmaSDKObjCFileType7z)
+
+// Optionaly: assign delegate for tracking extract progress.
+reader.delegate = self
+
+// If achive encrypted - define password getter handler.
+// NOTES:
+// - Encrypted file needs password for extract process.
+// - Encrypted file with encrypted header needs password for list(iterate) and extract archive items.
+reader.passwordGetter = {
+	return "password to my achive"
+}
+...
+
+// Delegate extension
+extension ReaderDelegateObject: LzmaSDKObjCReaderDelegate {
+	func onLzmaSDKObjCReader(reader: LzmaSDKObjCReader, extractProgress progress: Float) {
+		print("Reader progress: \(progress) %")
+	}
+}
+```
 ##### Objective-C
 ```objc
 // select full path to archive file with 7z or xz extension
@@ -56,48 +91,48 @@ _reader.delegate = self;
 // - Encrypted file needs password for extract process.
 // - Encrypted file with encrypted header needs password for list(iterate) and extract archive items.
 _reader.passwordGetter = ^NSString*(void){
-  return @"password to my achive";
+	return @"password to my achive";
 };
 ```
-##### Swift
-```swift
-import LzmaSDK_ObjC
-...
-// replace path with your actual path to archive
-let archivePath = "path to archive"
-let reader: LzmaSDKObjCReader = LzmaSDKObjCReader(fileURL: NSURL(string: archivePath)!)
-reader.passwordGetter = {() -> String? in
-	return "password to my achive"
-}
-```
+
 
 ##### Open archive, eg. find out type of achive, locate decoder and read archive header
+##### Swift
+```swift
+// Try open archive.
+do {
+	try reader.open()
+}
+catch let error as NSError {
+	print("Can't open archive: \(error.localizedDescription) ")
+}
+```
 ##### Objective-C
 ```objc
 // Open archive, with or without error. Error can be nil.
 NSError * error = nil;
 if (![_reader open:&error])
 {
-  NSLog(@"Open error: %@", error);
+	NSLog(@"Open error: %@", error);
 }
 NSLog(@"Open error: %@", _reader.lastError);
-```
-##### Swift
-```swift
-do {
-	try reader.open()
-}
-catch {
-// process exception
-}
 ```
 
 
 ##### Iterate archive items, select and store required items for future processing
+##### Swift
+```swift
+var items = [LzmaSDKObjCItem]()
+// Iterate all archive items, track what items do you need & hold them in array.
+reader.iterateWithHandler({(item: LzmaSDKObjCItem, error: NSError?) -> Bool in
+	items.append(item) // if needs this item - store to array.
+	return true // true - continue iterate, false - stop iteration
+})
+```
 ##### Objective-C
 ```objc
-// Iterate all archive items, track what items do you need & hold them in array.
 NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
+// Iterate all archive items, track what items do you need & hold them in array.
 [_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
 	NSLog(@"\n%@", item);
 	if (item) [items addObject:item]; // if needs this item - store to array.
@@ -105,16 +140,23 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 }];
 NSLog(@"Iteration error: %@", _reader.lastError);
 ```
-##### Swift
-```swift
-var items = [LzmaSDKObjCItem]()
-reader.iterateWithHandler({(item: LzmaSDKObjCItem, error: NSError?) -> Bool in
-			items.append(item)
-			return true
-		})
-```
+
 
 ##### Extract or test archive items
+##### Swift
+```swift
+// Extract selected items from prev. step.
+// true - create subfolders structure for the items.
+// false - place item file to the root of path(in this case items with the same names will be overwrited automaticaly).
+if !reader.extract(items, toPath: "/Volumes/Data/1/", withFullPaths: true) {
+	print("Extract failed: \(reader.lastError?.localizedDescription)")
+}
+
+// Test selected items from prev. step.
+if !reader.test(items) {
+	print("Test failed: \(reader.lastError?.localizedDescription)")
+}
+````
 ##### Objective-C
 ```objc
 // Extract selected items from prev. step.
@@ -129,11 +171,6 @@ NSLog(@"Extract error: %@", _reader.lastError);
 [_reader test:items];
 NSLog(@"test error: %@", _reader.lastError);
 ```
-##### Swift
-```swift
-// Extract selected items from prev. step.
-reader.extract(items, toPath: "/extract/path", withFullPaths: true)
-````
 
 
 ### Tune up speed, performance and disk IO operations
