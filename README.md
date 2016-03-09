@@ -122,7 +122,7 @@ NSLog(@"Open error: %@", _reader.lastError);
 ##### Iterate archive items, select and store required items for future processing
 ##### Swift
 ```swift
-var items = [LzmaSDKObjCItem]()
+var items = [LzmaSDKObjCItem]()  // Array with selected items.
 // Iterate all archive items, track what items do you need & hold them in array.
 reader.iterateWithHandler({(item: LzmaSDKObjCItem, error: NSError?) -> Bool in
 	items.append(item) // if needs this item - store to array.
