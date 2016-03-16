@@ -139,7 +139,7 @@ namespace LzmaSDKObjC
 
 		fullPath = [fullPath stringByAppendingPathComponent:fileName];
 
-		PROPVARIANT isDirProp;
+		PROPVARIANT isDirProp = {0};
 		HRESULT res = _archive->GetProperty(index, kpidIsDir, &isDirProp);
 		if (res != S_OK)
 		{
