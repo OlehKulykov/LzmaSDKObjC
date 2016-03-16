@@ -27,6 +27,13 @@
 
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
+ *
+ *   Changes on version 1.0.7 (current):
+ *   -  Fix Undefined value access.
+ *
+ *   Changes on version 1.0.4:
+ *   - Add nullability delegate flag to Objective-C reader.
+ *
  *   Changes on version 1.0.3 (current):
  *   - Ignore debug log messages via LZMASDKOBJC_NO_DEBUG_LOG.
  *
@@ -90,7 +97,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 1
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 2
+#define LZMASDKOBJC_VERSION_PATCH 7
 
 
 #import "LzmaSDKObjCTypes.h"
