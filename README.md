@@ -36,7 +36,7 @@ pod 'LzmaSDK-ObjC', :inhibit_warnings => true
 ```
 
 
-### Example Objective-C and Swift
+### Example Swift and Objective-C
 -----------
 #### List and extract
 
