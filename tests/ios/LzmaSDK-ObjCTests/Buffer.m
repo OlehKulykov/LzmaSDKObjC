@@ -30,18 +30,18 @@
 	for (int i = 0; i < 10; i++) srcString = [srcString stringByAppendingString:@"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."];
 	XCTAssertNotNil(srcString);
 
-	NSData * src1 = [NSData dataWithBytes:[srcString UTF8String] length:[srcString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
-	XCTAssertNotNil(src1);
+	NSData * sourceData = [NSData dataWithBytes:[srcString UTF8String] length:[srcString lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+	XCTAssertNotNil(sourceData);
 
-	NSData * dst1 = LzmaSDKObjCBufferCompressLZMA2(src1, 1);
-	XCTAssertNotNil(dst1);
+	NSData * compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData, 1);
+	XCTAssertNotNil(compressedData);
 
-	NSData * dst2 = LzmaSDKObjCBufferDecompressLZMA2(dst1);
-	XCTAssertNotNil(dst2);
+	NSData * decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData);
+	XCTAssertNotNil(decompressedData);
 
-	XCTAssertTrue([src1 isEqualToData:dst2]);
+	XCTAssertTrue([sourceData isEqualToData:decompressedData]);
 
-	NSString * dstString1 = [[NSString alloc] initWithBytes:[dst2 bytes] length:[dst2 length] encoding:NSUTF8StringEncoding];
+	NSString * dstString1 = [[NSString alloc] initWithBytes:[decompressedData bytes] length:[decompressedData length] encoding:NSUTF8StringEncoding];
 	XCTAssertNotNil(dstString1);
 
 	XCTAssertTrue([srcString isEqualToString:dstString1]);
