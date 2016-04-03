@@ -259,6 +259,7 @@
 		3D9BD6A31C8E4BAC00081959 /* TestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69D1C8E4BAC00081959 /* TestDummy.swift */; };
 		3D9BD6A41C8E4BAC00081959 /* TestDummyObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */; };
 		3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */; };
+		3DFE765C1CB17BDD00695F1C /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */; };
 		4ACCD1ABF9C108FF3C090D21 /* Pods_LzmaSDK_ObjCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE6FCC8F591F4D0EB65473F /* Pods_LzmaSDK_ObjCTests.framework */; };
 		97A526E7C09CD55B357792BD /* Pods_LzmaSDK_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE797D67D1DFDA327CB9E708 /* Pods_LzmaSDK_ObjC.framework */; };
 /* End PBXBuildFile section */
@@ -1464,6 +1465,7 @@
 				3D9BD6011C8E4AAB00081959 /* 7zEncode.cpp in Sources */,
 				3D9BD5EB1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
 				3D9BD5E11C8E4AAB00081959 /* LzFind.c in Sources */,
+				3DFE765C1CB17BDD00695F1C /* LzmaSDKObjCBufferProcessor.mm in Sources */,
 				3D9BD5C71C8E4AAB00081959 /* LzmaSDKObjCOutFile.cpp in Sources */,
 				3D9BD6A01C8E4BAC00081959 /* Read.swift in Sources */,
 				3D9BD60D1C8E4AAB00081959 /* 7zIn.cpp in Sources */,
