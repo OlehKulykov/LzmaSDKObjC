@@ -28,7 +28,7 @@
  @warning First byte of the return data is LZMA2 properties.
  @warning Input buffer should be less or equal to 4Gb.
  @param dataForCompress Non-empty buffer to compress.
- @param compressionRatio Compression ration in range [0.0f; 1.0f]
+ @param compressionRatio Compression ratio in range [0.0f; 1.0f]
  @return Compressed data or nil on error.
  */
 LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio);
