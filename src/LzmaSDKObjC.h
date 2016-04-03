@@ -28,7 +28,7 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 1.1.0 (current):
+ *   Changes on version 1.1.2 (current):
  *   - Added functionality for compress/decompress single NSData buffer object with LZMA2.
  *
  *   Changes on version 1.0.7:
@@ -100,7 +100,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 1
 #define LZMASDKOBJC_VERSION_MINOR 1
-#define LZMASDKOBJC_VERSION_PATCH 1
+#define LZMASDKOBJC_VERSION_PATCH 2
 
 
 #import "LzmaSDKObjCTypes.h"
