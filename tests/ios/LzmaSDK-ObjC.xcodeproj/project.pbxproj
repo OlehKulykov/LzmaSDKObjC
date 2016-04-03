@@ -10,7 +10,7 @@
 		3D090F461CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */; };
 		3D090F491CB1493000D296BA /* InBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F481CB1493000D296BA /* InBuffer.cpp */; };
 		3D090F4A1CB1493000D296BA /* InBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F481CB1493000D296BA /* InBuffer.cpp */; };
-		3D090F4D1CB1539500D296BA /* Buffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4C1CB1539500D296BA /* Buffer.m */; };
+		3D090F4D1CB1539500D296BA /* BufferObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4C1CB1539500D296BA /* BufferObjc.m */; };
 		3D090F4F1CB16BB900D296BA /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4E1CB16BB900D296BA /* Buffer.swift */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
 		3D9BD4531C8E4A3D00081959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4521C8E4A3D00081959 /* ViewController.swift */; };
@@ -277,7 +277,7 @@
 		3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCBufferProcessor.mm; path = ../../src/LzmaSDKObjCBufferProcessor.mm; sourceTree = "<group>"; };
 		3D090F471CB1448E00D296BA /* LzmaSDKObjCBufferProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCBufferProcessor.h; path = ../../src/LzmaSDKObjCBufferProcessor.h; sourceTree = "<group>"; };
 		3D090F481CB1493000D296BA /* InBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InBuffer.cpp; path = ../../lzma/CPP/7zip/Common/InBuffer.cpp; sourceTree = "<group>"; };
-		3D090F4C1CB1539500D296BA /* Buffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Buffer.m; sourceTree = "<group>"; };
+		3D090F4C1CB1539500D296BA /* BufferObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferObjc.m; sourceTree = "<group>"; };
 		3D090F4E1CB16BB900D296BA /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
 		3D9BD44D1C8E4A3D00081959 /* LzmaSDK-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LzmaSDK-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -616,8 +616,8 @@
 		3D090F4B1CB1537A00D296BA /* Buffer */ = {
 			isa = PBXGroup;
 			children = (
-				3D090F4C1CB1539500D296BA /* Buffer.m */,
 				3D090F4E1CB16BB900D296BA /* Buffer.swift */,
+				3D090F4C1CB1539500D296BA /* BufferObjc.m */,
 			);
 			name = Buffer;
 			sourceTree = "<group>";
@@ -1538,7 +1538,7 @@
 				3D9BD6811C8E4AAB00081959 /* FileFind.cpp in Sources */,
 				3D9BD67D1C8E4AAB00081959 /* DLL.cpp in Sources */,
 				3D9BD5FB1C8E4AAB00081959 /* XzEnc.c in Sources */,
-				3D090F4D1CB1539500D296BA /* Buffer.m in Sources */,
+				3D090F4D1CB1539500D296BA /* BufferObjc.m in Sources */,
 				3D9BD5D91C8E4AAB00081959 /* Bra86.c in Sources */,
 				3D9BD6671C8E4AAB00081959 /* RandGen.cpp in Sources */,
 				3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,

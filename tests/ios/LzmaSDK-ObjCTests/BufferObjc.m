@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "TestBaseObjc.h"
 
-@interface Buffer : TestBaseObjc
+@interface BufferObjc : TestBaseObjc
 
 @end
 
-@implementation Buffer
+@implementation BufferObjc
 
 - (void)setUp {
     [super setUp];
