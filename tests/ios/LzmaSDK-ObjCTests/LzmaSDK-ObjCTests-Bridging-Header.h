@@ -5,3 +5,4 @@
 
 #import "LzmaSDKObjCReader.h"
 #import "LzmaSDKObjCItem.h"
+#import "LzmaSDKObjCBufferProcessor.h"

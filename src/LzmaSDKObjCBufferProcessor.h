@@ -21,14 +21,24 @@
  */
 
 
-#import <XCTest/XCTest.h>
-#import "LzmaSDKObjCItem.h"
-#import "LzmaSDKObjCBufferProcessor.h"
+#include "LzmaSDKObjCTypes.h"
 
-@interface TestBaseObjc : XCTestCase
+/**
+ @brief Compress non-empty buffer object with LZMA2.
+ @warning First byte of the return data is LZMA2 properties.
+ @warning Input buffer should be less or equal to 4Gb.
+ @param dataForCompress Non-empty buffer to compress.
+ @param compressionRatio Compression ration in range [0.0f; 1.0f]
+ @return Compressed data or nil on error.
+ */
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio);
 
-- (NSString *) pathForTestFile:(NSString *) testFilePath;
 
-- (NSString *) tmpWritePath;
-
-@end
+/**
+ @brief Decompress non-empty buffer object compressed with LZMA2 and have first byte as properties.
+ @warning First byte of input data should be is LZMA2 properties.
+ @warning Input buffer should be less or equal to 4Gb.
+ @param dataForDecompress Non-empty compressed buffer.
+ @return Decompressed data or nil on error.
+ */
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress);
