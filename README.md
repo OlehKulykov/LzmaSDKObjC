@@ -148,12 +148,12 @@ NSLog(@"Iteration error: %@", _reader.lastError);
 // Extract selected items from prev. step.
 // true - create subfolders structure for the items.
 // false - place item file to the root of path(in this case items with the same names will be overwrited automaticaly).
-if !reader.extract(items, toPath: "/Volumes/Data/1/", withFullPaths: true) {
+if reader.extract(items, toPath: "/Volumes/Data/1/", withFullPaths: true) {
 	print("Extract failed: \(reader.lastError?.localizedDescription)")
 }
 
 // Test selected items from prev. step.
-if !reader.test(items) {
+if reader.test(items) {
 	print("Test failed: \(reader.lastError?.localizedDescription)")
 }
 ````
@@ -177,9 +177,9 @@ NSLog(@"test error: %@", _reader.lastError);
 ##### Swift
 ```swift
 // Compress data with compression maximum compression ratio.
-let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData!, 1)
+let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData, 1)
 // Decompress previvously compressed data.
-let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData!)
+let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData)
 ```
 ##### Objective-C
 ```objc
