@@ -173,6 +173,23 @@ NSLog(@"test error: %@", _reader.lastError);
 ```
 
 
+##### Compress/decompress single data buffer
+##### Swift
+```swift
+// Compress data with compression maximum compression ratio.
+let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData!, 1)
+// Decompress previvously compressed data.
+let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData!)
+```
+##### Objective-C
+```objc
+// Compress data with compression maximum compression ratio.
+NSData * compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData, 1);
+// Decompress previvously compressed data.
+NSData * decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData);
+```
+
+
 ### Tune up speed, performance and disk IO operations
 -----------------------------------------------------
 Original C++ part of the [LZMA SDK] was patched to have a possibility to tune up default(*hardcoded*) settings.
