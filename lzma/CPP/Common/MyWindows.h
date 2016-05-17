@@ -58,6 +58,8 @@ typedef UINT32 DWORD;
 
 typedef Int64 LONGLONG;
 typedef UInt64 ULONGLONG;
+typedef UInt64 UINT64;
+typedef Int64 INT64;
 
 typedef struct _LARGE_INTEGER { LONGLONG QuadPart; } LARGE_INTEGER;
 typedef struct _ULARGE_INTEGER { ULONGLONG QuadPart; } ULARGE_INTEGER;
@@ -104,18 +106,18 @@ typedef struct _BY_HANDLE_FILE_INFORMATION {
 	DWORD    nFileIndexLow;
 } BY_HANDLE_FILE_INFORMATION, *PBY_HANDLE_FILE_INFORMATION, *LPBY_HANDLE_FILE_INFORMATION;
 
-typedef struct _OVERLAPPED {
-	ULONG_PTR Internal;
-	ULONG_PTR InternalHigh;
-	union {
-		struct {
-			DWORD Offset;
-			DWORD OffsetHigh;
-		};
-		PVOID  Pointer;
-	};
-	HANDLE    hEvent;
-} OVERLAPPED, *LPOVERLAPPED;
+//typedef struct _OVERLAPPED {
+//	ULONG_PTR Internal;
+//	ULONG_PTR InternalHigh;
+//	union {
+//		struct {
+//			DWORD Offset;
+//			DWORD OffsetHigh;
+//		};
+//		PVOID  Pointer;
+//	};
+//	HANDLE    hEvent;
+//} OVERLAPPED, *LPOVERLAPPED;
 typedef enum _MEDIA_TYPE {
 	Unknown         = 0x00,
 	F5_1Pt2_512     = 0x01,

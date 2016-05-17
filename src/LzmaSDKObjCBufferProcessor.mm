@@ -70,7 +70,7 @@ NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompr
 {
 	if (!dataForCompress) return nil;
 	const unsigned char * data = (const unsigned char *)[dataForCompress bytes];
-	const unsigned int dataSize = [dataForCompress length];
+	const unsigned int dataSize = (unsigned int)[dataForCompress length];
 	if (!data || dataSize <= LZMA_PROPS_SIZE) return nil;
 
 	ISzAlloc localAlloc = { LzmaSDKObjCBufferProcessorSzAlloc, LzmaSDKObjCBufferProcessorSzFree };
@@ -117,7 +117,7 @@ NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDec
 {
 	if (!dataForDecompress) return nil;
 	const unsigned char * data = (const unsigned char *)[dataForDecompress bytes];
-	const unsigned int dataSize = [dataForDecompress length];
+	const unsigned int dataSize = (unsigned int)[dataForDecompress length];
 	if (!data || dataSize <= sizeof(Byte)) return nil;
 
 	CLzma2Dec dec;

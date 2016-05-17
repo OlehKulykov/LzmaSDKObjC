@@ -12,9 +12,7 @@
 #define PRF(x)
 #endif
 
-#ifdef _WIN32
 #include <windows.h>
-#endif
 #include <string.h>
 
 #include "Bcj2.h"

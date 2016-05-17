@@ -57,15 +57,6 @@ typedef int WRes;
 #define RINOK(x) { int __result__ = (x); if (__result__ != 0) return __result__; }
 #endif
 
-#if defined(__APPLE__)
-typedef uint8_t Byte;
-typedef int16_t Int16;
-typedef uint16_t UInt16;
-typedef int32_t Int32;
-#ifndef __MACTYPES__
-typedef uint32_t UInt32;
-#endif
-#else
 typedef unsigned char Byte;
 typedef short Int16;
 typedef unsigned short UInt16;
@@ -76,7 +67,6 @@ typedef unsigned long UInt32;
 #else
 typedef int Int32;
 typedef unsigned int UInt32;
-#endif
 #endif
 
 #ifdef _SZ_NO_INT_64

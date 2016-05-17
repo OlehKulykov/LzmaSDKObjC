@@ -55,7 +55,7 @@ class Read: XCTestCase {
 				fatalError(error.localizedDescription)
 			}
 
-			var archiveItems = [LzmaSDKObjCItem]();
+			var archiveItems = [LzmaSDKObjCItem]()
 			var result = reader.iterateWithHandler({ (item: LzmaSDKObjCItem, error: NSError?) -> Bool in
 				archiveItems.append(item)
 				return true
@@ -77,12 +77,5 @@ class Read: XCTestCase {
 			}
 		}
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+
 }

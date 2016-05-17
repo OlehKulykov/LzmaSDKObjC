@@ -11,15 +11,11 @@
 #include "../../Common/CreateCoder.h"
 
 #ifdef _7ZIP_ST
-  #ifndef USE_MIXER_ST
-  #define USE_MIXER_ST 1
-  #endif
+  #define USE_MIXER_ST
 #else
   #define USE_MIXER_MT
   #ifndef _SFX
-    #ifndef USE_MIXER_ST
-    #define USE_MIXER_ST 1
-    #endif
+    #define USE_MIXER_ST
   #endif
 #endif
 

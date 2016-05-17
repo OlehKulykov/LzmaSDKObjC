@@ -171,7 +171,7 @@ static Bool WINAPI RemoveDirectory(LPCSTR path) {
 DWORD WINAPI GetFullPathName( LPCSTR name, DWORD len, LPSTR buffer, LPSTR *lastpart ) {
 	if (name == 0) return 0;
 
-	DWORD name_len = strlen(name);
+	DWORD name_len = (DWORD)strlen(name);
 
 	if (name[0] == '/') {
 		DWORD ret = name_len+2;

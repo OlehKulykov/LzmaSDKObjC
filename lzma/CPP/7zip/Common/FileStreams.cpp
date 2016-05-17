@@ -30,10 +30,7 @@ static inline HRESULT ConvertBoolToHRESULT(bool result)
 }
 
 
-#ifndef __APPLE__
-static const UInt32 kClusterSize = 1 << 18;
-#endif
-
+//static const UInt32 kClusterSize = 1 << 18;
 CInFileStream::CInFileStream():
   #ifdef SUPPORT_DEVICE_FILE
   VirtPos(0),

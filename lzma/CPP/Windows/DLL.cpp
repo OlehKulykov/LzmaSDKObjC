@@ -106,7 +106,7 @@ namespace NWindows {
 			}
 			return FTEXT(".") FSTRING_PATH_SEPARATOR;
 		}
-		
+
 #endif
 #endif
 	}}

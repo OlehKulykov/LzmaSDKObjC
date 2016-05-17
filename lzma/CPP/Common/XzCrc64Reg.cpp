@@ -8,6 +8,7 @@
 #include "../Common/MyCom.h"
 
 #include "../7zip/Common/RegisterCodec.h"
+#include "Synchronization.h"
 
 class CXzCrc64Hasher:
   public IHasher,
@@ -19,7 +20,7 @@ class CXzCrc64Hasher:
 public:
   CXzCrc64Hasher(): _crc(CRC64_INIT_VAL) {}
 
-  MY_UNKNOWN_IMP
+  MY_UNKNOWN_IMP1(IHasher)
   INTERFACE_IHasher(;)
 };
 

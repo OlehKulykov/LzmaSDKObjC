@@ -15,46 +15,46 @@ bool ConvertFileTimeToString(const FILETIME &ft, char *s, bool includeTime, bool
 	assert(0);
 	return true;
 #else
-	SYSTEMTIME st;
-	if (!BOOLToBool(FileTimeToSystemTime(&ft, &st)))
-	{
-		*s = 0;
-		return false;
-	}
-	unsigned val = st.wYear;
-	if (val >= 10000)
-	{
-		*s++ = (char)('0' + val / 10000);
-		val %= 10000;
-	}
-	{
-		s[3] = (char)('0' + val % 10); val /= 10;
-		s[2] = (char)('0' + val % 10); val /= 10;
-		s[1] = (char)('0' + val % 10);
-		s[0] = (char)('0' + val / 10);
-		s += 4;
-	}
-	UINT_TO_STR_2('-', st.wMonth);
-	UINT_TO_STR_2('-', st.wDay);
-	if (includeTime)
-	{
-		UINT_TO_STR_2(' ', st.wHour);
-		UINT_TO_STR_2(':', st.wMinute);
-		if (includeSeconds)
-		{
-			UINT_TO_STR_2(':', st.wSecond);
-			/*
-			 *s++ = '.';
-			 unsigned val = st.wMilliseconds;
-			 s[2] = (char)('0' + val % 10); val /= 10;
-			 s[1] = (char)('0' + val % 10);
-			 s[0] = (char)('0' + val / 10);
-			 s += 3;
-			 */
-		}
-	}
-	*s = 0;
-	return true;
+  SYSTEMTIME st;
+  if (!BOOLToBool(FileTimeToSystemTime(&ft, &st)))
+  {
+    *s = 0;
+    return false;
+  }
+  unsigned val = st.wYear;
+  if (val >= 10000)
+  {
+    *s++ = (char)('0' + val / 10000);
+    val %= 10000;
+  }
+  {
+    s[3] = (char)('0' + val % 10); val /= 10;
+    s[2] = (char)('0' + val % 10); val /= 10;
+    s[1] = (char)('0' + val % 10);
+    s[0] = (char)('0' + val / 10);
+    s += 4;
+  }
+  UINT_TO_STR_2('-', st.wMonth);
+  UINT_TO_STR_2('-', st.wDay);
+  if (includeTime)
+  {
+    UINT_TO_STR_2(' ', st.wHour);
+    UINT_TO_STR_2(':', st.wMinute);
+    if (includeSeconds)
+    {
+      UINT_TO_STR_2(':', st.wSecond);
+      /*
+      *s++ = '.';
+      unsigned val = st.wMilliseconds;
+      s[2] = (char)('0' + val % 10); val /= 10;
+      s[1] = (char)('0' + val % 10);
+      s[0] = (char)('0' + val / 10);
+      s += 3;
+      */
+    }
+  }
+  *s = 0;
+  return true;
 #endif
 }
 

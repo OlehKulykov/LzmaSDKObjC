@@ -522,7 +522,6 @@ struct CStatProp
   VARTYPE vt;
 };
 #endif
-
 namespace NWindows {
 namespace NCOM {
 // PropVariant.cpp
