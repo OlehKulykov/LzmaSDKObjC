@@ -36,7 +36,7 @@ extension XCTestCase {
 		return fullPath
 	}
 
-	func tmpWritePath() ->String {
+	func tmpWritePath() -> String {
 		guard let
 		path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
 			else {

@@ -35,7 +35,7 @@ class TestDummy: XCTestCase {
     func testPerformanceCreateItemSwift() {
         // This is an example of a performance test case.
         self.measureBlock {
-			for index in 0...99 {
+			for _ in 0...99 {
 				let item = LzmaSDKObjCItem()
 				XCTAssertNotNil(item)
 			}

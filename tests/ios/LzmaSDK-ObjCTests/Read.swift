@@ -35,11 +35,6 @@ class Read: XCTestCase {
 		let writePath = self.tmpWritePath()
 		XCTAssertNotNil(writePath)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
 
     func testExtract() {
 		for file in ["lzma.7z", "lzma_aes256.7z", "lzma_aes256_encfn.7z"] {
