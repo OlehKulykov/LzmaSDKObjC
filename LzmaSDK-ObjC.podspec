@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "1.1.2"
+  s.version          = "1.1.3"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
-Based on C++ LZMA SDK version 15.14 (1514 - latest for now) and patched for iOS & MacOS platforms.
+Based on C++ LZMA SDK version 16.00 (1600 - latest for now) and patched for iOS & MacOS platforms.
 The main advantages is:
 - List, extract 7z files (Lzma & Lzma2 compression method).
 - List, extract encrypted (password protected) 7z files (Lzma & Lzma2 compression method).
