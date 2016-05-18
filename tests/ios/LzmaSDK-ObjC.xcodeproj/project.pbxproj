@@ -275,6 +275,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D07DA861CEBE610008DDE54 /* 7zTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = 7zTypes.h; path = ../../lzma/C/7zTypes.h; sourceTree = "<group>"; };
 		3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCBufferProcessor.mm; path = ../../src/LzmaSDKObjCBufferProcessor.mm; sourceTree = "<group>"; };
 		3D090F471CB1448E00D296BA /* LzmaSDKObjCBufferProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCBufferProcessor.h; path = ../../src/LzmaSDKObjCBufferProcessor.h; sourceTree = "<group>"; };
 		3D090F481CB1493000D296BA /* InBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InBuffer.cpp; path = ../../lzma/CPP/7zip/Common/InBuffer.cpp; sourceTree = "<group>"; };
@@ -729,6 +730,7 @@
 		3D9BD4E81C8E4AAB00081959 /* C */ = {
 			isa = PBXGroup;
 			children = (
+				3D07DA861CEBE610008DDE54 /* 7zTypes.h */,
 				3D9BD4AE1C8E4AAB00081959 /* 7z.h */,
 				3D9BD4AF1C8E4AAB00081959 /* 7zAlloc.h */,
 				3D9BD4B01C8E4AAB00081959 /* 7zBuf.h */,
