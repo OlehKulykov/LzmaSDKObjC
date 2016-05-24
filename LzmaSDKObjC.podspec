@@ -152,6 +152,6 @@ The main advantages is:
 
   s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
   s.libraries    = 'stdc++'
-  # s.frameworks = 'UIKit', 'MapKit'
+  # s.frameworks = 'UIKit'
   s.dependency 'Inlineobjc'
 end
