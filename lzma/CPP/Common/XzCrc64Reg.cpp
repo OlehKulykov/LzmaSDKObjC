@@ -8,7 +8,6 @@
 #include "../Common/MyCom.h"
 
 #include "../7zip/Common/RegisterCodec.h"
-#include "Synchronization.h"
 
 class CXzCrc64Hasher:
   public IHasher,
