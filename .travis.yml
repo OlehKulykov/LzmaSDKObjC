@@ -1,13 +1,8 @@
-#language: objective-c
 
 xcode_workspace: tests/ios/LzmaSDK-ObjC.xcworkspace
 xcode_scheme: LzmaSDK-ObjC
 
 podfile: tests/ios/Podfile
-
-# current
-#osx_image: xcode7.2
-#xcode_sdk: iphonesimulator9.2
 
 matrix:
   include:
