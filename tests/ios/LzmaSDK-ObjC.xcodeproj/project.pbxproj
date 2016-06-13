@@ -1165,6 +1165,7 @@
 		3D9BD4451C8E4A3D00081959 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LzmaSDKObjC;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = olehkulykov;

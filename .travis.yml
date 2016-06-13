@@ -1,6 +1,6 @@
 
 xcode_workspace: tests/ios/LzmaSDK-ObjC.xcworkspace
-xcode_scheme: LzmaSDK-ObjC
+xcode_scheme: LzmaSDK-ObjCTests
 
 podfile: tests/ios/Podfile
 

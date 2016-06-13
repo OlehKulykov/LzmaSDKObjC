@@ -22,6 +22,8 @@ The main advantages is:
 - Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).
 - Track smoothed progress, which becomes possible with prev.
 - Support reading archive files with size more than 4GB and extracting files with size more than 4GB eg. HugeFiles=on
+- Unicode support.
+- Extra compression/decompression functionality of single NSData object with Lzma2.
                        DESC
 
   s.homepage         = "https://github.com/OlehKulykov/LzmaSDKObjC"
