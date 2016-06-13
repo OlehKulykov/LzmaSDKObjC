@@ -34,8 +34,12 @@ The main advantages is:
 use_frameworks!
 platform :ios, '8.0'
 
-pod 'LzmaSDK-ObjC', :inhibit_warnings => true
+target '<REPLACE_WITH_YOUR_TARGET>' do
+    pod 'LzmaSDK-ObjC', :inhibit_warnings => true
+end
 ```
+
+> Use frameworks (dynamic linking) to include Lzma codecs code in your application.
 
 
 ### Example Swift and Objective-C
