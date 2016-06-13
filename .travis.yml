@@ -1,7 +1,4 @@
 
-xcode_workspace: tests/ios/LzmaSDK-ObjC.xcworkspace
-xcode_scheme: LzmaSDK-ObjCTests
-
 podfile: tests/ios/Podfile
 
 matrix:
@@ -18,5 +15,12 @@ matrix:
 
 before_install:
 #  - git submodule update --init --recursive
-  - brew update || brew update
-  - brew outdated xctool || brew upgrade xctool
+#  - brew update || brew update
+#  - brew outdated xctool || brew upgrade xctool
+  - gem install xcpretty --no-rdoc --no-ri --no-document
+
+script:
+- open -b com.apple.iphonesimulator
+- set -o pipefail && xcodebuild test -project tests/ios/LzmaSDK-ObjC.xcworkspace -scheme LzmaSDK-ObjCTests -destination 'platform=iOS Simulator,name=iPhone 4s,OS=8.4' | xcpretty -c
+- set -o pipefail && xcodebuild test -project tests/ios/LzmaSDK-ObjC.xcworkspace -scheme LzmaSDK-ObjCTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.0' | xcpretty -c
+- set -o pipefail && xcodebuild test -project tests/ios/LzmaSDK-ObjC.xcworkspace -scheme LzmaSDK-ObjCTests -destination 'platform=iOS Simulator,name=iPhone 6 Plus,OS=9.3' | xcpretty -c
