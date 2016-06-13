@@ -269,9 +269,10 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 								   code:(NSInteger)error->code
 							   userInfo:@{ NSLocalizedDescriptionKey : [NSString stringWithUTF8String:error->description.Ptr() ? error->description.Ptr() : ""],
-										   @"file" : [NSString stringWithUTF8String:error->file.Ptr() ? error->file.Ptr() : ""],
+										   NSFilePathErrorKey : [NSString stringWithUTF8String:error->file.Ptr() ? error->file.Ptr() : ""],
 										   @"line" : [NSNumber numberWithInt:error->line],
-										   @"code" : [NSNumber numberWithLongLong:error->code] }];
+										   @"code" : [NSNumber numberWithLongLong:error->code],
+										   NSLocalizedFailureReasonErrorKey : [NSString stringWithUTF8String:error->possibleReason.Ptr() ? error->possibleReason.Ptr() : ""]}];
 	}
 	return nil;
 }

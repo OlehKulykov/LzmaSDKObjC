@@ -33,6 +33,7 @@ namespace LzmaSDKObjC
 	{
 	public:
 		AString description;
+		AString possibleReason;
 		AString file;
 		int64_t code;
 		int line;
@@ -49,6 +50,7 @@ namespace LzmaSDKObjC
 	public:
 		void setLastError(LzmaSDKObjC::LastErrorHolder * holder);
 		void setLastError(int64_t code, int line, const char * file, const char * format, ...);
+		void setLastErrorReason(const char * format, ...);
 		LzmaSDKObjC::Error * lastError() const { return _lastError; }
 		void clearLastError();
 		LastErrorHolder();

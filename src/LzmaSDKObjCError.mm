@@ -55,6 +55,7 @@ namespace LzmaSDKObjC
 				_lastError->line = holder->_lastError->line;
 				_lastError->code = holder->_lastError->code;
 				_lastError->description = holder->_lastError->description;
+				_lastError->possibleReason = holder->_lastError->possibleReason;
 			}
 		}
 	}
@@ -79,6 +80,20 @@ namespace LzmaSDKObjC
 
 				LZMASDK_DEBUG_LOG("ERROR: code = %lli, file = \'%s\', line = %i, description = %s", code, file, line, buff)
 			}
+		}
+	}
+
+	void LastErrorHolder::setLastErrorReason(const char * format, ...)
+	{
+		if (_lastError && format)
+		{
+			va_list args;
+			va_start(args, format);
+			char buff[1024];
+			vsprintf(buff, format, args);
+			va_end(args);
+			_lastError->possibleReason = buff;
+			LZMASDK_DEBUG_LOG("ERROR REASON: %s", buff)
 		}
 	}
 

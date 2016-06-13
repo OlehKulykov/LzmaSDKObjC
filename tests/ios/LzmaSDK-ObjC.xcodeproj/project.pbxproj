@@ -12,6 +12,8 @@
 		3D090F4A1CB1493000D296BA /* InBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F481CB1493000D296BA /* InBuffer.cpp */; };
 		3D090F4D1CB1539500D296BA /* BufferObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4C1CB1539500D296BA /* BufferObjc.m */; };
 		3D090F4F1CB16BB900D296BA /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4E1CB16BB900D296BA /* Buffer.swift */; };
+		3D0DE3CE1CF6414A0091B7B2 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F31C8E4AAB00081959 /* 7zEncode.cpp */; };
+		3D0DE3CF1CF6414B0091B7B2 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F31C8E4AAB00081959 /* 7zEncode.cpp */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
 		3D9BD4531C8E4A3D00081959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4521C8E4A3D00081959 /* ViewController.swift */; };
 		3D9BD4561C8E4A3D00081959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BD4541C8E4A3D00081959 /* Main.storyboard */; };
@@ -115,8 +117,6 @@
 		3D9BD5FD1C8E4AAB00081959 /* XzIn.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4E71C8E4AAB00081959 /* XzIn.c */; };
 		3D9BD5FE1C8E4AAB00081959 /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F11C8E4AAB00081959 /* 7zDecode.cpp */; };
 		3D9BD5FF1C8E4AAB00081959 /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F11C8E4AAB00081959 /* 7zDecode.cpp */; };
-		3D9BD6001C8E4AAB00081959 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F31C8E4AAB00081959 /* 7zEncode.cpp */; };
-		3D9BD6011C8E4AAB00081959 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F31C8E4AAB00081959 /* 7zEncode.cpp */; };
 		3D9BD6021C8E4AAB00081959 /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F51C8E4AAB00081959 /* 7zExtract.cpp */; };
 		3D9BD6031C8E4AAB00081959 /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F51C8E4AAB00081959 /* 7zExtract.cpp */; };
 		3D9BD6041C8E4AAB00081959 /* 7zFolderInStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F61C8E4AAB00081959 /* 7zFolderInStream.cpp */; };
@@ -1382,7 +1382,6 @@
 				3D9BD5BA1C8E4AAB00081959 /* LzmaSDKObjCError.mm in Sources */,
 				3D9BD6261C8E4AAB00081959 /* DllExports2.cpp in Sources */,
 				3D9BD6141C8E4AAB00081959 /* 7zSpecStream.cpp in Sources */,
-				3D9BD6001C8E4AAB00081959 /* 7zEncode.cpp in Sources */,
 				3D9BD6721C8E4AAB00081959 /* Sha256Reg.cpp in Sources */,
 				3D9BD62E1C8E4AAB00081959 /* CWrappers.cpp in Sources */,
 				3D9BD6601C8E4AAB00081959 /* 7zAesRegister.cpp in Sources */,
@@ -1402,6 +1401,7 @@
 				3D9BD6501C8E4AAB00081959 /* CopyCoder.cpp in Sources */,
 				3D9BD63E1C8E4AAB00081959 /* ProgressUtils.cpp in Sources */,
 				3D9BD62A1C8E4AAB00081959 /* XzHandler.cpp in Sources */,
+				3D0DE3CE1CF6414A0091B7B2 /* 7zEncode.cpp in Sources */,
 				3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */,
 				3D9BD6661C8E4AAB00081959 /* RandGen.cpp in Sources */,
 				3D9BD5FE1C8E4AAB00081959 /* 7zDecode.cpp in Sources */,
@@ -1464,7 +1464,6 @@
 				3D9BD5B91C8E4AAB00081959 /* LzmaSDKObjCCommon.cpp in Sources */,
 				3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */,
 				3D9BD63B1C8E4AAB00081959 /* MethodProps.cpp in Sources */,
-				3D9BD6011C8E4AAB00081959 /* 7zEncode.cpp in Sources */,
 				3D9BD5EB1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
 				3D9BD5E11C8E4AAB00081959 /* LzFind.c in Sources */,
 				3DFE765C1CB17BDD00695F1C /* LzmaSDKObjCBufferProcessor.mm in Sources */,
@@ -1545,6 +1544,7 @@
 				3D090F4D1CB1539500D296BA /* BufferObjc.m in Sources */,
 				3D9BD5D91C8E4AAB00081959 /* Bra86.c in Sources */,
 				3D9BD6671C8E4AAB00081959 /* RandGen.cpp in Sources */,
+				3D0DE3CF1CF6414B0091B7B2 /* 7zEncode.cpp in Sources */,
 				3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
 				3D9BD6531C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
 				3D9BD5C51C8E4AAB00081959 /* LzmaSDKObjCOpenCallback.cpp in Sources */,

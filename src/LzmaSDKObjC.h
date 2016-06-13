@@ -28,7 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 1.1.4 (current):
+ *   Changes on version 1.1.5 (current):
+ *   - Added error possible failure reason description. 
+ *     Use `NSLocalizedFailureReasonErrorKey` to get possible failure string.
+ *
+ *   Changes on version 1.1.4:
  *   - Update C++ source to version 16.02 (1602 - latest for now).
  *
  *   Changes on version 1.1.3:
@@ -106,7 +110,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 1
 #define LZMASDKOBJC_VERSION_MINOR 1
-#define LZMASDKOBJC_VERSION_PATCH 4
+#define LZMASDKOBJC_VERSION_PATCH 5
 
 
 #import "LzmaSDKObjCTypes.h"

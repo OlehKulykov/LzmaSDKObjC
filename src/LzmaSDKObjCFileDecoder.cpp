@@ -105,7 +105,7 @@ namespace LzmaSDKObjC
 		}
 		else
 		{
-			this->setLastError(result, __LINE__, __FILE__, "Archive extract error");
+			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lu", (unsigned long)result);
 			LZMASDK_DEBUG_LOG("Process Error")
 		}
 
@@ -144,6 +144,8 @@ namespace LzmaSDKObjC
 		if (!inFile->open(path))
 		{
 			this->setLastError(-1, __LINE__, __FILE__, "Can't open file for reading: [%s]", path);
+			this->setLastErrorReason("- File not exists.\n"
+									 "- File have no read permissions for the current user.");
 			return false;
 		}
 
@@ -154,14 +156,14 @@ namespace LzmaSDKObjC
 			res = _archive->GetNumberOfItems(&numItems);
 			if (res != S_OK)
 			{
-				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items");
+				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items with result: %lu", (unsigned long)res);
 				return false;
 			}
 			_itemsCount = numItems;
 			return true;
 		}
 
-		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file");
+		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file with result: %lu", (unsigned long)res);
 		return false;
 	}
 
@@ -176,6 +178,7 @@ namespace LzmaSDKObjC
 				case LzmaSDKObjCFileTypeXz: clsid = &LzmaSDKObjCCLSIDFormatXz; break;
 				default:
 					this->setLastError(-1, __LINE__, __FILE__, "Can't find codec for unsupported file type: %i", (int)type);
+					this->setLastErrorReason("Not one of the: ['7z', 'Xz']");
 					return false;
 					break;
 			}
@@ -183,6 +186,8 @@ namespace LzmaSDKObjC
 			if (CreateObject(clsid, &IID_IInArchive, (void **)&_archive) != S_OK)
 			{
 				this->setLastError(-1, __LINE__, __FILE__, "Can't create archive object file type: %i", (int)type);
+				this->setLastErrorReason("- Unsupported archive GUID.\n"
+										 "- Codec was not compiled in or stripped by static linking. Make sure you are using 'use_frameworks!' and/or dynamic linking.");
 				return false;
 			}
 			return (_archive != NULL);
@@ -268,6 +273,4 @@ namespace LzmaSDKObjC
 	}
 
 }
-
-
 
