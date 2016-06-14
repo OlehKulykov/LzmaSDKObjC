@@ -45,6 +45,10 @@
 	XCTAssertNotNil(path);
 	[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
 	[[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+	BOOL isDir = NO;
+	BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+	XCTAssertTrue(exists);
+	XCTAssertTrue(isDir);
 	return path;
 }
 

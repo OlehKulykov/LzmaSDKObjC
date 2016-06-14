@@ -21,15 +21,33 @@
  */
 
 
-#import <XCTest/XCTest.h>
-#import "LzmaSDKObjCReader.h"
-#import "LzmaSDKObjCItem.h"
-#import "LzmaSDKObjCBufferProcessor.h"
+#import "TestBaseObjc.h"
 
-@interface TestBaseObjc : XCTestCase
+@implementation TestBaseObjc
 
-- (NSString *) pathForTestFile:(NSString *) testFilePath;
+- (NSString *) pathForTestFile:(NSString *) testFilePath {
+	XCTAssertNotNil(testFilePath);
 
-- (NSString *) tmpWritePath;
+	NSString * name = [testFilePath stringByDeletingPathExtension];
+	XCTAssertNotNil(name);
+
+	NSString * ext = [testFilePath pathExtension];
+	XCTAssertNotNil(ext);
+
+	return [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:ext];
+}
+
+- (NSString *) tmpWritePath {
+	NSString * path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+	path = [path stringByAppendingPathComponent:@"tmp_test"];
+	XCTAssertNotNil(path);
+	[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+	[[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+	BOOL isDir = NO;
+	BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+	XCTAssertTrue(exists);
+	XCTAssertTrue(isDir);
+	return path;
+}
 
 @end

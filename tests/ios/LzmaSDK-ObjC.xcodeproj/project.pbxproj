@@ -260,6 +260,8 @@
 		3D9BD6A31C8E4BAC00081959 /* TestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69D1C8E4BAC00081959 /* TestDummy.swift */; };
 		3D9BD6A41C8E4BAC00081959 /* TestDummyObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */; };
 		3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */; };
+		3DB9BF211D10331E00AD0992 /* ReadObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9BF201D10331E00AD0992 /* ReadObjc.m */; };
+		3DB9BF231D10334C00AD0992 /* TestBaseObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */; };
 		3DF599AB1D0ED7F800E855EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF599AA1D0ED7F800E855EF /* AppDelegate.swift */; };
 		3DF599AD1D0ED7F800E855EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF599AC1D0ED7F800E855EF /* Assets.xcassets */; };
 		3DF599B01D0ED7F800E855EF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF599AE1D0ED7F800E855EF /* MainMenu.xib */; };
@@ -844,6 +846,9 @@
 		3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDummyObjc.m; sourceTree = "<group>"; };
 		3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BundleTestFile.swift"; sourceTree = "<group>"; };
 		3D9BD6A81C8E541F00081959 /* MyWindows.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyWindows.h; path = ../../lzma/CPP/Common/MyWindows.h; sourceTree = "<group>"; };
+		3DB9BF201D10331E00AD0992 /* ReadObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadObjc.m; sourceTree = "<group>"; };
+		3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseObjc.m; sourceTree = "<group>"; };
+		3DB9BF241D10335700AD0992 /* TestBaseObjc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestBaseObjc.h; sourceTree = "<group>"; };
 		3DF599A81D0ED7F800E855EF /* LzmaSDK-ObjC-OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LzmaSDK-ObjC-OSX.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF599AA1D0ED7F800E855EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DF599AC1D0ED7F800E855EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1397,6 +1402,15 @@
 			name = Dummy;
 			sourceTree = "<group>";
 		};
+		3DB9BF1F1D10330500AD0992 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				3DF59AEA1D0EDB4000E855EF /* Read.swift */,
+				3DB9BF201D10331E00AD0992 /* ReadObjc.m */,
+			);
+			name = Read;
+			sourceTree = "<group>";
+		};
 		3DF599A91D0ED7F800E855EF /* LzmaSDK-ObjC-OSX */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,7 +1426,9 @@
 		3DF599B91D0ED7F800E855EF /* LzmaSDK-ObjC-OSXTests */ = {
 			isa = PBXGroup;
 			children = (
-				3DF59AEA1D0EDB4000E855EF /* Read.swift */,
+				3DB9BF1F1D10330500AD0992 /* Read */,
+				3DB9BF241D10335700AD0992 /* TestBaseObjc.h */,
+				3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */,
 				3DF59ACF1D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift */,
 				3DF59CD71D0EDC0600E855EF /* LzmaSDK-ObjC-OSXTests-Bridging-Header.h */,
 				3DF599BC1D0ED7F800E855EF /* Info.plist */,
@@ -2267,6 +2283,7 @@
 				3DF59A6C1D0ED89700E855EF /* DllExports2.cpp in Sources */,
 				3DF59A851D0ED89C00E855EF /* LimitedStreams.cpp in Sources */,
 				3DF59AB71D0ED8AB00E855EF /* C_FileIO.cpp in Sources */,
+				3DB9BF211D10331E00AD0992 /* ReadObjc.m in Sources */,
 				3DF59ABE1D0ED8AB00E855EF /* StringToInt.cpp in Sources */,
 				3DF59ABD1D0ED8AB00E855EF /* StringConvert.cpp in Sources */,
 				3DF59A9C1D0ED8A100E855EF /* CopyCoder.cpp in Sources */,
@@ -2308,6 +2325,7 @@
 				3DF59A2E1D0ED87800E855EF /* Bra86.c in Sources */,
 				3DF59A9B1D0ED8A100E855EF /* CodecExports.cpp in Sources */,
 				3DF59A401D0ED87800E855EF /* XzIn.c in Sources */,
+				3DB9BF231D10334C00AD0992 /* TestBaseObjc.m in Sources */,
 				3DF59AAA1D0ED8A600E855EF /* MyAes.cpp in Sources */,
 				3DF59A581D0ED88F00E855EF /* 7zProperties.cpp in Sources */,
 				3DF59A381D0ED87800E855EF /* MtCoder.c in Sources */,

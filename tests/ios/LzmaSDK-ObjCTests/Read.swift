@@ -52,6 +52,7 @@ class Read: XCTestCase {
 
 			var archiveItems = [LzmaSDKObjCItem]()
 			var result = reader.iterateWithHandler({ (item: LzmaSDKObjCItem, error: NSError?) -> Bool in
+				XCTAssertNil(error)
 				archiveItems.append(item)
 				return true
 			})
