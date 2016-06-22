@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCINFILE_H__
-#define __LZMASDKOBJCINFILE_H__
+#define __LZMASDKOBJCINFILE_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"

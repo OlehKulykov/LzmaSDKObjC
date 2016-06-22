@@ -22,6 +22,47 @@
 
 
 #import "LzmaSDKObjCReader.h"
-#import "LzmaSDKObjCWriter.h"
-#import "LzmaSDKObjCItem.h"
-#import "LzmaSDKObjCBufferProcessor.h"
+
+@interface LzmaSDKObjCWriter : NSObject
+
+/**
+ @brief Getter to the archive password.
+ */
+@property (nonatomic, copy) NSString * _Nullable (^ _Nullable passwordGetter)(void);
+
+/**
+ @brief Type of the assigned archive. Determined during initialization.
+ @warning Readonly property. If can't be determined - create reader with custom type.
+ */
+@property (nonatomic, assign, readonly) LzmaSDKObjCFileType fileType;
+
+
+/**
+ @brief URL to the archive file.
+ */
+@property (nonatomic, strong, readonly) NSURL * _Nullable fileURL;
+
+
+/**
+ @brief Last error from operation.
+ */
+@property (nonatomic, strong, readonly) NSError * _Nullable lastError;
+
+
+/**
+ @brief Initialize archive with file url.
+ @warning Type detected from archive file extension using @b LzmaSDKObjCDetectFileType function.
+ @param fileURL File url to the archive. Can't be nil.
+ */
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL;
+
+
+/**
+ @brief Initialize archive with file url and archive type.
+ @param fileURL File url to the archive. Can't be nil.
+ @param type Manualy defined type of the archive.
+ */
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type;
+
+
+@end

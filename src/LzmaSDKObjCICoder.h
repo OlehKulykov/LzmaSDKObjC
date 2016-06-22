@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCICODER_H__
-#define __LZMASDKOBJCICODER_H__
+#define __LZMASDKOBJCICODER_H__ 1
 
 #include "LzmaAppleCommon.h"
 
@@ -31,7 +31,7 @@ namespace LzmaSDKObjC
 	class ICoder
 	{
 	public:
-		virtual void onExtractProgress(const float progress) = 0;
+		virtual void onProgress(const float progress) = 0;
 
 		virtual UString onGetVoidCallback1() = 0;
 

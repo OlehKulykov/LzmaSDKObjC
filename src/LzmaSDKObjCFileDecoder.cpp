@@ -38,21 +38,15 @@
 #include "../lzma/CPP/Windows/PropVariantConv.h"
 
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
+#include "../lzma/CPP/7zip/Archive/DllExports2.h"
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
-
-#include "../lzma/C/7zVersion.h"
-#include "../lzma/C/7zCrc.h"
-#include "../lzma/C/Aes.h"
-#include "../lzma/C/XzCrc64.h"
 
 #include "LzmaSDKObjCCommon.h"
 #include "LzmaSDKObjCInFile.h"
 #include "LzmaSDKObjCOpenCallback.h"
 #include "LzmaSDKObjCOutFile.h"
 #include "LzmaSDKObjCExtractCallback.h"
-
-STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject);
 
 namespace LzmaSDKObjC
 {
@@ -172,10 +166,12 @@ namespace LzmaSDKObjC
 		if (type)
 		{
 			const GUID * clsid = NULL;
+			const GUID clsid7z = Common::CLSIDFormat7z();
+			const GUID clsidXz = Common::CLSIDFormatXz();
 			switch (type)
 			{
-				case LzmaSDKObjCFileType7z: clsid = &LzmaSDKObjCCLSIDFormat7z; break;
-				case LzmaSDKObjCFileTypeXz: clsid = &LzmaSDKObjCCLSIDFormatXz; break;
+				case LzmaSDKObjCFileType7z: clsid = &clsid7z; break;
+				case LzmaSDKObjCFileTypeXz: clsid = &clsidXz; break;
 				default:
 					this->setLastError(-1, __LINE__, __FILE__, "Can't find codec for unsupported file type: %i", (int)type);
 					this->setLastErrorReason("Not one of the: ['7z', 'Xz']");
@@ -202,7 +198,7 @@ namespace LzmaSDKObjC
 	bool FileDecoder::iterateNext() { return (++_iterateIndex < _itemsCount); }
 	uint32_t FileDecoder::iteratorIndex() const { return _iterateIndex; };
 
-	void FileDecoder::onExtractProgress(const float progress)
+	void FileDecoder::onProgress(const float progress)
 	{
 		if (context && setFloatCallback2) setFloatCallback2(context, progress);
 		LZMASDK_DEBUG_LOG("FileDecoder::onExtractProgress = %f", progress)
@@ -216,16 +212,6 @@ namespace LzmaSDKObjC
 		return r;
 	}
 
-	static char _isOneTimeStaticInitialized = 0;
-	static void _oneTimeStaticInitializer()
-	{
-		if (_isOneTimeStaticInitialized) return;
-		_isOneTimeStaticInitialized = 1;
-		CrcGenerateTable();
-		AesGenTables();
-		Crc64GenerateTable();
-	}
-
 	FileDecoder::FileDecoder() : LzmaSDKObjC::LastErrorHolder(),
 		_openCallbackRef(NULL),
 		_extractCallbackRef(NULL),
@@ -235,7 +221,7 @@ namespace LzmaSDKObjC
 		getVoidCallback1(NULL),
 		setFloatCallback2(NULL)
 	{
-		_oneTimeStaticInitializer();
+		LzmaSDKObjC::Common::initialize();
 	}
 
 	void FileDecoder::cleanOpenCallbackRef()

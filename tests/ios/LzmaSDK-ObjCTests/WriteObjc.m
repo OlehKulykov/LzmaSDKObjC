@@ -21,39 +21,20 @@
  */
 
 
-#ifndef __LZMASDKOBJCTYPES_H__
-#define __LZMASDKOBJCTYPES_H__ 1
+#import <XCTest/XCTest.h>
+#import "TestBaseObjc.h"
 
-/**
- no #include
- */
+@interface WriteObjc : XCTestCase
 
+@end
 
-#if !defined(LZMASDKOBJC_EXTERN)
-#if defined(__cplusplus) || defined(_cplusplus)
-#define LZMASDKOBJC_EXTERN extern "C"
-#else
-#define LZMASDKOBJC_EXTERN extern
-#endif
-#endif
+@implementation WriteObjc
 
-typedef enum _LzmaSDKObjCFileType
-{
-	LzmaSDKObjCFileTypeUndefined = 0,
-	LzmaSDKObjCFileType7z = 1,
-	LzmaSDKObjCFileTypeXz = 1 << 1
+- (void) testWriteNew {
+	[[NSFileManager defaultManager] removeItemAtPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z" error:nil];
+	LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z"]];
+	
 }
-LzmaSDKObjCFileType;
 
-typedef void * (*LzmaSDKObjCGetVoidCallback)(void * context);
-typedef void (*LzmaSDKObjCSetFloatCallback)(void * context, float value);
 
-#if (defined(DEBUG) || defined(_DEBUG)) && !defined(LZMASDKOBJC_NO_DEBUG_LOG)
-#define LZMASDK_DEBUG_LOG(M, ...) fprintf(stdout, "LZMA DEBUG %d: " M "\n", __LINE__, ##__VA_ARGS__);
-#define LZMASDK_DEBUG_ERR(M, ...) fprintf(stderr, "LZMA ERROR %d: " M "\n", __LINE__, ##__VA_ARGS__);
-#else
-#define LZMASDK_DEBUG_LOG(M, ...)
-#define LZMASDK_DEBUG_ERR(M, ...)
-#endif
-
-#endif
+@end

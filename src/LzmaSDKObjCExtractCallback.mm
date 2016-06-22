@@ -45,7 +45,7 @@ namespace LzmaSDKObjC
 	STDMETHODIMP ExtractCallback::SetTotal(UInt64 size)
 	{
 		_total = size;
-		if (_coder) _coder->onExtractProgress(0);
+		if (_coder) _coder->onProgress(0);
 		LZMASDK_DEBUG_LOG("ExtractCallback::SetTotal = %llu", _total)
 		return S_OK;
 	}
@@ -56,7 +56,7 @@ namespace LzmaSDKObjC
 		{
 			const long double complete = *completeValue;
 			const float progress = (_total > 0) ? (float)(complete / _total) : 0;
-			if (_coder) _coder->onExtractProgress(progress);
+			if (_coder) _coder->onProgress(progress);
 		}
 		LZMASDK_DEBUG_LOG("ExtractCallback::SetCompleted = %llu", *completeValue)
 		return S_OK;
@@ -147,7 +147,7 @@ namespace LzmaSDKObjC
 			return res;
 		}
 
-		if (LzmaSDKObjCPROPVARIANTGetBool(&isDirProp))
+		if (Common::PROPVARIANTGetBool(&isDirProp))
 		{
 			NSError * error = nil;
 			if (![[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error] || error)

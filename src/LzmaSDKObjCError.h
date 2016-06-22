@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCERROR_H__
-#define __LZMASDKOBJCERROR_H__
+#define __LZMASDKOBJCERROR_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "../lzma/CPP/Common/StringConvert.h"

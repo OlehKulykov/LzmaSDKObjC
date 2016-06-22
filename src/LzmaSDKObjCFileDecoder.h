@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCFILEDECODER_H__
-#define __LZMASDKOBJCFILEDECODER_H__
+#define __LZMASDKOBJCFILEDECODER_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"
@@ -77,7 +77,7 @@ namespace LzmaSDKObjC
 		bool openFile(const char * path);
 
 		// LzmaObjc::ICoder
-		virtual void onExtractProgress(const float progress);
+		virtual void onProgress(const float progress);
 		virtual UString onGetVoidCallback1();
 
 		FileDecoder();

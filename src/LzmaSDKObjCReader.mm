@@ -143,7 +143,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 				if (item)
 				{
 					item->_index = _decoder->iteratorIndex();
-					item->_orgSize = LzmaSDKObjCPROPVARIANTGetUInt64(&prop);
+					item->_orgSize = LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
 					prop = { 0 };
 
 					if (name.vt == VT_BSTR && name.bstrVal)
@@ -151,15 +151,15 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidCTime))
-						if (prop.vt == VT_FILETIME) item->_cDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_cDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidATime))
-						if (prop.vt == VT_FILETIME) item->_aDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_aDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidMTime))
-						if (prop.vt == VT_FILETIME) item->_mDate = LzmaSDKObjCFILETIMEToUnixTime(prop.filetime);
+						if (prop.vt == VT_FILETIME) item->_mDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidEncrypted))
@@ -167,7 +167,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidCRC))
-						item->_crc = (uint32_t)LzmaSDKObjCPROPVARIANTGetUInt64(&prop);
+						item->_crc = (uint32_t)LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
 
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidIsDir))

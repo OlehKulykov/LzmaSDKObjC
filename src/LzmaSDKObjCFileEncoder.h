@@ -21,59 +21,36 @@
  */
 
 
-#ifndef __LZMASDKOBJCOPENCALLBACK_H__
-#define __LZMASDKOBJCOPENCALLBACK_H__ 1
+#ifndef __LZMASDKOBJCFILEENCODER_H__
+#define __LZMASDKOBJCFILEENCODER_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"
+#include "LzmaSDKObjCCommon.h"
 
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
+#include "../lzma/CPP/Windows/PropVariant.h"
 
 #include "LzmaSDKObjCICoder.h"
 #include "LzmaSDKObjCError.h"
 
-#ifndef SAFE_FREE
-#define SAFE_FREE(m) if(m){free(m);m=NULL;}
-#endif
-
-#ifndef SAFE_DELETE
-#define SAFE_DELETE(o) if(o){delete o;o=NULL;}
-#endif
-
 namespace LzmaSDKObjC
 {
-	class OpenCallback :
-		public IArchiveOpenCallback,
-		public ICryptoGetTextPassword,
-		public ICryptoGetTextPassword2,
-		public CMyUnknownImp,
-		public LzmaSDKObjC::LastErrorHolder
+	class FileEncoder : public LzmaSDKObjC::LastErrorHolder, public LzmaSDKObjC::ICoder
 	{
-	private:
-		LzmaSDKObjC::ICoder * _coder;
-
 	public:
-		MY_UNKNOWN_IMP3(IArchiveOpenCallback, ICryptoGetTextPassword, ICryptoGetTextPassword2)
+		void * context;
 
-		// IArchiveOpenCallback
-		STDMETHOD(SetTotal)(const UInt64 *files, const UInt64 *bytes);
-		STDMETHOD(SetCompleted)(const UInt64 *files, const UInt64 *bytes);
+		// LzmaObjc::ICoder
+		virtual void onProgress(const float progress);
+		virtual UString onGetVoidCallback1();
 
-		// ICryptoGetTextPassword
-		STDMETHOD(CryptoGetTextPassword)(BSTR *password);
-
-		// ICryptoGetTextPassword2
-		STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
-
-		void setCoder(LzmaSDKObjC::ICoder * coder) { _coder = coder; }
-
-		OpenCallback();
-		virtual ~OpenCallback();
+		FileEncoder();
+		virtual ~FileEncoder();
 	};
-	
 }
 
-#endif 
+#endif

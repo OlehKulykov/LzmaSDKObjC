@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCEXTRACTCALLBACK_H__
-#define __LZMASDKOBJCEXTRACTCALLBACK_H__
+#define __LZMASDKOBJCEXTRACTCALLBACK_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"

@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJCOUTFILE_H__
-#define __LZMASDKOBJCOUTFILE_H__
+#define __LZMASDKOBJCOUTFILE_H__ 1
 
 #include "LzmaAppleCommon.h"
 #include "LzmaSDKObjCTypes.h"

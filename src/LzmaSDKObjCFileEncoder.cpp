@@ -21,39 +21,28 @@
  */
 
 
-#ifndef __LZMASDKOBJCTYPES_H__
-#define __LZMASDKOBJCTYPES_H__ 1
+#include "LzmaSDKObjCFileEncoder.h"
 
-/**
- no #include
- */
-
-
-#if !defined(LZMASDKOBJC_EXTERN)
-#if defined(__cplusplus) || defined(_cplusplus)
-#define LZMASDKOBJC_EXTERN extern "C"
-#else
-#define LZMASDKOBJC_EXTERN extern
-#endif
-#endif
-
-typedef enum _LzmaSDKObjCFileType
+namespace LzmaSDKObjC
 {
-	LzmaSDKObjCFileTypeUndefined = 0,
-	LzmaSDKObjCFileType7z = 1,
-	LzmaSDKObjCFileTypeXz = 1 << 1
+	void FileEncoder::onProgress(const float progress)
+	{
+
+	}
+
+	UString FileEncoder::onGetVoidCallback1()
+	{
+		return UString();
+	}
+
+	FileEncoder::FileEncoder() : LzmaSDKObjC::LastErrorHolder(),
+		context(NULL)
+	{
+		LzmaSDKObjC::Common::initialize();
+	}
+	
+	FileEncoder::~FileEncoder()
+	{
+
+	}
 }
-LzmaSDKObjCFileType;
-
-typedef void * (*LzmaSDKObjCGetVoidCallback)(void * context);
-typedef void (*LzmaSDKObjCSetFloatCallback)(void * context, float value);
-
-#if (defined(DEBUG) || defined(_DEBUG)) && !defined(LZMASDKOBJC_NO_DEBUG_LOG)
-#define LZMASDK_DEBUG_LOG(M, ...) fprintf(stdout, "LZMA DEBUG %d: " M "\n", __LINE__, ##__VA_ARGS__);
-#define LZMASDK_DEBUG_ERR(M, ...) fprintf(stderr, "LZMA ERROR %d: " M "\n", __LINE__, ##__VA_ARGS__);
-#else
-#define LZMASDK_DEBUG_LOG(M, ...)
-#define LZMASDK_DEBUG_ERR(M, ...)
-#endif
-
-#endif

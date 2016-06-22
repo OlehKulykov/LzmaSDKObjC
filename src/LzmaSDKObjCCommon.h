@@ -22,22 +22,35 @@
 
 
 #ifndef __LZMASDKOBJCCOMMON_H__
-#define __LZMASDKOBJCCOMMON_H__
+#define __LZMASDKOBJCCOMMON_H__ 1
 
 #include <stdio.h>
+#include <time.h>
 
 #include "../lzma/CPP/Common/MyGuidDef.h"
 #include "../lzma/CPP/Common/MyWindows.h"
 #include "LzmaSDKObjCTypes.h"
 
-LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormat7z;
+namespace LzmaSDKObjC
+{
+	class Common
+	{
+	private:
+		static bool _isInitialized;
+		
+	public:
+		static void initialize();
 
-LZMASDKOBJC_EXTERN const GUID LzmaSDKObjCCLSIDFormatXz;
+		static GUID CLSIDFormat7z();
 
-LZMASDKOBJC_EXTERN uint64_t LzmaSDKObjCPROPVARIANTGetUInt64(PROPVARIANT * prop);
+		static GUID CLSIDFormatXz();
 
-LZMASDKOBJC_EXTERN bool LzmaSDKObjCPROPVARIANTGetBool(PROPVARIANT * prop);
+		static uint64_t PROPVARIANTGetUInt64(PROPVARIANT * prop);
 
-LZMASDKOBJC_EXTERN time_t LzmaSDKObjCFILETIMEToUnixTime(const FILETIME filetime);
+		static bool PROPVARIANTGetBool(PROPVARIANT * prop);
+
+		static time_t FILETIMEToUnixTime(const FILETIME filetime);
+	};
+}
 
 #endif 
