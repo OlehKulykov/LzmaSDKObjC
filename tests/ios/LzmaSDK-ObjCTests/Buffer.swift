@@ -38,6 +38,5 @@ class Buffer: XCTestCase {
 		XCTAssertNotNil(decompressedData)
 
 		XCTAssertTrue(decompressedData!.isEqualToData(sourceData!))
-    }
-    
+    }    
 }
