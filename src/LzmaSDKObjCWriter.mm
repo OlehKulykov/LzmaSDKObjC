@@ -157,7 +157,7 @@ static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
 - (BOOL) write {
 	if (_encoder) {
 		_encoder->clearLastError();
-		_encoder->encodeItems((__bridge void *)_items, (UInt32)[_items count]);
+		_encoder->encodeItems((__bridge void *)_items, (uint32_t)[_items count]);
 		return _encoder->lastError() ? NO : YES;
 	}
 	return NO;

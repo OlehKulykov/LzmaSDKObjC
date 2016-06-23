@@ -72,7 +72,7 @@ namespace LzmaSDKObjC
 		return true;
 	}
 
-	bool FileEncoder::encodeItems(void * items, const UInt32 numItems) {
+	bool FileEncoder::encodeItems(void * items, const uint32_t numItems) {
 		if (_updateCallbackRef) {
 			_updateCallbackRef->items = items;
 			_updateCallbackRef->coder = this;

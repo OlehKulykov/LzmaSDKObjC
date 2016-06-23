@@ -50,7 +50,7 @@ namespace LzmaSDKObjC
 		void cleanUpdateCallbackRef();
 		void cleanOutFileStreamRef();
 	public:
-		bool encodeItems(void * items, const UInt32 numItems);
+		bool encodeItems(void * items, const uint32_t numItems);
 
 		// Required section, `LzmaSDKObjC::BaseCoder`
 		// find codec, create encode/decode object and check error.
