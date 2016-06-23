@@ -21,8 +21,8 @@
  */
 
 
-#ifndef __LZMASDKOBJCEXTRACTCALLBACK_H__
-#define __LZMASDKOBJCEXTRACTCALLBACK_H__ 1
+#ifndef __LZMASDKOBJCUPDATECALLBACK_H__
+#define __LZMASDKOBJCUPDATECALLBACK_H__ 1
 
 #include "LzmaSDKObjCBaseCoder.h"
 
@@ -45,37 +45,31 @@
 
 namespace LzmaSDKObjC
 {
-	class ExtractCallback :
-		public IArchiveExtractCallback,
-		public IArchiveExtractCallbackMessage,
+	class UpdateCallback:
+		public IArchiveUpdateCallback2,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,
-		public ICompressProgressInfo,
 		public CMyUnknownImp,
 		public LzmaSDKObjC::LastErrorHolder
 	{
 	private:
-		LzmaSDKObjC::OutFile * _outFileStreamRef;
-		LzmaSDKObjC::BaseCoder * _coder;
-		IInArchive * _archive;
-		CMyComPtr<ISequentialOutStream> _outFileStream;
-
-		AString _dstPath;
-		uint64_t _total;
-		int32_t _mode;
-		bool _isFullPath;
-
-
-		HRESULT getTestStream(uint32_t index, ISequentialOutStream **outStream);
-		HRESULT getExtractStream(uint32_t index, ISequentialOutStream **outStream);
+		UInt64 _total;
 
 	public:
-		MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)
 
-		INTERFACE_IArchiveExtractCallback(;)
-		INTERFACE_IArchiveExtractCallbackMessage(;)
+		MY_UNKNOWN_IMP3(IArchiveUpdateCallback2, ICryptoGetTextPassword, ICryptoGetTextPassword2)
 
-		STDMETHOD(SetRatioInfo)(const UInt64 *inSize, const UInt64 *outSize);
+		// IProgress
+		STDMETHOD(SetTotal)(UInt64 size);
+		STDMETHOD(SetCompleted)(const UInt64 *completeValue);
+
+		// IUpdateCallback2
+		STDMETHOD(GetUpdateItemInfo)(UInt32 index, Int32 *newData, Int32 *newProperties, UInt32 *indexInArchive);
+		STDMETHOD(GetProperty)(UInt32 index, PROPID propID, PROPVARIANT *value);
+		STDMETHOD(GetStream)(UInt32 index, ISequentialInStream **inStream);
+		STDMETHOD(SetOperationResult)(Int32 operationResult);
+		STDMETHOD(GetVolumeSize)(UInt32 index, UInt64 *size);
+		STDMETHOD(GetVolumeStream)(UInt32 index, ISequentialOutStream **volumeStream);
 
 		// ICryptoGetTextPassword
 		STDMETHOD(CryptoGetTextPassword)(BSTR *password);
@@ -83,16 +77,13 @@ namespace LzmaSDKObjC
 		// ICryptoGetTextPassword2
 		STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
 
-		void setCoder(LzmaSDKObjC::BaseCoder * coder) { _coder = coder; }
-		void setArchive(IInArchive * a) { _archive = a; }
-		void setMode(int32_t mode) { _mode = mode; }
+		void * items;
+		LzmaSDKObjC::BaseCoder * coder;
 
-		bool prepare(const char * extractPath, bool isFullPath);
+		UpdateCallback();
 
-		ExtractCallback();
-		virtual ~ExtractCallback();
+		virtual ~UpdateCallback();
 	};
-	
 }
 
-#endif 
+#endif

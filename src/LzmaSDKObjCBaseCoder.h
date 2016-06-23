@@ -21,38 +21,42 @@
  */
 
 
-#ifndef __LZMASDKOBJCCOMMON_H__
-#define __LZMASDKOBJCCOMMON_H__ 1
+#ifndef __LZMASDKOBJCBASECODER_H__
+#define __LZMASDKOBJCBASECODER_H__ 1
 
-#include <stdio.h>
-#include <time.h>
+#include "LzmaAppleCommon.h"
+#include "LzmaSDKObjCTypes.h"
+#include "LzmaSDKObjCCommon.h"
+#include "LzmaSDKObjCError.h"
 
 #include "../lzma/CPP/Common/MyGuidDef.h"
-#include "../lzma/CPP/Common/MyWindows.h"
-#include "LzmaSDKObjCTypes.h"
 
-namespace LzmaSDKObjC
-{
-	class Common
+namespace LzmaSDKObjC {
+
+	class BaseCoder : public LzmaSDKObjC::LastErrorHolder
 	{
-	private:
-		static bool _isInitialized;
-		
+	protected:
+		void createObject(const LzmaSDKObjCFileType type, const GUID * iid, void ** outObject);
+
 	public:
-		static void initialize();
+		void * context;
+		LzmaSDKObjCGetVoidCallback getVoidCallback1;
+		LzmaSDKObjCSetFloatCallback setFloatCallback2;
 
-		static GUID CLSIDFormat7z();
+		// callbacks section
+		void onProgress(const float progress); // encode/decode
+		UString onGetVoidCallback1(); // pwd
 
-		static GUID CLSIDFormatXz();
+		// Required
+		// find codec, create encode/decode object and check error.
+		virtual bool prepare(const LzmaSDKObjCFileType type) = 0;
 
-		static uint64_t PROPVARIANTGetUInt64(PROPVARIANT * prop);
+		virtual bool openFile(const char * path) = 0;
 
-		static bool PROPVARIANTGetBool(PROPVARIANT * prop);
-
-		static time_t FILETIMEToUnixTime(const FILETIME filetime);
-
-		static FILETIME UnixTimeToFILETIME(const time_t t);
+		BaseCoder();
+		virtual ~BaseCoder();
 	};
+
 }
 
-#endif 
+#endif

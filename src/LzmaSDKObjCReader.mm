@@ -237,7 +237,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 	_decoder->clearLastError();
 
-	if (!_decoder->findCodec(_fileType))
+	if (!_decoder->prepare(_fileType))
 	{
 		if (error) *error = self.lastError;
 		return NO;

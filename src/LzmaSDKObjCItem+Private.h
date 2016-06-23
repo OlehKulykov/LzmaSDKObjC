@@ -21,6 +21,9 @@
  */
 
 
+#ifndef __LZMASDKOBJCITEM_PRIVATE_H__
+#define __LZMASDKOBJCITEM_PRIVATE_H__ 1
+
 #define LzmaObjcItemFlagIsEncrypted (uint8_t)(1)
 #define LzmaObjcItemFlagIsDir (uint8_t)(1 << 1)
 
@@ -43,3 +46,5 @@
 }
 
 @end
+
+#endif

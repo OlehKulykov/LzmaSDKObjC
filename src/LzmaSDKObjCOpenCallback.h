@@ -24,16 +24,12 @@
 #ifndef __LZMASDKOBJCOPENCALLBACK_H__
 #define __LZMASDKOBJCOPENCALLBACK_H__ 1
 
-#include "LzmaAppleCommon.h"
-#include "LzmaSDKObjCTypes.h"
+#include "LzmaSDKObjCBaseCoder.h"
 
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
-
-#include "LzmaSDKObjCICoder.h"
-#include "LzmaSDKObjCError.h"
 
 #ifndef SAFE_FREE
 #define SAFE_FREE(m) if(m){free(m);m=NULL;}
@@ -53,7 +49,7 @@ namespace LzmaSDKObjC
 		public LzmaSDKObjC::LastErrorHolder
 	{
 	private:
-		LzmaSDKObjC::ICoder * _coder;
+		LzmaSDKObjC::BaseCoder * _coder;
 
 	public:
 		MY_UNKNOWN_IMP3(IArchiveOpenCallback, ICryptoGetTextPassword, ICryptoGetTextPassword2)
@@ -68,7 +64,7 @@ namespace LzmaSDKObjC
 		// ICryptoGetTextPassword2
 		STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
 
-		void setCoder(LzmaSDKObjC::ICoder * coder) { _coder = coder; }
+		void setCoder(LzmaSDKObjC::BaseCoder * coder) { _coder = coder; }
 
 		OpenCallback();
 		virtual ~OpenCallback();

@@ -78,10 +78,21 @@ namespace LzmaSDKObjC
 	}
 
 	time_t Common::FILETIMEToUnixTime(const FILETIME filetime) {
-		long long int t = filetime.dwHighDateTime;
+		uint64_t t = filetime.dwHighDateTime;
 		t <<= 32;
-		t += (unsigned long)filetime.dwLowDateTime;
+		t += filetime.dwLowDateTime;
 		t -= 116444736000000000LL;
 		return (time_t)(t / 10000000);
+	}
+
+	FILETIME Common::UnixTimeToFILETIME(const time_t t) {
+		uint64_t ll = t;
+		ll *= 10000000;
+		ll += 116444736000000000LL;
+
+		FILETIME FT;
+		FT.dwLowDateTime = (DWORD)ll;
+		FT.dwHighDateTime = (DWORD)(ll >> 32);
+		return FT;
 	}
 }

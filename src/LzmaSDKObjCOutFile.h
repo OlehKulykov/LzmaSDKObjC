@@ -44,7 +44,7 @@
 namespace LzmaSDKObjC
 {
 
-	class OutFile :  public IOutStream, public CMyUnknownImp
+	class OutFile : public IOutStream, public CMyUnknownImp
 	{
 	private:
 		FILE * _f;

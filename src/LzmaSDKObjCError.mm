@@ -33,24 +33,19 @@ namespace LzmaSDKObjC
 
 	}
 
-	void LastErrorHolder::clearLastError()
-	{
-		if (_lastError)
-		{
+	void LastErrorHolder::clearLastError() {
+		if (_lastError) {
 			delete _lastError;
 			_lastError = NULL;
 		}
 	}
 
-	void LastErrorHolder::setLastError(LzmaSDKObjC::LastErrorHolder * holder)
-	{
+	void LastErrorHolder::setLastError(LzmaSDKObjC::LastErrorHolder * holder) {
 		this->clearLastError();
 		if (!holder) return;
-		if (holder->_lastError)
-		{
+		if (holder->_lastError) {
 			_lastError = new LzmaSDKObjC::Error();
-			if (_lastError)
-			{
+			if (_lastError) {
 				_lastError->file = holder->_lastError->file;
 				_lastError->line = holder->_lastError->line;
 				_lastError->code = holder->_lastError->code;
@@ -60,17 +55,14 @@ namespace LzmaSDKObjC
 		}
 	}
 
-	void LastErrorHolder::setLastError(int64_t code, int line, const char * file, const char * format, ...)
-	{
+	void LastErrorHolder::setLastError(int64_t code, int line, const char * file, const char * format, ...) {
 		if (_lastError) delete _lastError;
 		_lastError = new LzmaSDKObjC::Error();
-		if (_lastError)
-		{
+		if (_lastError) {
 			_lastError->code = code;
 			_lastError->line = line;
 			if (file) _lastError->file = file;
-			if (format)
-			{
+			if (format) {
 				va_list args;
 				va_start(args, format);
 				char buff[1024];
@@ -83,10 +75,8 @@ namespace LzmaSDKObjC
 		}
 	}
 
-	void LastErrorHolder::setLastErrorReason(const char * format, ...)
-	{
-		if (_lastError && format)
-		{
+	void LastErrorHolder::setLastErrorReason(const char * format, ...) {
+		if (_lastError && format) {
 			va_list args;
 			va_start(args, format);
 			char buff[1024];
@@ -105,11 +95,7 @@ namespace LzmaSDKObjC
 
 	LastErrorHolder::~LastErrorHolder()
 	{
-		if (_lastError)
-		{
-			delete _lastError;
-		}
+		if (_lastError) delete _lastError;
 	}
 }
-
 

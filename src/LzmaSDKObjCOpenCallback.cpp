@@ -23,50 +23,37 @@
 
 #include "LzmaSDKObjCOpenCallback.h"
 
+#include "../lzma/CPP/Common/Defs.h"
 
 namespace LzmaSDKObjC
 {
 
-	STDMETHODIMP OpenCallback::SetTotal(const UInt64 * files, const UInt64 * bytes)
-	{
-		LZMASDK_DEBUG_LOG("OpenCallback::SetTotal")
+	STDMETHODIMP OpenCallback::SetTotal(const UInt64 * files, const UInt64 * bytes) {
 		return S_OK;
 	}
 
-	STDMETHODIMP OpenCallback::SetCompleted(const UInt64 * files, const UInt64 * bytes)
-	{
-		LZMASDK_DEBUG_LOG("OpenCallback::SetCompleted")
+	STDMETHODIMP OpenCallback::SetCompleted(const UInt64 * files, const UInt64 * bytes) {
 		return S_OK;
 	}
 
-	STDMETHODIMP OpenCallback::CryptoGetTextPassword(BSTR *password)
-	{
-		LZMASDK_DEBUG_LOG("OpenCallback::CryptoGetTextPassword")
-		if (_coder)
-		{
-			UString w = _coder->onGetVoidCallback1();
+	STDMETHODIMP OpenCallback::CryptoGetTextPassword(BSTR *password) {
+		if (_coder) {
+			UString w(_coder->onGetVoidCallback1());
 			if (w.Len() > 0) return StringToBstr(w, password);
 		}
-		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
-		return E_ABORT;
+		return S_OK;
 	}
 
-	STDMETHODIMP OpenCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
-	{
-		LZMASDK_DEBUG_LOG("OpenCallback::CryptoGetTextPassword2")
-
-		if (passwordIsDefined) *passwordIsDefined = 0;
-		if (_coder)
-		{
-			UString w = _coder->onGetVoidCallback1();
-			if (w.Len() > 0)
-			{
-				if (passwordIsDefined) *passwordIsDefined = 1;
+	STDMETHODIMP OpenCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password) {
+		if (passwordIsDefined) *passwordIsDefined = BoolToInt(false);
+		if (_coder) {
+			UString w(_coder->onGetVoidCallback1());
+			if (w.Len() > 0) {
+				if (passwordIsDefined) *passwordIsDefined = BoolToInt(true);
 				return StringToBstr(w, password);
 			}
 		}
-		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
-		return E_ABORT;
+		return S_OK;
 	}
 
 	OpenCallback::OpenCallback() : LzmaSDKObjC::LastErrorHolder(),

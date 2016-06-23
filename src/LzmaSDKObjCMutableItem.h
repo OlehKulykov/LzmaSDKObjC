@@ -21,38 +21,50 @@
  */
 
 
-#ifndef __LZMASDKOBJCCOMMON_H__
-#define __LZMASDKOBJCCOMMON_H__ 1
+#import "LzmaSDKObjCItem.h"
 
-#include <stdio.h>
-#include <time.h>
+@interface LzmaSDKObjCMutableItem : LzmaSDKObjCItem
 
-#include "../lzma/CPP/Common/MyGuidDef.h"
-#include "../lzma/CPP/Common/MyWindows.h"
-#include "LzmaSDKObjCTypes.h"
+/**
+ @brief Full item path. 
+ If file - no "/" at the end.
+ If directory - "/" at the end.
+ */
+@property (nonatomic, strong, readonly) NSString * _Nonnull path;
 
-namespace LzmaSDKObjC
-{
-	class Common
-	{
-	private:
-		static bool _isInitialized;
-		
-	public:
-		static void initialize();
+/**
+ @brief Set custom data for the file.
+ If data not empty - mark item as file and set all dates to `now`.
+ */
+@property (nonatomic, strong) NSData * _Nullable fileData;
 
-		static GUID CLSIDFormat7z();
+/**
+ @brief Modification date if available, or nil.
+ */
+@property (nonatomic, strong, setter=setModificationDate:) NSDate * _Nullable modificationDate;
 
-		static GUID CLSIDFormatXz();
 
-		static uint64_t PROPVARIANTGetUInt64(PROPVARIANT * prop);
+/**
+ @brief Creation date if available, or nil.
+ */
+@property (nonatomic, strong, setter=setCreationDate:) NSDate * _Nullable creationDate;
 
-		static bool PROPVARIANTGetBool(PROPVARIANT * prop);
 
-		static time_t FILETIMEToUnixTime(const FILETIME filetime);
+/**
+ @brief Last access date time if available, or nil.
+ */
+@property (nonatomic, strong, setter=setAccessDate:) NSDate * _Nullable accessDate;
 
-		static FILETIME UnixTimeToFILETIME(const time_t t);
-	};
-}
 
-#endif 
+- (void) setAccessDate:(nullable NSDate *) date;
+
+- (void) setCreationDate:(nullable NSDate *) date;
+
+- (void) setModificationDate:(nullable NSDate *) date;
+
+/**
+ @brief Set full item path with directory flag.
+ */
+- (void) setPath:(nonnull NSString *) path isDirectory:(BOOL) isDirectory;
+
+@end

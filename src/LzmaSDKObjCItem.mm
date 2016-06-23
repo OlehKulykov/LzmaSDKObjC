@@ -57,17 +57,17 @@
 
 - (NSDate *) modificationDate
 {
-	return _mDate ? [NSDate dateWithTimeIntervalSince1970:_mDate] : nil;
+	return _mDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_mDate)] : nil;
 }
 
 - (NSDate *) creationDate
 {
-	return _cDate ? [NSDate dateWithTimeIntervalSince1970:_cDate] : nil;
+	return _cDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_cDate)] : nil;
 }
 
 - (NSDate *) accessDate
 {
-	return _aDate ? [NSDate dateWithTimeIntervalSince1970:_aDate] : nil;
+	return _aDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_aDate)] : nil;
 }
 
 #if defined(DEBUG) || defined(_DEBUG)

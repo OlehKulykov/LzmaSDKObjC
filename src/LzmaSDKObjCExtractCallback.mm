@@ -25,6 +25,7 @@
 #include "LzmaSDKObjCExtractCallback.h"
 #include "LzmaSDKObjCCommon.h"
 
+#include "../lzma/CPP/Common/Defs.h"
 #include "../lzma/CPP/Windows/PropVariant.h"
 #include "../lzma/CPP/7zip/Archive/Common/DummyOutStream.h"
 
@@ -32,13 +33,11 @@ namespace LzmaSDKObjC
 {
 	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes)
 	{
-		LZMASDK_DEBUG_LOG("ExtractCallback::ReportExtractResult")
 		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize)
 	{
-		LZMASDK_DEBUG_LOG("ExtractCallback::SetRatioInfo")
 		return S_OK;
 	}
 
@@ -46,27 +45,23 @@ namespace LzmaSDKObjC
 	{
 		_total = size;
 		if (_coder) _coder->onProgress(0);
-		LZMASDK_DEBUG_LOG("ExtractCallback::SetTotal = %llu", _total)
 		return S_OK;
 	}
 
 	STDMETHODIMP ExtractCallback::SetCompleted(const UInt64 * completeValue)
 	{
-		if (completeValue)
-		{
+		if (completeValue && _coder) {
 			const long double complete = *completeValue;
 			const float progress = (_total > 0) ? (float)(complete / _total) : 0;
-			if (_coder) _coder->onProgress(progress);
+			_coder->onProgress(progress);
 		}
-		LZMASDK_DEBUG_LOG("ExtractCallback::SetCompleted = %llu", *completeValue)
 		return S_OK;
 	}
 
 	HRESULT ExtractCallback::getTestStream(uint32_t index, ISequentialOutStream **outStream)
 	{
 		CDummyOutStream * dummy = new CDummyOutStream();
-		if (!dummy)
-		{
+		if (!dummy) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out test stream");
 			return E_ABORT;
 		}
@@ -190,14 +185,12 @@ namespace LzmaSDKObjC
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
 
-		if (!_archive)
-		{
+		if (!_archive) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "No input archive");
 			return E_ABORT;
 		}
 
-		switch (_mode)
-		{
+		switch (_mode) {
 			case NArchive::NExtract::NAskMode::kExtract:
 				return this->getExtractStream(index, outStream);
 				break;
@@ -214,16 +207,13 @@ namespace LzmaSDKObjC
 		return E_FAIL;
 	}
 
-	STDMETHODIMP ExtractCallback::PrepareOperation(Int32 askExtractMode)
-	{
+	STDMETHODIMP ExtractCallback::PrepareOperation(Int32 askExtractMode) {
 		return S_OK;
 	}
 
-	STDMETHODIMP ExtractCallback::SetOperationResult(Int32 operationResult)
-	{
+	STDMETHODIMP ExtractCallback::SetOperationResult(Int32 operationResult) {
 		HRESULT res = E_FAIL;
-		switch (operationResult)
-		{
+		switch (operationResult) {
 			case NArchive::NExtract::NOperationResult::kOK:
 				res = S_OK;
 				break;
@@ -264,51 +254,35 @@ namespace LzmaSDKObjC
 				break;
 		}
 
-		if (_outFileStream != NULL)
-		{
+		if (_outFileStream != NULL) {
 			if (_outFileStreamRef) _outFileStreamRef->close();
 		}
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;
-		//  if (_extractMode && _processedFileInfo.AttribDefined)
-		//	  SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
-		//  PrintNewLine();
 		return res;
 	}
 
-	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password)
-	{
-		LZMASDK_DEBUG_LOG("ExtractCallback::CryptoGetTextPassword")
-		if (_coder)
-		{
-			UString w = _coder->onGetVoidCallback1();
+	STDMETHODIMP ExtractCallback::CryptoGetTextPassword(BSTR *password) {
+		if (_coder) {
+			UString w(_coder->onGetVoidCallback1());
 			if (w.Len() > 0) return StringToBstr(w, password);
 		}
-
-		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
-		return E_ABORT;
+		return S_OK;
 	}
 
-	STDMETHODIMP ExtractCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password)
-	{
-		LZMASDK_DEBUG_LOG("ExtractCallback::CryptoGetTextPassword2")
-		if (passwordIsDefined) *passwordIsDefined = 0;
-		if (_coder)
-		{
-			UString w = _coder->onGetVoidCallback1();
-			if (w.Len() > 0)
-			{
-				if (passwordIsDefined) *passwordIsDefined = 1;
+	STDMETHODIMP ExtractCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password) {
+		if (passwordIsDefined) *passwordIsDefined = BoolToInt(false);
+		if (_coder) {
+			UString w(_coder->onGetVoidCallback1());
+			if (w.Len() > 0) {
+				if (passwordIsDefined) *passwordIsDefined = BoolToInt(true);
 				return StringToBstr(w, password);
 			}
 		}
-
-		this->setLastError(E_ABORT, __LINE__, __FILE__, "Password is required, but there is no coder or password is empty");
-		return E_ABORT;
+		return S_OK;
 	}
 
-	bool ExtractCallback::prepare(const char * extractPath, bool isFullPath)
-	{
+	bool ExtractCallback::prepare(const char * extractPath, bool isFullPath) {
 		_dstPath = extractPath;
 		_isFullPath = isFullPath;
 
@@ -316,19 +290,14 @@ namespace LzmaSDKObjC
 
 		NSFileManager * manager = [[NSFileManager alloc] init];
 		BOOL isDir = NO;
-		if ([manager fileExistsAtPath:path isDirectory:&isDir])
-		{
-			if (!isDir)
-			{
+		if ([manager fileExistsAtPath:path isDirectory:&isDir]) {
+			if (!isDir) {
 				this->setLastError(-1, __LINE__, __FILE__, "Extract path: [%s] exists and it's file", extractPath);
 				return false;
 			}
-		}
-		else
-		{
+		} else {
 			NSError * error = nil;
-			if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error] || error)
-			{
+			if (![manager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error] || error) {
 				this->setLastError(-1, __LINE__, __FILE__, "Can't create directory path: [%s]", [path UTF8String]);
 				return false;
 			}

@@ -52,18 +52,14 @@ namespace LzmaSDKObjC
 
 	bool InFile::open(const char * p)
 	{
-		if (p)
-		{
-			_f = fopen(p, "rb");
-		}
+		if (p) _f = fopen(p, "rb");
 		return (_f != NULL);
 	}
 
 	void InFile::close()
 	{
 		LZMASDK_DEBUG_LOG("InFile::close()")
-		if (_f)
-		{
+		if (_f) {
 			fclose(_f);
 			_f = NULL;
 		}

@@ -30,10 +30,61 @@
 
 @implementation WriteObjc
 
+- (void) testMutableItem {
+	LzmaSDKObjCMutableItem * item = [[LzmaSDKObjCMutableItem alloc] init];
+
+	[item setPath:@"f" isDirectory:NO];
+	XCTAssertTrue([item.path isEqualToString:@"f"]);
+	XCTAssertFalse(item.isDirectory);
+	XCTAssertNil(item.directoryPath);
+	XCTAssertTrue([item.fileName isEqualToString:@"f"]);
+
+	[item setPath:@"d/f" isDirectory:NO];
+	XCTAssertTrue([item.path isEqualToString:@"d/f"]);
+	XCTAssertFalse(item.isDirectory);
+	XCTAssertNotNil(item.directoryPath);
+	XCTAssertTrue([item.fileName isEqualToString:@"f"]);
+	XCTAssertTrue([item.directoryPath isEqualToString:@"d"]);
+
+	[item setPath:@"d" isDirectory:YES];
+	XCTAssertTrue([item.path isEqualToString:@"d"]);
+	XCTAssertTrue(item.isDirectory);
+	XCTAssertNotNil(item.directoryPath);
+	XCTAssertNil(item.fileName);
+	XCTAssertTrue([item.directoryPath isEqualToString:@"d"]);
+
+	[item setPath:@"d1/d2" isDirectory:YES];
+	XCTAssertTrue([item.path isEqualToString:@"d1/d2" ]);
+	XCTAssertTrue(item.isDirectory);
+	XCTAssertNotNil(item.directoryPath);
+	XCTAssertNil(item.fileName);
+	XCTAssertTrue([item.directoryPath isEqualToString:@"d1/d2"]);
+
+	NSDate * now = [NSDate date];
+	item.modificationDate = now;
+	item.accessDate = now;
+	item.creationDate = now;
+
+	NSDate * mDate = item.modificationDate;
+	NSDate * aDate = item.accessDate;
+	NSDate * cDate = item.creationDate;
+
+	// compare as uints
+	XCTAssertTrue((NSUInteger)mDate.timeIntervalSince1970 == (NSUInteger)now.timeIntervalSince1970);
+	XCTAssertTrue((NSUInteger)aDate.timeIntervalSince1970 == (NSUInteger)now.timeIntervalSince1970);
+	XCTAssertTrue((NSUInteger)cDate.timeIntervalSince1970 == (NSUInteger)now.timeIntervalSince1970);
+}
+
 - (void) testWriteNew {
 	[[NSFileManager defaultManager] removeItemAtPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z" error:nil];
 	LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z"]];
-	
+	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/responce"] forPath:@"1/responce"];
+	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
+	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
+
+	NSError * error = nil;
+	[writer open:&error];
+	[writer write];
 }
 
 

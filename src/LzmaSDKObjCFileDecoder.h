@@ -24,9 +24,7 @@
 #ifndef __LZMASDKOBJCFILEDECODER_H__
 #define __LZMASDKOBJCFILEDECODER_H__ 1
 
-#include "LzmaAppleCommon.h"
-#include "LzmaSDKObjCTypes.h"
-#include "LzmaSDKObjCCommon.h"
+#include "LzmaSDKObjCBaseCoder.h"
 
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
@@ -34,16 +32,16 @@
 #include "../lzma/CPP/Common/MyString.h"
 #include "../lzma/CPP/Windows/PropVariant.h"
 
-#include "LzmaSDKObjCICoder.h"
-#include "LzmaSDKObjCError.h"
+#include "LzmaSDKObjCOpenCallback.h"
+#include "LzmaSDKObjCExtractCallback.h"
 
 namespace LzmaSDKObjC
 {
-	class FileDecoder : public LzmaSDKObjC::LastErrorHolder, public LzmaSDKObjC::ICoder
+	class FileDecoder : public LzmaSDKObjC::BaseCoder
 	{
 	private:
-		void * _openCallbackRef;
-		void * _extractCallbackRef;
+		LzmaSDKObjC::OpenCallback * _openCallbackRef;
+		LzmaSDKObjC::ExtractCallback * _extractCallbackRef;
 
 		CMyComPtr<IInArchive> _archive;
 		CMyComPtr<IInStream> _inFile;
@@ -57,10 +55,6 @@ namespace LzmaSDKObjC
 		void cleanExtractCallbackRef();
 
 	public:
-		void * context;
-		LzmaSDKObjCGetVoidCallback getVoidCallback1;
-		LzmaSDKObjCSetFloatCallback setFloatCallback2;
-
 		uint32_t itemsCount() const;
 		void iterateStart();
 		bool iterateNext();
@@ -73,12 +67,11 @@ namespace LzmaSDKObjC
 					 const char * path = NULL,
 					 bool isWithFullPaths = false);
 
-		bool findCodec(const LzmaSDKObjCFileType type);
-		bool openFile(const char * path);
+		// Required section, `LzmaSDKObjC::BaseCoder`
+		// find codec, create encode/decode object and check error.
+		virtual bool prepare(const LzmaSDKObjCFileType type);
 
-		// LzmaObjc::ICoder
-		virtual void onProgress(const float progress);
-		virtual UString onGetVoidCallback1();
+		virtual bool openFile(const char * path);
 
 		FileDecoder();
 		virtual ~FileDecoder();

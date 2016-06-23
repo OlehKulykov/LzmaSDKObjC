@@ -22,27 +22,76 @@
 
 
 #include "LzmaSDKObjCFileEncoder.h"
+#include "LzmaSDKObjCUpdateCallback.h"
+
+#include "../lzma/CPP/7zip/Archive/DllExports2.h" // custom header with `STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject);`
+#include "../lzma/CPP/7zip/Archive/IArchive.h"
+#include "../lzma/CPP/7zip/IPassword.h"
 
 namespace LzmaSDKObjC
 {
-	void FileEncoder::onProgress(const float progress)
-	{
+	void FileEncoder::cleanUpdateCallbackRef() {
+		CMyComPtr<IArchiveUpdateCallback2> updateCallback = _updateCallback;
+		if (updateCallback != NULL && _updateCallbackRef) {
+			_updateCallbackRef->coder = NULL;
+		}
 
+		_updateCallbackRef = NULL;
+		_updateCallback.Release();
 	}
 
-	UString FileEncoder::onGetVoidCallback1()
-	{
-		return UString();
+	void FileEncoder::cleanOutFileStreamRef() {
+		CMyComPtr<IOutStream> outFileStream = _outFileStream;
+		if (outFileStream != NULL && _outFileStreamRef) {
+			_outFileStreamRef->Close();
+		}
+
+		_outFileStreamRef = NULL;
+		_outFileStream.Release();
 	}
 
-	FileEncoder::FileEncoder() : LzmaSDKObjC::LastErrorHolder(),
-		context(NULL)
+	bool FileEncoder::prepare(const LzmaSDKObjCFileType type) {
+		createObject(type, &IID_IOutArchive, (void **)&_archive);
+		return (_archive != NULL && this->lastError() == NULL);
+	}
+
+	bool FileEncoder::openFile(const char * path) {
+		this->cleanOutFileStreamRef();
+		this->cleanUpdateCallbackRef();
+		
+		_outFileStreamRef = new COutFileStream();
+		_outFileStream = CMyComPtr<IOutStream>(_outFileStreamRef);
+		if (!_outFileStreamRef->Create(path, false)) {
+//			PrintError("can't create archive file");
+			return false;
+		}
+
+		_updateCallbackRef = new LzmaSDKObjC::UpdateCallback();
+		_updateCallback = CMyComPtr<IArchiveUpdateCallback2>(_updateCallbackRef);
+
+		return true;
+	}
+
+	bool FileEncoder::encodeItems(void * items, const UInt32 numItems) {
+		if (_updateCallbackRef) {
+			_updateCallbackRef->items = items;
+			_updateCallbackRef->coder = this;
+			const HRESULT result = _archive->UpdateItems(_outFileStream, numItems, _updateCallback);
+			return result == S_OK;
+		}
+		return S_FALSE;
+	}
+
+	FileEncoder::FileEncoder() : LzmaSDKObjC::BaseCoder(),
+		_updateCallbackRef(NULL),
+		_outFileStreamRef(NULL)
 	{
-		LzmaSDKObjC::Common::initialize();
+		
 	}
 	
 	FileEncoder::~FileEncoder()
 	{
-
+		this->cleanOutFileStreamRef();
+		this->cleanUpdateCallbackRef();
 	}
 }

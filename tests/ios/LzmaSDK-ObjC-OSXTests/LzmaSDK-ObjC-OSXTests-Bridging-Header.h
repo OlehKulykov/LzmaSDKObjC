@@ -22,5 +22,6 @@
 
 
 #import "LzmaSDKObjCReader.h"
+#import "LzmaSDKObjCWriter.h"
 #import "LzmaSDKObjCItem.h"
 #import "LzmaSDKObjCBufferProcessor.h"

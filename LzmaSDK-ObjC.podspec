@@ -40,6 +40,7 @@ The main advantages is:
   s.public_header_files = 'src/LzmaSDKObjCTypes.h',
     'src/LzmaSDKObjCReader.h',
     'src/LzmaSDKObjCWriter.h',
+    'src/LzmaSDKObjCMutableItem.h',
     'src/LzmaSDKObjCItem.h',
     'src/LzmaSDKObjCBufferProcessor.h',
     'src/LzmaSDKObjC.h'

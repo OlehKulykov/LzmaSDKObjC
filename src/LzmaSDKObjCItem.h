@@ -66,7 +66,7 @@
 
 
 /**
- @brief Getter for the creating date if available, or nil.
+ @brief Getter for the creation date if available, or nil.
  */
 @property (nonatomic, strong, readonly) NSDate * _Nullable creationDate;
 

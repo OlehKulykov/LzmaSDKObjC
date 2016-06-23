@@ -38,7 +38,7 @@
 #include "../lzma/CPP/Windows/PropVariantConv.h"
 
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
-#include "../lzma/CPP/7zip/Archive/DllExports2.h"
+#include "../lzma/CPP/7zip/Archive/DllExports2.h" // custom header with `STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject);`
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
 
@@ -46,7 +46,7 @@
 #include "LzmaSDKObjCInFile.h"
 #include "LzmaSDKObjCOpenCallback.h"
 #include "LzmaSDKObjCOutFile.h"
-#include "LzmaSDKObjCExtractCallback.h"
+
 
 namespace LzmaSDKObjC
 {
@@ -58,47 +58,35 @@ namespace LzmaSDKObjC
 	{
 		this->cleanExtractCallbackRef();
 
-		LzmaSDKObjC::ExtractCallback * extractCallback = new LzmaSDKObjC::ExtractCallback();
-		if (!extractCallback)
-		{
+		_extractCallbackRef = new LzmaSDKObjC::ExtractCallback();
+		_extractCallback = CMyComPtr<IArchiveExtractCallback>(_extractCallbackRef);
+		if (!_extractCallbackRef) {
 			this->setLastError(-1, __LINE__, __FILE__, "Can't create extract object");
 			return false;
 		}
 
 		int32_t mode = NArchive::NExtract::NAskMode::kSkip;
-		if (path)
-		{
-			if (extractCallback->prepare(path, isWithFullPaths))
-			{
+		if (path) {
+			if (_extractCallbackRef->prepare(path, isWithFullPaths)) {
 				mode = NArchive::NExtract::NAskMode::kExtract;
-			}
-			else
-			{
-				this->setLastError(extractCallback);
+			} else {
+				this->setLastError(_extractCallbackRef);
 				return false;
 			}
-		}
-		else
-		{
+		} else {
 			mode = NArchive::NExtract::NAskMode::kTest;
 		}
 
-		_extractCallbackRef = extractCallback;
-		extractCallback->setCoder(this);
-		extractCallback->setArchive(_archive);
-		extractCallback->setMode(mode);
-
-		_extractCallback = extractCallback;
+		_extractCallbackRef->setCoder(this);
+		_extractCallbackRef->setArchive(_archive);
+		_extractCallbackRef->setMode(mode);
 
 		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, mode, _extractCallback);
-		extractCallback->setArchive(NULL);
+		_extractCallbackRef->setArchive(NULL);
 
-		if (result == S_OK)
-		{
+		if (result == S_OK) {
 			LZMASDK_DEBUG_LOG("Process OK")
-		}
-		else
-		{
+		} else {
 			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lu", (unsigned long)result);
 			LZMASDK_DEBUG_LOG("Process Error")
 		}
@@ -106,37 +94,37 @@ namespace LzmaSDKObjC
 		return (result == S_OK);
 	}
 
-	bool FileDecoder::readIteratorProperty(PROPVARIANT * property, const uint32_t identifier)
-	{
+	bool FileDecoder::readIteratorProperty(PROPVARIANT * property, const uint32_t identifier) {
 		return (_iterateIndex < _itemsCount) ? (_archive->GetProperty(_iterateIndex, identifier, property) == S_OK) : false;
 	}
 
-	bool FileDecoder::openFile(const char * path)
-	{
-		this->cleanOpenCallbackRef();
+	bool FileDecoder::prepare(const LzmaSDKObjCFileType type) {
+		this->createObject(type, &IID_IInArchive, (void **)&_archive);
+		return (_archive != NULL && this->lastError() == NULL);
+	}
 
+	bool FileDecoder::openFile(const char * path) {
+		this->cleanOpenCallbackRef();
+		this->cleanExtractCallbackRef();
+		
 		LzmaSDKObjC::InFile * inFile = new LzmaSDKObjC::InFile();
-		if (!inFile)
-		{
+		if (!inFile) {
 			this->setLastError(-1, __LINE__, __FILE__, "Can't open file for reading: [%s]", path);
 			return false;
 		}
 
 		_inFile = inFile;
 
-		LzmaSDKObjC::OpenCallback * openCallback = new LzmaSDKObjC::OpenCallback();
-		if (!openCallback)
-		{
+		_openCallbackRef = new LzmaSDKObjC::OpenCallback();
+		_openCallback = CMyComPtr<IArchiveOpenCallback>(_openCallbackRef);
+		if (!_openCallbackRef) {
 			this->setLastError(-1, __LINE__, __FILE__, "Can't create open callback");
 			return false;
 		}
 
-		_openCallbackRef = openCallback;
-		openCallback->setCoder(this);
-		_openCallback = openCallback;
+		_openCallbackRef->setCoder(this);
 
-		if (!inFile->open(path))
-		{
+		if (!inFile->open(path)) {
 			this->setLastError(-1, __LINE__, __FILE__, "Can't open file for reading: [%s]", path);
 			this->setLastErrorReason("- File not exists.\n"
 									 "- File have no read permissions for the current user.");
@@ -144,12 +132,10 @@ namespace LzmaSDKObjC
 		}
 
 		HRESULT res = _archive->Open(_inFile, 0, _openCallback);
-		if (res == S_OK)
-		{
+		if (res == S_OK) {
 			UInt32 numItems = 0;
 			res = _archive->GetNumberOfItems(&numItems);
-			if (res != S_OK)
-			{
+			if (res != S_OK) {
 				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items with result: %lu", (unsigned long)res);
 				return false;
 			}
@@ -161,91 +147,34 @@ namespace LzmaSDKObjC
 		return false;
 	}
 
-	bool FileDecoder::findCodec(const LzmaSDKObjCFileType type)
-	{
-		if (type)
-		{
-			const GUID * clsid = NULL;
-			const GUID clsid7z = Common::CLSIDFormat7z();
-			const GUID clsidXz = Common::CLSIDFormatXz();
-			switch (type)
-			{
-				case LzmaSDKObjCFileType7z: clsid = &clsid7z; break;
-				case LzmaSDKObjCFileTypeXz: clsid = &clsidXz; break;
-				default:
-					this->setLastError(-1, __LINE__, __FILE__, "Can't find codec for unsupported file type: %i", (int)type);
-					this->setLastErrorReason("Not one of the: ['7z', 'Xz']");
-					return false;
-					break;
-			}
-
-			if (CreateObject(clsid, &IID_IInArchive, (void **)&_archive) != S_OK)
-			{
-				this->setLastError(-1, __LINE__, __FILE__, "Can't create archive object file type: %i", (int)type);
-				this->setLastErrorReason("- Unsupported archive GUID.\n"
-										 "- Codec was not compiled in or stripped by static linking. Make sure you are using 'use_frameworks!' and/or dynamic linking.");
-				return false;
-			}
-			return (_archive != NULL);
-		}
-
-		this->setLastError(-1, __LINE__, __FILE__, "Type of the archive is undefined, create reader with manual type");
-		return false;
-	}
-
 	uint32_t FileDecoder::itemsCount() const { return _itemsCount; }
 	void FileDecoder::iterateStart() { _iterateIndex = 0; }
 	bool FileDecoder::iterateNext() { return (++_iterateIndex < _itemsCount); }
 	uint32_t FileDecoder::iteratorIndex() const { return _iterateIndex; };
 
-	void FileDecoder::onProgress(const float progress)
-	{
-		if (context && setFloatCallback2) setFloatCallback2(context, progress);
-		LZMASDK_DEBUG_LOG("FileDecoder::onExtractProgress = %f", progress)
-	}
-
-	UString FileDecoder::onGetVoidCallback1()
-	{
-		wchar_t * w = (context && getVoidCallback1) ? (wchar_t *)getVoidCallback1(context) : NULL;
-		UString r;
-		if (w) { r = w; free(w); }
-		return r;
-	}
-
-	FileDecoder::FileDecoder() : LzmaSDKObjC::LastErrorHolder(),
+	FileDecoder::FileDecoder() : LzmaSDKObjC::BaseCoder(),
 		_openCallbackRef(NULL),
 		_extractCallbackRef(NULL),
 		_itemsCount(0),
-		_iterateIndex(0),
-		context(NULL),
-		getVoidCallback1(NULL),
-		setFloatCallback2(NULL)
+		_iterateIndex(0)
 	{
-		LzmaSDKObjC::Common::initialize();
+
 	}
 
-	void FileDecoder::cleanOpenCallbackRef()
-	{
+	void FileDecoder::cleanOpenCallbackRef() {
 		CMyComPtr<IArchiveOpenCallback> op = _openCallback;
-		if (op != NULL)
-		{
-			// pointer exists & retained localy 'op', can use actual class ref.
-			LzmaSDKObjC::OpenCallback * o = (LzmaSDKObjC::OpenCallback *)_openCallbackRef;
-			if (o) o->setCoder(NULL);
+		if (op != NULL && _openCallbackRef) {
+			_openCallbackRef->setCoder(NULL);
 		}
 
 		_openCallbackRef = NULL;
 		_openCallback.Release();
 	}
 
-	void FileDecoder::cleanExtractCallbackRef()
-	{
+	void FileDecoder::cleanExtractCallbackRef() {
 		CMyComPtr<IArchiveExtractCallback> ep = _extractCallback;
-		if (ep != NULL)
-		{
-			// pointer exists & retained localy 'op', can use actual class ref.
-			LzmaSDKObjC::ExtractCallback * e = (LzmaSDKObjC::ExtractCallback *)_extractCallbackRef;
-			if (e) e->setCoder(NULL);
+		if (ep != NULL && _extractCallbackRef) {
+			_extractCallbackRef->setCoder(NULL);
 		}
 
 		_extractCallbackRef = NULL;

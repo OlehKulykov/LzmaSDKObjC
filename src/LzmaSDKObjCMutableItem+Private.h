@@ -21,22 +21,15 @@
  */
 
 
-#ifndef __LZMASDKOBJCICODER_H__
-#define __LZMASDKOBJCICODER_H__ 1
+#ifndef __LZMASDKOBJCMUTABLEITEM_PRIVATE_H__
+#define __LZMASDKOBJCMUTABLEITEM_PRIVATE_H__ 1
 
-#include "LzmaAppleCommon.h"
-
-namespace LzmaSDKObjC
+@interface LzmaSDKObjCMutableItem()
 {
-	class ICoder
-	{
-	public:
-		virtual void onProgress(const float progress) = 0;
-
-		virtual UString onGetVoidCallback1() = 0;
-
-		virtual ~ICoder() { }
-	};
+@public
+	__strong NSData * _fileData;
 }
 
-#endif
+@end
+
+#endif 

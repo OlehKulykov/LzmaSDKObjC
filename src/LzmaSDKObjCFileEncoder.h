@@ -24,29 +24,39 @@
 #ifndef __LZMASDKOBJCFILEENCODER_H__
 #define __LZMASDKOBJCFILEENCODER_H__ 1
 
-#include "LzmaAppleCommon.h"
-#include "LzmaSDKObjCTypes.h"
-#include "LzmaSDKObjCCommon.h"
+#include "LzmaSDKObjCBaseCoder.h"
 
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
+#include "../lzma/CPP/7zip/Common/FileStreams.h"
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
 #include "../lzma/CPP/Windows/PropVariant.h"
 
-#include "LzmaSDKObjCICoder.h"
-#include "LzmaSDKObjCError.h"
-
 namespace LzmaSDKObjC
 {
-	class FileEncoder : public LzmaSDKObjC::LastErrorHolder, public LzmaSDKObjC::ICoder
-	{
-	public:
-		void * context;
+	class UpdateCallback;
 
-		// LzmaObjc::ICoder
-		virtual void onProgress(const float progress);
-		virtual UString onGetVoidCallback1();
+	class FileEncoder : public LzmaSDKObjC::BaseCoder
+	{
+	private:
+		LzmaSDKObjC::UpdateCallback * _updateCallbackRef;
+		COutFileStream * _outFileStreamRef;
+		
+		CMyComPtr<IOutArchive> _archive;
+		CMyComPtr<IArchiveUpdateCallback2> _updateCallback;
+		CMyComPtr<IOutStream> _outFileStream;
+
+		void cleanUpdateCallbackRef();
+		void cleanOutFileStreamRef();
+	public:
+		bool encodeItems(void * items, const UInt32 numItems);
+
+		// Required section, `LzmaSDKObjC::BaseCoder`
+		// find codec, create encode/decode object and check error.
+		virtual bool prepare(const LzmaSDKObjCFileType type);
+
+		virtual bool openFile(const char * path);
 
 		FileEncoder();
 		virtual ~FileEncoder();
