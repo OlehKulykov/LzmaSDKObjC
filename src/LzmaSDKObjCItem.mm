@@ -26,28 +26,22 @@
 
 @implementation LzmaSDKObjCItem
 
-- (BOOL) isEncrypted
-{
+- (BOOL) isEncrypted {
 	return (_flags & LzmaObjcItemFlagIsEncrypted) ? YES : NO;
 }
 
-- (BOOL) isDirectory
-{
+- (BOOL) isDirectory {
 	return (_flags & LzmaObjcItemFlagIsDir) ? YES : NO;
 }
 
-- (NSString *) fileName
-{
+- (NSString *) fileName {
 	return (NSStringIsNotEmpty(_path) && !self.isDirectory) ? [_path lastPathComponent] : nil;
 }
 
-- (NSString *) directoryPath
-{
-	if (NSStringIsNotEmpty(_path))
-	{
+- (NSString *) directoryPath {
+	if (NSStringIsNotEmpty(_path)) {
 		if (self.isDirectory) return _path;
-		else
-		{
+		else {
 			NSString * path = [_path stringByDeletingLastPathComponent];
 			if (NSStringIsNotEmpty(path)) return path;
 		}
@@ -55,24 +49,20 @@
 	return nil;
 }
 
-- (NSDate *) modificationDate
-{
+- (NSDate *) modificationDate {
 	return _mDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_mDate)] : nil;
 }
 
-- (NSDate *) creationDate
-{
+- (NSDate *) creationDate {
 	return _cDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_cDate)] : nil;
 }
 
-- (NSDate *) accessDate
-{
+- (NSDate *) accessDate {
 	return _aDate ? [NSDate dateWithTimeIntervalSince1970:NSTimeInterval(_aDate)] : nil;
 }
 
 #if defined(DEBUG) || defined(_DEBUG)
-- (NSString *) debugDescription
-{
+- (NSString *) debugDescription {
 	return [NSString stringWithFormat:@"[\npath=%@\nsize=%llu\nmodf.date=%@\ncret.date=%@\naccs.date=%@\nencrypted=%@\nCRC=%u\ndirectory=%@\n]",
 			_path,
 			_orgSize,
@@ -85,8 +75,7 @@
 			];
 }
 
-- (NSString *) description
-{
+- (NSString *) description {
 	return [self debugDescription];
 }
 #endif

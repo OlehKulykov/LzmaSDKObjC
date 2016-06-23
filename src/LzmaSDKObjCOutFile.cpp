@@ -27,54 +27,36 @@
 namespace LzmaSDKObjC
 {
 
-	STDMETHODIMP OutFile::Write(const void *data, UInt32 size, UInt32 *processedSize)
-	{
-		if (_f)
-		{
-			LZMASDK_DEBUG_LOG("OutFile::Write = %u", size)
+	STDMETHODIMP OutFile::Write(const void *data, UInt32 size, UInt32 *processedSize) {
+		if (_f) {
 			const size_t writed = fwrite(data, 1, size, _f);
 			if (processedSize) *processedSize = (UInt32)writed;
 		}
 		return S_OK;
 	}
 
-	STDMETHODIMP OutFile::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition)
-	{
-		if (_f)
-		{
-			LZMASDK_DEBUG_LOG("OutFile::Seek = %llu", offset)
-			if (fseeko(_f, offset, seekOrigin) == 0)
-			{
+	STDMETHODIMP OutFile::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition) {
+		if (_f) {
+			if (fseeko(_f, offset, seekOrigin) == 0) {
 				if (newPosition) *newPosition = ftello(_f);
-			}
-			else
-			{
+			} else {
 				return S_FALSE;
 			}
 		}
 		return S_OK;
 	}
 
-	STDMETHODIMP OutFile::SetSize(UInt64 newSize)
-	{
-		LZMASDK_DEBUG_LOG("OutFile::SetSize = %llu", newSize)
+	STDMETHODIMP OutFile::SetSize(UInt64 newSize) {
 		return S_OK;
 	}
 
-	bool OutFile::open(const char * path)
-	{
-		if (path)
-		{
-			_f = fopen(path, "w+b");
-		}
+	bool OutFile::open(const char * path) {
+		if (path) _f = fopen(path, "w+b");
 		return (_f != NULL);
 	}
 
-	void OutFile::close()
-	{
-		LZMASDK_DEBUG_LOG("OutFile::close()")
-		if (_f)
-		{
+	void OutFile::close() {
+		if (_f) {
 			fclose(_f);
 			_f = NULL;
 		}
@@ -89,7 +71,6 @@ namespace LzmaSDKObjC
 	OutFile::~OutFile()
 	{
 		this->close();
-		LZMASDK_DEBUG_LOG("OutFile::~OutFile()")
 	}
 	
 }
