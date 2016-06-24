@@ -248,9 +248,9 @@ switch (<what do I need ?>)
     - [x] Regular archive. ```tests/files/lzma.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma_aes256_encfn.7z```
-  - [x] **Create**
-    - [x] Regular archive.
-    - [x] Encrypted archive with AES256.
+  - [ ] **Create**
+    - [ ] Regular archive.
+    - [ ] Encrypted archive with AES256.
     - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Lzma2/*.7z**
   - [x] **List**
@@ -262,6 +262,9 @@ switch (<what do I need ?>)
     - [x] Encrypted archive with AES256. ```tests/files/lzma2_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma2_aes256_encfn.7z```
   - [ ] **Create**
+    - [x] Regular archive.
+    - [x] Encrypted archive with AES256.
+    - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Omit unused code**, reduce buildable, original code size.
 
 
