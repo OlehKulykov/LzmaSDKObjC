@@ -262,7 +262,6 @@
 		3D9BD6891C8E4AAB00081959 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5AE1C8E4AAB00081959 /* System.cpp */; };
 		3D9BD6A21C8E4BAC00081959 /* TestBaseObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69C1C8E4BAC00081959 /* TestBaseObjc.m */; };
 		3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */; };
-		3DB0EE2F1D1C180A000CD912 /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */; };
 		3DB5BA4D1D1C146B007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3DB5BA4E1D1C146B007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3DB5BA4F1D1C146C007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
@@ -2107,7 +2106,6 @@
 				3D9BD6251C8E4AAB00081959 /* ArchiveExports.cpp in Sources */,
 				3D9BD6071C8E4AAB00081959 /* 7zHandler.cpp in Sources */,
 				3D9BD5F51C8E4AAB00081959 /* XzCrc64.c in Sources */,
-				3DB0EE2F1D1C180A000CD912 /* WriteObjc.m in Sources */,
 				3D9BD5F91C8E4AAB00081959 /* XzDec.c in Sources */,
 				3D9BD6651C8E4AAB00081959 /* MyAesReg.cpp in Sources */,
 				3D9BD5E31C8E4AAB00081959 /* LzFindMt.c in Sources */,
