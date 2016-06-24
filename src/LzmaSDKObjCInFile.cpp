@@ -26,23 +26,19 @@
 namespace LzmaSDKObjC
 {
 
-	STDMETHODIMP InFile::Read(void *data, UInt32 size, UInt32 *processedSize)
-	{
-		if (_f && size > 0)
-		{
-			LZMASDK_DEBUG_LOG("InFile::Read = %u", size)
+	STDMETHODIMP InFile::Read(void *data, UInt32 size, UInt32 *processedSize) {
+		if (processedSize) *processedSize = 0;
+		if (_f && size > 0) {
 			const size_t r = fread(data, 1, size, _f);
 			if (processedSize) *processedSize = (UInt32)r;
 		}
 		return S_OK;
 	}
 
-	STDMETHODIMP InFile::Seek(Int64 offset, uint32_t seekOrigin, UInt64 *newPosition)
-	{
-		if (_f)
-		{
-			if (fseeko(_f, offset, seekOrigin) == 0)
-			{
+	STDMETHODIMP InFile::Seek(Int64 offset, uint32_t seekOrigin, UInt64 *newPosition) {
+		if (newPosition) *newPosition = 0;
+		if (_f) {
+			if (fseeko(_f, offset, seekOrigin) == 0) {
 				if (newPosition) *newPosition = ftello(_f);
 				return S_OK;
 			}
@@ -50,15 +46,12 @@ namespace LzmaSDKObjC
 		return S_FALSE;
 	}
 
-	bool InFile::open(const char * p)
-	{
+	bool InFile::open(const char * p) {
 		if (p) _f = fopen(p, "rb");
 		return (_f != NULL);
 	}
 
-	void InFile::close()
-	{
-		LZMASDK_DEBUG_LOG("InFile::close()")
+	void InFile::close() {
 		if (_f) {
 			fclose(_f);
 			_f = NULL;
@@ -74,7 +67,6 @@ namespace LzmaSDKObjC
 	InFile::~InFile()
 	{
 		this->close();
-		LZMASDK_DEBUG_LOG("InFile::~InFile()")
 	}
 	
 }

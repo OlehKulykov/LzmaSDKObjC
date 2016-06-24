@@ -31,25 +31,21 @@
 
 namespace LzmaSDKObjC
 {
-	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes)
-	{
+	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes) {
 		return S_OK;
 	}
 
-	STDMETHODIMP ExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize)
-	{
+	STDMETHODIMP ExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize) {
 		return S_OK;
 	}
 
-	STDMETHODIMP ExtractCallback::SetTotal(UInt64 size)
-	{
+	STDMETHODIMP ExtractCallback::SetTotal(UInt64 size) {
 		_total = size;
 		if (_coder) _coder->onProgress(0);
 		return S_OK;
 	}
 
-	STDMETHODIMP ExtractCallback::SetCompleted(const UInt64 * completeValue)
-	{
+	STDMETHODIMP ExtractCallback::SetCompleted(const UInt64 * completeValue) {
 		if (completeValue && _coder) {
 			const long double complete = *completeValue;
 			const float progress = (_total > 0) ? (float)(complete / _total) : 0;
@@ -58,8 +54,7 @@ namespace LzmaSDKObjC
 		return S_OK;
 	}
 
-	HRESULT ExtractCallback::getTestStream(uint32_t index, ISequentialOutStream **outStream)
-	{
+	HRESULT ExtractCallback::getTestStream(uint32_t index, ISequentialOutStream **outStream) {
 		CDummyOutStream * dummy = new CDummyOutStream();
 		if (!dummy) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out test stream");
@@ -74,11 +69,9 @@ namespace LzmaSDKObjC
 		return S_OK;
 	}
 
-	HRESULT ExtractCallback::getExtractStream(uint32_t index, ISequentialOutStream **outStream)
-	{
+	HRESULT ExtractCallback::getExtractStream(uint32_t index, ISequentialOutStream **outStream) {
 		NWindows::NCOM::CPropVariant pathProp;
-		if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK)
-		{
+		if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't read path property by index: %i", (int)index);
 			return E_ABORT;
 		}
@@ -86,44 +79,35 @@ namespace LzmaSDKObjC
 		NSString * archivePath = [[NSString alloc] initWithBytes:pathProp.bstrVal
 														  length:wcslen(pathProp.bstrVal) * sizeof(wchar_t)
 														encoding:NSUTF32LittleEndianStringEncoding];
-		if (!archivePath || [archivePath length] == 0)
-		{
+		if (!archivePath || [archivePath length] == 0) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path object");
 			return E_ABORT;
 		}
 
 		NSString * fullPath = [NSString stringWithUTF8String:_dstPath];
 		NSString * fileName = [archivePath lastPathComponent];
-		if (!fileName || [fileName length] == 0)
-		{
+		if (!fileName || [fileName length] == 0) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't initialize path file name");
 			return E_ABORT;
 		}
 
-		if (_isFullPath)
-		{
+		if (_isFullPath) {
 			NSString * subPath = [archivePath stringByDeletingLastPathComponent];
-			if (subPath && [subPath length] > 0)
-			{
+			if (subPath && [subPath length] > 0) {
 				NSFileManager * manager = [[NSFileManager alloc] init];
-				if (![manager changeCurrentDirectoryPath:fullPath])
-				{
+				if (![manager changeCurrentDirectoryPath:fullPath]) {
 					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't change current directory to: [%s]", [fullPath UTF8String]);
 					return E_ABORT;
 				}
 
 				BOOL isDir = NO;
 				NSError * error = nil;
-				if ([manager fileExistsAtPath:subPath isDirectory:&isDir])
-				{
-					if (!isDir)
-					{
+				if ([manager fileExistsAtPath:subPath isDirectory:&isDir]) {
+					if (!isDir) {
 						this->setLastError(E_ABORT, __LINE__, __FILE__, "Destination path: [%s] exists in directory: [%s] and it's file", [subPath UTF8String], [fullPath UTF8String]);
 						return E_ABORT;
 					}
-				}
-				else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:YES attributes:nil error:&error] || error)
-				{
+				} else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:YES attributes:nil error:&error] || error) {
 					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create subdirectory: [%s] in directory: [%s]", [subPath UTF8String], [fullPath UTF8String]);
 					return E_ABORT;
 				}
@@ -136,32 +120,25 @@ namespace LzmaSDKObjC
 
 		PROPVARIANT isDirProp = {0};
 		HRESULT res = _archive->GetProperty(index, kpidIsDir, &isDirProp);
-		if (res != S_OK)
-		{
+		if (res != S_OK) {
 			this->setLastError(res, __LINE__, __FILE__, "Can't get property of the item by index: %u", (unsigned int)index);
 			return res;
 		}
 
-		if (Common::PROPVARIANTGetBool(&isDirProp))
-		{
+		if (Common::PROPVARIANTGetBool(&isDirProp)) {
 			NSError * error = nil;
-			if (![[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error] || error)
-			{
+			if (![[NSFileManager defaultManager] createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:&error] || error) {
 				this->setLastError(S_FALSE, __LINE__, __FILE__, "Can't create directory: [%s]", [fullPath UTF8String]);
 				return E_ABORT;
 			}
-		}
-		else
-		{
+		} else {
 			LzmaSDKObjC::OutFile * outFile = new LzmaSDKObjC::OutFile();
-			if (!outFile)
-			{
+			if (!outFile) {
 				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create out file stream");
 				return E_ABORT;
 			}
 
-			if (!outFile->open([fullPath UTF8String]))
-			{
+			if (!outFile->open([fullPath UTF8String])) {
 				delete outFile;
 				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open destination for write: [%s]", [fullPath UTF8String]);
 				return E_ABORT;
@@ -179,8 +156,7 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP ExtractCallback::GetStream(UInt32 index,
 											ISequentialOutStream **outStream,
-											Int32 askExtractMode)
-	{
+											Int32 askExtractMode) {
 		*outStream = NULL;
 		_outFileStream.Release();
 		_outFileStreamRef = NULL;

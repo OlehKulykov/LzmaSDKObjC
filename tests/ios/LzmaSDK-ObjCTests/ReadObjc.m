@@ -24,11 +24,16 @@
 #import <XCTest/XCTest.h>
 #import "TestBaseObjc.h"
 
-@interface ReadObjc : TestBaseObjc
+@interface ReadObjc : TestBaseObjc <LzmaSDKObjCReaderDelegate>
 
 @end
 
 @implementation ReadObjc
+
+#pragma mark - LzmaSDKObjCReaderDelegate
+- (void) onLzmaSDKObjCReader:(LzmaSDKObjCReader *)reader extractProgress:(float)progress {
+	NSLog(@"Read progress: %f, %i %%", progress, (int)(progress * 100));
+}
 
 - (void) setUp {
     [super setUp];

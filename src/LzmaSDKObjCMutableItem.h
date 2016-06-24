@@ -32,11 +32,19 @@
  */
 @property (nonatomic, strong, readonly) NSString * _Nonnull path;
 
+
+/**
+ @brief File path asociated with item.
+ */
+@property (nonatomic, strong, readonly) NSString * _Nullable sourceFilePath;
+
+
 /**
  @brief Set custom data for the file.
  If data not empty - mark item as file and set all dates to `now`.
  */
 @property (nonatomic, strong) NSData * _Nullable fileData;
+
 
 /**
  @brief Modification date if available, or nil.

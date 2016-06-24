@@ -30,6 +30,7 @@
  *
  *   Changes on version 2.0.0 (current):
  *   - Reduce ammount of static variables.
+ *   - Error domain, e.g. `kLzmaSDKObjCErrorDomain` was changed to `LzmaSDKObjC`.
  *
  *   Changes on version 1.1.5:
  *   - Added error possible failure reason description. 

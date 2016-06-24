@@ -43,6 +43,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExtXz;
 
 /**
  @brief Error domain for the reader errors.
+ @return @b LzmaSDKObjC
  */
 LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
@@ -88,7 +89,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
 /**
  @brief Number of the archive items.
-  @warning Available only after open archive.
+ @warning Available only after open archive.
  */
 @property (nonatomic, assign, readonly) NSUInteger itemsCount;
 

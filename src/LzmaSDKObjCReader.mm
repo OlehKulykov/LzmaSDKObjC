@@ -34,7 +34,7 @@ NSString * const _Nonnull kLzmaSDKObjCFileExt7z = @"7z";
 
 NSString * const _Nonnull kLzmaSDKObjCFileExtXz = @"xz";
 
-NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjCReader";
+NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjC";
 
 @interface LzmaSDKObjCReader()
 {
@@ -71,48 +71,34 @@ static wchar_t * _LzmaSDKObjCReaderWepGW(NSString * we)
 
 @implementation LzmaSDKObjCReader
 
-static void _LzmaSDKObjCSetFloatCallback(void * context, float value)
-{
+static void _LzmaSDKObjCReaderSetFloatCallback(void * context, float value) {
 	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
-	if (r)
-	{
+	if (r) {
 		id<LzmaSDKObjCReaderDelegate> d = r.delegate;
-		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)])
-		{
+		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)]) {
 			if ([NSThread isMainThread]) [d onLzmaSDKObjCReader:r extractProgress:value];
 			else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCReader:r extractProgress:value]; });
 		}
 	}
 }
 
-static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
-{
+static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
 	if (r) return r->_passwordGetter ? _LzmaSDKObjCReaderWepGW(r->_passwordGetter()) : NULL;
 	return NULL;
 }
 
-- (BOOL) openPath:(NSString *) path withError:(NSError **) error
-{
+- (BOOL) openPath:(NSString *) path withError:(NSError **) error {
 	BOOL isDir = YES;
-	if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir])
-	{
-		if (isDir)
-		{
+	if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) {
+		if (isDir) {
 			_decoder->setLastError(-1, __LINE__, __FILE__, "Archive path is directory: [%s]", [path UTF8String]);
-		}
-		else
-		{
+		} else {
 			_decoder->context = (__bridge void *)self;
 			_decoder->getVoidCallback1 = _LzmaSDKObjCReaderGetVoidCallback1;
-			if (_decoder->openFile([path UTF8String]))
-			{
-				return YES;
-			}
+			if (_decoder->openFile([path UTF8String])) return YES;
 		}
-	}
-	else
-	{
+	} else {
 		_decoder->setLastError(-1, __LINE__, __FILE__, "File path doesn't exists: [%s]", [path UTF8String]);
 	}
 
@@ -120,28 +106,23 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return NO;
 }
 
-- (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler
-{
+- (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler {
 	NSParameterAssert(handler);
-	if (_decoder && handler)
-	{
+	if (_decoder && handler) {
 		_decoder->clearLastError();
 		_decoder->iterateStart();
 		LzmaSDKObjCItem * item = nil;
 		NSError * error = nil;
-		do
-		{
+		do {
 			item = nil;
 			error = nil;
 			PROPVARIANT prop = { 0 };
 			PROPVARIANT name = { 0 };
 			bool r = _decoder->readIteratorProperty(&prop, kpidSize);
 			r |= _decoder->readIteratorProperty(&name, kpidPath);
-			if (r)
-			{
+			if (r) {
 				item = [[LzmaSDKObjCItem alloc] init];
-				if (item)
-				{
+				if (item) {
 					item->_index = _decoder->iteratorIndex();
 					item->_orgSize = LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
 					prop = { 0 };
@@ -172,8 +153,9 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 					prop = { 0 };
 					if (_decoder->readIteratorProperty(&prop, kpidIsDir))
 						if (prop.vt == VT_BOOL && prop.boolVal) item->_flags |= LzmaObjcItemFlagIsDir;
+				} else {
+					error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain code:-1 userInfo:nil];
 				}
-				else error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain code:-1 userInfo:nil];
 			}
 			NWindows::NCOM::PropVariant_Clear(&name);
 		}
@@ -185,26 +167,20 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 - (BOOL) process:(NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(const char *) path
-   withFullPaths:(BOOL) isFullPaths
-{
+   withFullPaths:(BOOL) isFullPaths {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
-	if (count && _decoder)
-	{
-		_decoder->clearLastError();
+	if (count && _decoder) {
 		BOOL isOK = NO;
 		const unsigned int indexesMemSize = count * sizeof(uint32_t);
 		uint32_t * itemsIndices = (uint32_t *)malloc(indexesMemSize);
-		if (itemsIndices)
-		{
+		if (itemsIndices) {
 			uint32_t index = 0;
 			for (LzmaSDKObjCItem * item in items) itemsIndices[index++] = item->_index;
 			_decoder->context = (__bridge void *)self;
-			_decoder->setFloatCallback2 = _LzmaSDKObjCSetFloatCallback;
+			_decoder->setFloatCallback2 = _LzmaSDKObjCReaderSetFloatCallback;
 			if (_decoder->process(itemsIndices, count, path, path ? (bool)isFullPaths : false)) isOK = YES;
 			free(itemsIndices);
-		}
-		else
-		{
+		} else {
 			_decoder->setLastError(-1, __LINE__, __FILE__, "Can't allocate enough memory for items indexes: [%u] bytes", indexesMemSize);
 		}
 		return isOK;
@@ -214,58 +190,46 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 - (BOOL) extract:(nullable NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(nullable NSString *) path
-   withFullPaths:(BOOL) isFullPaths
-{
+   withFullPaths:(BOOL) isFullPaths {
 	const char * cPath = path ? [path UTF8String] : NULL;
 	return cPath ? [self process:items toPath:cPath withFullPaths:isFullPaths] : NO;
 }
 
-- (BOOL) test:(nullable NSArray<LzmaSDKObjCItem *> *) items
-{
+- (BOOL) test:(nullable NSArray<LzmaSDKObjCItem *> *) items {
 	return [self process:items toPath:NULL withFullPaths:NO];
 }
 
-- (BOOL) open:(NSError * _Nullable * _Nullable) error
-{
-	if (!_decoder)
-	{
+- (BOOL) open:(NSError * _Nullable * _Nullable) error {
+	if (!_decoder) {
 		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 												code:-1
 											userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
 		return NO;
 	}
 
-	_decoder->clearLastError();
-
-	if (!_decoder->prepare(_fileType))
-	{
+	if (!_decoder->prepare(_fileType)) {
 		if (error) *error = self.lastError;
 		return NO;
 	}
 
-	if (!_fileURL)
-	{
+	if (!_fileURL) {
 		_decoder->setLastError(-1, __LINE__, __FILE__, "No file URL provided");
 		if (error) *error = self.lastError;
 		return NO;
 	}
 
 	NSString * path = [_fileURL path];
-	if (path)
-	{
+	if (path) {
 		if ([self openPath:path withError:error]) return YES;
 	}
 
 	if (error) *error = self.lastError;
-
 	return NO;
 }
 
-- (NSError *) lastError
-{
+- (NSError *) lastError {
 	LzmaSDKObjC::Error * error = _decoder ? _decoder->lastError() : NULL;
-	if (error)
-	{
+	if (error) {
 		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 								   code:(NSInteger)error->code
 							   userInfo:@{ NSLocalizedDescriptionKey : [NSString stringWithUTF8String:error->description.Ptr() ? error->description.Ptr() : ""],
@@ -277,21 +241,17 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return nil;
 }
 
-- (NSURL *) fileURL
-{
+- (NSURL *) fileURL {
 	return _fileURL;
 }
 
-- (NSUInteger) itemsCount
-{
+- (NSUInteger) itemsCount {
 	return _decoder ? _decoder->itemsCount() : 0;
 }
 
-- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL
-{
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL {
 	self = [super init];
-	if (self)
-	{
+	if (self) {
 		NSParameterAssert(fileURL);
 
 		_fileType = LzmaSDKObjCDetectFileType(fileURL);
@@ -303,11 +263,9 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return self;
 }
 
-- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type
-{
+- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type {
 	self = [super init];
-	if (self)
-	{
+	if (self) {
 		NSParameterAssert(fileURL);
 
 		_fileURL = fileURL;
@@ -319,10 +277,8 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 	return self;
 }
 
-- (void) dealloc
-{
-	if (_decoder)
-	{
+- (void) dealloc {
+	if (_decoder) {
 		_decoder->context = NULL;
 		delete _decoder;
 	}
@@ -333,13 +289,10 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context)
 
 @end
 
-LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL)
-{
-	if (fileURL)
-	{
+LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL) {
+	if (fileURL) {
 		NSString * ext = [[fileURL pathExtension] lowercaseString];
-		if (ext)
-		{
+		if (ext) {
 			if ([ext isEqualToString:kLzmaSDKObjCFileExt7z]) return LzmaSDKObjCFileType7z;
 			else if ([ext isEqualToString:kLzmaSDKObjCFileExtXz]) return LzmaSDKObjCFileTypeXz;
 		}

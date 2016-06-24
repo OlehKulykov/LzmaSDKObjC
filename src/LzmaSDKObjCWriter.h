@@ -24,6 +24,24 @@
 #import "LzmaSDKObjCReader.h"
 #import "LzmaSDKObjCMutableItem.h"
 
+@class LzmaSDKObjCWriter;
+
+/**
+ @brief Writer delegate. All methods is optional & called from main thread.
+ */
+@protocol LzmaSDKObjCWriterDelegate <NSObject>
+
+@optional
+/**
+ @brief Reports write/archive progress for all file(s).
+ Quality depends on size of the @b kLzmaSDKObjCStreamWriteSize, @b kLzmaSDKObjCDecoderWriteSize.
+ @param progress Write/compress progress [0.0; 1.0]
+ */
+- (void) onLzmaSDKObjCWriter:(nonnull LzmaSDKObjCWriter *) writer
+			 writeProgress:(float) progress;
+
+@end
+
 @interface LzmaSDKObjCWriter : NSObject
 
 /**
@@ -48,6 +66,12 @@
  @brief Last error from operation.
  */
 @property (nonatomic, strong, readonly) NSError * _Nullable lastError;
+
+
+/**
+ @brief Archive writer delegate.
+ */
+@property (nonatomic, weak) id<LzmaSDKObjCWriterDelegate> _Nullable delegate;
 
 
 /**
@@ -76,15 +100,26 @@
  @param path Path in arcvive. Example: `file.txt` or `dir/file.txt`, etc.
  @warning If `data` is nil -> assertion.
  @warning If `path` is nil -> assertion.
- @returns YES - stored and added, otherwice NO.
+ @return YES - stored and added, otherwice NO.
  */
 - (BOOL) addData:(nonnull NSData *) data forPath:(nonnull NSString *) path;
+
+
+/**
+ @brief Add source full path, e.g. file or directory full path with a given file path in archive.
+ If source path is directory - all directory content will be added.
+ @param aPath File or directory full path. Should not be nil.
+ @param path Path in arcvive. Example: `file.txt` or `dir/file.txt`, etc.
+ @return YES - source path exists and readable, and item(s) stored and added, otherwice NO.
+ */
+- (BOOL) addPath:(nonnull NSString *) aPath forPath:(nonnull NSString *) path;
 
 
 /**
  @brief Open archive with `fileURL`.
  @warning Prev. path will be deleted.
  @param error Open error. Same error can be received via @b lastError property.
+ @return YES - output file was opened and prepared, otherwice NO(check @b lastError property).
  */
 - (BOOL) open:(NSError * _Nullable * _Nullable) error;
 
@@ -93,6 +128,7 @@
  @brief Encode, e.g. compress all items to `fileURL`.
  @warning Call after all items are added and archive is opened.
  Can be called within separate thread.
+ @return YES - all items processed, otherwice NO(check @b lastError property).
  */
 - (BOOL) write;
 

@@ -23,6 +23,8 @@
 
 #import "LzmaSDKObjCWriter.h"
 #include "LzmaSDKObjCFileEncoder.h"
+#import "LzmaSDKObjCMutableItem+Private.h"
+#import "LzmaSDKObjCItem+Private.h"
 
 @interface LzmaSDKObjCWriter() {
 @private
@@ -60,9 +62,20 @@ static wchar_t * _LzmaSDKObjCWriterWepGW(NSString * we) {
 }
 
 static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
-	LzmaSDKObjCWriter * r = (__bridge LzmaSDKObjCWriter *)context;
-	if (r) return r->_passwordGetter ? _LzmaSDKObjCWriterWepGW(r->_passwordGetter()) : NULL;
+	LzmaSDKObjCWriter * w = (__bridge LzmaSDKObjCWriter *)context;
+	if (w) return w->_passwordGetter ? _LzmaSDKObjCWriterWepGW(w->_passwordGetter()) : NULL;
 	return NULL;
+}
+
+static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
+	LzmaSDKObjCWriter * w = (__bridge LzmaSDKObjCWriter *)context;
+	if (w) {
+		id<LzmaSDKObjCWriterDelegate> d = w.delegate;
+		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCWriter:writeProgress:)]) {
+			if ([NSThread isMainThread]) [d onLzmaSDKObjCWriter:w writeProgress:value];
+			else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCWriter:w writeProgress:value]; });
+		}
+	}
 }
 
 - (NSError *) lastError {
@@ -115,10 +128,8 @@ static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
 	[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
 	_encoder->context = (__bridge void *)self;
 	_encoder->getVoidCallback1 = _LzmaSDKObjCWriterGetVoidCallback1;
-	if (_encoder->openFile([path UTF8String])) {
-		return YES;
-	}
-	_encoder->setLastError(-1, __LINE__, __FILE__, "Can't create archive file at path: [%s]", [path UTF8String]);
+	_encoder->setFloatCallback2 = _LzmaSDKObjCWriterSetFloatCallback;
+	if (_encoder->openFile([path UTF8String])) return YES;
 
 	if (error) *error = self.lastError;
 	return NO;
@@ -131,8 +142,6 @@ static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
 											userInfo:@{NSLocalizedDescriptionKey: @"No suitable encoder found."}];
 		return NO;
 	}
-
-	_encoder->clearLastError();
 
 	if (!_encoder->prepare(_fileType)) {
 		if (error) *error = self.lastError;
@@ -173,6 +182,51 @@ static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
 	if (_items) [_items addObject:item];
 	else _items = [NSMutableArray arrayWithObject:item];
 	return YES;
+}
+
+- (BOOL) addPath:(nonnull NSString *) aPath forPath:(nonnull NSString *) path {
+	NSParameterAssert(aPath);
+	NSParameterAssert(path);
+	BOOL isDir = NO;
+	NSError * error = nil;
+	if ([[NSFileManager defaultManager] fileExistsAtPath:aPath isDirectory:&isDir]) {
+		if (isDir) {
+			NSArray * contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:aPath error:&error];
+			if (error) return NO;
+			if (contents) {
+				for (NSString * subName in contents) {
+					NSString * aSubPath = [aPath stringByAppendingPathComponent:subName];
+					NSString * subPath = [path stringByAppendingPathComponent:subName];
+					if (aSubPath && subPath) [self addPath:aSubPath forPath:subPath];
+				}
+			}
+			return YES;
+		} else {
+			NSDictionary * attribs = [[NSFileManager defaultManager] attributesOfItemAtPath:aPath error:&error];
+			if (!attribs || error) return NO;
+
+			NSNumber * number = [attribs objectForKey:NSFileSize];
+			if (!number) return NO;
+
+			LzmaSDKObjCMutableItem * item = [[LzmaSDKObjCMutableItem alloc] init];
+			NSAssert(item, @"Can't create item");
+
+			[item setPath:path isDirectory:NO];
+			item->_orgSize = (uint64_t)[number unsignedLongLongValue];
+			item->_content = aPath;
+			NSDate * now = [NSDate date];
+			NSDate * date = [attribs objectForKey:NSFileCreationDate];
+			item.creationDate = date ? date : now;
+			date = [attribs objectForKey:NSFileModificationDate];
+			item.modificationDate = date ? date : now;
+			item.accessDate = now;
+
+			if (_items) [_items addObject:item];
+			else _items = [NSMutableArray arrayWithObject:item];
+			return YES;
+		}
+	}
+	return NO;
 }
 
 - (void) dealloc {

@@ -57,7 +57,8 @@ namespace LzmaSDKObjC
 							  bool isWithFullPaths /* = false */)
 	{
 		this->cleanExtractCallbackRef();
-
+		this->clearLastError();
+		
 		_extractCallbackRef = new LzmaSDKObjC::ExtractCallback();
 		_extractCallback = CMyComPtr<IArchiveExtractCallback>(_extractCallbackRef);
 		if (!_extractCallbackRef) {
@@ -84,14 +85,12 @@ namespace LzmaSDKObjC
 		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, mode, _extractCallback);
 		_extractCallbackRef->setArchive(NULL);
 
-		if (result == S_OK) {
-			LZMASDK_DEBUG_LOG("Process OK")
-		} else {
+		if (result != S_OK) {
 			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lu", (unsigned long)result);
-			LZMASDK_DEBUG_LOG("Process Error")
+			return false;
 		}
 
-		return (result == S_OK);
+		return true;
 	}
 
 	bool FileDecoder::readIteratorProperty(PROPVARIANT * property, const uint32_t identifier) {
@@ -99,6 +98,7 @@ namespace LzmaSDKObjC
 	}
 
 	bool FileDecoder::prepare(const LzmaSDKObjCFileType type) {
+		this->clearLastError();
 		this->createObject(type, &IID_IInArchive, (void **)&_archive);
 		return (_archive != NULL && this->lastError() == NULL);
 	}
@@ -106,6 +106,7 @@ namespace LzmaSDKObjC
 	bool FileDecoder::openFile(const char * path) {
 		this->cleanOpenCallbackRef();
 		this->cleanExtractCallbackRef();
+		this->clearLastError();
 		
 		LzmaSDKObjC::InFile * inFile = new LzmaSDKObjC::InFile();
 		if (!inFile) {

@@ -36,30 +36,34 @@
 	return _path;
 }
 
+- (NSString *) sourceFilePath {
+	return (_content && [_content isKindOfClass:[NSString class]]) ? (NSString*)_content : nil;
+}
+
 - (void) setPath:(nonnull NSString *) path isDirectory:(BOOL) isDirectory {
 	NSParameterAssert(path);
 	_path = path;
 	if (isDirectory) {
 		_flags |= LzmaObjcItemFlagIsDir;
-		_fileData = nil;
+		_content = nil;
 	} else {
 		_flags &= ~(LzmaObjcItemFlagIsDir);
 	};
 }
 
 - (NSData *) fileData {
-	return _fileData;
+	return (_content && [_content isKindOfClass:[NSData class]]) ? (NSData*)_content : nil;
 }
 
 - (void) setFileData:(NSData *) fileData {
 	const uint64_t size = fileData ? [fileData length] : 0;
 	if (size) {
-		_fileData = fileData;
+		_content = fileData;
 		_orgSize = size;
 		_flags &= ~(LzmaObjcItemFlagIsDir);
 		_mDate = _cDate = _aDate = (time_t)[[NSDate date] timeIntervalSince1970];
 	} else {
-		_fileData = nil;
+		_content = nil;
 		_orgSize = 0;
 	}
 }

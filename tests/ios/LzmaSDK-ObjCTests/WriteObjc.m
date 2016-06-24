@@ -24,11 +24,16 @@
 #import <XCTest/XCTest.h>
 #import "TestBaseObjc.h"
 
-@interface WriteObjc : XCTestCase
+@interface WriteObjc : XCTestCase <LzmaSDKObjCWriterDelegate>
 
 @end
 
 @implementation WriteObjc
+
+#pragma mark - LzmaSDKObjCWriterDelegate
+- (void) onLzmaSDKObjCWriter:(LzmaSDKObjCWriter *)writer writeProgress:(float)progress {
+	NSLog(@"Write progress: %f, %i %%", progress, (int)(progress * 100));
+}
 
 - (void) testMutableItem {
 	LzmaSDKObjCMutableItem * item = [[LzmaSDKObjCMutableItem alloc] init];
@@ -76,15 +81,23 @@
 }
 
 - (void) testWriteNew {
-	[[NSFileManager defaultManager] removeItemAtPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z" error:nil];
 	LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z"]];
-	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/responce"] forPath:@"1/responce"];
-	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
-	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
+	writer.delegate = self;
+	writer.passwordGetter = ^NSString*(void) {
+		return @"1234";
+	};
+
+	XCTAssertTrue([writer addPath:@"/Volumes/Data/1/responce" forPath:@"1/responce"], @"%@", writer.lastError);
+//	XCTAssertTrue([writer addPath:@"/Volumes/Data/1/MENU" forPath:@"MENU"], @"%@", writer.lastError);
+
+
+//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/responce"] forPath:@"1/responce"];
+//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
+//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
 
 	NSError * error = nil;
-	[writer open:&error];
-	[writer write];
+	XCTAssertTrue([writer open:&error], @"%@", error);
+	XCTAssertTrue([writer write], @"%@", writer.lastError);
 }
 
 

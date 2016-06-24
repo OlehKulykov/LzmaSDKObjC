@@ -51,6 +51,11 @@ namespace LzmaSDKObjC
 	}
 
 	bool FileEncoder::prepare(const LzmaSDKObjCFileType type) {
+		this->clearLastError();
+		if (type != LzmaSDKObjCFileType7z) {
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Unsupported encoding type: %i", (int)type);
+			return false;
+		}
 		createObject(type, &IID_IOutArchive, (void **)&_archive);
 		return (_archive != NULL && this->lastError() == NULL);
 	}
@@ -58,26 +63,39 @@ namespace LzmaSDKObjC
 	bool FileEncoder::openFile(const char * path) {
 		this->cleanOutFileStreamRef();
 		this->cleanUpdateCallbackRef();
-		
+		this->clearLastError();
+
 		_outFileStreamRef = new COutFileStream();
+		if (!_outFileStreamRef) {
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create archive out stream object for path: %s", path);
+			return false;
+		}
+
 		_outFileStream = CMyComPtr<IOutStream>(_outFileStreamRef);
 		if (!_outFileStreamRef->Create(path, false)) {
-//			PrintError("can't create archive file");
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create archive out file for path: %s", path);
 			return false;
 		}
 
 		_updateCallbackRef = new LzmaSDKObjC::UpdateCallback();
-		_updateCallback = CMyComPtr<IArchiveUpdateCallback2>(_updateCallbackRef);
+		if (!_updateCallbackRef) {
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create archive update callback object for path: %s", path);
+			return false;
+		}
 
+		_updateCallback = CMyComPtr<IArchiveUpdateCallback2>(_updateCallbackRef);
 		return true;
 	}
 
 	bool FileEncoder::encodeItems(void * items, const uint32_t numItems) {
+		this->clearLastError();
 		if (_updateCallbackRef) {
+			_updateCallbackRef->clearLastError();
 			_updateCallbackRef->items = items;
 			_updateCallbackRef->coder = this;
 			const HRESULT result = _archive->UpdateItems(_outFileStream, numItems, _updateCallback);
-			return result == S_OK;
+			if (result == S_OK) return true;
+			this->setLastError(_updateCallbackRef);
 		}
 		return S_FALSE;
 	}

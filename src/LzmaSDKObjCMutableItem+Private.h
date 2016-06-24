@@ -27,7 +27,7 @@
 @interface LzmaSDKObjCMutableItem()
 {
 @public
-	__strong NSData * _fileData;
+	__strong NSObject * _content;
 }
 
 @end

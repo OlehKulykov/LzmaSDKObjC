@@ -93,11 +93,13 @@ namespace LzmaSDKObjC
 	STDMETHODIMP UpdateCallback::GetProperty(UInt32 index, PROPID propID, PROPVARIANT *value) {
 		NSMutableArray * arr = (__bridge NSMutableArray *)items;
 		LzmaSDKObjCMutableItem * item = (arr && index < [arr count]) ? [arr objectAtIndex:index] : nil;
-		if (!item) return S_FALSE;
+		if (!item) {
+			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't locate item at index: %lu.", (unsigned long)index);
+			return E_ABORT;
+		}
 
 		NWindows::NCOM::CPropVariant prop;
-		if (propID == kpidIsAnti)
-		{
+		if (propID == kpidIsAnti) {
 			prop = false;
 			prop.Detach(value);
 			return S_OK;
@@ -119,38 +121,43 @@ namespace LzmaSDKObjC
 	STDMETHODIMP UpdateCallback::GetStream(UInt32 index, ISequentialInStream **inStream) {
 		NSMutableArray * arr = (__bridge NSMutableArray *)items;
 		LzmaSDKObjCMutableItem * item = (arr && index < [arr count]) ? [arr objectAtIndex:index] : nil;
-		if (!item) return S_FALSE;
 
+		if (!item) return S_FALSE;
 		if (item.isDirectory) return S_OK;
 
 		NSData * data = item.fileData;
 		if (data) {
 			NSDataFileStream * stream = new NSDataFileStream(data);
+			if (!stream) {
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create NSData stream object.");
+				return E_ABORT;
+			}
+
 			CMyComPtr<ISequentialInStream> inStreamLoc(stream);
 			*inStream = inStreamLoc.Detach();
 			return S_OK;
 		}
 
-//		{
-//			CInFileStream *inStreamSpec = new CInFileStream;
-//			CMyComPtr<ISequentialInStream> inStreamLoc(inStreamSpec);
-//			FString path = DirPrefix + dirItem.FullPath;
-//			if (!inStreamSpec->Open(path))
-//			{
-//				DWORD sysError = ::GetLastError();
-//				FailedCodes.Add(sysError);
-//				FailedFiles.Add(path);
-//				// if (systemError == ERROR_SHARING_VIOLATION)
-//				{
-//					PrintNewLine();
-//					PrintError("WARNING: can't open file");
-//					// PrintString(NError::MyFormatMessageW(systemError));
-//					return S_FALSE;
-//				}
-//				// return sysError;
-//			}
-//			*inStream = inStreamLoc.Detach();
-//		}
+		NSString * path = item.sourceFilePath;
+		if (path) {
+			const char * utf8Path = [path UTF8String];
+			CInFileStream * inStreamSpec = new CInFileStream();
+			if (!inStreamSpec) {
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create file stream object for path: %s", utf8Path);
+				return E_ABORT;
+			}
+
+			CMyComPtr<ISequentialInStream> inStreamLoc(inStreamSpec);
+			if (inStreamSpec->Open(utf8Path)) {
+				*inStream = inStreamLoc.Detach();
+				return S_OK;
+			} else {
+				this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't open file for reading at path: %s", utf8Path);
+				return E_ABORT;
+			}
+		}
+
+		LZMASDK_DEBUG_LOG("UpdateCallback::GetStream error: no source info for stream")
 		return S_OK;
 	}
 

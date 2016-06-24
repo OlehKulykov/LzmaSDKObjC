@@ -34,28 +34,24 @@ static void LzmaSDKObjCBufferProcessorFree(void *address) { if (address) free(ad
 static void * LzmaSDKObjCBufferProcessorSzAlloc(void *p, size_t size) { return LzmaSDKObjCBufferProcessorAlloc(size); }
 static void LzmaSDKObjCBufferProcessorSzFree(void *p, void *address) { LzmaSDKObjCBufferProcessorFree(address); }
 
-typedef struct _LzmaSDKObjCBufferProcessorReader : ISeqInStream
-{
+typedef struct _LzmaSDKObjCBufferProcessorReader : ISeqInStream {
 	const unsigned char * data;
 	unsigned int dataSize;
 	unsigned int offset;
 } LzmaSDKObjCBufferProcessorReader;
 
-typedef struct _LzmaSDKObjCBufferProcessorWriter : ISeqOutStream
-{
+typedef struct _LzmaSDKObjCBufferProcessorWriter : ISeqOutStream {
 	__strong NSMutableData * data;
 } LzmaSDKObjCBufferProcessorWriter;
 
 
-static size_t LzmaSDKObjCBufferProcessorWrite(void *pp, const void *data, size_t size)
-{
+static size_t LzmaSDKObjCBufferProcessorWrite(void *pp, const void *data, size_t size) {
 	LzmaSDKObjCBufferProcessorWriter * p = (LzmaSDKObjCBufferProcessorWriter *)pp;
 	[p->data appendBytes:data length:size];
 	return size;
 }
 
-static SRes LzmaSDKObjCBufferProcessorRead(void *pp, void *data, size_t *size)
-{
+static SRes LzmaSDKObjCBufferProcessorRead(void *pp, void *data, size_t *size) {
 	LzmaSDKObjCBufferProcessorReader * p = (LzmaSDKObjCBufferProcessorReader *)pp;
 	size_t sizeToRead = *size;
 	size_t avaiableSize = p->dataSize - p->offset;
@@ -66,8 +62,7 @@ static SRes LzmaSDKObjCBufferProcessorRead(void *pp, void *data, size_t *size)
 	return SZ_OK;
 }
 
-NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio)
-{
+NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio) {
 	if (!dataForCompress) return nil;
 	const unsigned char * data = (const unsigned char *)[dataForCompress bytes];
 	const unsigned int dataSize = (unsigned int)[dataForCompress length];
@@ -113,8 +108,7 @@ NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompr
 	return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;
 }
 
-NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress)
-{
+NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress) {
 	if (!dataForDecompress) return nil;
 	const unsigned char * data = (const unsigned char *)[dataForDecompress bytes];
 	const unsigned int dataSize = (unsigned int)[dataForDecompress length];
@@ -141,8 +135,7 @@ NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDec
 
 	NSMutableData * outData = [NSMutableData dataWithCapacity:dataSize];
 	Byte dstBuff[10240];
-	while ((inSize > 0) && (res == SZ_OK))
-	{
+	while ((inSize > 0) && (res == SZ_OK)) {
 		ELzmaStatus status = LZMA_STATUS_NOT_SPECIFIED;
 		SizeT dstSize = 10240;
 		SizeT srcSize = inSize;
@@ -154,14 +147,11 @@ NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDec
 								   &srcSize,
 								   LZMA_FINISH_ANY,
 								   &status);
-		if ((inSize >= srcSize) && (res == SZ_OK))
-		{
+		if ((inSize >= srcSize) && (res == SZ_OK)) {
 			inData += srcSize;
 			inSize -= srcSize;
 			[outData appendBytes:dstBuff length:dstSize];
-		}
-		else
-		{
+		} else {
 			break;
 		}
 	}
