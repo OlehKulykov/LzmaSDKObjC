@@ -1,5 +1,11 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
+Changes on version 2.0.0 (current):
+- Reduce ammount of static variables.
+- Error domain, e.g. `kLzmaSDKObjCErrorDomain` was changed to `LzmaSDKObjC`.
+- Deprecated xz decoding, will be removed in next release.
+- 7z archive writer.
+
 Changes on version 1.1.5 (current):
 - Added error possible failure reason description.
   Use `NSLocalizedFailureReasonErrorKey` to get possible failure string.
@@ -7,7 +13,7 @@ Changes on version 1.1.5 (current):
 Changes on version 1.1.4:
 - Update C++ source to version 16.02 (1602 - latest for now).
 
-Changes on version 1.1.3 (current):
+Changes on version 1.1.3:
 - Update C++ source to version 16.00.
 
 Changes on version 1.1.2:
@@ -31,7 +37,7 @@ Changes on version 1.0.1:
 Changes on version 1.0.0:
 - Stable reader.
 
-Changes on version 0.1.2 (current):
+Changes on version 0.1.2:
 - Update C++ source to version 15.14.
 
 Changes on version 0.1.1:

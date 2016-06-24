@@ -17,6 +17,7 @@ The main advantages is:
 - List, extract 7z files (Lzma & Lzma2 compression method).
 - List, extract encrypted (password protected) 7z files (Lzma & Lzma2 compression method).
 - List, extract encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z files (Lzma & Lzma2 compression method).
+- Create 7z archives.
 - Manage memory allocations during listing/extracting.
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
 - Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).
@@ -40,8 +41,8 @@ The main advantages is:
   s.public_header_files = 'src/LzmaSDKObjCTypes.h',
     'src/LzmaSDKObjCReader.h',
     'src/LzmaSDKObjCWriter.h',
-    'src/LzmaSDKObjCMutableItem.h',
     'src/LzmaSDKObjCItem.h',
+    'src/LzmaSDKObjCMutableItem.h',
     'src/LzmaSDKObjCBufferProcessor.h',
     'src/LzmaSDKObjC.h'
 

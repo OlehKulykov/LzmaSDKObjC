@@ -31,6 +31,8 @@
  *   Changes on version 2.0.0 (current):
  *   - Reduce ammount of static variables.
  *   - Error domain, e.g. `kLzmaSDKObjCErrorDomain` was changed to `LzmaSDKObjC`.
+ *   - Deprecated xz decoding, will be removed in next release.
+ *   - 7z archive writer.
  *
  *   Changes on version 1.1.5:
  *   - Added error possible failure reason description. 
@@ -51,7 +53,7 @@
  *   Changes on version 1.0.4:
  *   - Add nullability delegate flag to Objective-C reader.
  *
- *   Changes on version 1.0.3 (current):
+ *   Changes on version 1.0.3:
  *   - Ignore debug log messages via LZMASDKOBJC_NO_DEBUG_LOG.
  *
  *   Changes on version 1.0.2:
