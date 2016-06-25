@@ -29,6 +29,8 @@ The main advantages is:
 - Unicode support.
 - Extra compression/decompression functionality of single **NSData** object with **Lzma2**.
 
+> **xz** support will be removed in a next release.
+
 
 ### Installation with [CocoaPods]
 #### Podfile
@@ -54,7 +56,7 @@ end
 import LzmaSDK_ObjC
 ...
 
-// select full path to archive file with 7z or xz extension
+// select full path to archive file with 7z extension
 let archivePath = "path to archive"
 
 // 1.1 Create reader object.
@@ -83,7 +85,7 @@ extension ReaderDelegateObject: LzmaSDKObjCReaderDelegate {
 ```
 ##### Objective-C
 ```objc
-// select full path to archive file with 7z or xz extension
+// select full path to archive file with 7z extension
 NSString * archivePath = <path to archive>;
 
 // 1.1 Create and hold strongly reader object.
