@@ -229,6 +229,23 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 	return NO;
 }
 
+- (BOOL) solid {
+	return _encoder->solid ? YES : NO;
+}
+
+- (void) setSolid:(BOOL) value {
+	_encoder->solid = value ? true : false;
+}
+
+- (unsigned char) compressionLevel {
+	return _encoder->compressionLevel;
+}
+
+- (void) setCompressionLevel:(unsigned char) level {
+	if (level) _encoder->compressionLevel = (level > 9) ? 9 : level;
+	else _encoder->compressionLevel = 1;
+}
+
 - (void) dealloc {
 	if (_encoder) {
 		_encoder->context = NULL;

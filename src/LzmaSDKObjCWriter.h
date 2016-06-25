@@ -74,6 +74,12 @@
 @property (nonatomic, weak) id<LzmaSDKObjCWriterDelegate> _Nullable delegate;
 
 
+@property (nonatomic) BOOL solid;
+
+// [1 ... 9]
+@property (nonatomic) unsigned char compressionLevel;
+
+
 /**
  @brief Initialize archive with file url.
  @warning If `fileURL` is nil -> assertion.

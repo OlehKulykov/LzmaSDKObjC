@@ -58,6 +58,10 @@ namespace LzmaSDKObjC
 
 		virtual bool openFile(const char * path);
 
+		// Properties
+		bool solid;
+		unsigned char compressionLevel; //[1 .. 9]
+
 		FileEncoder();
 		virtual ~FileEncoder();
 	};

@@ -37,11 +37,9 @@
 #endif
 #endif
 
-typedef enum _LzmaSDKObjCFileType
-{
+typedef enum _LzmaSDKObjCFileType {
 	LzmaSDKObjCFileTypeUndefined = 0,
-	LzmaSDKObjCFileType7z = 1,
-	LzmaSDKObjCFileTypeXz = 1 << 1
+	LzmaSDKObjCFileType7z = 1
 }
 LzmaSDKObjCFileType;
 

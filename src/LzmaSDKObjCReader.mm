@@ -294,7 +294,6 @@ LzmaSDKObjCFileType LzmaSDKObjCDetectFileType(NSURL * _Nullable fileURL) {
 		NSString * ext = [[fileURL pathExtension] lowercaseString];
 		if (ext) {
 			if ([ext isEqualToString:kLzmaSDKObjCFileExt7z]) return LzmaSDKObjCFileType7z;
-			else if ([ext isEqualToString:kLzmaSDKObjCFileExtXz]) return LzmaSDKObjCFileTypeXz;
 		}
 	}
 	return LzmaSDKObjCFileTypeUndefined;

@@ -70,7 +70,6 @@ The main advantages is:
     'lzma/CPP/7zip/Archive/7z/7zHandler.cpp',
     'lzma/CPP/7zip/Archive/7z/StdAfx.cpp',
     'lzma/CPP/7zip/Archive/*.{h}',
-    'lzma/CPP/7zip/Archive/XzHandler.cpp',
     'lzma/CPP/7zip/Archive/LzmaHandler.cpp',
     'lzma/CPP/7zip/Archive/ArchiveExports.cpp',
     'lzma/CPP/7zip/Archive/DllExports2.cpp',

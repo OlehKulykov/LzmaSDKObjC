@@ -84,6 +84,24 @@ namespace LzmaSDKObjC
 		}
 
 		_updateCallback = CMyComPtr<IArchiveUpdateCallback2>(_updateCallbackRef);
+
+		const wchar_t *names[] = {
+			L"s",
+			L"x"
+		};
+		NWindows::NCOM::CPropVariant values[2] = {
+			solid,    // solid mode ON
+			(UInt32)compressionLevel // compression level = 9 - ultra
+		};
+		CMyComPtr<ISetProperties> setProperties;
+		_archive->QueryInterface(IID_ISetProperties, (void **)&setProperties);
+		if (!setProperties) {
+			//			 PrintError("ISetProperties unsupported");
+			return 1;
+		}
+
+		int res = setProperties->SetProperties(names, values, 2);
+
 		return true;
 	}
 
@@ -102,7 +120,9 @@ namespace LzmaSDKObjC
 
 	FileEncoder::FileEncoder() : LzmaSDKObjC::BaseCoder(),
 		_updateCallbackRef(NULL),
-		_outFileStreamRef(NULL)
+		_outFileStreamRef(NULL),
+		solid(true),
+		compressionLevel(5)
 	{
 		
 	}

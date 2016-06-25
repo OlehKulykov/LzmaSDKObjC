@@ -92,8 +92,8 @@
 
 
 //	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/responce"] forPath:@"1/responce"];
-//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
-//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
+	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
+	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
 
 	NSError * error = nil;
 	XCTAssertTrue([writer open:&error], @"%@", error);
