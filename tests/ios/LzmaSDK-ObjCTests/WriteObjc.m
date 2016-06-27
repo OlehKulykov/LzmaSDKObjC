@@ -115,6 +115,7 @@
 	XCTAssertTrue([reader extract:items toPath:extractPath withFullPaths:NO]);
 	XCTAssertNil(reader.lastError);
 
+	int locatedCount = 0;
 	for (NSString * fileName in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:extractPath error:nil]) {
 		NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:[extractPath stringByAppendingPathComponent:fileName] error:nil];
 		const int outSize = [[dict objectForKey:NSFileSize] intValue];
@@ -122,14 +123,18 @@
 		if ([fileName isEqualToString:@"shutuptakemoney.jpg"]) {
 			XCTAssertTrue(outSize == 33402);
 			XCTAssertTrue([fileData CRC32Value] == 0x0b0646c5);
+			locatedCount++;
 		} else if ([fileName isEqualToString:@"SouthPark.jpg"]) {
 			XCTAssertTrue(outSize == 40782);
 			XCTAssertTrue([fileData CRC32Value] == 0x1243b886);
+			locatedCount++;
 		} else if ([fileName isEqualToString:@"zombies.jpg"]) {
 			XCTAssertTrue(outSize == 83131);
 			XCTAssertTrue([fileData CRC32Value] == 0xb5e98c78);
+			locatedCount++;
 		}
 	}
+	XCTAssertTrue(locatedCount == 3);
 }
 
 - (void) testWrite {
@@ -138,7 +143,7 @@
 	NSString * minString = @"";
 	for (NSNumber * method in @[ [NSNumber numberWithInt:LzmaSDKObjCMethodLZMA], [NSNumber numberWithInt:LzmaSDKObjCMethodLZMA2] ]) {
 		for (NSNumber * solid in @[ @NO, @YES ]) {
-			for (unsigned char compressionLevel = 1; compressionLevel <= 9; compressionLevel++) {
+			for (unsigned char compressionLevel = 0; compressionLevel <= 9; compressionLevel += 3) {
 				for (NSNumber * compressHeader in @[ @NO, @YES ]) {
 					for (NSNumber * compressHeaderFull in @[ @NO, @YES ]) {
 						for (NSNumber * encodeContent in @[ @NO, @YES ]) {
