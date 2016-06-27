@@ -60,8 +60,10 @@ namespace LzmaSDKObjC
 		return (_archive != NULL && this->lastError() == NULL);
 	}
 
+#define LZMAOBJC_SETTINGS_COUNT 9
+
 	void FileEncoder::upplySettings() {
-		const wchar_t * names[9] = {
+		const wchar_t * names[LZMAOBJC_SETTINGS_COUNT] = {
 			L"0",
 			L"s",		// solid
 			L"x",		// compression level
@@ -71,9 +73,9 @@ namespace LzmaSDKObjC
 			L"ta",		// write access time
 			L"tm",		// write modification time
 
-			L"hcf"		// compress header full, true - present, false - don't add
+			L"hcf"		// compress header full, true - add, false - don't add/ignore
 		};
-		NWindows::NCOM::CPropVariant values[9] = {
+		NWindows::NCOM::CPropVariant values[LZMAOBJC_SETTINGS_COUNT] = {
 			(UInt32)0,					// dummy value
 			solid,						// solid mode ON
 			(UInt32)compressionLevel,	// compression level = 9 - ultra
@@ -83,7 +85,7 @@ namespace LzmaSDKObjC
 			writeAccessTime,			// write access time
 			writeModificationTime,		// write modification time
 
-			true						// compress header full, true - present, false - don't add
+			true						// compress header full, true - add, false - don't add/ignore
 		};
 
 		switch (method) {
@@ -95,7 +97,7 @@ namespace LzmaSDKObjC
 		CMyComPtr<ISetProperties> setProperties;
 		_archive->QueryInterface(IID_ISetProperties, (void **)&setProperties);
 		if (setProperties) {
-			setProperties->SetProperties(names, values, compressHeaderFull ? 8 : 7);
+			setProperties->SetProperties(names, values, compressHeaderFull ? LZMAOBJC_SETTINGS_COUNT : LZMAOBJC_SETTINGS_COUNT - 1);
 		}
 	}
 
