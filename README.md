@@ -196,13 +196,13 @@ writer.addPath("/Path/somefile.txt", forPath: "archiveDir/somefile.txt") // Add 
 writer.addPath("/Path/SomeDirectory", forPath: "SomeDirectory") // Recursively add directory with all contents
 
 // Setup writer
-writer.method = LzmaSDKObjCMethodLZMA2 // or LzmaSDKObjCMethodLZMA
 writer.delegate = self // Track progress
 writer.passwordGetter = { // Password getter
 	return "1234"
 }
 
 // Optional settings 
+writer.method = LzmaSDKObjCMethodLZMA2 // or LzmaSDKObjCMethodLZMA
 writer.solid = true
 writer.compressionLevel = 9
 writer.encodeHeader = true
@@ -226,6 +226,45 @@ writer.write()
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
 	writer.write()
 }
+```
+##### Objective-C
+```objc
+// Create writer
+LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Path/MyArchive.7z"]];
+
+// Add file data's or paths
+[writer addData:[NSData ...] forPath:@"MyArchiveFileName.txt"]; // Add file data
+[writer addPath:@"/Path/somefile.txt" forPath:@"archiveDir/somefile.txt"]; // Add file at path
+[writer addPath:@"/Path/SomeDirectory" forPath:@"SomeDirectory"]; // Recursively add directory with all contents
+
+// Setup writer
+writer.delegate = self; // Track progress
+writer.passwordGetter = ^NSString*(void) { // Password getter
+	return @"1234";
+};
+
+// Optional settings 
+writer.method = LzmaSDKObjCMethodLZMA2; // or LzmaSDKObjCMethodLZMA
+writer.solid = YES;
+writer.compressionLevel = 9;
+writer.encodeHeader = YES;
+writer.compressHeader = YES;
+writer.compressHeaderFull = YES;
+writer.writeModificationTime = NO;
+writer.writeCreationTime = NO;
+writer.writeAccessTime = NO;
+
+// Open archive file
+NSError * error = nil;
+[writer open:&error];
+
+// Write archive within current thread
+[writer write];
+
+// or
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+	[writer write];
+});
 ```
 
 
