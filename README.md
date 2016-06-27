@@ -18,9 +18,10 @@ Based on C++ [LZMA SDK] version 16.02 (1602 - latest for now) and patched for iO
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (*password protected*) **7z** files (**Lzma** & **Lzma2** *compression method*).
-- List, extract **encrypted** (password protected) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
-- Create **7z** archives.
-- Create **encrypted** (*password protected*) **7z** archives.
+- List, extract **encrypted** (*password protected*) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
+- Create **7z** archives (**Lzma** & **Lzma2** *compression method*).
+- Create **encrypted** (*password protected*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
+- Create **encrypted** (*password protected*) + **encrypted header** (*no visible content, files list, without password*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
 - Manage memory allocations during listing/extracting. See below section: **Tune up speed, performance and disk IO operations**.
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
@@ -250,10 +251,10 @@ switch (<what do I need ?>)
     - [x] Regular archive. ```tests/files/lzma.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma_aes256_encfn.7z```
-  - [ ] **Create**
-    - [ ] Regular archive.
-    - [ ] Encrypted archive with AES256.
-    - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
+  - [x] **Create**
+    - [x] Regular archive.
+    - [x] Encrypted archive with AES256.
+    - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Lzma2/*.7z**
   - [x] **List**
     - [x] Regular archive. ```tests/files/lzma2.7z```
@@ -263,10 +264,10 @@ switch (<what do I need ?>)
     - [x] Regular archive. ```tests/files/lzma2.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma2_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma2_aes256_encfn.7z```
-  - [ ] **Create**
+  - [x] **Create**
     - [x] Regular archive.
     - [x] Encrypted archive with AES256.
-    - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
+    - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Omit unused code**, reduce buildable, original code size.
 
 
