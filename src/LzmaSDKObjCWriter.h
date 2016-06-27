@@ -92,7 +92,7 @@
 
 /**
  Compression level, [1..9]. 9 - ultra.
- Default is 5.
+ Default is 7.
  */
 @property (nonatomic) unsigned char compressionLevel;
 

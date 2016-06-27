@@ -35,6 +35,7 @@
 		3D37F5201D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
 		3D37F5211D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
 		3D37F5221D217FF3001C3BDB /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */; };
+		3D37F5251D2193B6001C3BDB /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D37F5241D2193B6001C3BDB /* WriteObjc.m */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
@@ -566,6 +567,7 @@
 		3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shutuptakemoney.jpg; sourceTree = "<group>"; };
 		3D37F51A1D217717001C3BDB /* SouthPark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SouthPark.jpg; sourceTree = "<group>"; };
 		3D37F51B1D217717001C3BDB /* zombies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombies.jpg; sourceTree = "<group>"; };
+		3D37F5241D2193B6001C3BDB /* WriteObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteObjc.m; sourceTree = "<group>"; };
 		3D3E41B21D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCUpdateCallback.h; path = ../../src/LzmaSDKObjCUpdateCallback.h; sourceTree = "<group>"; };
 		3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCUpdateCallback.mm; path = ../../src/LzmaSDKObjCUpdateCallback.mm; sourceTree = "<group>"; };
 		3D3E41B51D1B3B1200EF40A3 /* LzmaSDKObjCMutableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCMutableItem.h; path = ../../src/LzmaSDKObjCMutableItem.h; sourceTree = "<group>"; };
@@ -959,6 +961,14 @@
 			children = (
 				3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */,
 				3D3E41BB1D1B4EE400EF40A3 /* Write.swift */,
+			);
+			name = Write;
+			sourceTree = "<group>";
+		};
+		3D37F5231D2193A2001C3BDB /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				3D37F5241D2193B6001C3BDB /* WriteObjc.m */,
 			);
 			name = Write;
 			sourceTree = "<group>";
@@ -1471,6 +1481,7 @@
 		3DF599B91D0ED7F800E855EF /* LzmaSDK-ObjC-OSXTests */ = {
 			isa = PBXGroup;
 			children = (
+				3D37F5231D2193A2001C3BDB /* Write */,
 				3DB9BF1F1D10330500AD0992 /* Read */,
 				3DB9BF241D10335700AD0992 /* TestBaseObjc.h */,
 				3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */,
@@ -2358,6 +2369,7 @@
 				3DF59A801D0ED89C00E855EF /* CWrappers.cpp in Sources */,
 				3DF59A341D0ED87800E855EF /* Lzma2Dec.c in Sources */,
 				3DB5BA511D1C147F007DD865 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
+				3D37F5251D2193B6001C3BDB /* WriteObjc.m in Sources */,
 				3DF59A621D0ED89300E855EF /* CoderMixer2.cpp in Sources */,
 				3DF59A6D1D0ED89700E855EF /* LzmaHandler.cpp in Sources */,
 				3DF59AA01D0ED8A100E855EF /* LzmaDecoder.cpp in Sources */,

@@ -32,4 +32,6 @@
 
 - (NSString *) tmpWritePath;
 
+- (NSString *) tmpWriteFile;
+
 @end

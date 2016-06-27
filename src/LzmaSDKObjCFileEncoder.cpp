@@ -152,7 +152,7 @@ namespace LzmaSDKObjC
 		_updateCallbackRef(NULL),
 		_outFileStreamRef(NULL),
 		_settings(0),
-		compressionLevel(5),
+		compressionLevel(7),
 		method((unsigned char)LzmaSDKObjCMethodLZMA2)
 	{
 		setSettingsValue(true, LZMAOBJC_ENC_SOLID);

@@ -131,54 +131,54 @@
 //								for (NSNumber * writeCreationTime in @[ @NO, @YES ]) {
 //									for (NSNumber * writeAccessTime in @[ @NO, @YES ]) {
 //										for (NSNumber * writeModificationTime in @[ @NO, @YES ]) {
-											NSString * path = [[self tmpWriteFile] stringByAppendingPathExtension:@"7z"];
-											LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:path]];
-											[writer addPath:[self pathForTestFile:@"shutuptakemoney.jpg"] forPath:@"shutuptakemoney.jpg"];
-											[writer addPath:[self pathForTestFile:@"SouthPark.jpg"] forPath:@"SouthPark.jpg"];
-											[writer addPath:[self pathForTestFile:@"zombies.jpg"] forPath:@"zombies.jpg"];
-											writer.passwordGetter = ^NSString*() {
-												return @"1234";
-											};
-											writer.method = method.unsignedCharValue;
-											writer.solid = solid.boolValue;
-											writer.compressionLevel = compressionLevel;
-											writer.compressHeader = compressHeader.boolValue;
-											writer.compressHeaderFull = compressHeaderFull.boolValue;
-											writer.encodeContent = encodeContent.boolValue;
-											writer.encodeHeader = encodeHeader.boolValue;
-//											writer.writeCreationTime = writeCreationTime.boolValue;
-//											writer.writeAccessTime = writeAccessTime.boolValue;
-//											writer.writeModificationTime = writeModificationTime.boolValue;
-											XCTAssertTrue([writer open:nil]);
-											XCTAssertTrue([writer write]);
+								NSString * path = [[self tmpWriteFile] stringByAppendingPathExtension:@"7z"];
+								LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:path]];
+								[writer addPath:[self pathForTestFile:@"shutuptakemoney.jpg"] forPath:@"shutuptakemoney.jpg"];
+								[writer addPath:[self pathForTestFile:@"SouthPark.jpg"] forPath:@"SouthPark.jpg"];
+								[writer addPath:[self pathForTestFile:@"zombies.jpg"] forPath:@"zombies.jpg"];
+								writer.passwordGetter = ^NSString*() {
+									return @"1234";
+								};
+								writer.method = method.unsignedCharValue;
+								writer.solid = solid.boolValue;
+								writer.compressionLevel = compressionLevel;
+								writer.compressHeader = compressHeader.boolValue;
+								writer.compressHeaderFull = compressHeaderFull.boolValue;
+								writer.encodeContent = encodeContent.boolValue;
+								writer.encodeHeader = encodeHeader.boolValue;
+								//											writer.writeCreationTime = writeCreationTime.boolValue;
+								//											writer.writeAccessTime = writeAccessTime.boolValue;
+								//											writer.writeModificationTime = writeModificationTime.boolValue;
+								XCTAssertTrue([writer open:nil]);
+								XCTAssertTrue([writer write]);
 
-											NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
-											const int outSize = [[dict objectForKey:NSFileSize] intValue];
-											NSString * log = [NSString stringWithFormat:@"size: %i\nmethod: %i\nsolid: %@\ncompressionLevel: %i\ncompressHeader: %@\ncompressHeaderFull: %@\nencodeContent: %@\nencodeHeader: %@\nwriteCreationTime: %@\nwriteAccessTime: %@\nwriteModificationTime: %@\n\n",
-															  outSize,
-															  method.intValue,
-															  solid.boolValue ? @"YES" : @"NO",
-															  (int)compressionLevel,
-															  compressHeader.boolValue ? @"YES" : @"NO",
-															  compressHeaderFull.boolValue ? @"YES" : @"NO",
-															  encodeContent.boolValue ? @"YES" : @"NO",
-															  encodeHeader.boolValue ? @"YES" : @"NO",
+								NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+								const int outSize = [[dict objectForKey:NSFileSize] intValue];
+								NSString * log = [NSString stringWithFormat:@"size: %i\nmethod: %i\nsolid: %@\ncompressionLevel: %i\ncompressHeader: %@\ncompressHeaderFull: %@\nencodeContent: %@\nencodeHeader: %@\nwriteCreationTime: %@\nwriteAccessTime: %@\nwriteModificationTime: %@\n\n",
+												  outSize,
+												  method.intValue,
+												  solid.boolValue ? @"YES" : @"NO",
+												  (int)compressionLevel,
+												  compressHeader.boolValue ? @"YES" : @"NO",
+												  compressHeaderFull.boolValue ? @"YES" : @"NO",
+												  encodeContent.boolValue ? @"YES" : @"NO",
+												  encodeHeader.boolValue ? @"YES" : @"NO",
 //															  writeCreationTime.boolValue ? @"YES" : @"NO",
 //															  writeAccessTime.boolValue ? @"YES" : @"NO",
 //															  writeModificationTime.boolValue ? @"YES" : @"NO"
-															  @"YES",@"YES",@"YES"
+												  @"YES",@"YES",@"YES"
 
-															  ];
-											XCTAssertTrue(outSize > 0);
-											NSLog(@"Writer test # %i\n%@", ++testNumber, log);
-											if (minSize > outSize) {
-												minSize = outSize;
-												minString = log;
-											}
-											[self readCreated:path];
-											[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-										}
-									}
+												  ];
+								XCTAssertTrue(outSize > 0);
+								NSLog(@"Writer test # %i\n%@", ++testNumber, log);
+								if (minSize > outSize) {
+									minSize = outSize;
+									minString = log;
+								}
+								[self readCreated:path];
+								[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+							}
+						}
 //								}
 //							}
 //						}

@@ -89,8 +89,8 @@ class Write: XCTestCase {
 		writer.solid = true
 		XCTAssertTrue(writer.solid)
 
-		// compressionLevel, default 5
-		XCTAssertTrue(writer.compressionLevel == 5)
+		// compressionLevel, default 7
+		XCTAssertTrue(writer.compressionLevel == 7)
 		writer.compressionLevel = 9
 		XCTAssertTrue(writer.compressionLevel == 9)
 		writer.compressionLevel = 10
