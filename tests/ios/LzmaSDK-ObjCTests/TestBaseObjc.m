@@ -52,4 +52,8 @@
 	return path;
 }
 
+- (NSString *) tmpWriteFile {
+	return [[self tmpWritePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%lu", (unsigned long)[[NSDate date] timeIntervalSince1970]]];
+}
+
 @end

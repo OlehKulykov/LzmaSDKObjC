@@ -24,7 +24,7 @@
 #import <XCTest/XCTest.h>
 #import "TestBaseObjc.h"
 
-@interface WriteObjc : XCTestCase <LzmaSDKObjCWriterDelegate>
+@interface WriteObjc : TestBaseObjc <LzmaSDKObjCWriterDelegate>
 
 @end
 
@@ -80,9 +80,111 @@
 	XCTAssertTrue((NSUInteger)cDate.timeIntervalSince1970 == (NSUInteger)now.timeIntervalSince1970);
 }
 
+- (void) readCreated:(NSString *) path {
+	LzmaSDKObjCReader * reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:path]];
+	reader.passwordGetter = ^NSString*() {
+		return @"1234";
+	};
+	XCTAssertNil(reader.lastError);
+	NSError * error = nil;
+	XCTAssertTrue([reader open:&error]);
+	XCTAssertNil(error);
+	XCTAssertNil(reader.lastError);
+	NSMutableArray * items = [NSMutableArray arrayWithCapacity:3];
+	[reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error) {
+		XCTAssertNil(error);
+		[items addObject:item];
+		return YES;
+	}];
+	XCTAssertTrue([items count] == 3);
+	XCTAssertNil(reader.lastError);
+	XCTAssertTrue([reader test:items]);
+
+	NSString * extractPath = [path stringByDeletingLastPathComponent];
+	XCTAssertTrue([reader extract:items toPath:extractPath withFullPaths:NO]);
+	XCTAssertNil(reader.lastError);
+
+	for (NSString * fileName in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:extractPath error:nil]) {
+		NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:[extractPath stringByAppendingPathComponent:fileName] error:nil];
+		const int outSize = [[dict objectForKey:NSFileSize] intValue];
+		if ([fileName isEqualToString:@"shutuptakemoney.jpg"]) {
+			XCTAssertTrue(outSize == 33402);
+		} else if ([fileName isEqualToString:@"SouthPark.jpg"]) {
+			XCTAssertTrue(outSize == 40782);
+		} else if ([fileName isEqualToString:@"zombies.jpg"]) {
+			XCTAssertTrue(outSize == 83131);
+		}
+	}
+}
+
 - (void) testWrite {
+	int testNumber = 0;
+	int minSize = INT_MAX;
+	NSString * minString = @"";
+	for (NSNumber * method in @[ [NSNumber numberWithInt:LzmaSDKObjCMethodLZMA], [NSNumber numberWithInt:LzmaSDKObjCMethodLZMA2] ]) {
+		for (NSNumber * solid in @[ @NO, @YES ]) {
+			for (unsigned char compressionLevel = 1; compressionLevel <= 9; compressionLevel++) {
+				for (NSNumber * compressHeader in @[ @NO, @YES ]) {
+					for (NSNumber * compressHeaderFull in @[ @NO, @YES ]) {
+						for (NSNumber * encodeContent in @[ @NO, @YES ]) {
+							for (NSNumber * encodeHeader in @[ @NO, @YES ]) {
+								for (NSNumber * writeCreationTime in @[ @NO, @YES ]) {
+									for (NSNumber * writeAccessTime in @[ @NO, @YES ]) {
+										for (NSNumber * writeModificationTime in @[ @NO, @YES ]) {
+											NSString * path = [[self tmpWriteFile] stringByAppendingPathExtension:@"7z"];
+											LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:path]];
+											[writer addPath:[self pathForTestFile:@"shutuptakemoney.jpg"] forPath:@"shutuptakemoney.jpg"];
+											[writer addPath:[self pathForTestFile:@"SouthPark.jpg"] forPath:@"SouthPark.jpg"];
+											[writer addPath:[self pathForTestFile:@"zombies.jpg"] forPath:@"zombies.jpg"];
+											writer.passwordGetter = ^NSString*() {
+												return @"1234";
+											};
+											writer.method = method.unsignedCharValue;
+											writer.solid = solid.boolValue;
+											writer.compressionLevel = compressionLevel;
+											writer.compressHeader = compressHeader.boolValue;
+											writer.compressHeaderFull = compressHeaderFull.boolValue;
+											writer.encodeContent = encodeContent.boolValue;
+											writer.encodeHeader = encodeHeader.boolValue;
+											writer.writeCreationTime = writeCreationTime.boolValue;
+											writer.writeAccessTime = writeAccessTime.boolValue;
+											writer.writeModificationTime = writeModificationTime.boolValue;
+											XCTAssertTrue([writer open:nil]);
+											XCTAssertTrue([writer write]);
 
-
+											NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];
+											const int outSize = [[dict objectForKey:NSFileSize] intValue];
+											NSString * log = [NSString stringWithFormat:@"size: %i\nmethod: %i\nsolid: %@\ncompressionLevel: %i\ncompressHeader: %@\ncompressHeaderFull: %@\nencodeContent: %@\nencodeHeader: %@\nwriteCreationTime: %@\nwriteAccessTime: %@\nwriteModificationTime: %@\n\n",
+															  outSize,
+															  method.intValue,
+															  solid.boolValue ? @"YES" : @"NO",
+															  (int)compressionLevel,
+															  compressHeader.boolValue ? @"YES" : @"NO",
+															  compressHeaderFull.boolValue ? @"YES" : @"NO",
+															  encodeContent.boolValue ? @"YES" : @"NO",
+															  encodeHeader.boolValue ? @"YES" : @"NO",
+															  writeCreationTime.boolValue ? @"YES" : @"NO",
+															  writeAccessTime.boolValue ? @"YES" : @"NO",
+															  writeModificationTime.boolValue ? @"YES" : @"NO"];
+											XCTAssertTrue(outSize > 0);
+											NSLog(@"Writer test # %i\n%@", ++testNumber, log);
+											if (minSize > outSize) {
+												minSize = outSize;
+												minString = log;
+											}
+											[self readCreated:path];
+											[[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	NSLog(@"Minimum: %@", minString);
 }
 
 

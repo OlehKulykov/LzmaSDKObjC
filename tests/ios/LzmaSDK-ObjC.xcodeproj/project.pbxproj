@@ -34,6 +34,7 @@
 		3D37F51F1D217717001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51A1D217717001C3BDB /* SouthPark.jpg */; };
 		3D37F5201D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
 		3D37F5211D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
+		3D37F5221D217FF3001C3BDB /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
@@ -2116,6 +2117,7 @@
 				3D9BD62F1C8E4AAB00081959 /* CWrappers.cpp in Sources */,
 				3D9BD5DF1C8E4AAB00081959 /* Delta.c in Sources */,
 				3D9BD6551C8E4AAB00081959 /* Lzma2Encoder.cpp in Sources */,
+				3D37F5221D217FF3001C3BDB /* WriteObjc.m in Sources */,
 				3D9BD5F71C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
 				3D9BD65B1C8E4AAB00081959 /* LzmaEncoder.cpp in Sources */,
 				3D9BD6711C8E4AAB00081959 /* MyWindows.cpp in Sources */,
