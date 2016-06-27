@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.0"
+  s.version          = "2.0.1"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
@@ -17,7 +17,9 @@ The main advantages is:
 - List, extract 7z files (Lzma & Lzma2 compression method).
 - List, extract encrypted (password protected) 7z files (Lzma & Lzma2 compression method).
 - List, extract encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z files (Lzma & Lzma2 compression method).
-- Create 7z archives.
+- Create 7z archives (Lzma & Lzma2 compression method).
+- Create encrypted (password protected) 7z archives (Lzma & Lzma2 compression method).
+- Create encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z archives (Lzma & Lzma2 compression method).
 - Manage memory allocations during listing/extracting.
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
 - Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).

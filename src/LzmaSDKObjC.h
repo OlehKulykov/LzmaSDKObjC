@@ -28,7 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.0.0 (current):
+ *   Changes on version 2.0.1 (current):
+ *   - Remove xz support.
+ *   - Customize all writer settings.
+ *
+ *   Changes on version 2.0.0:
  *   - Reduce ammount of static variables.
  *   - Error domain, e.g. `kLzmaSDKObjCErrorDomain` was changed to `LzmaSDKObjC`.
  *   - Deprecated xz decoding, will be removed in next release.
@@ -116,7 +120,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 0
+#define LZMASDKOBJC_VERSION_PATCH 1
 
 
 #import "LzmaSDKObjCTypes.h"
