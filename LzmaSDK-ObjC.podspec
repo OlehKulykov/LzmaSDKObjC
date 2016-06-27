@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.3"
+  s.version          = "2.0.4"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
@@ -140,10 +140,6 @@ The main advantages is:
     'lzma/C/Bra86.c',
     'lzma/C/BraIA64.c',
     'lzma/C/Bra.c',
-    'lzma/C/XzEnc.c',
-    'lzma/C/XzIn.c',
-    'lzma/C/Xz.c',
-    'lzma/C/XzDec.c',
     'lzma/C/7zStream.c',
     'lzma/C/Alloc.c',
     'lzma/C/MtCoder.c',
