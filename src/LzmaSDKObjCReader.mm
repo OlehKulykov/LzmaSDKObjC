@@ -44,45 +44,20 @@ NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjC";
 
 @end
 
-static wchar_t * _LzmaSDKObjCReaderWepGW(NSString * we)
-{
-	const size_t len = we ? [we length] : 0;
-	if (len)
-	{
-		wchar_t * b = (wchar_t *)malloc(sizeof(wchar_t) * (len + 1));
-		if (b)
-		{
-			const NSStringEncoding e = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF32LE);
-			NSData * d = [we dataUsingEncoding:e];
-			const size_t ds = d ? [d length] : 0;
-			if (ds)
-			{
-				memcpy(b, [d bytes], ds);
-				b[len] = 0;
-				return b;
-			}
-			free(b);
-		}
-	}
-	return NULL;
-}
-
 @implementation LzmaSDKObjCReader
 
 static void _LzmaSDKObjCReaderSetFloatCallback(void * context, float value) {
 	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
-	if (r) {
-		id<LzmaSDKObjCReaderDelegate> d = r.delegate;
-		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)]) {
-			if ([NSThread isMainThread]) [d onLzmaSDKObjCReader:r extractProgress:value];
-			else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCReader:r extractProgress:value]; });
-		}
+	id<LzmaSDKObjCReaderDelegate> d = r ? r.delegate : nil;
+	if (d && [d respondsToSelector:@selector(onLzmaSDKObjCReader:extractProgress:)]) {
+		if ([NSThread isMainThread]) [d onLzmaSDKObjCReader:r extractProgress:value];
+		else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCReader:r extractProgress:value]; });
 	}
 }
 
 static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 	LzmaSDKObjCReader * r = (__bridge LzmaSDKObjCReader *)context;
-	if (r) return r->_passwordGetter ? _LzmaSDKObjCReaderWepGW(r->_passwordGetter()) : NULL;
+	if (r) return r->_passwordGetter ? NSStringToWideCharactersString(r->_passwordGetter()) : NULL;
 	return NULL;
 }
 

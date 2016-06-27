@@ -170,4 +170,12 @@ LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderReadSize;
 LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderWriteSize;
 
 
+
+/**
+ Convert `NSString` to wide character string with NULL terminated character at the end.
+ @warning Call `free` ater using the result.
+ */
+LZMASDKOBJC_EXTERN wchar_t * _Nullable NSStringToWideCharactersString(NSString * _Nullable string);
+
+
 #endif

@@ -38,43 +38,18 @@
 
 @implementation LzmaSDKObjCWriter
 
-static wchar_t * _LzmaSDKObjCWriterWepGW(NSString * we) {
-	//TODO: .........
-	const size_t len = we ? [we length] : 0;
-	if (len)
-	{
-		wchar_t * b = (wchar_t *)malloc(sizeof(wchar_t) * (len + 1));
-		if (b)
-		{
-			const NSStringEncoding e = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF32LE);
-			NSData * d = [we dataUsingEncoding:e];
-			const size_t ds = d ? [d length] : 0;
-			if (ds)
-			{
-				memcpy(b, [d bytes], ds);
-				b[len] = 0;
-				return b;
-			}
-			free(b);
-		}
-	}
-	return NULL;
-}
-
 static void * _LzmaSDKObjCWriterGetVoidCallback1(void * context) {
 	LzmaSDKObjCWriter * w = (__bridge LzmaSDKObjCWriter *)context;
-	if (w) return w->_passwordGetter ? _LzmaSDKObjCWriterWepGW(w->_passwordGetter()) : NULL;
+	if (w) return w->_passwordGetter ? NSStringToWideCharactersString(w->_passwordGetter()) : NULL;
 	return NULL;
 }
 
 static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 	LzmaSDKObjCWriter * w = (__bridge LzmaSDKObjCWriter *)context;
-	if (w) {
-		id<LzmaSDKObjCWriterDelegate> d = w.delegate;
-		if (d && [d respondsToSelector:@selector(onLzmaSDKObjCWriter:writeProgress:)]) {
-			if ([NSThread isMainThread]) [d onLzmaSDKObjCWriter:w writeProgress:value];
-			else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCWriter:w writeProgress:value]; });
-		}
+	id<LzmaSDKObjCWriterDelegate> d = w ? w.delegate : nil;
+	if (d && [d respondsToSelector:@selector(onLzmaSDKObjCWriter:writeProgress:)]) {
+		if ([NSThread isMainThread]) [d onLzmaSDKObjCWriter:w writeProgress:value];
+		else dispatch_async(dispatch_get_main_queue(), ^{ [d onLzmaSDKObjCWriter:w writeProgress:value]; });
 	}
 }
 
