@@ -162,34 +162,14 @@ namespace LzmaSDKObjC
 	}
 
 	STDMETHODIMP UpdateCallback::SetOperationResult(Int32 operationResult) {
-//		m_NeedBeClosed = true;
 		return S_OK;
 	}
 
 	STDMETHODIMP UpdateCallback::GetVolumeSize(UInt32 index, UInt64 *size) {
-//		if (VolumesSizes.Size() == 0)
-//			return S_FALSE;
-//		if (index >= (UInt32)VolumesSizes.Size())
-//			index = VolumesSizes.Size() - 1;
-//		*size = VolumesSizes[index];
 		return S_OK;
 	}
 
 	STDMETHODIMP UpdateCallback::GetVolumeStream(UInt32 index, ISequentialOutStream **volumeStream) {
-//		wchar_t temp[16];
-//		ConvertUInt32ToString(index + 1, temp);
-//		UString res = temp;
-//		while (res.Len() < 2)
-//			res.InsertAtFront(L'0');
-//		UString fileName = VolName;
-//		fileName += L'.';
-//		fileName += res;
-//		fileName += VolExt;
-//		COutFileStream *streamSpec = new COutFileStream;
-//		CMyComPtr<ISequentialOutStream> streamLoc(streamSpec);
-//		if (!streamSpec->Create(us2fs(fileName), false))
-//			return ::GetLastError();
-//		*volumeStream = streamLoc.Detach();
 		return S_OK;
 	}
 

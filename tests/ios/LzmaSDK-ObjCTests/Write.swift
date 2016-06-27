@@ -25,6 +25,7 @@ import XCTest
 
 class Write: XCTestCase {
 
+	var writer: LzmaSDKObjCWriter?
 
 	func testMutableItem() {
 		let item = LzmaSDKObjCMutableItem()
@@ -72,13 +73,7 @@ class Write: XCTestCase {
 	}
 
     func testWriteNew() {
-		do {
-			try NSFileManager.defaultManager().removeItemAtPath("/Volumes/Data/1/LzmaSDKObjCWriter.7z")
-		} catch _ {
-
-		}
-
-		let writer = LzmaSDKObjCWriter(fileURL: NSURL(fileURLWithPath: "/Volumes/Data/1/LzmaSDKObjCWriter.7z"))
+	
     }
 
     func testPerformanceExample() {
@@ -88,4 +83,10 @@ class Write: XCTestCase {
         }
     }
 
+}
+
+extension Write: LzmaSDKObjCWriterDelegate {
+	func onLzmaSDKObjCWriter(writer: LzmaSDKObjCWriter, writeProgress progress: Float) {
+		print("Progress: \(progress), \(100 * progress)%")
+	}
 }

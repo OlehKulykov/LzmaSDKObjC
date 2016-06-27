@@ -21,7 +21,6 @@
 		3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
-		3D2397161D1D30C100F4A020 /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
@@ -520,6 +519,10 @@
 		3DF59CE11D0EDC8900E855EF /* ppmd.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADB1D0EDB1700E855EF /* ppmd.7z */; };
 		3DF59CE21D0EDC8900E855EF /* ppmd_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADC1D0EDB1700E855EF /* ppmd_aes256.7z */; };
 		3DF59CE31D0EDC8900E855EF /* ppmd_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADD1D0EDB1700E855EF /* ppmd_aes256_encfn.7z */; };
+		3DF8E1211D211C7500F55C32 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4E1CB16BB900D296BA /* Buffer.swift */; };
+		3DF8E1221D211C7500F55C32 /* BufferObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4C1CB1539500D296BA /* BufferObjc.m */; };
+		3DF8E1231D211C7900F55C32 /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD6991C8E4BAC00081959 /* Read.swift */; };
+		3DF8E1241D211C7900F55C32 /* ReadObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69A1C8E4BAC00081959 /* ReadObjc.m */; };
 		3DFE765C1CB17BDD00695F1C /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */; };
 		876E44E529DDF6F859B5AC0C /* Pods_LzmaSDK_ObjC_OSXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCEA55B2282C41C82D31328 /* Pods_LzmaSDK_ObjC_OSXTests.framework */; };
 		9CDAFE69B89AB35975685D47 /* Pods_LzmaSDK_ObjCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EC5A6B68022684B88E1A87 /* Pods_LzmaSDK_ObjCTests.framework */; };
@@ -2058,8 +2061,8 @@
 				3D9BD63F1C8E4AAB00081959 /* ProgressUtils.cpp in Sources */,
 				3D9BD5E91C8E4AAB00081959 /* LzmaDec.c in Sources */,
 				3D9BD5ED1C8E4AAB00081959 /* MtCoder.c in Sources */,
-				3D2397161D1D30C100F4A020 /* WriteObjc.m in Sources */,
 				3D9BD5B91C8E4AAB00081959 /* LzmaSDKObjCCommon.cpp in Sources */,
+				3DF8E1211D211C7500F55C32 /* Buffer.swift in Sources */,
 				3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */,
 				3D9BD63B1C8E4AAB00081959 /* MethodProps.cpp in Sources */,
 				3D9BD5EB1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
@@ -2128,6 +2131,7 @@
 				3D9BD63D1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
 				3DB5BA531D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */,
 				3D9BD6691C8E4AAB00081959 /* C_FileIO.cpp in Sources */,
+				3DF8E1221D211C7500F55C32 /* BufferObjc.m in Sources */,
 				3D9BD6471C8E4AAB00081959 /* StreamUtils.cpp in Sources */,
 				3D9BD61B1C8E4AAB00081959 /* CoderMixer2.cpp in Sources */,
 				3D9BD62D1C8E4AAB00081959 /* CreateCoder.cpp in Sources */,
@@ -2135,6 +2139,7 @@
 				3D9BD6431C8E4AAB00081959 /* StreamBinder.cpp in Sources */,
 				3D9BD6A21C8E4BAC00081959 /* TestBaseObjc.m in Sources */,
 				3D9BD6771C8E4AAB00081959 /* StringToInt.cpp in Sources */,
+				3DF8E1231D211C7900F55C32 /* Read.swift in Sources */,
 				3DB5BA4D1D1C146B007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */,
 				3D9BD6811C8E4AAB00081959 /* FileFind.cpp in Sources */,
 				3D9BD67D1C8E4AAB00081959 /* DLL.cpp in Sources */,
@@ -2152,6 +2157,7 @@
 				3D9BD5CB1C8E4AAB00081959 /* 7zCrc.c in Sources */,
 				3D9BD5EF1C8E4AAB00081959 /* Sha256.c in Sources */,
 				3D090F4A1CB1493000D296BA /* InBuffer.cpp in Sources */,
+				3DF8E1241D211C7900F55C32 /* ReadObjc.m in Sources */,
 				3D9BD6031C8E4AAB00081959 /* 7zExtract.cpp in Sources */,
 				3D9BD6151C8E4AAB00081959 /* 7zSpecStream.cpp in Sources */,
 				3D9BD6111C8E4AAB00081959 /* 7zProperties.cpp in Sources */,

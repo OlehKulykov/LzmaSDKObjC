@@ -32,8 +32,6 @@
 
 NSString * const _Nonnull kLzmaSDKObjCFileExt7z = @"7z";
 
-NSString * const _Nonnull kLzmaSDKObjCFileExtXz = @"xz";
-
 NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjC";
 
 @interface LzmaSDKObjCReader()
@@ -108,7 +106,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 
 - (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler {
 	NSParameterAssert(handler);
-	if (_decoder && handler) {
+	if (handler) {
 		_decoder->clearLastError();
 		_decoder->iterateStart();
 		LzmaSDKObjCItem * item = nil;
@@ -200,13 +198,6 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (BOOL) open:(NSError * _Nullable * _Nullable) error {
-	if (!_decoder) {
-		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-												code:-1
-											userInfo:@{ NSLocalizedDescriptionKey : @"No suitable decoder found." }];
-		return NO;
-	}
-
 	if (!_decoder->prepare(_fileType)) {
 		if (error) *error = self.lastError;
 		return NO;
@@ -246,7 +237,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (NSUInteger) itemsCount {
-	return _decoder ? _decoder->itemsCount() : 0;
+	return _decoder->itemsCount();
 }
 
 - (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL {
@@ -278,10 +269,8 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (void) dealloc {
-	if (_decoder) {
-		_decoder->context = NULL;
-		delete _decoder;
-	}
+	_decoder->context = NULL;
+	delete _decoder;
 
 	_fileURL = nil;
 	_passwordGetter = nil;

@@ -60,6 +60,45 @@ namespace LzmaSDKObjC
 		return (_archive != NULL && this->lastError() == NULL);
 	}
 
+	void FileEncoder::upplySettings() {
+		const wchar_t * names[9] = {
+			L"0",
+			L"s",		// solid
+			L"x",		// compression level
+			L"hc",		// compress header
+			L"he",		// encode header
+			L"tc",		// write creation time
+			L"ta",		// write access time
+			L"tm",		// write modification time
+
+			L"hcf"		// compress header full, true - present, false - don't add
+		};
+		NWindows::NCOM::CPropVariant values[9] = {
+			(UInt32)0,					// dummy value
+			solid,						// solid mode ON
+			(UInt32)compressionLevel,	// compression level = 9 - ultra
+			compressHeader,				// compress header
+			encodeHeader,				// encode header
+			writeCreationTime,			// write creation time
+			writeAccessTime,			// write access time
+			writeModificationTime,		// write modification time
+
+			true						// compress header full, true - present, false - don't add
+		};
+
+		switch (method) {
+			case LzmaSDKObjCMethodLZMA: values[0] = L"LZMA"; break;
+			case LzmaSDKObjCMethodLZMA2: values[0] = L"LZMA2"; break;
+			default: break;
+		}
+
+		CMyComPtr<ISetProperties> setProperties;
+		_archive->QueryInterface(IID_ISetProperties, (void **)&setProperties);
+		if (setProperties) {
+			setProperties->SetProperties(names, values, compressHeaderFull ? 8 : 7);
+		}
+	}
+
 	bool FileEncoder::openFile(const char * path) {
 		this->cleanOutFileStreamRef();
 		this->cleanUpdateCallbackRef();
@@ -84,23 +123,7 @@ namespace LzmaSDKObjC
 		}
 
 		_updateCallback = CMyComPtr<IArchiveUpdateCallback2>(_updateCallbackRef);
-
-		const wchar_t *names[] = {
-			L"s",
-			L"x"
-		};
-		NWindows::NCOM::CPropVariant values[2] = {
-			solid,    // solid mode ON
-			(UInt32)compressionLevel // compression level = 9 - ultra
-		};
-		CMyComPtr<ISetProperties> setProperties;
-		_archive->QueryInterface(IID_ISetProperties, (void **)&setProperties);
-		if (!setProperties) {
-			//			 PrintError("ISetProperties unsupported");
-			return 1;
-		}
-
-		int res = setProperties->SetProperties(names, values, 2);
+		this->upplySettings();
 
 		return true;
 	}
@@ -121,7 +144,14 @@ namespace LzmaSDKObjC
 	FileEncoder::FileEncoder() : LzmaSDKObjC::BaseCoder(),
 		_updateCallbackRef(NULL),
 		_outFileStreamRef(NULL),
+		method(LzmaSDKObjCMethodLZMA2),
 		solid(true),
+		compressHeader(true),
+		compressHeaderFull(true),
+		encodeHeader(false),
+		writeCreationTime(true),
+		writeAccessTime(true),
+		writeModificationTime(true),
 		compressionLevel(5)
 	{
 		

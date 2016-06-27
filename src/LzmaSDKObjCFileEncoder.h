@@ -49,6 +49,7 @@ namespace LzmaSDKObjC
 
 		void cleanUpdateCallbackRef();
 		void cleanOutFileStreamRef();
+		void upplySettings();
 	public:
 		bool encodeItems(void * items, const uint32_t numItems);
 
@@ -59,7 +60,14 @@ namespace LzmaSDKObjC
 		virtual bool openFile(const char * path);
 
 		// Properties
+		LzmaSDKObjCMethod method;
 		bool solid;
+		bool compressHeader;
+		bool compressHeaderFull;
+		bool encodeHeader;
+		bool writeCreationTime;
+		bool writeAccessTime;
+		bool writeModificationTime;
 		unsigned char compressionLevel; //[1 .. 9]
 
 		FileEncoder();

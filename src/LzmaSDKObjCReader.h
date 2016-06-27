@@ -35,13 +35,6 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExt7z;
 
 
 /**
- @brief Lower case string of the Xz file extension.
- @return @b xz.
- */
-LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCFileExtXz;
-
-
-/**
  @brief Error domain for the reader errors.
  @return @b LzmaSDKObjC
  */

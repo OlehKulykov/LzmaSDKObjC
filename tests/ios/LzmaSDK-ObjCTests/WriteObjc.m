@@ -80,24 +80,9 @@
 	XCTAssertTrue((NSUInteger)cDate.timeIntervalSince1970 == (NSUInteger)now.timeIntervalSince1970);
 }
 
-- (void) testWriteNew {
-	LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Volumes/Data/1/LzmaSDKObjCWriter.7z"]];
-	writer.delegate = self;
-	writer.passwordGetter = ^NSString*(void) {
-		return @"1234";
-	};
-
-	XCTAssertTrue([writer addPath:@"/Volumes/Data/1/responce" forPath:@"1/responce"], @"%@", writer.lastError);
-//	XCTAssertTrue([writer addPath:@"/Volumes/Data/1/MENU" forPath:@"MENU"], @"%@", writer.lastError);
+- (void) testWrite {
 
 
-//	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/responce"] forPath:@"1/responce"];
-	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Embleme_Umbrella.png"] forPath:@"Embleme_Umbrella.png"];
-	[writer addData:[NSData dataWithContentsOfFile:@"/Volumes/Data/1/Anschreiben_OlehKulykov.pdf"] forPath:@"1/Anschreiben_OlehKulykov.pdf"];
-
-	NSError * error = nil;
-	XCTAssertTrue([writer open:&error], @"%@", error);
-	XCTAssertTrue([writer write], @"%@", writer.lastError);
 }
 
 

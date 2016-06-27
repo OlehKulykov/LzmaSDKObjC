@@ -38,7 +38,7 @@
  @param progress Write/compress progress [0.0; 1.0]
  */
 - (void) onLzmaSDKObjCWriter:(nonnull LzmaSDKObjCWriter *) writer
-			 writeProgress:(float) progress;
+			   writeProgress:(float) progress;
 
 @end
 
@@ -48,6 +48,7 @@
  @brief Getter to the archive password.
  */
 @property (nonatomic, copy) NSString * _Nullable (^ _Nullable passwordGetter)(void);
+
 
 /**
  @brief Type of the assigned archive. Determined during initialization.
@@ -74,10 +75,68 @@
 @property (nonatomic, weak) id<LzmaSDKObjCWriterDelegate> _Nullable delegate;
 
 
+/**
+ Compression method.
+ Default is `LzmaSDKObjCMethodLZMA2`.
+ */
+@property (nonatomic) LzmaSDKObjCMethod method;
+
+
+/**
+ @brief Create solid archive.
+ Default is `YES`.
+ */
 @property (nonatomic) BOOL solid;
 
-// [1 ... 9]
+
+/**
+ Compression level, [1..9]. 9 - ultra.
+ Default is 5.
+ */
 @property (nonatomic) unsigned char compressionLevel;
+
+
+/**
+ Compress archive header.
+ Default is `YES`.
+ */
+@property (nonatomic) BOOL compressHeader;
+
+
+/**
+ Full process archive header.
+ Default is `YES`.
+ */
+@property (nonatomic) BOOL compressHeaderFull;
+
+
+/**
+ Encode archive header, e.g. no visible content.
+ Also required `passwordGetter` block.
+ Default is `NO`.
+ */
+@property (nonatomic) BOOL encodeHeader;
+
+
+/**
+ Write creation time to header.
+ Default is `YES`.
+ */
+@property (nonatomic) BOOL writeCreationTime;
+
+
+/**
+ Write access time to header.
+ Default is `YES`.
+ */
+@property (nonatomic) BOOL writeAccessTime;
+
+
+/**
+ Write modification time to header.
+ Default is `YES`.
+ */
+@property (nonatomic) BOOL writeModificationTime;
 
 
 /**

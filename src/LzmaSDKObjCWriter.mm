@@ -136,13 +136,6 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 }
 
 - (BOOL) open:(NSError * _Nullable * _Nullable) error {
-	if (!_encoder) {
-		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
-												code:-1
-											userInfo:@{NSLocalizedDescriptionKey: @"No suitable encoder found."}];
-		return NO;
-	}
-
 	if (!_encoder->prepare(_fileType)) {
 		if (error) *error = self.lastError;
 		return NO;
@@ -164,12 +157,9 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 }
 
 - (BOOL) write {
-	if (_encoder) {
-		_encoder->clearLastError();
-		_encoder->encodeItems((__bridge void *)_items, (uint32_t)[_items count]);
-		return _encoder->lastError() ? NO : YES;
-	}
-	return NO;
+	_encoder->clearLastError();
+	_encoder->encodeItems((__bridge void *)_items, (uint32_t)[_items count]);
+	return _encoder->lastError() ? NO : YES;
 }
 
 - (BOOL) addData:(nonnull NSData *) data forPath:(nonnull NSString *) path {
@@ -229,6 +219,14 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 	return NO;
 }
 
+- (LzmaSDKObjCMethod) method {
+	return _encoder->method;
+}
+
+- (void) setMethod:(LzmaSDKObjCMethod) value {
+	_encoder->method = value;
+}
+
 - (BOOL) solid {
 	return _encoder->solid ? YES : NO;
 }
@@ -246,11 +244,57 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 	else _encoder->compressionLevel = 1;
 }
 
+- (BOOL) compressHeader {
+	return _encoder->compressHeader ? YES : NO;
+}
+
+- (void) setCompressHeader:(BOOL) value {
+	_encoder->compressHeader = value ? true : false;
+}
+
+- (BOOL) compressHeaderFull {
+	return _encoder->compressHeaderFull ? YES : NO;
+}
+
+- (void) setCompressHeaderFull:(BOOL) value {
+	_encoder->compressHeaderFull = value ? true : false;
+}
+
+- (BOOL) encodeHeader {
+	return _encoder->encodeHeader ? YES : NO;
+}
+
+- (void) setEncodeHeader:(BOOL) value {
+	_encoder->encodeHeader = value ? true : false;
+}
+
+- (BOOL) writeCreationTime {
+	return _encoder->writeCreationTime ? YES : NO;
+}
+
+- (void) setWriteCreationTime:(BOOL) value {
+	_encoder->writeCreationTime = value ? true : false;
+}
+
+- (BOOL) writeAccessTime {
+	return _encoder->writeAccessTime ? YES : NO;
+}
+
+- (void) setWriteAccessTime:(BOOL) value {
+	_encoder->writeAccessTime = value ? true : false;
+}
+
+- (BOOL) writeModificationTime {
+	return _encoder->writeModificationTime ? YES : NO;
+}
+
+- (void) setWriteModificationTime:(BOOL) value {
+	_encoder->writeModificationTime = value ? true : false;
+}
+
 - (void) dealloc {
-	if (_encoder) {
-		_encoder->context = NULL;
-		delete _encoder;
-	}
+	_encoder->context = NULL;
+	delete _encoder;
 
 	_passwordGetter = nil;
 }
