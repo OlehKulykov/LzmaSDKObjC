@@ -55,3 +55,16 @@
 }
 
 @end
+
+#include <zlib.h>
+
+@implementation NSData (CRC32)
+
+- (NSUInteger)CRC32Value {
+	uLong crc = crc32(0L, Z_NULL, 0);
+	crc = crc32(crc, [self bytes], (uInt)[self length]);
+	return crc;
+}
+
+@end
+

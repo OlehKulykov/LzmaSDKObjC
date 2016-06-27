@@ -54,6 +54,16 @@ class Read: XCTestCase {
 			var result = reader.iterateWithHandler({ (item: LzmaSDKObjCItem, error: NSError?) -> Bool in
 				XCTAssertNil(error)
 				archiveItems.append(item)
+				if item.fileName == "shutuptakemoney.jpg" {
+					XCTAssertTrue(item.originalSize == 33402)
+					XCTAssertTrue(item.crc32 == 0x0b0646c5)
+				} else if item.fileName == "SouthPark.jpg" {
+					XCTAssertTrue(item.originalSize == 40782)
+					XCTAssertTrue(item.crc32 == 0x1243b886)
+				} else if item.fileName == "zombies.jpg" {
+					XCTAssertTrue(item.originalSize == 83131)
+					XCTAssertTrue(item.crc32 == 0xb5e98c78)
+				}
 				return true
 			})
 			XCTAssertTrue(result)

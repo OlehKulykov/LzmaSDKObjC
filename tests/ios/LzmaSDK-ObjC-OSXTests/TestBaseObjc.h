@@ -35,3 +35,9 @@
 - (NSString *) tmpWriteFile;
 
 @end
+
+@interface NSData (CRC32)
+
+- (NSUInteger)CRC32Value;
+
+@end

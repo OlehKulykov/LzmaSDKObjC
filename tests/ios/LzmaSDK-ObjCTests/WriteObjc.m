@@ -94,6 +94,17 @@
 	[reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error) {
 		XCTAssertNil(error);
 		[items addObject:item];
+		if ([item.fileName isEqualToString:@"shutuptakemoney.jpg"]) {
+			XCTAssertTrue(item.originalSize == 33402);
+			XCTAssertTrue(item.crc32 == 0x0b0646c5);
+		} else if ([item.fileName isEqualToString:@"SouthPark.jpg"]) {
+			XCTAssertTrue(item.originalSize == 40782);
+			XCTAssertTrue(item.crc32 == 0x1243b886);
+		} else if ([item.fileName isEqualToString:@"zombies.jpg"]) {
+			XCTAssertTrue(item.originalSize == 83131);
+			XCTAssertTrue(item.crc32 == 0xb5e98c78);
+		}
+
 		return YES;
 	}];
 	XCTAssertTrue([items count] == 3);
@@ -107,12 +118,16 @@
 	for (NSString * fileName in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:extractPath error:nil]) {
 		NSDictionary * dict = [[NSFileManager defaultManager] attributesOfItemAtPath:[extractPath stringByAppendingPathComponent:fileName] error:nil];
 		const int outSize = [[dict objectForKey:NSFileSize] intValue];
+		NSData * fileData = [NSData dataWithContentsOfFile:[extractPath stringByAppendingPathComponent:fileName]];
 		if ([fileName isEqualToString:@"shutuptakemoney.jpg"]) {
 			XCTAssertTrue(outSize == 33402);
+			XCTAssertTrue([fileData CRC32Value] == 0x0b0646c5);
 		} else if ([fileName isEqualToString:@"SouthPark.jpg"]) {
 			XCTAssertTrue(outSize == 40782);
+			XCTAssertTrue([fileData CRC32Value] == 0x1243b886);
 		} else if ([fileName isEqualToString:@"zombies.jpg"]) {
 			XCTAssertTrue(outSize == 83131);
+			XCTAssertTrue([fileData CRC32Value] == 0xb5e98c78);
 		}
 	}
 }

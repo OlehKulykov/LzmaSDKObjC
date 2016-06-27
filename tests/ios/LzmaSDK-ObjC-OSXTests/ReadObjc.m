@@ -60,6 +60,16 @@
 			XCTAssertNil(error);
 			XCTAssertNotNil(item);
 			[items addObject:item];
+			if ([item.fileName isEqualToString:@"shutuptakemoney.jpg"]) {
+				XCTAssertTrue(item.originalSize == 33402);
+				XCTAssertTrue(item.crc32 == 0x0b0646c5);
+			} else if ([item.fileName isEqualToString:@"SouthPark.jpg"]) {
+				XCTAssertTrue(item.originalSize == 40782);
+				XCTAssertTrue(item.crc32 == 0x1243b886);
+			} else if ([item.fileName isEqualToString:@"zombies.jpg"]) {
+				XCTAssertTrue(item.originalSize == 83131);
+				XCTAssertTrue(item.crc32 == 0xb5e98c78);
+			}
 			return YES;
 		}];
 		XCTAssertTrue(result);

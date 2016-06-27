@@ -31,6 +31,18 @@
 
 
 /**
+ @brief Getter for orinal file size.
+ */
+@property (nonatomic, assign, readonly) unsigned long long originalSize;
+
+
+/**
+ @bief Item CRC32 if available.
+ */
+@property (nonatomic, assign, readonly) NSUInteger crc32;
+
+
+/**
  @brief Getter for check archive item is encrypted with password or not.
  */
 @property (nonatomic, assign, readonly) BOOL isEncrypted;

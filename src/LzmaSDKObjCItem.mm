@@ -26,6 +26,14 @@
 
 @implementation LzmaSDKObjCItem
 
+- (unsigned long long) originalSize {
+	return _orgSize;
+}
+
+- (NSUInteger) crc32 {
+	return _crc;
+}
+
 - (BOOL) isEncrypted {
 	return (_flags & LzmaObjcItemFlagIsEncrypted) ? YES : NO;
 }
