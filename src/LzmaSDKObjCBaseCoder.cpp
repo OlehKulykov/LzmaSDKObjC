@@ -41,7 +41,7 @@ namespace LzmaSDKObjC {
 				case LzmaSDKObjCFileType7z: clsid = &clsid7z; break;
 				default:
 					this->setLastError(-1, __LINE__, __FILE__, "Can't find codec for unsupported file type: %i", (int)type);
-					this->setLastErrorReason("Not one of the: ['7z', 'Xz']");
+					this->setLastErrorReason("Not one of the: ['7z']");
 					return;
 					break;
 			}
