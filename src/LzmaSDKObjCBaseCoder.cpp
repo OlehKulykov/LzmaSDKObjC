@@ -60,6 +60,10 @@ namespace LzmaSDKObjC {
 		if (context && setFloatCallback2) setFloatCallback2(context, progress);
 	}
 
+	bool BaseCoder::requiredCallback1() const {
+		return false;
+	}
+
 	UString BaseCoder::onGetVoidCallback1() {
 		wchar_t * w = (context && getVoidCallback1) ? (wchar_t *)getVoidCallback1(context) : NULL;
 		if (w) {

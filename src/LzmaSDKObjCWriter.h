@@ -45,7 +45,8 @@
 @interface LzmaSDKObjCWriter : NSObject
 
 /**
- @brief Getter to the archive password.
+ @brief Archive password getter.
+ Called when @b encodeContent and/or @b encodeHeader is YES.
  */
 @property (nonatomic, copy) NSString * _Nullable (^ _Nullable passwordGetter)(void);
 
@@ -58,7 +59,7 @@
 
 
 /**
- @brief URL to the archive file.
+ @brief URL to the archive file. Destination archive file.
  */
 @property (nonatomic, strong, readonly) NSURL * _Nullable fileURL;
 
@@ -111,7 +112,17 @@
 
 
 /**
- Encode archive header, e.g. no visible content.
+ Encode archive content, e.g. items/files encoded with password.
+ Required password for test/extract archive content.
+ Also required `passwordGetter` block.
+ Default is `NO`.
+ */
+@property (nonatomic) BOOL encodeContent;
+
+
+/**
+ Encode archive header, e.g. no visible content. 
+ Required password for open/list archive content.
  Also required `passwordGetter` block.
  Default is `NO`.
  */

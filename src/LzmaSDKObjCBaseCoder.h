@@ -45,6 +45,7 @@ namespace LzmaSDKObjC {
 
 		// callbacks section
 		void onProgress(const float progress); // encode/decode
+		virtual bool requiredCallback1() const; // pwd, default is `false`.
 		UString onGetVoidCallback1(); // pwd
 
 		// Required

@@ -175,8 +175,10 @@ namespace LzmaSDKObjC
 
 	STDMETHODIMP UpdateCallback::CryptoGetTextPassword(BSTR *password) {
 		if (coder) {
-			UString w(coder->onGetVoidCallback1());
-			if (w.Len() > 0) return StringToBstr(w, password);
+			if (coder->requiredCallback1()) {
+				UString w(coder->onGetVoidCallback1());
+				if (w.Len() > 0) return StringToBstr(w, password);
+			}
 		}
 		return S_OK;
 	}
@@ -184,10 +186,12 @@ namespace LzmaSDKObjC
 	STDMETHODIMP UpdateCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password) {
 		if (passwordIsDefined) *passwordIsDefined = BoolToInt(false);
 		if (coder) {
-			UString w(coder->onGetVoidCallback1());
-			if (w.Len() > 0) {
-				if (passwordIsDefined) *passwordIsDefined = BoolToInt(true);
-				return StringToBstr(w, password);
+			if (coder->requiredCallback1()) {
+				UString w(coder->onGetVoidCallback1());
+				if (w.Len() > 0) {
+					if (passwordIsDefined) *passwordIsDefined = BoolToInt(true);
+					return StringToBstr(w, password);
+				}
 			}
 		}
 		return S_OK;

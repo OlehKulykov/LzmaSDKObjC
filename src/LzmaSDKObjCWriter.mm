@@ -220,19 +220,19 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 }
 
 - (LzmaSDKObjCMethod) method {
-	return _encoder->method;
+	return (LzmaSDKObjCMethod)_encoder->method;
 }
 
 - (void) setMethod:(LzmaSDKObjCMethod) value {
-	_encoder->method = value;
+	_encoder->method = (unsigned char)value;
 }
 
 - (BOOL) solid {
-	return _encoder->solid ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_SOLID) ? YES : NO;
 }
 
 - (void) setSolid:(BOOL) value {
-	_encoder->solid = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_SOLID);
 }
 
 - (unsigned char) compressionLevel {
@@ -245,51 +245,59 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 }
 
 - (BOOL) compressHeader {
-	return _encoder->compressHeader ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_COMPR_HDR) ? YES : NO;
 }
 
 - (void) setCompressHeader:(BOOL) value {
-	_encoder->compressHeader = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_COMPR_HDR);
 }
 
 - (BOOL) compressHeaderFull {
-	return _encoder->compressHeaderFull ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_COMPR_HDR_FULL) ? YES : NO;
 }
 
 - (void) setCompressHeaderFull:(BOOL) value {
-	_encoder->compressHeaderFull = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_COMPR_HDR_FULL);
+}
+
+- (BOOL) encodeContent {
+	return _encoder->settingsValue(LZMAOBJC_ENC_ENC_CONTENT) ? YES : NO;
+}
+
+- (void) setEncodeContent:(BOOL) value {
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_ENC_CONTENT);
 }
 
 - (BOOL) encodeHeader {
-	return _encoder->encodeHeader ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_ENC_HEADER) ? YES : NO;
 }
 
 - (void) setEncodeHeader:(BOOL) value {
-	_encoder->encodeHeader = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_ENC_HEADER);
 }
 
 - (BOOL) writeCreationTime {
-	return _encoder->writeCreationTime ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_WRITE_CTIME) ? YES : NO;
 }
 
 - (void) setWriteCreationTime:(BOOL) value {
-	_encoder->writeCreationTime = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_WRITE_CTIME);
 }
 
 - (BOOL) writeAccessTime {
-	return _encoder->writeAccessTime ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_WRITE_ATIME) ? YES : NO;
 }
 
 - (void) setWriteAccessTime:(BOOL) value {
-	_encoder->writeAccessTime = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_WRITE_ATIME);
 }
 
 - (BOOL) writeModificationTime {
-	return _encoder->writeModificationTime ? YES : NO;
+	return _encoder->settingsValue(LZMAOBJC_ENC_WRITE_MTIME) ? YES : NO;
 }
 
 - (void) setWriteModificationTime:(BOOL) value {
-	_encoder->writeModificationTime = value ? true : false;
+	_encoder->setSettingsValue(value ? true : false, LZMAOBJC_ENC_WRITE_MTIME);
 }
 
 - (void) dealloc {

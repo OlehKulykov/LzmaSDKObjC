@@ -72,7 +72,84 @@ class Write: XCTestCase {
 		XCTAssertTrue(UInt(cDate!.timeIntervalSince1970) == UInt(now.timeIntervalSince1970));
 	}
 
-    func testWriteNew() {
+	func testSettings() {
+		let writer = LzmaSDKObjCWriter(fileURL: NSURL(fileURLWithPath: "/Path/MyArchive.7z"))
+
+		// method, default LzmaSDKObjCMethodLZMA2
+		XCTAssertTrue(writer.method == LzmaSDKObjCMethodLZMA2)
+		writer.method = LzmaSDKObjCMethodLZMA
+		XCTAssertTrue(writer.method == LzmaSDKObjCMethodLZMA)
+		writer.method = LzmaSDKObjCMethodLZMA2
+		XCTAssertTrue(writer.method == LzmaSDKObjCMethodLZMA2)
+
+		// solid, default true
+		XCTAssertTrue(writer.solid)
+		writer.solid = false
+		XCTAssertFalse(writer.solid)
+		writer.solid = true
+		XCTAssertTrue(writer.solid)
+
+		// compressionLevel, default 5
+		XCTAssertTrue(writer.compressionLevel == 5)
+		writer.compressionLevel = 9
+		XCTAssertTrue(writer.compressionLevel == 9)
+		writer.compressionLevel = 10
+		XCTAssertTrue(writer.compressionLevel == 9)
+		writer.compressionLevel = 0
+		XCTAssertTrue(writer.compressionLevel == 1)
+		writer.compressionLevel = 9
+
+		// encodeContent, default false
+		XCTAssertFalse(writer.encodeContent)
+		writer.encodeContent = true
+		XCTAssertTrue(writer.encodeContent)
+		writer.encodeContent = false
+		XCTAssertFalse(writer.encodeContent)
+
+		// encodeHeader, default false
+		XCTAssertFalse(writer.encodeHeader)
+		writer.encodeHeader = true
+		XCTAssertTrue(writer.encodeHeader)
+		writer.encodeHeader = false
+		XCTAssertFalse(writer.encodeHeader)
+
+		// compressHeader, default true
+		XCTAssertTrue(writer.compressHeader)
+		writer.compressHeader = false
+		XCTAssertFalse(writer.compressHeader)
+		writer.compressHeader = true
+		XCTAssertTrue(writer.compressHeader)
+
+		// compressHeaderFull, default true
+		XCTAssertTrue(writer.compressHeaderFull)
+		writer.compressHeaderFull = false
+		XCTAssertFalse(writer.compressHeaderFull)
+		writer.compressHeaderFull = true
+		XCTAssertTrue(writer.compressHeaderFull)
+
+		// writeModificationTime, default true
+		XCTAssertTrue(writer.writeModificationTime)
+		writer.writeModificationTime = false
+		XCTAssertFalse(writer.writeModificationTime)
+		writer.writeModificationTime = true
+		XCTAssertTrue(writer.writeModificationTime)
+
+		// writeCreationTime, default true
+		XCTAssertTrue(writer.writeCreationTime)
+		writer.writeCreationTime = false
+		XCTAssertFalse(writer.writeCreationTime)
+		writer.writeCreationTime = true
+		XCTAssertTrue(writer.writeCreationTime)
+
+		// writeAccessTime, default true
+		XCTAssertTrue(writer.writeAccessTime)
+		writer.writeAccessTime = false
+		XCTAssertFalse(writer.writeAccessTime)
+		writer.writeAccessTime = true
+		XCTAssertTrue(writer.writeAccessTime)
+	}
+
+    func testWrite() {
 	
     }
 

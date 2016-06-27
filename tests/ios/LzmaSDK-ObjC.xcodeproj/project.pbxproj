@@ -21,6 +21,7 @@
 		3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
+		3D2E95951D214D670051D463 /* Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41BB1D1B4EE400EF40A3 /* Write.swift */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
@@ -2149,6 +2150,7 @@
 				3D0DE3CF1CF6414B0091B7B2 /* 7zEncode.cpp in Sources */,
 				3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
 				3D9BD6531C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
+				3D2E95951D214D670051D463 /* Write.swift in Sources */,
 				3D9BD5F31C8E4AAB00081959 /* Xz.c in Sources */,
 				3D9BD5C31C8E4AAB00081959 /* LzmaSDKObjCItem.mm in Sources */,
 				3D9BD5E71C8E4AAB00081959 /* Lzma2Enc.c in Sources */,

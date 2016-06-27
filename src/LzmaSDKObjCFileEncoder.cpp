@@ -50,6 +50,10 @@ namespace LzmaSDKObjC
 		_outFileStream.Release();
 	}
 
+	bool FileEncoder::requiredCallback1() const {
+		return settingsValue(LZMAOBJC_ENC_ENC_CONTENT) || settingsValue(LZMAOBJC_ENC_ENC_HEADER);
+	}
+
 	bool FileEncoder::prepare(const LzmaSDKObjCFileType type) {
 		this->clearLastError();
 		if (type != LzmaSDKObjCFileType7z) {
@@ -64,7 +68,7 @@ namespace LzmaSDKObjC
 
 	void FileEncoder::upplySettings() {
 		const wchar_t * names[LZMAOBJC_SETTINGS_COUNT] = {
-			L"0",
+			L"0",		// method
 			L"s",		// solid
 			L"x",		// compression level
 			L"hc",		// compress header
@@ -76,19 +80,19 @@ namespace LzmaSDKObjC
 			L"hcf"		// compress header full, true - add, false - don't add/ignore
 		};
 		NWindows::NCOM::CPropVariant values[LZMAOBJC_SETTINGS_COUNT] = {
-			(UInt32)0,					// dummy value
-			solid,						// solid mode ON
-			(UInt32)compressionLevel,	// compression level = 9 - ultra
-			compressHeader,				// compress header
-			encodeHeader,				// encode header
-			writeCreationTime,			// write creation time
-			writeAccessTime,			// write access time
-			writeModificationTime,		// write modification time
+			(UInt32)0,									// method dummy value
+			settingsValue(LZMAOBJC_ENC_SOLID),			// solid mode ON
+			(UInt32)compressionLevel,					// compression level = 9 - ultra
+			settingsValue(LZMAOBJC_ENC_COMPR_HDR),		// compress header
+			settingsValue(LZMAOBJC_ENC_ENC_HEADER),		// encode header
+			settingsValue(LZMAOBJC_ENC_WRITE_CTIME),	// write creation time
+			settingsValue(LZMAOBJC_ENC_WRITE_ATIME),	// write access time
+			settingsValue(LZMAOBJC_ENC_WRITE_MTIME),	// write modification time
 
-			true						// compress header full, true - add, false - don't add/ignore
+			true										// compress header full, true - add, false - don't add/ignore
 		};
 
-		switch (method) {
+		switch ((LzmaSDKObjCMethod)method) {
 			case LzmaSDKObjCMethodLZMA: values[0] = L"LZMA"; break;
 			case LzmaSDKObjCMethodLZMA2: values[0] = L"LZMA2"; break;
 			default: break;
@@ -97,6 +101,7 @@ namespace LzmaSDKObjC
 		CMyComPtr<ISetProperties> setProperties;
 		_archive->QueryInterface(IID_ISetProperties, (void **)&setProperties);
 		if (setProperties) {
+			const bool compressHeaderFull = settingsValue(LZMAOBJC_ENC_COMPR_HDR_FULL);
 			setProperties->SetProperties(names, values, compressHeaderFull ? LZMAOBJC_SETTINGS_COUNT : LZMAOBJC_SETTINGS_COUNT - 1);
 		}
 	}
@@ -146,22 +151,34 @@ namespace LzmaSDKObjC
 	FileEncoder::FileEncoder() : LzmaSDKObjC::BaseCoder(),
 		_updateCallbackRef(NULL),
 		_outFileStreamRef(NULL),
-		method(LzmaSDKObjCMethodLZMA2),
-		solid(true),
-		compressHeader(true),
-		compressHeaderFull(true),
-		encodeHeader(false),
-		writeCreationTime(true),
-		writeAccessTime(true),
-		writeModificationTime(true),
-		compressionLevel(5)
+		_settings(0),
+		compressionLevel(5),
+		method((unsigned char)LzmaSDKObjCMethodLZMA2)
 	{
-		
+		setSettingsValue(true, LZMAOBJC_ENC_SOLID);
+		setSettingsValue(true, LZMAOBJC_ENC_COMPR_HDR);
+		setSettingsValue(true, LZMAOBJC_ENC_COMPR_HDR_FULL);
+		setSettingsValue(true, LZMAOBJC_ENC_WRITE_CTIME);
+		setSettingsValue(true, LZMAOBJC_ENC_WRITE_ATIME);
+		setSettingsValue(true, LZMAOBJC_ENC_WRITE_MTIME);
 	}
 	
 	FileEncoder::~FileEncoder()
 	{
 		this->cleanOutFileStreamRef();
 		this->cleanUpdateCallbackRef();
+	}
+
+	// Settings
+	void FileEncoder::setSettingsValue(const bool value, const unsigned char flag) {
+		if (value)  {
+			_settings |= flag;
+		} else {
+			_settings &= ~flag;
+		}
+	}
+
+	bool FileEncoder::settingsValue(const unsigned char flag) const {
+		return (_settings & flag) ? true : false;
 	}
 }
