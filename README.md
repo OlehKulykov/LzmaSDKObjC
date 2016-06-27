@@ -108,7 +108,7 @@ _reader.passwordGetter = ^NSString*(void){
 ```
 
 
-##### Open archive, eg. find out type of achive, locate decoder and read archive header
+##### Open archive, e.g. find out type of achive, locate decoder and read archive header
 ##### Swift
 ```swift
 // Try open archive.
@@ -182,6 +182,50 @@ NSLog(@"Extract error: %@", _reader.lastError);
 // Test selected items from prev. step.
 [_reader test:items];
 NSLog(@"test error: %@", _reader.lastError);
+```
+
+##### Create 7z archive
+##### Swift
+```swift
+// Create writer
+let writer = LzmaSDKObjCWriter(fileURL: NSURL(fileURLWithPath: "/Path/MyArchive.7z"))
+
+// Add file data's or paths
+writer.addData(NSData(...), forPath: "MyArchiveFileName.txt") // Add file data
+writer.addPath("/Path/somefile.txt", forPath: "archiveDir/somefile.txt") // Add file at path
+writer.addPath("/Path/SomeDirectory", forPath: "SomeDirectory") // Recursively add directory with all contents
+
+// Setup writer
+writer.method = LzmaSDKObjCMethodLZMA2 // or LzmaSDKObjCMethodLZMA
+writer.delegate = self // Track progress
+writer.passwordGetter = { // Password getter
+	return "1234"
+}
+
+// Optional settings 
+writer.solid = true
+writer.compressionLevel = 9
+writer.encodeHeader = true
+writer.compressHeader = true
+writer.compressHeaderFull = true
+writer.writeModificationTime = false
+writer.writeCreationTime = false
+writer.writeAccessTime = false
+
+// Open archive file
+do {
+	try writer.open()
+} catch let error as NSError {
+	print(error.localizedDescription)
+}
+
+// Write archive within current thread
+writer.write()
+
+// or
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+	writer.write()
+}
 ```
 
 
