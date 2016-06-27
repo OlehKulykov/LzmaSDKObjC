@@ -71,6 +71,14 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 	return _fileURL;
 }
 
+#if defined(DEBUG) || defined(_DEBUG)
+- (nullable id) init {
+	LZMASDK_DEBUG_ERR("Writer can't be initialized with `init`, use 'initWithFileURL' instead");
+	NSAssert(0, @"Use 'initWithFileURL' instead");
+	return nil;
+}
+#endif
+
 - (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL {
 	self = [super init];
 	if (self) {

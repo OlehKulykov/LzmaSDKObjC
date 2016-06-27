@@ -215,6 +215,14 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 	return _decoder->itemsCount();
 }
 
+#if defined(DEBUG) || defined(_DEBUG)
+- (nullable id) init {
+	LZMASDK_DEBUG_ERR("Reader can't be initialized with `init`, use 'initWithFileURL' instead");
+	NSAssert(0, @"Use 'initWithFileURL' instead");
+	return nil;
+}
+#endif
+
 - (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL {
 	self = [super init];
 	if (self) {

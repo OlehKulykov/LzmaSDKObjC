@@ -53,7 +53,7 @@
 
 /**
  @brief Type of the assigned archive. Determined during initialization.
- @warning Readonly property. If can't be determined - create reader with custom type.
+ @warning Readonly property. If can't be determined - create writer with custom type.
  */
 @property (nonatomic, assign, readonly) LzmaSDKObjCFileType fileType;
 
