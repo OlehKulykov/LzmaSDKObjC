@@ -174,7 +174,7 @@ namespace NWindows {
 			}
 
 
-#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 			// Warning this function cannot update "fileInfo.Name"
 			static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
 				struct stat stat_info;
