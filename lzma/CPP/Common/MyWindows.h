@@ -3,7 +3,7 @@
 #ifndef __MY_WINDOWS_H
 #define __MY_WINDOWS_H
 
-#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_EMBEDDED)
 #include "../../../src/LzmaAppleCommon.h"
 #endif
 

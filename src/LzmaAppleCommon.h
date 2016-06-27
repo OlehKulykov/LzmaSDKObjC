@@ -24,7 +24,7 @@
 #ifndef __LZMAAPPLECOMMON_H__
 #define __LZMAAPPLECOMMON_H__
 
-#if defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
+#if defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_EMBEDDED)
 #ifndef __APPLE__
 #define __APPLE__ 1
 #endif

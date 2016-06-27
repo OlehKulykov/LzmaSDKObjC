@@ -43,8 +43,6 @@ namespace LzmaSDKObjC
 
 		static GUID CLSIDFormat7z();
 
-		static GUID CLSIDFormatXz();
-
 		static uint64_t PROPVARIANTGetUInt64(PROPVARIANT * prop);
 
 		static bool PROPVARIANTGetBool(PROPVARIANT * prop);
