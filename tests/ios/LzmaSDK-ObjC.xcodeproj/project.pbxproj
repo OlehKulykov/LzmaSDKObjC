@@ -22,6 +22,18 @@
 		3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D2E95951D214D670051D463 /* Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41BB1D1B4EE400EF40A3 /* Write.swift */; };
+		3D37F5131D2176DC001C3BDB /* shutuptakemoney.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */; };
+		3D37F5141D2176DC001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5111D2176DC001C3BDB /* SouthPark.jpg */; };
+		3D37F5151D2176DC001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5121D2176DC001C3BDB /* zombies.jpg */; };
+		3D37F5161D2176F5001C3BDB /* shutuptakemoney.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */; };
+		3D37F5171D2176F5001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5111D2176DC001C3BDB /* SouthPark.jpg */; };
+		3D37F5181D2176F5001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5121D2176DC001C3BDB /* zombies.jpg */; };
+		3D37F51C1D217717001C3BDB /* shutuptakemoney.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */; };
+		3D37F51D1D217717001C3BDB /* shutuptakemoney.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */; };
+		3D37F51E1D217717001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51A1D217717001C3BDB /* SouthPark.jpg */; };
+		3D37F51F1D217717001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51A1D217717001C3BDB /* SouthPark.jpg */; };
+		3D37F5201D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
+		3D37F5211D217717001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F51B1D217717001C3BDB /* zombies.jpg */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
@@ -547,6 +559,12 @@
 		3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LzmaSDKObjCFileEncoder.cpp; path = ../../src/LzmaSDKObjCFileEncoder.cpp; sourceTree = "<group>"; };
 		3D1F64E91D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCFileEncoder.h; path = ../../src/LzmaSDKObjCFileEncoder.h; sourceTree = "<group>"; };
 		3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteObjc.m; sourceTree = "<group>"; };
+		3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shutuptakemoney.jpg; path = ../files/shutuptakemoney.jpg; sourceTree = "<group>"; };
+		3D37F5111D2176DC001C3BDB /* SouthPark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SouthPark.jpg; path = ../files/SouthPark.jpg; sourceTree = "<group>"; };
+		3D37F5121D2176DC001C3BDB /* zombies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zombies.jpg; path = ../files/zombies.jpg; sourceTree = "<group>"; };
+		3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shutuptakemoney.jpg; sourceTree = "<group>"; };
+		3D37F51A1D217717001C3BDB /* SouthPark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SouthPark.jpg; sourceTree = "<group>"; };
+		3D37F51B1D217717001C3BDB /* zombies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zombies.jpg; sourceTree = "<group>"; };
 		3D3E41B21D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCUpdateCallback.h; path = ../../src/LzmaSDKObjCUpdateCallback.h; sourceTree = "<group>"; };
 		3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCUpdateCallback.mm; path = ../../src/LzmaSDKObjCUpdateCallback.mm; sourceTree = "<group>"; };
 		3D3E41B51D1B3B1200EF40A3 /* LzmaSDKObjCMutableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCMutableItem.h; path = ../../src/LzmaSDKObjCMutableItem.h; sourceTree = "<group>"; };
@@ -1003,6 +1021,9 @@
 		3D9BD4701C8E4A8000081959 /* files */ = {
 			isa = PBXGroup;
 			children = (
+				3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */,
+				3D37F5111D2176DC001C3BDB /* SouthPark.jpg */,
+				3D37F5121D2176DC001C3BDB /* zombies.jpg */,
 				3D9BD4711C8E4A9000081959 /* bzip2.7z */,
 				3D9BD4721C8E4A9000081959 /* bzip2_aes256.7z */,
 				3D9BD4731C8E4A9000081959 /* bzip2_aes256_encfn.7z */,
@@ -1462,6 +1483,9 @@
 		3DF59AD11D0EDB1700E855EF /* files */ = {
 			isa = PBXGroup;
 			children = (
+				3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */,
+				3D37F51A1D217717001C3BDB /* SouthPark.jpg */,
+				3D37F51B1D217717001C3BDB /* zombies.jpg */,
 				3DF59AD21D0EDB1700E855EF /* bzip2.7z */,
 				3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */,
 				3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */,
@@ -1646,11 +1670,14 @@
 				3D9BD4831C8E4A9000081959 /* lzma.7z in Resources */,
 				3D9BD48B1C8E4A9000081959 /* lzma_aes256.7z in Resources */,
 				3D9BD4871C8E4A9000081959 /* lzma2_aes256.7z in Resources */,
+				3D37F5141D2176DC001C3BDB /* SouthPark.jpg in Resources */,
 				3D9BD45B1C8E4A3D00081959 /* LaunchScreen.storyboard in Resources */,
 				3D9BD4931C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
 				3D9BD4581C8E4A3D00081959 /* Assets.xcassets in Resources */,
+				3D37F5151D2176DC001C3BDB /* zombies.jpg in Resources */,
 				3D9BD47F1C8E4A9000081959 /* bzip2_aes256.7z in Resources */,
 				3D9BD4811C8E4A9000081959 /* bzip2_aes256_encfn.7z in Resources */,
+				3D37F5131D2176DC001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3D9BD4911C8E4A9000081959 /* ppmd_aes256.7z in Resources */,
 				3D9BD4851C8E4A9000081959 /* lzma2.7z in Resources */,
 				3D9BD47D1C8E4A9000081959 /* bzip2.7z in Resources */,
@@ -1666,6 +1693,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9BD4921C8E4A9000081959 /* ppmd_aes256.7z in Resources */,
+				3D37F5171D2176F5001C3BDB /* SouthPark.jpg in Resources */,
+				3D37F5161D2176F5001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3D9BD4861C8E4A9000081959 /* lzma2.7z in Resources */,
 				3D9BD48A1C8E4A9000081959 /* lzma2_aes256_encfn.7z in Resources */,
 				3D9BD4881C8E4A9000081959 /* lzma2_aes256.7z in Resources */,
@@ -1676,6 +1705,7 @@
 				3D9BD4841C8E4A9000081959 /* lzma.7z in Resources */,
 				3D9BD48C1C8E4A9000081959 /* lzma_aes256.7z in Resources */,
 				3D9BD4941C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
+				3D37F5181D2176F5001C3BDB /* zombies.jpg in Resources */,
 				3D9BD47E1C8E4A9000081959 /* bzip2.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1691,11 +1721,14 @@
 				3DF59AE71D0EDB1700E855EF /* ppmd.7z in Resources */,
 				3DF599AD1D0ED7F800E855EF /* Assets.xcassets in Resources */,
 				3DF59ADE1D0EDB1700E855EF /* bzip2.7z in Resources */,
+				3D37F51C1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59ADF1D0EDB1700E855EF /* bzip2_aes256.7z in Resources */,
 				3DF59AE61D0EDB1700E855EF /* lzma_aes256_encfn.7z in Resources */,
 				3DF59AE81D0EDB1700E855EF /* ppmd_aes256.7z in Resources */,
 				3DF59AE21D0EDB1700E855EF /* lzma2.7z in Resources */,
+				3D37F5201D217717001C3BDB /* zombies.jpg in Resources */,
 				3DF599B01D0ED7F800E855EF /* MainMenu.xib in Resources */,
+				3D37F51E1D217717001C3BDB /* SouthPark.jpg in Resources */,
 				3DF59AE41D0EDB1700E855EF /* lzma2_aes256_encfn.7z in Resources */,
 				3DF59AE01D0EDB1700E855EF /* bzip2_aes256_encfn.7z in Resources */,
 			);
@@ -1706,6 +1739,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF59CE21D0EDC8900E855EF /* ppmd_aes256.7z in Resources */,
+				3D37F51F1D217717001C3BDB /* SouthPark.jpg in Resources */,
+				3D37F51D1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59CDC1D0EDC8900E855EF /* lzma2.7z in Resources */,
 				3DF59CDE1D0EDC8900E855EF /* lzma2_aes256_encfn.7z in Resources */,
 				3DF59CDD1D0EDC8900E855EF /* lzma2_aes256.7z in Resources */,
@@ -1716,6 +1751,7 @@
 				3DF59CDB1D0EDC8900E855EF /* lzma.7z in Resources */,
 				3DF59CDF1D0EDC8900E855EF /* lzma_aes256.7z in Resources */,
 				3DF59CE31D0EDC8900E855EF /* ppmd_aes256_encfn.7z in Resources */,
+				3D37F5211D217717001C3BDB /* zombies.jpg in Resources */,
 				3DF59CD81D0EDC8900E855EF /* bzip2.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
