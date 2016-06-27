@@ -18,9 +18,10 @@ Based on C++ [LZMA SDK] version 16.02 (1602 - latest for now) and patched for iO
 The main advantages is:
 - List, extract **7z** files (**Lzma** & **Lzma2** *compression method*).
 - List, extract **encrypted** (*password protected*) **7z** files (**Lzma** & **Lzma2** *compression method*).
-- List, extract **encrypted** (password protected) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
-- Create **7z** archives.
-- Create **encrypted** (*password protected*) **7z** archives.
+- List, extract **encrypted** (*password protected*) + **encrypted header** (*no visible content, files list, without password*) **7z** files (**Lzma** & **Lzma2** *compression method*).
+- Create **7z** archives (**Lzma** & **Lzma2** *compression method*).
+- Create **encrypted** (*password protected*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
+- Create **encrypted** (*password protected*) + **encrypted header** (*no visible content, files list, without password*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
 - Manage memory allocations during listing/extracting. See below section: **Tune up speed, performance and disk IO operations**.
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
@@ -107,7 +108,7 @@ _reader.passwordGetter = ^NSString*(void){
 ```
 
 
-##### Open archive, eg. find out type of achive, locate decoder and read archive header
+##### Open archive, e.g. find out type of achive, locate decoder and read archive header
 ##### Swift
 ```swift
 // Try open archive.
@@ -183,6 +184,89 @@ NSLog(@"Extract error: %@", _reader.lastError);
 NSLog(@"test error: %@", _reader.lastError);
 ```
 
+##### Create 7z archive
+##### Swift
+```swift
+// Create writer
+let writer = LzmaSDKObjCWriter(fileURL: NSURL(fileURLWithPath: "/Path/MyArchive.7z"))
+
+// Add file data's or paths
+writer.addData(NSData(...), forPath: "MyArchiveFileName.txt") // Add file data
+writer.addPath("/Path/somefile.txt", forPath: "archiveDir/somefile.txt") // Add file at path
+writer.addPath("/Path/SomeDirectory", forPath: "SomeDirectory") // Recursively add directory with all contents
+
+// Setup writer
+writer.delegate = self // Track progress
+writer.passwordGetter = { // Password getter
+	return "1234"
+}
+
+// Optional settings 
+writer.method = LzmaSDKObjCMethodLZMA2 // or LzmaSDKObjCMethodLZMA
+writer.solid = true
+writer.compressionLevel = 9
+writer.encodeHeader = true
+writer.compressHeader = true
+writer.compressHeaderFull = true
+writer.writeModificationTime = false
+writer.writeCreationTime = false
+writer.writeAccessTime = false
+
+// Open archive file
+do {
+	try writer.open()
+} catch let error as NSError {
+	print(error.localizedDescription)
+}
+
+// Write archive within current thread
+writer.write()
+
+// or
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+	writer.write()
+}
+```
+##### Objective-C
+```objc
+// Create writer
+LzmaSDKObjCWriter * writer = [[LzmaSDKObjCWriter alloc] initWithFileURL:[NSURL fileURLWithPath:@"/Path/MyArchive.7z"]];
+
+// Add file data's or paths
+[writer addData:[NSData ...] forPath:@"MyArchiveFileName.txt"]; // Add file data
+[writer addPath:@"/Path/somefile.txt" forPath:@"archiveDir/somefile.txt"]; // Add file at path
+[writer addPath:@"/Path/SomeDirectory" forPath:@"SomeDirectory"]; // Recursively add directory with all contents
+
+// Setup writer
+writer.delegate = self; // Track progress
+writer.passwordGetter = ^NSString*(void) { // Password getter
+	return @"1234";
+};
+
+// Optional settings 
+writer.method = LzmaSDKObjCMethodLZMA2; // or LzmaSDKObjCMethodLZMA
+writer.solid = YES;
+writer.compressionLevel = 9;
+writer.encodeHeader = YES;
+writer.compressHeader = YES;
+writer.compressHeaderFull = YES;
+writer.writeModificationTime = NO;
+writer.writeCreationTime = NO;
+writer.writeAccessTime = NO;
+
+// Open archive file
+NSError * error = nil;
+[writer open:&error];
+
+// Write archive within current thread
+[writer write];
+
+// or
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+	[writer write];
+});
+```
+
 
 ##### Compress/decompress single data buffer
 ##### Swift
@@ -250,10 +334,10 @@ switch (<what do I need ?>)
     - [x] Regular archive. ```tests/files/lzma.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma_aes256_encfn.7z```
-  - [ ] **Create**
-    - [ ] Regular archive.
-    - [ ] Encrypted archive with AES256.
-    - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
+  - [x] **Create**
+    - [x] Regular archive.
+    - [x] Encrypted archive with AES256.
+    - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Lzma2/*.7z**
   - [x] **List**
     - [x] Regular archive. ```tests/files/lzma2.7z```
@@ -263,10 +347,10 @@ switch (<what do I need ?>)
     - [x] Regular archive. ```tests/files/lzma2.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma2_aes256.7z```
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256. ```tests/files/lzma2_aes256_encfn.7z```
-  - [ ] **Create**
+  - [x] **Create**
     - [x] Regular archive.
     - [x] Encrypted archive with AES256.
-    - [ ] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
+    - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
 - [ ] **Omit unused code**, reduce buildable, original code size.
 
 
