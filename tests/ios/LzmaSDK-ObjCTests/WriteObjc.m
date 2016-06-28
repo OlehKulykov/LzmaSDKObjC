@@ -90,7 +90,7 @@
 	XCTAssertTrue([reader open:&error]);
 	XCTAssertNil(error);
 	XCTAssertNil(reader.lastError);
-	NSMutableArray * items = [NSMutableArray arrayWithCapacity:3];
+	NSMutableArray * items = [NSMutableArray arrayWithCapacity:5];
 	[reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error) {
 		XCTAssertNil(error);
 		[items addObject:item];
@@ -103,11 +103,13 @@
 		} else if ([item.fileName isEqualToString:@"zombies.jpg"]) {
 			XCTAssertTrue(item.originalSize == 83131);
 			XCTAssertTrue(item.crc32 == 0xb5e98c78);
+		} else if ([item.fileName isEqualToString:@"München.png"] || [item.fileName isEqualToString:@"Мюнхен.png"]) {
+			XCTAssertTrue(item.originalSize == 10018);
+			XCTAssertTrue(item.crc32 == 0xaa7eaf66);
 		}
-
 		return YES;
 	}];
-	XCTAssertTrue([items count] == 3);
+	XCTAssertTrue([items count] == 5);
 	XCTAssertNil(reader.lastError);
 	XCTAssertTrue([reader test:items]);
 
@@ -132,9 +134,13 @@
 			XCTAssertTrue(outSize == 83131);
 			XCTAssertTrue([fileData CRC32Value] == 0xb5e98c78);
 			locatedCount++;
+		} else if ([fileName isEqualToString:@"München.png"] || [fileName isEqualToString:@"Мюнхен.png"]) {
+			XCTAssertTrue(outSize == 10018);
+			XCTAssertTrue([fileData CRC32Value] == 0xaa7eaf66);
+			locatedCount++;
 		}
 	}
-	XCTAssertTrue(locatedCount == 3);
+	XCTAssertTrue(locatedCount == [items count]);
 }
 
 - (void) testWrite {
@@ -156,6 +162,8 @@
 											[writer addPath:[self pathForTestFile:@"shutuptakemoney.jpg"] forPath:@"shutuptakemoney.jpg"];
 											[writer addPath:[self pathForTestFile:@"SouthPark.jpg"] forPath:@"SouthPark.jpg"];
 											[writer addPath:[self pathForTestFile:@"zombies.jpg"] forPath:@"zombies.jpg"];
+											[writer addPath:[self pathForTestFile:@"München.png"] forPath:@"München.png"];
+											[writer addPath:[self pathForTestFile:@"Мюнхен.png"] forPath:@"Мюнхен.png"];
 											writer.passwordGetter = ^NSString*() {
 												return @"1234";
 											};

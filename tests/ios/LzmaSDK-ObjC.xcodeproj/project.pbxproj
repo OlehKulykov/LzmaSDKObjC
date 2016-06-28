@@ -38,6 +38,14 @@
 		3D37F5251D2193B6001C3BDB /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D37F5241D2193B6001C3BDB /* WriteObjc.m */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
+		3D947F971D229F36006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F951D229F36006713F2 /* München.png */; };
+		3D947F981D229F36006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F951D229F36006713F2 /* München.png */; };
+		3D947F991D229F36006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F961D229F36006713F2 /* Мюнхен.png */; };
+		3D947F9A1D229F36006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F961D229F36006713F2 /* Мюнхен.png */; };
+		3D947F9D1D22A8A0006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9B1D22A8A0006713F2 /* München.png */; };
+		3D947F9E1D22A8A0006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9B1D22A8A0006713F2 /* München.png */; };
+		3D947F9F1D22A8A0006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9C1D22A8A0006713F2 /* Мюнхен.png */; };
+		3D947FA01D22A8A0006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9C1D22A8A0006713F2 /* Мюнхен.png */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
 		3D9BD4531C8E4A3D00081959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4521C8E4A3D00081959 /* ViewController.swift */; };
 		3D9BD4561C8E4A3D00081959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BD4541C8E4A3D00081959 /* Main.storyboard */; };
@@ -151,8 +159,6 @@
 		3D9BD6151C8E4AAB00081959 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5051C8E4AAB00081959 /* 7zSpecStream.cpp */; };
 		3D9BD6161C8E4AAB00081959 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */; };
 		3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */; };
-		3D9BD6181C8E4AAB00081959 /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */; };
-		3D9BD6191C8E4AAB00081959 /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */; };
 		3D9BD61A1C8E4AAB00081959 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD50C1C8E4AAB00081959 /* CoderMixer2.cpp */; };
 		3D9BD61B1C8E4AAB00081959 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD50C1C8E4AAB00081959 /* CoderMixer2.cpp */; };
 		3D9BD61C1C8E4AAB00081959 /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD50E1C8E4AAB00081959 /* DummyOutStream.cpp */; };
@@ -369,7 +375,6 @@
 		3DF59A4B1D0ED88F00E855EF /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5041C8E4AAB00081959 /* 7zRegister.cpp */; };
 		3DF59A4C1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5051C8E4AAB00081959 /* 7zSpecStream.cpp */; };
 		3DF59A4D1D0ED88F00E855EF /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */; };
-		3DF59A4E1D0ED88F00E855EF /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */; };
 		3DF59A4F1D0ED88F00E855EF /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F11C8E4AAB00081959 /* 7zDecode.cpp */; };
 		3DF59A501D0ED88F00E855EF /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F31C8E4AAB00081959 /* 7zEncode.cpp */; };
 		3DF59A511D0ED88F00E855EF /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4F51C8E4AAB00081959 /* 7zExtract.cpp */; };
@@ -383,7 +388,6 @@
 		3DF59A591D0ED88F00E855EF /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5041C8E4AAB00081959 /* 7zRegister.cpp */; };
 		3DF59A5A1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5051C8E4AAB00081959 /* 7zSpecStream.cpp */; };
 		3DF59A5B1D0ED88F00E855EF /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */; };
-		3DF59A5C1D0ED88F00E855EF /* StdAfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */; };
 		3DF59A5D1D0ED89300E855EF /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD50C1C8E4AAB00081959 /* CoderMixer2.cpp */; };
 		3DF59A5E1D0ED89300E855EF /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD50E1C8E4AAB00081959 /* DummyOutStream.cpp */; };
 		3DF59A5F1D0ED89300E855EF /* HandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5101C8E4AAB00081959 /* HandlerOut.cpp */; };
@@ -574,6 +578,10 @@
 		3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCMutableItem.mm; path = ../../src/LzmaSDKObjCMutableItem.mm; sourceTree = "<group>"; };
 		3D3E41BA1D1B4CD300EF40A3 /* LzmaSDKObjCMutableItem+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LzmaSDKObjCMutableItem+Private.h"; path = "../../src/LzmaSDKObjCMutableItem+Private.h"; sourceTree = "<group>"; };
 		3D3E41BB1D1B4EE400EF40A3 /* Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Write.swift; sourceTree = "<group>"; };
+		3D947F951D229F36006713F2 /* München.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "München.png"; sourceTree = "<group>"; };
+		3D947F961D229F36006713F2 /* Мюнхен.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Мюнхен.png"; sourceTree = "<group>"; };
+		3D947F9B1D22A8A0006713F2 /* München.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "München.png"; path = "../files/München.png"; sourceTree = "<group>"; };
+		3D947F9C1D22A8A0006713F2 /* Мюнхен.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Мюнхен.png"; path = "../files/Мюнхен.png"; sourceTree = "<group>"; };
 		3D9BD44D1C8E4A3D00081959 /* LzmaSDK-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LzmaSDK-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9BD4521C8E4A3D00081959 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -704,7 +712,6 @@
 		3D9BD5061C8E4AAB00081959 /* 7zSpecStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = 7zSpecStream.h; path = ../../lzma/CPP/7zip/Archive/7z/7zSpecStream.h; sourceTree = "<group>"; };
 		3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = 7zUpdate.cpp; path = ../../lzma/CPP/7zip/Archive/7z/7zUpdate.cpp; sourceTree = "<group>"; };
 		3D9BD5081C8E4AAB00081959 /* 7zUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = 7zUpdate.h; path = ../../lzma/CPP/7zip/Archive/7z/7zUpdate.h; sourceTree = "<group>"; };
-		3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StdAfx.cpp; path = ../../lzma/CPP/7zip/Archive/7z/StdAfx.cpp; sourceTree = "<group>"; };
 		3D9BD50A1C8E4AAB00081959 /* StdAfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StdAfx.h; path = ../../lzma/CPP/7zip/Archive/7z/StdAfx.h; sourceTree = "<group>"; };
 		3D9BD50C1C8E4AAB00081959 /* CoderMixer2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CoderMixer2.cpp; path = ../../lzma/CPP/7zip/Archive/Common/CoderMixer2.cpp; sourceTree = "<group>"; };
 		3D9BD50D1C8E4AAB00081959 /* CoderMixer2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoderMixer2.h; path = ../../lzma/CPP/7zip/Archive/Common/CoderMixer2.h; sourceTree = "<group>"; };
@@ -1035,6 +1042,8 @@
 				3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */,
 				3D37F5111D2176DC001C3BDB /* SouthPark.jpg */,
 				3D37F5121D2176DC001C3BDB /* zombies.jpg */,
+				3D947F9B1D22A8A0006713F2 /* München.png */,
+				3D947F9C1D22A8A0006713F2 /* Мюнхен.png */,
 				3D9BD4711C8E4A9000081959 /* bzip2.7z */,
 				3D9BD4721C8E4A9000081959 /* bzip2_aes256.7z */,
 				3D9BD4731C8E4A9000081959 /* bzip2_aes256_encfn.7z */,
@@ -1184,7 +1193,6 @@
 				3D9BD5061C8E4AAB00081959 /* 7zSpecStream.h */,
 				3D9BD5071C8E4AAB00081959 /* 7zUpdate.cpp */,
 				3D9BD5081C8E4AAB00081959 /* 7zUpdate.h */,
-				3D9BD5091C8E4AAB00081959 /* StdAfx.cpp */,
 				3D9BD50A1C8E4AAB00081959 /* StdAfx.h */,
 			);
 			name = 7z;
@@ -1498,6 +1506,8 @@
 				3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */,
 				3D37F51A1D217717001C3BDB /* SouthPark.jpg */,
 				3D37F51B1D217717001C3BDB /* zombies.jpg */,
+				3D947F951D229F36006713F2 /* München.png */,
+				3D947F961D229F36006713F2 /* Мюнхен.png */,
 				3DF59AD21D0EDB1700E855EF /* bzip2.7z */,
 				3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */,
 				3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */,
@@ -1685,6 +1695,7 @@
 				3D37F5141D2176DC001C3BDB /* SouthPark.jpg in Resources */,
 				3D9BD45B1C8E4A3D00081959 /* LaunchScreen.storyboard in Resources */,
 				3D9BD4931C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
+				3D947F9D1D22A8A0006713F2 /* München.png in Resources */,
 				3D9BD4581C8E4A3D00081959 /* Assets.xcassets in Resources */,
 				3D37F5151D2176DC001C3BDB /* zombies.jpg in Resources */,
 				3D9BD47F1C8E4A9000081959 /* bzip2_aes256.7z in Resources */,
@@ -1697,6 +1708,7 @@
 				3D9BD48D1C8E4A9000081959 /* lzma_aes256_encfn.7z in Resources */,
 				3D9BD4891C8E4A9000081959 /* lzma2_aes256_encfn.7z in Resources */,
 				3D9BD4561C8E4A3D00081959 /* Main.storyboard in Resources */,
+				3D947F9F1D22A8A0006713F2 /* Мюнхен.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1709,6 +1721,7 @@
 				3D37F5161D2176F5001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3D9BD4861C8E4A9000081959 /* lzma2.7z in Resources */,
 				3D9BD48A1C8E4A9000081959 /* lzma2_aes256_encfn.7z in Resources */,
+				3D947F9E1D22A8A0006713F2 /* München.png in Resources */,
 				3D9BD4881C8E4A9000081959 /* lzma2_aes256.7z in Resources */,
 				3D9BD4901C8E4A9000081959 /* ppmd.7z in Resources */,
 				3D9BD48E1C8E4A9000081959 /* lzma_aes256_encfn.7z in Resources */,
@@ -1716,6 +1729,7 @@
 				3D9BD4801C8E4A9000081959 /* bzip2_aes256.7z in Resources */,
 				3D9BD4841C8E4A9000081959 /* lzma.7z in Resources */,
 				3D9BD48C1C8E4A9000081959 /* lzma_aes256.7z in Resources */,
+				3D947FA01D22A8A0006713F2 /* Мюнхен.png in Resources */,
 				3D9BD4941C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
 				3D37F5181D2176F5001C3BDB /* zombies.jpg in Resources */,
 				3D9BD47E1C8E4A9000081959 /* bzip2.7z in Resources */,
@@ -1733,9 +1747,11 @@
 				3DF59AE71D0EDB1700E855EF /* ppmd.7z in Resources */,
 				3DF599AD1D0ED7F800E855EF /* Assets.xcassets in Resources */,
 				3DF59ADE1D0EDB1700E855EF /* bzip2.7z in Resources */,
+				3D947F971D229F36006713F2 /* München.png in Resources */,
 				3D37F51C1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59ADF1D0EDB1700E855EF /* bzip2_aes256.7z in Resources */,
 				3DF59AE61D0EDB1700E855EF /* lzma_aes256_encfn.7z in Resources */,
+				3D947F991D229F36006713F2 /* Мюнхен.png in Resources */,
 				3DF59AE81D0EDB1700E855EF /* ppmd_aes256.7z in Resources */,
 				3DF59AE21D0EDB1700E855EF /* lzma2.7z in Resources */,
 				3D37F5201D217717001C3BDB /* zombies.jpg in Resources */,
@@ -1755,6 +1771,7 @@
 				3D37F51D1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59CDC1D0EDC8900E855EF /* lzma2.7z in Resources */,
 				3DF59CDE1D0EDC8900E855EF /* lzma2_aes256_encfn.7z in Resources */,
+				3D947F981D229F36006713F2 /* München.png in Resources */,
 				3DF59CDD1D0EDC8900E855EF /* lzma2_aes256.7z in Resources */,
 				3DF59CE11D0EDC8900E855EF /* ppmd.7z in Resources */,
 				3DF59CE01D0EDC8900E855EF /* lzma_aes256_encfn.7z in Resources */,
@@ -1762,6 +1779,7 @@
 				3DF59CD91D0EDC8900E855EF /* bzip2_aes256.7z in Resources */,
 				3DF59CDB1D0EDC8900E855EF /* lzma.7z in Resources */,
 				3DF59CDF1D0EDC8900E855EF /* lzma_aes256.7z in Resources */,
+				3D947F9A1D229F36006713F2 /* Мюнхен.png in Resources */,
 				3DF59CE31D0EDC8900E855EF /* ppmd_aes256_encfn.7z in Resources */,
 				3D37F5211D217717001C3BDB /* zombies.jpg in Resources */,
 				3DF59CD81D0EDC8900E855EF /* bzip2.7z in Resources */,
@@ -2046,7 +2064,6 @@
 				3D9BD5EC1C8E4AAB00081959 /* MtCoder.c in Sources */,
 				3D9BD63C1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
 				3D9BD5BC1C8E4AAB00081959 /* LzmaSDKObjCExtractCallback.mm in Sources */,
-				3D9BD6181C8E4AAB00081959 /* StdAfx.cpp in Sources */,
 				3D9BD6821C8E4AAB00081959 /* FileName.cpp in Sources */,
 				3D9BD5F61C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
 				3D9BD6161C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
@@ -2101,7 +2118,6 @@
 				3D9BD6271C8E4AAB00081959 /* DllExports2.cpp in Sources */,
 				3D9BD6351C8E4AAB00081959 /* InOutTempBuffer.cpp in Sources */,
 				3D9BD6571C8E4AAB00081959 /* Lzma2Register.cpp in Sources */,
-				3D9BD6191C8E4AAB00081959 /* StdAfx.cpp in Sources */,
 				3D9BD6511C8E4AAB00081959 /* CopyCoder.cpp in Sources */,
 				3D9BD65F1C8E4AAB00081959 /* 7zAes.cpp in Sources */,
 				3D9BD65D1C8E4AAB00081959 /* LzmaRegister.cpp in Sources */,
@@ -2285,7 +2301,6 @@
 				3DF59A4A1D0ED88F00E855EF /* 7zProperties.cpp in Sources */,
 				3DF59A0A1D0ED87700E855EF /* MtCoder.c in Sources */,
 				3DF599CB1D0ED81600E855EF /* LzmaSDKObjCExtractCallback.mm in Sources */,
-				3DF59A4E1D0ED88F00E855EF /* StdAfx.cpp in Sources */,
 				3DF59A0F1D0ED87700E855EF /* XzCrc64Opt.c in Sources */,
 				3DF59A4D1D0ED88F00E855EF /* 7zUpdate.cpp in Sources */,
 				3DF59A081D0ED87700E855EF /* LzmaDec.c in Sources */,
@@ -2405,7 +2420,6 @@
 				3DF59A581D0ED88F00E855EF /* 7zProperties.cpp in Sources */,
 				3DF59A381D0ED87800E855EF /* MtCoder.c in Sources */,
 				3DF599CC1D0ED81600E855EF /* LzmaSDKObjCExtractCallback.mm in Sources */,
-				3DF59A5C1D0ED88F00E855EF /* StdAfx.cpp in Sources */,
 				3DF59A3D1D0ED87800E855EF /* XzCrc64Opt.c in Sources */,
 				3DF59A5B1D0ED88F00E855EF /* 7zUpdate.cpp in Sources */,
 				3DF59A361D0ED87800E855EF /* LzmaDec.c in Sources */,
@@ -2505,7 +2519,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "LZMASDKOBJC_OMIT_UNUSED_CODE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2545,7 +2558,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "LZMASDKOBJC_OMIT_UNUSED_CODE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

@@ -814,7 +814,11 @@ struct CAnalysis
   HRESULT GetFilterGroup(UInt32 index, const CUpdateItem &ui, CFilterMode &filterMode);
 };
 
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+static const uint16_t kAnalysisBufSize = 1 << 14;
+#else
 static const size_t kAnalysisBufSize = 1 << 14;
+#endif
 
 HRESULT CAnalysis::GetFilterGroup(UInt32 index, const CUpdateItem &ui, CFilterMode &filterMode)
 {
@@ -1318,8 +1322,11 @@ STDMETHODIMP CFolderOutStream2::Write(const void *data, UInt32 size, UInt32 *pro
 #endif
 
 
-
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+static const uint16_t kTempBufSize = UINT16_MAX;
+#else
 static const UInt32 kTempBufSize = 1 << 16;
+#endif
 
 class CFolderInStream2:
   public CRepackStreamBase,

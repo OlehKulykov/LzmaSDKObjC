@@ -18,8 +18,11 @@
   So the encoder and decoder write such last bytes without change.
 */
 
-
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+#define kBufSize (1 << 20)
+#else
 static const UInt32 kBufSize = 1 << 20;
+#endif
 
 STDMETHODIMP CFilterCoder::SetInBufSize(UInt32 , UInt32 size) { _inBufSize = size; return S_OK; }
 STDMETHODIMP CFilterCoder::SetOutBufSize(UInt32 , UInt32 size) { _outBufSize = size; return S_OK; }

@@ -8,9 +8,7 @@
 /* #include <windows.h> */
 #endif
 
-#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
 #include "../../src/LzmaAppleCommon.h"
-#endif
 
 #include <stddef.h>
 

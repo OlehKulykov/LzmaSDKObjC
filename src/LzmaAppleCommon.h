@@ -22,17 +22,17 @@
 
 
 #ifndef __LZMAAPPLECOMMON_H__
-#define __LZMAAPPLECOMMON_H__
+#define __LZMAAPPLECOMMON_H__ 1
 
-#if defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_EMBEDDED)
+#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_EMBEDDED)
 #ifndef __APPLE__
 #define __APPLE__ 1
 #endif
 
 #define LZMASDKOBJC_OMIT_UNUSED_CODE 1
 
-#ifndef _UNICODE
-#define _UNICODE 1
+#if defined(_UNICODE)
+#undef _UNICODE
 #endif
 
 #ifndef ENV_HAVE_GCCVISIBILITYPATCH

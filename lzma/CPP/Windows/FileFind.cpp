@@ -5,9 +5,7 @@
 #include "FileFind.h"
 #include "../Common/StringConvert.h"
 
-#if defined(__APPLE__) || defined(TARGET_OS_MAC) || defined(TARGET_OS_IPHONE)
 #include "../../../src/LzmaAppleCommon.h"
-#endif
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -135,7 +133,6 @@
 namespace NWindows {
 	namespace NFile {
 		namespace NFind {
-
 			static const TCHAR kDot = '.';
 
 			bool CFileInfo::IsDots() const
@@ -155,7 +152,7 @@ namespace NWindows {
 					return false;
 				return Name.Len() == 1 || (Name[1] == kDot && Name.Len() == 2);
 			}
-
+#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 			static bool originalFilename(const UString & src, AString & res)
 			{
 				// Try to recover the original filename
@@ -172,6 +169,7 @@ namespace NWindows {
 				}
 				return true;
 			}
+#endif
 
 #if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 			// Warning this function cannot update "fileInfo.Name"
@@ -325,6 +323,10 @@ namespace NWindows {
 
 			bool CFindFile::FindFirst(LPCWSTR wildcard, CFileInfoW &fileInfo)
 			{
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+				assert(0);
+				return false;
+#else
 				if (!Close())
 					return false;
 				CFileInfo fileInfo0;
@@ -341,6 +343,7 @@ namespace NWindows {
      fileInfo.Name = GetUnicodeString(fileInfo0.Name, CP_ACP);
 				}
 				return bret;
+#endif
 			}
 
 			bool CFindFile::FindNext(CFileInfo &fileInfo)
@@ -373,6 +376,10 @@ namespace NWindows {
 
 			bool CFindFile::FindNext(CFileInfoW &fileInfo)
 			{
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+				assert(0);
+				return false;
+#else
 				CFileInfo fileInfo0;
 				bool bret = FindNext(fileInfo0);
 				if (bret)
@@ -386,6 +393,7 @@ namespace NWindows {
      fileInfo.Name = GetUnicodeString(fileInfo0.Name, CP_ACP);
 				}
 				return bret;
+#endif
 			}
 
 			bool CFileInfo::Find(LPCSTR wildcard)
@@ -528,6 +536,10 @@ namespace NWindows {
 
 			bool DoesDirExist(LPCWSTR name)
 			{
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+				assert(0);
+				return false;
+#else
 				AString Aname = UnicodeStringToMultiByte(name, CP_ACP);
 				bool bret = DoesDirExist((LPCSTR)Aname);
 				if (bret) return bret;
@@ -539,10 +551,15 @@ namespace NWindows {
      bret = DoesDirExist((const char *)resultString);
 				}
 				return bret;
+#endif
 			}
 
 			bool DoesFileOrDirExist(LPCWSTR name)
 			{
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+				assert(0);
+				return false;
+#else
 				AString Aname = UnicodeStringToMultiByte(name, CP_ACP);
 				bool bret = DoesFileOrDirExist((LPCSTR)Aname);
 				if (bret) return bret;
@@ -554,6 +571,7 @@ namespace NWindows {
      bret = DoesFileOrDirExist((const char *)resultString);
 				}
 				return bret;
+#endif
 			}
 
 			/////////////////////////////////////

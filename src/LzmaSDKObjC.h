@@ -28,7 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.0.3 (current):
+ *   Changes on version 2.0.5 (current):
+ *   - Omin some unused code.
+ *   - Disable Unicode, used UTF8 instead.
+ *
+ *   Changes on version 2.0.3:
  *   - Remove redurant string conversion code.
  *
  *   Changes on version 2.0.2:
@@ -126,7 +130,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 4
+#define LZMASDKOBJC_VERSION_PATCH 5
 
 
 #import "LzmaSDKObjCTypes.h"

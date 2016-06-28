@@ -23,8 +23,14 @@ static const char *kDefaultMethodName = "LZMA2";
 static const char *k_Copy_Name = "Copy";
 
 static const char *k_MatchFinder_ForHeaders = "BT2";
+
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+#define k_NumFastBytes_ForHeaders 273
+#define k_Level_ForHeaders 5
+#else
 static const UInt32 k_NumFastBytes_ForHeaders = 273;
 static const UInt32 k_Level_ForHeaders = 5;
+#endif
 static const UInt32 k_Dictionary_ForHeaders =
   #ifdef UNDER_CE
   1 << 18;

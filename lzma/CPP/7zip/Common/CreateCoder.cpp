@@ -10,8 +10,13 @@
 #include "FilterCoder.h"
 #include "RegisterCodec.h"
 
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+static const uint8_t kNumCodecsMax = 16;
+uint8_t g_NumCodecs = 0;
+#else
 static const unsigned kNumCodecsMax = 64;
 unsigned g_NumCodecs = 0;
+#endif
 const CCodecInfo *g_Codecs[kNumCodecsMax];
 
 // We use g_ExternalCodecs in other stages.
@@ -31,8 +36,13 @@ void RegisterCodec(const CCodecInfo *codecInfo) throw()
     g_Codecs[g_NumCodecs++] = codecInfo;
 }
 
+#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
+static const uint8_t kNumHashersMax = 8;
+uint8_t g_NumHashers = 0;
+#else
 static const unsigned kNumHashersMax = 16;
 unsigned g_NumHashers = 0;
+#endif
 const CHasherInfo *g_Hashers[kNumHashersMax];
 
 void RegisterHasher(const CHasherInfo *hashInfo) throw()
