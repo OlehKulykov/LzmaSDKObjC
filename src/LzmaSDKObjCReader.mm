@@ -31,8 +31,8 @@
 #include <wchar.h>
 
 NSString * const _Nonnull kLzmaSDKObjCFileExt7z = @"7z";
-
 NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjC";
+NSString * const _Nonnull kLzmaSDKObjCErrorDescrEncDecNotCreated = @"Encoder or decoder not created. Check initialization input parameters and try again later.";
 
 @interface LzmaSDKObjCReader()
 {
@@ -81,7 +81,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 
 - (BOOL) iterateWithHandler:(BOOL(^ _Nonnull)(LzmaSDKObjCItem * _Nonnull item, NSError * _Nullable error)) handler {
 	NSParameterAssert(handler);
-	if (handler) {
+	if (handler && _decoder) {
 		_decoder->clearLastError();
 		_decoder->iterateStart();
 		LzmaSDKObjCItem * item = nil;
@@ -142,7 +142,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 		  toPath:(const char *) path
    withFullPaths:(BOOL) isFullPaths {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
-	if (count) {
+	if (count && _decoder) {
 		BOOL isOK = NO;
 		const unsigned int indexesMemSize = count * sizeof(uint32_t);
 		uint32_t * itemsIndices = (uint32_t *)malloc(indexesMemSize);
@@ -173,6 +173,13 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (BOOL) open:(NSError * _Nullable * _Nullable) error {
+	if (!_decoder) {
+		if (error) *error = [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
+												code:-1
+											userInfo:@{ NSLocalizedDescriptionKey : kLzmaSDKObjCErrorDescrEncDecNotCreated }];
+		return NO;
+	}
+
 	if (!_decoder->prepare(_fileType)) {
 		if (error) *error = self.lastError;
 		return NO;
@@ -194,7 +201,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (NSError *) lastError {
-	LzmaSDKObjC::Error * error = _decoder->lastError();
+	LzmaSDKObjC::Error * error = _decoder ? _decoder->lastError() : NULL;
 	if (error) {
 		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 								   code:(NSInteger)error->code
@@ -252,8 +259,10 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (void) dealloc {
-	_decoder->context = NULL;
-	delete _decoder;
+	if (_decoder) {
+		_decoder->context = NULL;
+		delete _decoder;
+	}
 
 	_fileURL = nil;
 	_passwordGetter = nil;
