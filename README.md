@@ -293,8 +293,7 @@ This variables holds size values in bytes, so, for the single reader object summ
 
 Keep in mind: operations with **memory much more faster** than **disk IO operations**, so read below situations:
 ```c
-switch (<what do I need ?>)
-{
+switch (<what do I need ?>) {
 	case <I need faster list and extract>:
 		//TODO: Increase stream and decoder size of buffers
 		Result:
@@ -325,7 +324,7 @@ switch (<what do I need ?>)
 
 ### Features list (TODO/DONE)
 -----------------------------
-- [ ] **Lzma/*.7z**
+- [x] **Lzma/*.7z**
   - [x] **List**
     - [x] Regular archive. ```tests/files/lzma.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma_aes256.7z```
@@ -338,7 +337,7 @@ switch (<what do I need ?>)
     - [x] Regular archive.
     - [x] Encrypted archive with AES256.
     - [x] Encrypted archive + encrypted header(*no visible content, files list, without password*) with AES256.
-- [ ] **Lzma2/*.7z**
+- [x] **Lzma2/*.7z**
   - [x] **List**
     - [x] Regular archive. ```tests/files/lzma2.7z```
     - [x] Encrypted archive with AES256. ```tests/files/lzma2_aes256.7z```
