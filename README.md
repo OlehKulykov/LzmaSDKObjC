@@ -30,8 +30,6 @@ The main advantages is:
 - Unicode support.
 - Extra compression/decompression functionality of single **NSData** object with **Lzma2**.
 
-> **xz** support will be removed in a next release.
-
 
 ### Installation with [CocoaPods]
 #### Podfile
