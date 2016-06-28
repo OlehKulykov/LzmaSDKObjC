@@ -22,6 +22,10 @@
 		3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D2E95951D214D670051D463 /* Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41BB1D1B4EE400EF40A3 /* Write.swift */; };
+		3D37E5DA1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
+		3D37E5DB1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
+		3D37E5DC1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
+		3D37E5DD1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3D37F5131D2176DC001C3BDB /* shutuptakemoney.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */; };
 		3D37F5141D2176DC001C3BDB /* SouthPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5111D2176DC001C3BDB /* SouthPark.jpg */; };
 		3D37F5151D2176DC001C3BDB /* zombies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D37F5121D2176DC001C3BDB /* zombies.jpg */; };
@@ -247,8 +251,6 @@
 		3D9BD6751C8E4AAB00081959 /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5881C8E4AAB00081959 /* StringConvert.cpp */; };
 		3D9BD6761C8E4AAB00081959 /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58A1C8E4AAB00081959 /* StringToInt.cpp */; };
 		3D9BD6771C8E4AAB00081959 /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58A1C8E4AAB00081959 /* StringToInt.cpp */; };
-		3D9BD6781C8E4AAB00081959 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
-		3D9BD6791C8E4AAB00081959 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3D9BD67A1C8E4AAB00081959 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
 		3D9BD67B1C8E4AAB00081959 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
 		3D9BD6841C8E4AAB00081959 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
@@ -460,7 +462,6 @@
 		3DF59AB21D0ED8AB00E855EF /* Sha256Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5841C8E4AAB00081959 /* Sha256Reg.cpp */; };
 		3DF59AB31D0ED8AB00E855EF /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5881C8E4AAB00081959 /* StringConvert.cpp */; };
 		3DF59AB41D0ED8AB00E855EF /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58A1C8E4AAB00081959 /* StringToInt.cpp */; };
-		3DF59AB51D0ED8AB00E855EF /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3DF59AB61D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
 		3DF59AB71D0ED8AB00E855EF /* C_FileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD56B1C8E4AAB00081959 /* C_FileIO.cpp */; };
 		3DF59AB81D0ED8AB00E855EF /* CrcReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5701C8E4AAB00081959 /* CrcReg.cpp */; };
@@ -470,7 +471,6 @@
 		3DF59ABC1D0ED8AB00E855EF /* Sha256Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5841C8E4AAB00081959 /* Sha256Reg.cpp */; };
 		3DF59ABD1D0ED8AB00E855EF /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5881C8E4AAB00081959 /* StringConvert.cpp */; };
 		3DF59ABE1D0ED8AB00E855EF /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58A1C8E4AAB00081959 /* StringToInt.cpp */; };
-		3DF59ABF1D0ED8AB00E855EF /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3DF59AC01D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
 		3DF59AC51D0ED8B000E855EF /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3DF59AC61D0ED8B000E855EF /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
@@ -1334,8 +1334,8 @@
 				3D9BD58B1C8E4AAB00081959 /* StringToInt.h */,
 				3D9BD58C1C8E4AAB00081959 /* TextConfig.h */,
 				3D9BD58D1C8E4AAB00081959 /* UTFConvert.h */,
-				3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */,
 				3D9BD58F1C8E4AAB00081959 /* Wildcard.h */,
+				3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */,
 				3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */,
 			);
 			name = Common;
@@ -1927,6 +1927,7 @@
 				3D9BD6861C8E4AAB00081959 /* PropVariantConv.cpp in Sources */,
 				3D9BD60E1C8E4AAB00081959 /* 7zOut.cpp in Sources */,
 				3D9BD5F01C8E4AAB00081959 /* Threads.c in Sources */,
+				3D37E5DA1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */,
 				3D9BD6201C8E4AAB00081959 /* ItemNameUtils.cpp in Sources */,
 				3D9BD66A1C8E4AAB00081959 /* CrcReg.cpp in Sources */,
 				3D9BD5EE1C8E4AAB00081959 /* Sha256.c in Sources */,
@@ -1940,7 +1941,6 @@
 				3D9BD6361C8E4AAB00081959 /* LimitedStreams.cpp in Sources */,
 				3D9BD65A1C8E4AAB00081959 /* LzmaEncoder.cpp in Sources */,
 				3DE706A71D1BF47A008FA27F /* LzmaSDKObjCBaseCoder.cpp in Sources */,
-				3D9BD6781C8E4AAB00081959 /* Wildcard.cpp in Sources */,
 				3D9BD6521C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
 				3D9BD65C1C8E4AAB00081959 /* LzmaRegister.cpp in Sources */,
 				3D9BD5BA1C8E4AAB00081959 /* LzmaSDKObjCError.mm in Sources */,
@@ -2072,7 +2072,6 @@
 				3D9BD65B1C8E4AAB00081959 /* LzmaEncoder.cpp in Sources */,
 				3D9BD6711C8E4AAB00081959 /* MyWindows.cpp in Sources */,
 				3D9BD6391C8E4AAB00081959 /* LockedStream.cpp in Sources */,
-				3D9BD6791C8E4AAB00081959 /* Wildcard.cpp in Sources */,
 				3DE706AB1D1C0CB6008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */,
 				3D9BD5D71C8E4AAB00081959 /* Bra.c in Sources */,
 				3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
@@ -2103,6 +2102,7 @@
 				3D9BD5D91C8E4AAB00081959 /* Bra86.c in Sources */,
 				3D9BD6671C8E4AAB00081959 /* RandGen.cpp in Sources */,
 				3D0DE3CF1CF6414B0091B7B2 /* 7zEncode.cpp in Sources */,
+				3D37E5DB1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */,
 				3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
 				3D9BD6531C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
 				3D2E95951D214D670051D463 /* Write.swift in Sources */,
@@ -2147,6 +2147,7 @@
 				3DF59A5E1D0ED89300E855EF /* DummyOutStream.cpp in Sources */,
 				3DF59A021D0ED87700E855EF /* CpuArch.c in Sources */,
 				3DF59A7A1D0ED89B00E855EF /* PropId.cpp in Sources */,
+				3D37E5DC1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */,
 				3DF59AA31D0ED8A500E855EF /* 7zAes.cpp in Sources */,
 				3DF59A481D0ED88F00E855EF /* 7zIn.cpp in Sources */,
 				3DF59A951D0ED8A100E855EF /* Lzma2Register.cpp in Sources */,
@@ -2155,7 +2156,6 @@
 				3DF59A981D0ED8A100E855EF /* LzmaRegister.cpp in Sources */,
 				3DF59A601D0ED89300E855EF /* ItemNameUtils.cpp in Sources */,
 				3DF59A0B1D0ED87700E855EF /* Sha256.c in Sources */,
-				3DF59AB51D0ED8AB00E855EF /* Wildcard.cpp in Sources */,
 				3DF599FE1D0ED87700E855EF /* Alloc.c in Sources */,
 				3DB5BA541D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */,
 				3DF59AB61D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */,
@@ -2257,6 +2257,7 @@
 				3DF59A2B1D0ED87800E855EF /* AesOpt.c in Sources */,
 				3DF599C41D0ED80900E855EF /* LzmaSDKObjC.mm in Sources */,
 				3DF59A631D0ED89300E855EF /* DummyOutStream.cpp in Sources */,
+				3D37E5DD1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */,
 				3DF59A301D0ED87800E855EF /* CpuArch.c in Sources */,
 				3DF59A8A1D0ED89C00E855EF /* PropId.cpp in Sources */,
 				3DF59AA81D0ED8A600E855EF /* 7zAes.cpp in Sources */,
@@ -2268,7 +2269,6 @@
 				3DF59AA21D0ED8A100E855EF /* LzmaRegister.cpp in Sources */,
 				3DF59A651D0ED89300E855EF /* ItemNameUtils.cpp in Sources */,
 				3DF59A391D0ED87800E855EF /* Sha256.c in Sources */,
-				3DF59ABF1D0ED8AB00E855EF /* Wildcard.cpp in Sources */,
 				3DF59A2C1D0ED87800E855EF /* Alloc.c in Sources */,
 				3DF59AC01D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */,
 				3DF59A541D0ED88F00E855EF /* 7zHandlerOut.cpp in Sources */,

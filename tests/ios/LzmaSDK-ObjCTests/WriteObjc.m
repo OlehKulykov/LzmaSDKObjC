@@ -103,7 +103,8 @@
 		} else if ([item.fileName isEqualToString:@"zombies.jpg"]) {
 			XCTAssertTrue(item.originalSize == 83131);
 			XCTAssertTrue(item.crc32 == 0xb5e98c78);
-		} else if ([item.fileName isEqualToString:@"München.png"] || [item.fileName isEqualToString:@"Мюнхен.png"]) {
+		} else if ([item.fileName isEqualToString:@"München.png"] ||
+				   [item.fileName isEqualToString:@"Мюнхен.png"]) {
 			XCTAssertTrue(item.originalSize == 10018);
 			XCTAssertTrue(item.crc32 == 0xaa7eaf66);
 		}
@@ -134,7 +135,8 @@
 			XCTAssertTrue(outSize == 83131);
 			XCTAssertTrue([fileData CRC32Value] == 0xb5e98c78);
 			locatedCount++;
-		} else if ([fileName isEqualToString:@"München.png"] || [fileName isEqualToString:@"Мюнхен.png"]) {
+		} else if ([fileName isEqualToString:@"München.png"] ||
+				   [fileName isEqualToString:@"Мюнхен.png"]) {
 			XCTAssertTrue(outSize == 10018);
 			XCTAssertTrue([fileData CRC32Value] == 0xaa7eaf66);
 			locatedCount++;
