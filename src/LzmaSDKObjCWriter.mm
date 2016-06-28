@@ -54,7 +54,7 @@ static void _LzmaSDKObjCWriterSetFloatCallback(void * context, float value) {
 }
 
 - (NSError *) lastError {
-	LzmaSDKObjC::Error * error = _encoder ? _encoder->lastError() : NULL;
+	LzmaSDKObjC::Error * error = _encoder->lastError();
 	if (error) {
 		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 								   code:(NSInteger)error->code

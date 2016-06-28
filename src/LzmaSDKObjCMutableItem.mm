@@ -80,4 +80,8 @@
 	_mDate = date ? (time_t)[date timeIntervalSince1970] : 0;
 }
 
+- (void) dealloc {
+	_content = nil;
+}
+
 @end

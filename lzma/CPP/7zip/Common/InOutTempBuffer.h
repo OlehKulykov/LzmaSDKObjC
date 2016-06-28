@@ -4,7 +4,9 @@
 #define __IN_OUT_TEMP_BUFFER_H
 
 #include "../../Common/MyCom.h"
+#if !defined(__APPLE__)
 #include "../../Windows/FileDir.h"
+#endif
 
 #include "../IStream.h"
 
@@ -15,7 +17,7 @@
 class CInOutTempBuffer
 {
 #if defined(__APPLE__)
-	NWindows::NFile::NDirectory::CTempFile _tempFile;
+//	NWindows::NFile::NDirectory::CTempFile _tempFile;
 	NC::NFile::NIO::COutFile _outFile;
 #else
 	NWindows::NFile::NDir::CTempFile _tempFile;

@@ -29,11 +29,6 @@
 #include "../lzma/CPP/Common/IntToString.h"
 #include "../lzma/CPP/Common/StringConvert.h"
 
-#include "../lzma/CPP/Windows/DLL.h"
-#include "../lzma/CPP/Windows/FileDir.h"
-#include "../lzma/CPP/Windows/FileFind.h"
-#include "../lzma/CPP/Windows/FileName.h"
-#include "../lzma/CPP/Windows/NtCheck.h"
 #include "../lzma/CPP/Windows/PropVariant.h"
 #include "../lzma/CPP/Windows/PropVariantConv.h"
 

@@ -8,7 +8,9 @@
 #include "../../../Common/IntToString.h"
 
 #ifndef __7Z_SET_PROPERTIES
+#if !defined(__APPLE__)
 #include "../../../Windows/System.h"
+#endif
 #endif
 
 #include "../Common/ItemNameUtils.h"

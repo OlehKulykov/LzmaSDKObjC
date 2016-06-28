@@ -251,20 +251,10 @@
 		3D9BD6791C8E4AAB00081959 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3D9BD67A1C8E4AAB00081959 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
 		3D9BD67B1C8E4AAB00081959 /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
-		3D9BD67C1C8E4AAB00081959 /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5951C8E4AAB00081959 /* DLL.cpp */; };
-		3D9BD67D1C8E4AAB00081959 /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5951C8E4AAB00081959 /* DLL.cpp */; };
-		3D9BD67E1C8E4AAB00081959 /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5981C8E4AAB00081959 /* FileDir.cpp */; };
-		3D9BD67F1C8E4AAB00081959 /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5981C8E4AAB00081959 /* FileDir.cpp */; };
-		3D9BD6801C8E4AAB00081959 /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */; };
-		3D9BD6811C8E4AAB00081959 /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */; };
-		3D9BD6821C8E4AAB00081959 /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59E1C8E4AAB00081959 /* FileName.cpp */; };
-		3D9BD6831C8E4AAB00081959 /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59E1C8E4AAB00081959 /* FileName.cpp */; };
 		3D9BD6841C8E4AAB00081959 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3D9BD6851C8E4AAB00081959 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3D9BD6861C8E4AAB00081959 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
 		3D9BD6871C8E4AAB00081959 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
-		3D9BD6881C8E4AAB00081959 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5AE1C8E4AAB00081959 /* System.cpp */; };
-		3D9BD6891C8E4AAB00081959 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5AE1C8E4AAB00081959 /* System.cpp */; };
 		3D9BD6A21C8E4BAC00081959 /* TestBaseObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69C1C8E4BAC00081959 /* TestBaseObjc.m */; };
 		3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */; };
 		3DA24A431D216C9B00DD235B /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4E11C8E4AAB00081959 /* XzCrc64.c */; };
@@ -482,20 +472,10 @@
 		3DF59ABE1D0ED8AB00E855EF /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58A1C8E4AAB00081959 /* StringToInt.cpp */; };
 		3DF59ABF1D0ED8AB00E855EF /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3DF59AC01D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */; };
-		3DF59AC11D0ED8B000E855EF /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5951C8E4AAB00081959 /* DLL.cpp */; };
-		3DF59AC21D0ED8B000E855EF /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5981C8E4AAB00081959 /* FileDir.cpp */; };
-		3DF59AC31D0ED8B000E855EF /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */; };
-		3DF59AC41D0ED8B000E855EF /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59E1C8E4AAB00081959 /* FileName.cpp */; };
 		3DF59AC51D0ED8B000E855EF /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3DF59AC61D0ED8B000E855EF /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
-		3DF59AC71D0ED8B000E855EF /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5AE1C8E4AAB00081959 /* System.cpp */; };
-		3DF59AC81D0ED8B000E855EF /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5951C8E4AAB00081959 /* DLL.cpp */; };
-		3DF59AC91D0ED8B000E855EF /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5981C8E4AAB00081959 /* FileDir.cpp */; };
-		3DF59ACA1D0ED8B000E855EF /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */; };
-		3DF59ACB1D0ED8B000E855EF /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD59E1C8E4AAB00081959 /* FileName.cpp */; };
 		3DF59ACC1D0ED8B000E855EF /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3DF59ACD1D0ED8B000E855EF /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
-		3DF59ACE1D0ED8B000E855EF /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5AE1C8E4AAB00081959 /* System.cpp */; };
 		3DF59AD01D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59ACF1D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift */; };
 		3DF59ADE1D0EDB1700E855EF /* bzip2.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD21D0EDB1700E855EF /* bzip2.7z */; };
 		3DF59ADF1D0EDB1700E855EF /* bzip2_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */; };
@@ -565,6 +545,7 @@
 		3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LzmaSDKObjCFileEncoder.cpp; path = ../../src/LzmaSDKObjCFileEncoder.cpp; sourceTree = "<group>"; };
 		3D1F64E91D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCFileEncoder.h; path = ../../src/LzmaSDKObjCFileEncoder.h; sourceTree = "<group>"; };
 		3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WriteObjc.m; sourceTree = "<group>"; };
+		3D37E5D91D22C6820016F8B4 /* MyInitGuid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyInitGuid.h; path = ../../lzma/CPP/Common/MyInitGuid.h; sourceTree = "<group>"; };
 		3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = shutuptakemoney.jpg; path = ../files/shutuptakemoney.jpg; sourceTree = "<group>"; };
 		3D37F5111D2176DC001C3BDB /* SouthPark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = SouthPark.jpg; path = ../files/SouthPark.jpg; sourceTree = "<group>"; };
 		3D37F5121D2176DC001C3BDB /* zombies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = zombies.jpg; path = ../files/zombies.jpg; sourceTree = "<group>"; };
@@ -810,13 +791,11 @@
 		3D9BD5721C8E4AAB00081959 /* DynamicBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicBuffer.h; path = ../../lzma/CPP/Common/DynamicBuffer.h; sourceTree = "<group>"; };
 		3D9BD5731C8E4AAB00081959 /* IntToString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntToString.cpp; path = ../../lzma/CPP/Common/IntToString.cpp; sourceTree = "<group>"; };
 		3D9BD5741C8E4AAB00081959 /* IntToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntToString.h; path = ../../lzma/CPP/Common/IntToString.h; sourceTree = "<group>"; };
-		3D9BD5751C8E4AAB00081959 /* Lang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lang.h; path = ../../lzma/CPP/Common/Lang.h; sourceTree = "<group>"; };
 		3D9BD5761C8E4AAB00081959 /* ListFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListFileUtils.h; path = ../../lzma/CPP/Common/ListFileUtils.h; sourceTree = "<group>"; };
 		3D9BD5771C8E4AAB00081959 /* MyBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyBuffer.h; path = ../../lzma/CPP/Common/MyBuffer.h; sourceTree = "<group>"; };
 		3D9BD5781C8E4AAB00081959 /* MyCom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCom.h; path = ../../lzma/CPP/Common/MyCom.h; sourceTree = "<group>"; };
 		3D9BD5791C8E4AAB00081959 /* MyException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyException.h; path = ../../lzma/CPP/Common/MyException.h; sourceTree = "<group>"; };
 		3D9BD57A1C8E4AAB00081959 /* MyGuidDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyGuidDef.h; path = ../../lzma/CPP/Common/MyGuidDef.h; sourceTree = "<group>"; };
-		3D9BD57B1C8E4AAB00081959 /* MyInitGuid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInitGuid.h; path = ../../lzma/CPP/Common/MyInitGuid.h; sourceTree = "<group>"; };
 		3D9BD57C1C8E4AAB00081959 /* MyLinux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyLinux.h; path = ../../lzma/CPP/Common/MyLinux.h; sourceTree = "<group>"; };
 		3D9BD57D1C8E4AAB00081959 /* MyString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyString.cpp; path = ../../lzma/CPP/Common/MyString.cpp; sourceTree = "<group>"; };
 		3D9BD57E1C8E4AAB00081959 /* MyString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyString.h; path = ../../lzma/CPP/Common/MyString.h; sourceTree = "<group>"; };
@@ -838,39 +817,14 @@
 		3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Wildcard.cpp; path = ../../lzma/CPP/Common/Wildcard.cpp; sourceTree = "<group>"; };
 		3D9BD58F1C8E4AAB00081959 /* Wildcard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wildcard.h; path = ../../lzma/CPP/Common/Wildcard.h; sourceTree = "<group>"; };
 		3D9BD5901C8E4AAB00081959 /* XzCrc64Reg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XzCrc64Reg.cpp; path = ../../lzma/CPP/Common/XzCrc64Reg.cpp; sourceTree = "<group>"; };
-		3D9BD5921C8E4AAB00081959 /* COM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COM.h; path = ../../lzma/CPP/Windows/COM.h; sourceTree = "<group>"; };
-		3D9BD5931C8E4AAB00081959 /* CommonDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonDialog.h; path = ../../lzma/CPP/Windows/CommonDialog.h; sourceTree = "<group>"; };
 		3D9BD5941C8E4AAB00081959 /* Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defs.h; path = ../../lzma/CPP/Windows/Defs.h; sourceTree = "<group>"; };
-		3D9BD5951C8E4AAB00081959 /* DLL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DLL.cpp; path = ../../lzma/CPP/Windows/DLL.cpp; sourceTree = "<group>"; };
-		3D9BD5961C8E4AAB00081959 /* DLL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLL.h; path = ../../lzma/CPP/Windows/DLL.h; sourceTree = "<group>"; };
-		3D9BD5971C8E4AAB00081959 /* ErrorMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorMsg.h; path = ../../lzma/CPP/Windows/ErrorMsg.h; sourceTree = "<group>"; };
-		3D9BD5981C8E4AAB00081959 /* FileDir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileDir.cpp; path = ../../lzma/CPP/Windows/FileDir.cpp; sourceTree = "<group>"; };
-		3D9BD5991C8E4AAB00081959 /* FileDir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileDir.h; path = ../../lzma/CPP/Windows/FileDir.h; sourceTree = "<group>"; };
-		3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileFind.cpp; path = ../../lzma/CPP/Windows/FileFind.cpp; sourceTree = "<group>"; };
-		3D9BD59B1C8E4AAB00081959 /* FileFind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileFind.h; path = ../../lzma/CPP/Windows/FileFind.h; sourceTree = "<group>"; };
-		3D9BD59C1C8E4AAB00081959 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileIO.h; path = ../../lzma/CPP/Windows/FileIO.h; sourceTree = "<group>"; };
-		3D9BD59D1C8E4AAB00081959 /* FileMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileMapping.h; path = ../../lzma/CPP/Windows/FileMapping.h; sourceTree = "<group>"; };
-		3D9BD59E1C8E4AAB00081959 /* FileName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FileName.cpp; path = ../../lzma/CPP/Windows/FileName.cpp; sourceTree = "<group>"; };
-		3D9BD59F1C8E4AAB00081959 /* FileName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileName.h; path = ../../lzma/CPP/Windows/FileName.h; sourceTree = "<group>"; };
-		3D9BD5A01C8E4AAB00081959 /* FileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystem.h; path = ../../lzma/CPP/Windows/FileSystem.h; sourceTree = "<group>"; };
-		3D9BD5A11C8E4AAB00081959 /* Handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Handle.h; path = ../../lzma/CPP/Windows/Handle.h; sourceTree = "<group>"; };
-		3D9BD5A21C8E4AAB00081959 /* MemoryLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemoryLock.h; path = ../../lzma/CPP/Windows/MemoryLock.h; sourceTree = "<group>"; };
-		3D9BD5A31C8E4AAB00081959 /* NtCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NtCheck.h; path = ../../lzma/CPP/Windows/NtCheck.h; sourceTree = "<group>"; };
 		3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PropVariant.cpp; path = ../../lzma/CPP/Windows/PropVariant.cpp; sourceTree = "<group>"; };
 		3D9BD5A51C8E4AAB00081959 /* PropVariant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropVariant.h; path = ../../lzma/CPP/Windows/PropVariant.h; sourceTree = "<group>"; };
 		3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PropVariantConv.cpp; path = ../../lzma/CPP/Windows/PropVariantConv.cpp; sourceTree = "<group>"; };
 		3D9BD5A71C8E4AAB00081959 /* PropVariantConv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PropVariantConv.h; path = ../../lzma/CPP/Windows/PropVariantConv.h; sourceTree = "<group>"; };
-		3D9BD5A81C8E4AAB00081959 /* Registry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Registry.h; path = ../../lzma/CPP/Windows/Registry.h; sourceTree = "<group>"; };
-		3D9BD5A91C8E4AAB00081959 /* ResourceString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceString.h; path = ../../lzma/CPP/Windows/ResourceString.h; sourceTree = "<group>"; };
-		3D9BD5AA1C8E4AAB00081959 /* SecurityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecurityUtils.h; path = ../../lzma/CPP/Windows/SecurityUtils.h; sourceTree = "<group>"; };
-		3D9BD5AB1C8E4AAB00081959 /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shell.h; path = ../../lzma/CPP/Windows/Shell.h; sourceTree = "<group>"; };
 		3D9BD5AC1C8E4AAB00081959 /* StdAfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StdAfx.h; path = ../../lzma/CPP/Windows/StdAfx.h; sourceTree = "<group>"; };
 		3D9BD5AD1C8E4AAB00081959 /* Synchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Synchronization.h; path = ../../lzma/CPP/Windows/Synchronization.h; sourceTree = "<group>"; };
-		3D9BD5AE1C8E4AAB00081959 /* System.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = System.cpp; path = ../../lzma/CPP/Windows/System.cpp; sourceTree = "<group>"; };
-		3D9BD5AF1C8E4AAB00081959 /* System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = System.h; path = ../../lzma/CPP/Windows/System.h; sourceTree = "<group>"; };
 		3D9BD5B01C8E4AAB00081959 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../../lzma/CPP/Windows/Thread.h; sourceTree = "<group>"; };
-		3D9BD5B11C8E4AAB00081959 /* TimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeUtils.h; path = ../../lzma/CPP/Windows/TimeUtils.h; sourceTree = "<group>"; };
-		3D9BD5B21C8E4AAB00081959 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Window.h; path = ../../lzma/CPP/Windows/Window.h; sourceTree = "<group>"; };
 		3D9BD6981C8E4BAC00081959 /* LzmaSDK-ObjCTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LzmaSDK-ObjCTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		3D9BD6991C8E4BAC00081959 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
 		3D9BD69A1C8E4BAC00081959 /* ReadObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadObjc.m; sourceTree = "<group>"; };
@@ -1355,13 +1309,12 @@
 				3D9BD5721C8E4AAB00081959 /* DynamicBuffer.h */,
 				3D9BD5731C8E4AAB00081959 /* IntToString.cpp */,
 				3D9BD5741C8E4AAB00081959 /* IntToString.h */,
-				3D9BD5751C8E4AAB00081959 /* Lang.h */,
 				3D9BD5761C8E4AAB00081959 /* ListFileUtils.h */,
 				3D9BD5771C8E4AAB00081959 /* MyBuffer.h */,
 				3D9BD5781C8E4AAB00081959 /* MyCom.h */,
 				3D9BD5791C8E4AAB00081959 /* MyException.h */,
 				3D9BD57A1C8E4AAB00081959 /* MyGuidDef.h */,
-				3D9BD57B1C8E4AAB00081959 /* MyInitGuid.h */,
+				3D37E5D91D22C6820016F8B4 /* MyInitGuid.h */,
 				3D9BD57C1C8E4AAB00081959 /* MyLinux.h */,
 				3D9BD57D1C8E4AAB00081959 /* MyString.cpp */,
 				3D9BD57E1C8E4AAB00081959 /* MyString.h */,
@@ -1391,39 +1344,14 @@
 		3D9BD5B31C8E4AAB00081959 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
-				3D9BD5921C8E4AAB00081959 /* COM.h */,
-				3D9BD5931C8E4AAB00081959 /* CommonDialog.h */,
 				3D9BD5941C8E4AAB00081959 /* Defs.h */,
-				3D9BD5951C8E4AAB00081959 /* DLL.cpp */,
-				3D9BD5961C8E4AAB00081959 /* DLL.h */,
-				3D9BD5971C8E4AAB00081959 /* ErrorMsg.h */,
-				3D9BD5981C8E4AAB00081959 /* FileDir.cpp */,
-				3D9BD5991C8E4AAB00081959 /* FileDir.h */,
-				3D9BD59A1C8E4AAB00081959 /* FileFind.cpp */,
-				3D9BD59B1C8E4AAB00081959 /* FileFind.h */,
-				3D9BD59C1C8E4AAB00081959 /* FileIO.h */,
-				3D9BD59D1C8E4AAB00081959 /* FileMapping.h */,
-				3D9BD59E1C8E4AAB00081959 /* FileName.cpp */,
-				3D9BD59F1C8E4AAB00081959 /* FileName.h */,
-				3D9BD5A01C8E4AAB00081959 /* FileSystem.h */,
-				3D9BD5A11C8E4AAB00081959 /* Handle.h */,
-				3D9BD5A21C8E4AAB00081959 /* MemoryLock.h */,
-				3D9BD5A31C8E4AAB00081959 /* NtCheck.h */,
 				3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */,
 				3D9BD5A51C8E4AAB00081959 /* PropVariant.h */,
 				3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */,
 				3D9BD5A71C8E4AAB00081959 /* PropVariantConv.h */,
-				3D9BD5A81C8E4AAB00081959 /* Registry.h */,
-				3D9BD5A91C8E4AAB00081959 /* ResourceString.h */,
-				3D9BD5AA1C8E4AAB00081959 /* SecurityUtils.h */,
-				3D9BD5AB1C8E4AAB00081959 /* Shell.h */,
 				3D9BD5AC1C8E4AAB00081959 /* StdAfx.h */,
 				3D9BD5AD1C8E4AAB00081959 /* Synchronization.h */,
-				3D9BD5AE1C8E4AAB00081959 /* System.cpp */,
-				3D9BD5AF1C8E4AAB00081959 /* System.h */,
 				3D9BD5B01C8E4AAB00081959 /* Thread.h */,
-				3D9BD5B11C8E4AAB00081959 /* TimeUtils.h */,
-				3D9BD5B21C8E4AAB00081959 /* Window.h */,
 			);
 			name = Windows;
 			sourceTree = "<group>";
@@ -1990,14 +1918,12 @@
 				3D9BD64E1C8E4AAB00081959 /* CodecExports.cpp in Sources */,
 				3D9BD6761C8E4AAB00081959 /* StringToInt.cpp in Sources */,
 				3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
-				3D9BD6881C8E4AAB00081959 /* System.cpp in Sources */,
 				3D9BD5D21C8E4AAB00081959 /* AesOpt.c in Sources */,
 				3D9BD4531C8E4A3D00081959 /* ViewController.swift in Sources */,
 				3D9BD61C1C8E4AAB00081959 /* DummyOutStream.cpp in Sources */,
 				3D9BD5DC1C8E4AAB00081959 /* CpuArch.c in Sources */,
 				3D9BD60C1C8E4AAB00081959 /* 7zIn.cpp in Sources */,
 				3D9BD6701C8E4AAB00081959 /* MyWindows.cpp in Sources */,
-				3D9BD67C1C8E4AAB00081959 /* DLL.cpp in Sources */,
 				3D9BD6861C8E4AAB00081959 /* PropVariantConv.cpp in Sources */,
 				3D9BD60E1C8E4AAB00081959 /* 7zOut.cpp in Sources */,
 				3D9BD5F01C8E4AAB00081959 /* Threads.c in Sources */,
@@ -2005,7 +1931,6 @@
 				3D9BD66A1C8E4AAB00081959 /* CrcReg.cpp in Sources */,
 				3D9BD5EE1C8E4AAB00081959 /* Sha256.c in Sources */,
 				3D9BD5D41C8E4AAB00081959 /* Alloc.c in Sources */,
-				3D9BD67E1C8E4AAB00081959 /* FileDir.cpp in Sources */,
 				3D090F491CB1493000D296BA /* InBuffer.cpp in Sources */,
 				3D9BD6081C8E4AAB00081959 /* 7zHandlerOut.cpp in Sources */,
 				3D9BD5C01C8E4AAB00081959 /* LzmaSDKObjCInFile.cpp in Sources */,
@@ -2034,7 +1959,6 @@
 				3D9BD6741C8E4AAB00081959 /* StringConvert.cpp in Sources */,
 				3D9BD5EA1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
 				3D9BD6401C8E4AAB00081959 /* PropId.cpp in Sources */,
-				3D9BD6801C8E4AAB00081959 /* FileFind.cpp in Sources */,
 				3D9BD6301C8E4AAB00081959 /* FileStreams.cpp in Sources */,
 				3D9BD6561C8E4AAB00081959 /* Lzma2Register.cpp in Sources */,
 				3D9BD6501C8E4AAB00081959 /* CopyCoder.cpp in Sources */,
@@ -2064,7 +1988,6 @@
 				3D9BD5EC1C8E4AAB00081959 /* MtCoder.c in Sources */,
 				3D9BD63C1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
 				3D9BD5BC1C8E4AAB00081959 /* LzmaSDKObjCExtractCallback.mm in Sources */,
-				3D9BD6821C8E4AAB00081959 /* FileName.cpp in Sources */,
 				3D9BD5F61C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
 				3D9BD6161C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
 				3D9BD63A1C8E4AAB00081959 /* MethodProps.cpp in Sources */,
@@ -2153,7 +2076,6 @@
 				3DE706AB1D1C0CB6008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */,
 				3D9BD5D71C8E4AAB00081959 /* Bra.c in Sources */,
 				3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
-				3D9BD6891C8E4AAB00081959 /* System.cpp in Sources */,
 				3D9BD6731C8E4AAB00081959 /* Sha256Reg.cpp in Sources */,
 				3D9BD6091C8E4AAB00081959 /* 7zHandlerOut.cpp in Sources */,
 				3DF2355F1D1E84F30079C647 /* BcjRegister.cpp in Sources */,
@@ -2178,8 +2100,6 @@
 				3D9BD6771C8E4AAB00081959 /* StringToInt.cpp in Sources */,
 				3DF8E1231D211C7900F55C32 /* Read.swift in Sources */,
 				3DB5BA4D1D1C146B007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */,
-				3D9BD6811C8E4AAB00081959 /* FileFind.cpp in Sources */,
-				3D9BD67D1C8E4AAB00081959 /* DLL.cpp in Sources */,
 				3D9BD5D91C8E4AAB00081959 /* Bra86.c in Sources */,
 				3D9BD6671C8E4AAB00081959 /* RandGen.cpp in Sources */,
 				3D0DE3CF1CF6414B0091B7B2 /* 7zEncode.cpp in Sources */,
@@ -2206,8 +2126,6 @@
 				3D9BD6291C8E4AAB00081959 /* LzmaHandler.cpp in Sources */,
 				3D9BD6611C8E4AAB00081959 /* 7zAesRegister.cpp in Sources */,
 				3DB5BA5F1D1C14C5007DD865 /* TestDummyObjc.m in Sources */,
-				3D9BD67F1C8E4AAB00081959 /* FileDir.cpp in Sources */,
-				3D9BD6831C8E4AAB00081959 /* FileName.cpp in Sources */,
 				3D9BD5BF1C8E4AAB00081959 /* LzmaSDKObjCFileDecoder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2218,10 +2136,7 @@
 			files = (
 				3DF59A4B1D0ED88F00E855EF /* 7zRegister.cpp in Sources */,
 				3DF59A5F1D0ED89300E855EF /* HandlerOut.cpp in Sources */,
-				3DF59AC71D0ED8B000E855EF /* System.cpp in Sources */,
 				3DF599D11D0ED82300E855EF /* LzmaSDKObjCItem.mm in Sources */,
-				3DF59AC21D0ED8B000E855EF /* FileDir.cpp in Sources */,
-				3DF59AC11D0ED8B000E855EF /* DLL.cpp in Sources */,
 				3DF59A761D0ED89B00E855EF /* LockedStream.cpp in Sources */,
 				3DF599FF1D0ED87700E855EF /* Bra.c in Sources */,
 				3DF59AAF1D0ED8AB00E855EF /* IntToString.cpp in Sources */,
@@ -2262,7 +2177,6 @@
 				3DF59A791D0ED89B00E855EF /* ProgressUtils.cpp in Sources */,
 				3DF59A4C1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */,
 				3DF59A421D0ED88F00E855EF /* 7zEncode.cpp in Sources */,
-				3DF59AC41D0ED8B000E855EF /* FileName.cpp in Sources */,
 				3DF59A701D0ED89B00E855EF /* CWrappers.cpp in Sources */,
 				3DF59A061D0ED87700E855EF /* Lzma2Dec.c in Sources */,
 				3DF59A5D1D0ED89300E855EF /* CoderMixer2.cpp in Sources */,
@@ -2320,7 +2234,6 @@
 				3DF59A7E1D0ED89B00E855EF /* VirtThread.cpp in Sources */,
 				3DF599FB1D0ED87700E855EF /* 7zStream.c in Sources */,
 				3DF59A071D0ED87700E855EF /* Lzma2Enc.c in Sources */,
-				3DF59AC31D0ED8B000E855EF /* FileFind.cpp in Sources */,
 				3DF599FA1D0ED87700E855EF /* 7zCrcOpt.c in Sources */,
 				3DF599FC1D0ED87700E855EF /* Aes.c in Sources */,
 				3DF59A7B1D0ED89B00E855EF /* StreamBinder.cpp in Sources */,
@@ -2333,11 +2246,8 @@
 			files = (
 				3DF59A591D0ED88F00E855EF /* 7zRegister.cpp in Sources */,
 				3DF59A641D0ED89300E855EF /* HandlerOut.cpp in Sources */,
-				3DF59ACE1D0ED8B000E855EF /* System.cpp in Sources */,
 				3DF599D21D0ED82400E855EF /* LzmaSDKObjCItem.mm in Sources */,
-				3DF59AC91D0ED8B000E855EF /* FileDir.cpp in Sources */,
 				3DF235641D1E84F50079C647 /* BcjCoder.cpp in Sources */,
-				3DF59AC81D0ED8B000E855EF /* DLL.cpp in Sources */,
 				3DF59A861D0ED89C00E855EF /* LockedStream.cpp in Sources */,
 				3DF59A2D1D0ED87800E855EF /* Bra.c in Sources */,
 				3DF59AB91D0ED8AB00E855EF /* IntToString.cpp in Sources */,
@@ -2380,7 +2290,6 @@
 				3DF59A891D0ED89C00E855EF /* ProgressUtils.cpp in Sources */,
 				3DF59A5A1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */,
 				3DF59A501D0ED88F00E855EF /* 7zEncode.cpp in Sources */,
-				3DF59ACB1D0ED8B000E855EF /* FileName.cpp in Sources */,
 				3DF59A801D0ED89C00E855EF /* CWrappers.cpp in Sources */,
 				3DF59A341D0ED87800E855EF /* Lzma2Dec.c in Sources */,
 				3DB5BA511D1C147F007DD865 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
@@ -2439,7 +2348,6 @@
 				3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
 				3DF59A291D0ED87800E855EF /* 7zStream.c in Sources */,
 				3DF59A351D0ED87800E855EF /* Lzma2Enc.c in Sources */,
-				3DF59ACA1D0ED8B000E855EF /* FileFind.cpp in Sources */,
 				3DF59A281D0ED87800E855EF /* 7zCrcOpt.c in Sources */,
 				3DF59A2A1D0ED87800E855EF /* Aes.c in Sources */,
 				3DF59A8B1D0ED89C00E855EF /* StreamBinder.cpp in Sources */,

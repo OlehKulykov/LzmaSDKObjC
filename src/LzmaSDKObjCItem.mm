@@ -88,4 +88,9 @@
 }
 #endif
 
+- (void) dealloc {
+	_path = nil;
+}
+
+
 @end

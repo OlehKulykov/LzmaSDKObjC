@@ -13,7 +13,10 @@
 
 #include "../../Common/ComTry.h"
 
+#if !defined(__APPLE__)
 #include "../../Windows/NtCheck.h"
+#endif
+
 #include "../../Windows/PropVariant.h"
 
 #include "../ICoder.h"

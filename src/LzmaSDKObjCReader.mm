@@ -142,7 +142,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 		  toPath:(const char *) path
    withFullPaths:(BOOL) isFullPaths {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
-	if (count && _decoder) {
+	if (count) {
 		BOOL isOK = NO;
 		const unsigned int indexesMemSize = count * sizeof(uint32_t);
 		uint32_t * itemsIndices = (uint32_t *)malloc(indexesMemSize);
@@ -194,7 +194,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 - (NSError *) lastError {
-	LzmaSDKObjC::Error * error = _decoder ? _decoder->lastError() : NULL;
+	LzmaSDKObjC::Error * error = _decoder->lastError();
 	if (error) {
 		return [NSError errorWithDomain:kLzmaSDKObjCErrorDomain
 								   code:(NSInteger)error->code

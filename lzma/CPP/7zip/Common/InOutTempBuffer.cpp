@@ -9,11 +9,9 @@
 #include "InOutTempBuffer.h"
 #include "StreamUtils.h"
 
+#if !defined (__APPLE__)
 using namespace NWindows;
 using namespace NFile;
-#if defined (__APPLE__)
-using namespace NDirectory;
-#else
 using namespace NDir;
 #endif
 

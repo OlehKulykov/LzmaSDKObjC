@@ -143,7 +143,7 @@
 		}
 	}
 
-	XCTAssertTrue(locatedCount == [items count]);
+	XCTAssertTrue(locatedCount == 5);
 }
 
 - (void) testWrite {
