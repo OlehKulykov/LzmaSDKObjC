@@ -1345,8 +1345,8 @@
 			isa = PBXGroup;
 			children = (
 				3D9BD5941C8E4AAB00081959 /* Defs.h */,
-				3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */,
 				3D9BD5A51C8E4AAB00081959 /* PropVariant.h */,
+				3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */,
 				3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */,
 				3D9BD5A71C8E4AAB00081959 /* PropVariantConv.h */,
 				3D9BD5AC1C8E4AAB00081959 /* StdAfx.h */,

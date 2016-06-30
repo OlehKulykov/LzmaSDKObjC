@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.7"
+  s.version          = "2.0.8"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
@@ -70,7 +70,6 @@ The main advantages is:
     'lzma/CPP/7zip/Archive/7z/7zHandlerOut.cpp',
     'lzma/CPP/7zip/Archive/7z/7zIn.cpp',
     'lzma/CPP/7zip/Archive/7z/7zHandler.cpp',
-    'lzma/CPP/7zip/Archive/7z/StdAfx.cpp',
     'lzma/CPP/7zip/Archive/*.{h}',
     'lzma/CPP/7zip/Archive/LzmaHandler.cpp',
     'lzma/CPP/7zip/Archive/ArchiveExports.cpp',
@@ -110,12 +109,7 @@ The main advantages is:
     'lzma/CPP/7zip/Common/LockedStream.cpp',
     'lzma/CPP/Windows/*.{h}',
     'lzma/CPP/Windows/PropVariantConv.cpp',
-    'lzma/CPP/Windows/System.cpp',
     'lzma/CPP/Windows/PropVariant.cpp',
-    'lzma/CPP/Windows/FileName.cpp',
-    'lzma/CPP/Windows/FileFind.cpp',
-    'lzma/CPP/Windows/FileDir.cpp',
-    'lzma/CPP/Windows/DLL.cpp',
     'lzma/CPP/Common/*.{h}',
     'lzma/CPP/Common/Sha256Reg.cpp',
     'lzma/CPP/Common/XzCrc64Reg.cpp',
