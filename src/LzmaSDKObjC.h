@@ -22,7 +22,7 @@
 
 
 #ifndef __LZMASDKOBJC_H__
-#define __LZMASDKOBJC_H__
+#define __LZMASDKOBJC_H__ 1
 
 
 /*

@@ -35,14 +35,6 @@
 
 #include "LzmaSDKObjCOutFile.h"
 
-#ifndef SAFE_FREE
-#define SAFE_FREE(m) if(m){free(m);m=NULL;}
-#endif
-
-#ifndef SAFE_DELETE
-#define SAFE_DELETE(o) if(o){delete o;o=NULL;}
-#endif
-
 namespace LzmaSDKObjC
 {
 	class ExtractCallback :
