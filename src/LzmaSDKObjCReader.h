@@ -43,7 +43,7 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDomain;
 
 /**
  @brief Error description when internal decoder/encoder not initialized
- due input params assertion.
+ due to input params assertion.
  */
 LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDescrEncDecNotCreated;
 
