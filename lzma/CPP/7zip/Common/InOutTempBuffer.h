@@ -17,43 +17,43 @@
 class CInOutTempBuffer
 {
 #if defined(__APPLE__)
-//	NWindows::NFile::NDirectory::CTempFile _tempFile;
+	//	NWindows::NFile::NDirectory::CTempFile _tempFile;
 	NC::NFile::NIO::COutFile _outFile;
 #else
 	NWindows::NFile::NDir::CTempFile _tempFile;
 	NWindows::NFile::NIO::COutFile _outFile;
 #endif
-	Byte *_buf;
-	size_t _bufPos;
-	UInt64 _size;
-	UInt32 _crc;
-	bool _tempFileCreated;
+  Byte *_buf;
+  size_t _bufPos;
+  UInt64 _size;
+  UInt32 _crc;
+  bool _tempFileCreated;
 
-	bool WriteToFile(const void *data, UInt32 size);
+  bool WriteToFile(const void *data, UInt32 size);
 public:
-	CInOutTempBuffer();
-	~CInOutTempBuffer();
-	void Create();
+  CInOutTempBuffer();
+  ~CInOutTempBuffer();
+  void Create();
 
-	void InitWriting();
-	bool Write(const void *data, UInt32 size);
+  void InitWriting();
+  bool Write(const void *data, UInt32 size);
 
-	HRESULT WriteToStream(ISequentialOutStream *stream);
-	UInt64 GetDataSize() const { return _size; }
+  HRESULT WriteToStream(ISequentialOutStream *stream);
+  UInt64 GetDataSize() const { return _size; }
 };
 
 /*
- class CSequentialOutTempBufferImp:
- public ISequentialOutStream,
- public CMyUnknownImp
- {
- CInOutTempBuffer *_buf;
- public:
- void Init(CInOutTempBuffer *buffer)  { _buf = buffer; }
- MY_UNKNOWN_IMP
+class CSequentialOutTempBufferImp:
+  public ISequentialOutStream,
+  public CMyUnknownImp
+{
+  CInOutTempBuffer *_buf;
+public:
+  void Init(CInOutTempBuffer *buffer)  { _buf = buffer; }
+  MY_UNKNOWN_IMP
 
- STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
- };
- */
+  STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
+};
+*/
 
 #endif
