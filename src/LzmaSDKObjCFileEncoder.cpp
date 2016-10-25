@@ -28,8 +28,8 @@
 #include "../lzma/CPP/7zip/Archive/IArchive.h"
 #include "../lzma/CPP/7zip/IPassword.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	void FileEncoder::cleanUpdateCallbackRef() {
 		CMyComPtr<IArchiveUpdateCallback2> updateCallback = _updateCallback;
 		if (updateCallback != NULL && _updateCallbackRef) {
@@ -153,8 +153,7 @@ namespace LzmaSDKObjC
 		_outFileStreamRef(NULL),
 		_settings(0),
 		compressionLevel(7),
-		method((unsigned char)LzmaSDKObjCMethodLZMA2)
-	{
+		method((unsigned char)LzmaSDKObjCMethodLZMA2) {
 		setSettingsValue(true, LZMAOBJC_ENC_SOLID);
 		setSettingsValue(true, LZMAOBJC_ENC_COMPR_HDR);
 		setSettingsValue(true, LZMAOBJC_ENC_COMPR_HDR_FULL);
@@ -163,8 +162,7 @@ namespace LzmaSDKObjC
 		setSettingsValue(true, LZMAOBJC_ENC_WRITE_MTIME);
 	}
 	
-	FileEncoder::~FileEncoder()
-	{
+	FileEncoder::~FileEncoder() {
 		this->cleanOutFileStreamRef();
 		this->cleanUpdateCallbackRef();
 	}

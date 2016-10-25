@@ -31,10 +31,9 @@
 #include "../lzma/CPP/Common/MyString.h"
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
 
-namespace LzmaSDKObjC
-{
-	class InFile : public IInStream, public CMyUnknownImp
-	{
+namespace LzmaSDKObjC {
+	
+	class InFile : public IInStream, public CMyUnknownImp {
 	private:
 		FILE * _f;
 		

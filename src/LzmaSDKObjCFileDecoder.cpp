@@ -43,14 +43,12 @@
 #include "LzmaSDKObjCOutFile.h"
 
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
 
 	bool FileDecoder::process(const uint32_t * itemsIndices,
 							  const uint32_t itemsCount,
 							  const char * path /* = NULL */,
-							  bool isWithFullPaths /* = false */)
-	{
+							  bool isWithFullPaths /* = false */) {
 		this->cleanExtractCallbackRef();
 		this->clearLastError();
 		
@@ -152,8 +150,7 @@ namespace LzmaSDKObjC
 		_openCallbackRef(NULL),
 		_extractCallbackRef(NULL),
 		_itemsCount(0),
-		_iterateIndex(0)
-	{
+		_iterateIndex(0) {
 
 	}
 
@@ -177,8 +174,7 @@ namespace LzmaSDKObjC
 		_extractCallback.Release();
 	}
 
-	FileDecoder::~FileDecoder()
-	{
+	FileDecoder::~FileDecoder() {
 		this->cleanOpenCallbackRef();
 		this->cleanExtractCallbackRef();
 	}

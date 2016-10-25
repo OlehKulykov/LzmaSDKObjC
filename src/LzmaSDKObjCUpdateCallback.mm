@@ -31,8 +31,8 @@
 #import "LzmaSDKObjCMutableItem+Private.h"
 #import "LzmaSDKObjCItem+Private.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	class NSDataFileStream: public ISequentialInStream, public CMyUnknownImp {
 	private:
 		NSData * _data;
@@ -200,8 +200,7 @@ namespace LzmaSDKObjC
 	UpdateCallback::UpdateCallback() : LzmaSDKObjC::LastErrorHolder(),
 		_total(0),
 		items(NULL),
-		coder(NULL)
-	{
+		coder(NULL) {
 		
 	}
 

@@ -24,8 +24,7 @@
 #include "LzmaSDKObjCOutFile.h"
 #include <unistd.h>
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
 
 	STDMETHODIMP OutFile::Write(const void *data, UInt32 size, UInt32 *processedSize) {
 		if (_f) {
@@ -63,13 +62,11 @@ namespace LzmaSDKObjC
 	}
 
 	OutFile::OutFile() :
-		_f(NULL)
-	{
+		_f(NULL) {
 
 	}
 
-	OutFile::~OutFile()
-	{
+	OutFile::~OutFile() {
 		this->close();
 	}
 	

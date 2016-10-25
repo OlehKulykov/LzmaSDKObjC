@@ -31,10 +31,9 @@
 #include "../lzma/CPP/Common/MyWindows.h"
 #include "LzmaSDKObjCTypes.h"
 
-namespace LzmaSDKObjC
-{
-	class Common
-	{
+namespace LzmaSDKObjC {
+	
+	class Common {
 	private:
 		static bool _isInitialized;
 		

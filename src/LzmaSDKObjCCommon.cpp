@@ -29,8 +29,8 @@
 #include "../lzma/C/Aes.h"
 #include "../lzma/C/XzCrc64.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	bool Common::_isInitialized = false;
 
 	void Common::initialize() {

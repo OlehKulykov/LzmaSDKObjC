@@ -77,13 +77,11 @@ namespace LzmaSDKObjC {
 	BaseCoder::BaseCoder() : LzmaSDKObjC::LastErrorHolder(),
 		context(NULL),
 		getVoidCallback1(NULL),
-		setFloatCallback2(NULL)
-	{
+		setFloatCallback2(NULL) {
 		LzmaSDKObjC::Common::initialize();
 	}
 
-	BaseCoder::~BaseCoder()
-	{
+	BaseCoder::~BaseCoder() {
 
 	}
 

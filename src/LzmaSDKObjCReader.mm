@@ -34,8 +34,7 @@ NSString * const _Nonnull kLzmaSDKObjCFileExt7z = @"7z";
 NSString * const _Nonnull kLzmaSDKObjCErrorDomain = @"LzmaSDKObjC";
 NSString * const _Nonnull kLzmaSDKObjCErrorDescrEncDecNotCreated = @"Encoder or decoder not created. Check initialization input parameters and try again later.";
 
-@interface LzmaSDKObjCReader()
-{
+@interface LzmaSDKObjCReader() {
 @private
 	LzmaSDKObjC::FileDecoder * _decoder;
 

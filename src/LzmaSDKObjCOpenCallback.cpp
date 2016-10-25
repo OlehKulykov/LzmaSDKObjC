@@ -25,8 +25,7 @@
 
 #include "../lzma/CPP/Common/Defs.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
 
 	STDMETHODIMP OpenCallback::SetTotal(const UInt64 * files, const UInt64 * bytes) {
 		return S_OK;
@@ -57,13 +56,11 @@ namespace LzmaSDKObjC
 	}
 
 	OpenCallback::OpenCallback() : LzmaSDKObjC::LastErrorHolder(),
-		_coder(NULL)
-	{
+		_coder(NULL) {
 
 	}
 	
-	OpenCallback::~OpenCallback()
-	{
+	OpenCallback::~OpenCallback() {
 
 	}
 	

@@ -35,10 +35,9 @@
 #include "LzmaSDKObjCOpenCallback.h"
 #include "LzmaSDKObjCExtractCallback.h"
 
-namespace LzmaSDKObjC
-{
-	class FileDecoder : public LzmaSDKObjC::BaseCoder
-	{
+namespace LzmaSDKObjC {
+	
+	class FileDecoder : public LzmaSDKObjC::BaseCoder {
 	private:
 		LzmaSDKObjC::OpenCallback * _openCallbackRef;
 		LzmaSDKObjC::ExtractCallback * _extractCallbackRef;

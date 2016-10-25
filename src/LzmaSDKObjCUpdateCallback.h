@@ -35,15 +35,14 @@
 
 #include "LzmaSDKObjCOutFile.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	class UpdateCallback:
 		public IArchiveUpdateCallback2,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,
 		public CMyUnknownImp,
-		public LzmaSDKObjC::LastErrorHolder
-	{
+		public LzmaSDKObjC::LastErrorHolder {
 	private:
 		UInt64 _total;
 

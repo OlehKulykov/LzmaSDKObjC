@@ -42,12 +42,11 @@
 #define LZMAOBJC_ENC_WRITE_MTIME	(1 << 6)
 #define LZMAOBJC_ENC_WRITE_ATIME	(1 << 7)
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	class UpdateCallback;
 
-	class FileEncoder : public LzmaSDKObjC::BaseCoder
-	{
+	class FileEncoder : public LzmaSDKObjC::BaseCoder {
 	private:
 		LzmaSDKObjC::UpdateCallback * _updateCallbackRef;
 		COutFileStream * _outFileStreamRef;

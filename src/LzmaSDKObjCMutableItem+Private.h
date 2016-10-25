@@ -24,8 +24,7 @@
 #ifndef __LZMASDKOBJCMUTABLEITEM_PRIVATE_H__
 #define __LZMASDKOBJCMUTABLEITEM_PRIVATE_H__ 1
 
-@interface LzmaSDKObjCMutableItem()
-{
+@interface LzmaSDKObjCMutableItem() {
 @public
 	__strong NSObject * _content;
 }

@@ -29,8 +29,8 @@
 #include "../lzma/CPP/Windows/PropVariant.h"
 #include "../lzma/CPP/7zip/Archive/Common/DummyOutStream.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	STDMETHODIMP ExtractCallback::ReportExtractResult(UInt32 indexType, UInt32 index, Int32 opRes) {
 		return S_OK;
 	}
@@ -288,13 +288,11 @@ namespace LzmaSDKObjC
 		_archive(NULL),
 		_total(0),
 		_mode(NArchive::NExtract::NAskMode::kSkip),
-		_isFullPath(false)
-	{
+		_isFullPath(false) {
 
 	}
 
-	ExtractCallback::~ExtractCallback()
-	{
+	ExtractCallback::~ExtractCallback() {
 
 	}
 	

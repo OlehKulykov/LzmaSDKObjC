@@ -31,15 +31,14 @@
 #include "../lzma/CPP/Common/MyCom.h"
 #include "../lzma/CPP/Common/MyString.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	class OpenCallback :
 		public IArchiveOpenCallback,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,
 		public CMyUnknownImp,
-		public LzmaSDKObjC::LastErrorHolder
-	{
+		public LzmaSDKObjC::LastErrorHolder {
 	private:
 		LzmaSDKObjC::BaseCoder * _coder;
 

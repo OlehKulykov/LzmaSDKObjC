@@ -31,8 +31,7 @@
 #import <Inlineobjc/NSString+Inlineobjc.h>
 #import <Inlineobjc/NSArray+Inlineobjc.h>
 
-@interface LzmaSDKObjCItem()
-{
+@interface LzmaSDKObjCItem() {
 @public
 	__strong NSString * _path;
 	

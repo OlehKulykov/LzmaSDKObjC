@@ -33,11 +33,9 @@
 #include "../lzma/CPP/7zip/Common/FileStreams.h"
 #include "../lzma/C/7zCrc.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
 
-	class OutFile : public IOutStream, public CMyUnknownImp
-	{
+	class OutFile : public IOutStream, public CMyUnknownImp {
 	private:
 		FILE * _f;
 

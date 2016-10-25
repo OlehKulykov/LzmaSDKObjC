@@ -35,8 +35,8 @@
 
 #include "LzmaSDKObjCOutFile.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	class ExtractCallback :
 		public IArchiveExtractCallback,
 		public IArchiveExtractCallbackMessage,
@@ -44,8 +44,7 @@ namespace LzmaSDKObjC
 		public ICryptoGetTextPassword2,
 		public ICompressProgressInfo,
 		public CMyUnknownImp,
-		public LzmaSDKObjC::LastErrorHolder
-	{
+		public LzmaSDKObjC::LastErrorHolder {
 	private:
 		LzmaSDKObjC::OutFile * _outFileStreamRef;
 		LzmaSDKObjC::BaseCoder * _coder;

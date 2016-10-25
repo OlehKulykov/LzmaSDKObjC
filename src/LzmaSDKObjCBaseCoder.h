@@ -33,8 +33,7 @@
 
 namespace LzmaSDKObjC {
 
-	class BaseCoder : public LzmaSDKObjC::LastErrorHolder
-	{
+	class BaseCoder : public LzmaSDKObjC::LastErrorHolder {
 	protected:
 		void createObject(const LzmaSDKObjCFileType type, const GUID * iid, void ** outObject);
 

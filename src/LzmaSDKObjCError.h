@@ -27,10 +27,9 @@
 #include "LzmaAppleCommon.h"
 #include "../lzma/CPP/Common/StringConvert.h"
 
-namespace LzmaSDKObjC
-{
-	class Error
-	{
+namespace LzmaSDKObjC {
+	
+	class Error {
 	public:
 		AString description;
 		AString possibleReason;
@@ -43,8 +42,7 @@ namespace LzmaSDKObjC
 	};
 
 
-	class LastErrorHolder
-	{
+	class LastErrorHolder {
 	private:
 		LzmaSDKObjC::Error * _lastError;
 	public:

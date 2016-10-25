@@ -23,8 +23,7 @@
 
 #include "LzmaSDKObjCInFile.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
 
 	STDMETHODIMP InFile::Read(void *data, UInt32 size, UInt32 *processedSize) {
 		if (processedSize) *processedSize = 0;
@@ -59,13 +58,11 @@ namespace LzmaSDKObjC
 	}
 
 	InFile::InFile() :
-		_f(NULL)
-	{
+		_f(NULL) {
 
 	}
 	
-	InFile::~InFile()
-	{
+	InFile::~InFile() {
 		this->close();
 	}
 	

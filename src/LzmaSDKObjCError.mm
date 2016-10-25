@@ -24,12 +24,11 @@
 #include "LzmaSDKObjCError.h"
 #include "LzmaSDKObjCTypes.h"
 
-namespace LzmaSDKObjC
-{
+namespace LzmaSDKObjC {
+	
 	Error::Error() :
 		code(-1),
-		line(-1)
-	{
+		line(-1) {
 
 	}
 
@@ -88,13 +87,11 @@ namespace LzmaSDKObjC
 	}
 
 	LastErrorHolder::LastErrorHolder() :
-		_lastError(NULL)
-	{
+		_lastError(NULL) {
 
 	}
 
-	LastErrorHolder::~LastErrorHolder()
-	{
+	LastErrorHolder::~LastErrorHolder() {
 		if (_lastError) delete _lastError;
 	}
 }
