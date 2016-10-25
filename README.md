@@ -26,7 +26,7 @@ The main advantages is:
 - Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
 - Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
 - Track smoothed progress, which becomes possible with prev.
-- Support reading archive files with size more than 4GB and extracting files with size more than 4GB.
+- Support reading and extracting archive files with size more than 4GB.
 - UTF8 support.
 - Extra compression/decompression functionality of single **NSData** object with **Lzma2**.
 
@@ -121,8 +121,7 @@ catch let error as NSError {
 ```objc
 // Open archive, with or without error. Error can be nil.
 NSError * error = nil;
-if (![_reader open:&error])
-{
+if (![_reader open:&error]) {
 	NSLog(@"Open error: %@", error);
 }
 NSLog(@"Open error: %@", _reader.lastError);
