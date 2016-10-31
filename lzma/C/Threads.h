@@ -1,5 +1,5 @@
 /* Threads.h -- multithreading library
-2008-11-22 : Igor Pavlov : Public domain */
+ 2008-11-22 : Igor Pavlov : Public domain */
 
 #ifndef __7Z_THRESDS_H
 #define __7Z_THRESDS_H
@@ -22,7 +22,7 @@ typedef struct _CThread
 	pthread_t _tid;
 #endif
 	int _created;
-
+	
 } CThread;
 
 #define Thread_Construct(thread) (thread)->_created = 0
@@ -40,16 +40,16 @@ WRes Thread_Close(CThread *thread);
 
 typedef struct _CEvent
 {
-  int _created;
-  int _manual_reset;
-  int _state;
+	int _created;
+	int _manual_reset;
+	int _state;
 #ifdef ENV_BEOS
-  thread_id _waiting[MAX_THREAD];
-  int       _index_waiting;
-  sem_id    _sem;
+	thread_id _waiting[MAX_THREAD];
+	int       _index_waiting;
+	sem_id    _sem;
 #else
-  pthread_mutex_t _mutex;
-  pthread_cond_t  _cond;
+	pthread_mutex_t _mutex;
+	pthread_cond_t  _cond;
 #endif
 } CEvent;
 
@@ -71,16 +71,16 @@ WRes Event_Close(CEvent *event);
 
 typedef struct _CSemaphore
 {
-  int _created;
-  UInt32 _count;
-  UInt32 _maxCount;
+	int _created;
+	UInt32 _count;
+	UInt32 _maxCount;
 #ifdef ENV_BEOS
-  thread_id _waiting[MAX_THREAD];
-  int       _index_waiting;
-  sem_id    _sem;
+	thread_id _waiting[MAX_THREAD];
+	int       _index_waiting;
+	sem_id    _sem;
 #else
-  pthread_mutex_t _mutex;
-  pthread_cond_t  _cond;
+	pthread_mutex_t _mutex;
+	pthread_cond_t  _cond;
 #endif
 } CSemaphore;
 
@@ -96,7 +96,7 @@ typedef struct {
 #ifdef ENV_BEOS
 	sem_id _sem;
 #else
-        pthread_mutex_t _mutex;
+	pthread_mutex_t _mutex;
 #endif
 } CCriticalSection;
 

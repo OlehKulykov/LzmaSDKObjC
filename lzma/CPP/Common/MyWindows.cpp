@@ -262,7 +262,7 @@ Bool WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds)
 
 DWORD WINAPI GetTickCount(void)
 {
-//	fprintf(stdout, "DWORD WINAPI GetTickCount \n");
+	//	fprintf(stdout, "DWORD WINAPI GetTickCount \n");
 	struct timeval tv;
 	if(gettimeofday(&tv, NULL) != 0)
 		return 0;
