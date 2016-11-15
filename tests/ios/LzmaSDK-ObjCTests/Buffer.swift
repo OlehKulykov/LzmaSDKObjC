@@ -26,17 +26,17 @@ import XCTest
 class Buffer: XCTestCase {
 
     func testCompressDecompress() {
-		let path = self.pathForTestFile("lzma.7z")
+		let path = self.pathForTestFile(testFilePath: "lzma.7z")
 
-		let sourceData = NSData(contentsOfFile: path)
+        let sourceData = try! Data(contentsOf: URL(fileURLWithPath: path))
 		XCTAssertNotNil(sourceData)
 
-		let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData!, 1)
+		let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData, 1)
 		XCTAssertNotNil(compressedData)
 
 		let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData!)
 		XCTAssertNotNil(decompressedData)
 
-		XCTAssertTrue(decompressedData!.isEqualToData(sourceData!))
+		XCTAssertTrue((decompressedData! as NSData).isEqual(to: sourceData))
     }    
 }
