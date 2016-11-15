@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DF599A71D0ED7F800E855EF"
-               BuildableName = "LzmaSDK-ObjC-OSX.app"
-               BlueprintName = "LzmaSDK-ObjC-OSX"
+               BlueprintIdentifier = "E20039D41DDB487B00E42A77"
+               BuildableName = "LzmaSDK_ObjC.framework"
+               BlueprintName = "LzmaSDK-ObjC iOS"
                ReferencedContainer = "container:LzmaSDK-ObjC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DF599B51D0ED7F800E855EF"
-               BuildableName = "LzmaSDK-ObjC-OSXTests.xctest"
-               BlueprintName = "LzmaSDK-ObjC-OSXTests"
+               BlueprintIdentifier = "E20039DC1DDB487B00E42A77"
+               BuildableName = "LzmaSDK-ObjC iOSTests.xctest"
+               BlueprintName = "LzmaSDK-ObjC iOSTests"
                ReferencedContainer = "container:LzmaSDK-ObjC.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DF599A71D0ED7F800E855EF"
-            BuildableName = "LzmaSDK-ObjC-OSX.app"
-            BlueprintName = "LzmaSDK-ObjC-OSX"
+            BlueprintIdentifier = "E20039D41DDB487B00E42A77"
+            BuildableName = "LzmaSDK_ObjC.framework"
+            BlueprintName = "LzmaSDK-ObjC iOS"
             ReferencedContainer = "container:LzmaSDK-ObjC.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,16 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DF599A71D0ED7F800E855EF"
-            BuildableName = "LzmaSDK-ObjC-OSX.app"
-            BlueprintName = "LzmaSDK-ObjC-OSX"
+            BlueprintIdentifier = "E20039D41DDB487B00E42A77"
+            BuildableName = "LzmaSDK_ObjC.framework"
+            BlueprintName = "LzmaSDK-ObjC iOS"
             ReferencedContainer = "container:LzmaSDK-ObjC.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3DF599A71D0ED7F800E855EF"
-            BuildableName = "LzmaSDK-ObjC-OSX.app"
-            BlueprintName = "LzmaSDK-ObjC-OSX"
+            BlueprintIdentifier = "E20039D41DDB487B00E42A77"
+            BuildableName = "LzmaSDK_ObjC.framework"
+            BlueprintName = "LzmaSDK-ObjC iOS"
             ReferencedContainer = "container:LzmaSDK-ObjC.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

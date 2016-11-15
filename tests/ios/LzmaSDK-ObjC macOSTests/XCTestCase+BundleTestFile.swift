@@ -28,7 +28,7 @@ extension XCTestCase {
 	func pathForTestFile(testFilePath: String) -> String {
 		let filePath = testFilePath as NSString
 		guard let
-			fullPath = NSBundle(forClass: self.dynamicType).pathForResource(filePath.stringByDeletingPathExtension, ofType: filePath.pathExtension)
+			fullPath = Bundle(for: type(of: self)).path(forResource: filePath.deletingPathExtension, ofType: filePath.pathExtension)
 			else {
 				fatalError("Can't read resource file full path")
 		}
@@ -37,20 +37,20 @@ extension XCTestCase {
 
 	func tmpWritePath() -> String {
 		guard let
-			path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
+			path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
 			else {
 				fatalError("Can't get cache path")
 		}
-		let	fullPath = path.stringByAppendingString("/tmp_test")
+		let	fullPath = path.appendingFormat("/tmp_test")
 
 		do {
-			try NSFileManager.defaultManager().removeItemAtPath(fullPath)
+			try FileManager.default.removeItem(atPath: fullPath)
 		} catch _ {
 
 		}
 
 		do {
-			try NSFileManager.defaultManager().createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: nil)
+			try FileManager.default.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: nil)
 		} catch _ {
 			fatalError("Can't create path")
 		}

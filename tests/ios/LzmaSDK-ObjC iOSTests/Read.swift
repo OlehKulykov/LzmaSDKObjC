@@ -22,6 +22,7 @@
 
 
 import XCTest
+@testable import LzmaSDK_ObjC
 
 class Read: XCTestCase {
     
@@ -38,7 +39,7 @@ class Read: XCTestCase {
 
     func testExtract() {
 		for file in ["lzma.7z", "lzma_aes256.7z", "lzma_aes256_encfn.7z"] {
-			let reader = LzmaSDKObjCReader(fileURL: URL(string: self.pathForTestFile(testFilePath: file))!)
+			let reader = LzmaSDKObjCReader(fileURL: URL(fileURLWithPath: self.pathForTestFile(testFilePath: file)))
 
 			reader.passwordGetter = {
 				return "1234"

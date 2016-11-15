@@ -22,6 +22,7 @@
 
 
 import XCTest
+@testable import LzmaSDK_ObjC
 
 class Write: XCTestCase {
 
@@ -163,7 +164,7 @@ class Write: XCTestCase {
 }
 
 extension Write: LzmaSDKObjCWriterDelegate {
-	func onLzmaSDKObjCWriter(writer: LzmaSDKObjCWriter, writeProgress progress: Float) {
+	func onLzmaSDKObjCWriter(_ writer: LzmaSDKObjCWriter, writeProgress progress: Float) {
 		print("Progress: \(progress), \(100 * progress)%")
 	}
 }

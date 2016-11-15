@@ -21,22 +21,23 @@
 */
 
 
-import Cocoa
+import XCTest
+@testable import LzmaSDK_ObjC
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class Buffer: XCTestCase {
 
-	@IBOutlet weak var window: NSWindow!
+    func testCompressDecompress() {
+		let path = self.pathForTestFile(testFilePath: "lzma.7z")
 
+        let sourceData = try! Data(contentsOf: URL(fileURLWithPath: path))
+		XCTAssertNotNil(sourceData)
 
-	func applicationDidFinishLaunching(aNotification: NSNotification) {
-		// Insert code here to initialize your application
-	}
+		let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData, 1)
+		XCTAssertNotNil(compressedData)
 
-	func applicationWillTerminate(aNotification: NSNotification) {
-		// Insert code here to tear down your application
-	}
+		let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData!)
+		XCTAssertNotNil(decompressedData)
 
-
+		XCTAssertTrue((decompressedData! as NSData).isEqual(to: sourceData))
+    }    
 }
-
