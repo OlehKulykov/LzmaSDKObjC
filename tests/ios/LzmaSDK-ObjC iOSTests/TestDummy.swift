@@ -22,21 +22,21 @@
 
 
 import XCTest
+@testable import LzmaSDK_ObjC
 
-class Buffer: XCTestCase {
-
-    func testCompressDecompress() {
-		let path = self.pathForTestFile("lzma.7z")
-
-		let sourceData = NSData(contentsOfFile: path)
-		XCTAssertNotNil(sourceData)
-
-		let compressedData = LzmaSDKObjCBufferCompressLZMA2(sourceData!, 1)
-		XCTAssertNotNil(compressedData)
-
-		let decompressedData = LzmaSDKObjCBufferDecompressLZMA2(compressedData!)
-		XCTAssertNotNil(decompressedData)
-
-		XCTAssertTrue(decompressedData!.isEqualToData(sourceData!))
-    }    
+class TestDummy: XCTestCase {
+       
+    func dummy1() {
+		let item = LzmaSDKObjCItem()
+		XCTAssertNotNil(item)
+    }
+    
+    func testPerformanceCreateItemSwift() {
+        self.measure {
+			for _ in 0...99 {
+				let item = LzmaSDKObjCItem()
+				XCTAssertNotNil(item)
+			}
+        }
+    }
 }

@@ -28,8 +28,8 @@
 #define LzmaObjcItemFlagIsDir (uint8_t)(1 << 1)
 
 #include <time.h>
-#import <Inlineobjc/NSString+Inlineobjc.h>
-#import <Inlineobjc/NSArray+Inlineobjc.h>
+#import "NSString+Inlineobjc.h"
+#import "NSArray+Inlineobjc.h"
 
 @interface LzmaSDKObjCItem() {
 @public

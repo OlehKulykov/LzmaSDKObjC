@@ -50,7 +50,7 @@
 - (void) testRead {
 
 	for (NSString * file in @[@"lzma.7z", @"lzma_aes256.7z", @"lzma_aes256_encfn.7z"]) {
-		LzmaSDKObjCReader * reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL URLWithString:[self pathForTestFile:file]]];
+		LzmaSDKObjCReader * reader = [[LzmaSDKObjCReader alloc] initWithFileURL:[NSURL fileURLWithPath:[self pathForTestFile:file]]];
 
 		reader.passwordGetter = ^NSString*(void) {
 			return @"1234";

@@ -23,19 +23,37 @@
 
 import XCTest
 
-class TestDummy: XCTestCase {
-       
-    func dummy1() {
-		let item = LzmaSDKObjCItem()
-		XCTAssertNotNil(item)
-    }
-    
-    func testPerformanceCreateItemSwift() {
-        self.measureBlock {
-			for _ in 0...99 {
-				let item = LzmaSDKObjCItem()
-				XCTAssertNotNil(item)
-			}
-        }
-    }
+extension XCTestCase {
+
+	func pathForTestFile(testFilePath: String) -> String {
+		let filePath = testFilePath as NSString
+		guard let
+			fullPath = Bundle(for: type(of: self)).path(forResource: filePath.deletingPathExtension, ofType: filePath.pathExtension)
+			else {
+				fatalError("Can't read resource file full path")
+		}
+		return fullPath
+	}
+
+	func tmpWritePath() -> String {
+		guard let
+			path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
+			else {
+				fatalError("Can't get cache path")
+		}
+		let	fullPath = path.appendingFormat("/tmp_test")
+
+		do {
+			try FileManager.default.removeItem(atPath: fullPath)
+		} catch _ {
+
+		}
+
+		do {
+			try FileManager.default.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: nil)
+		} catch _ {
+			fatalError("Can't create path")
+		}
+		return fullPath
+	}
 }
