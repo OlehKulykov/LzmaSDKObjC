@@ -57,7 +57,7 @@ class Write: XCTestCase {
 		XCTAssertNil(item.fileName)
 		XCTAssertTrue(item.directoryPath == "d1/d2")
 
-		let now = NSDate()
+		let now = Date()
 		item.modificationDate = now
 		item.accessDate = now
 		item.creationDate = now
@@ -73,7 +73,7 @@ class Write: XCTestCase {
 	}
 
 	func testSettings() {
-		let writer = LzmaSDKObjCWriter(fileURL: NSURL(fileURLWithPath: "/Path/MyArchive.7z"))
+		let writer = LzmaSDKObjCWriter(fileURL: URL(fileURLWithPath: "/Path/MyArchive.7z"))
 
 		// method, default LzmaSDKObjCMethodLZMA2
 		XCTAssertTrue(writer.method == LzmaSDKObjCMethodLZMA2)
@@ -155,7 +155,7 @@ class Write: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

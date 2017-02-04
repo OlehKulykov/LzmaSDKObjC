@@ -28,9 +28,9 @@ class Read: XCTestCase {
     override func setUp() {
         super.setUp()
 
-		let path = self.pathForTestFile("lzma.7z")
+		let path = self.pathForTestFile(testFilePath: "lzma.7z")
 		XCTAssertNotNil(path)
-		XCTAssert(path.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0)
+		XCTAssert(path.lengthOfBytes(using: String.Encoding.utf8) > 0)
 
 		let writePath = self.tmpWritePath()
 		XCTAssertNotNil(writePath)
@@ -38,7 +38,7 @@ class Read: XCTestCase {
 
     func testExtract() {
 		for file in ["lzma.7z", "lzma_aes256.7z", "lzma_aes256_encfn.7z"] {
-			let reader = LzmaSDKObjCReader(fileURL: NSURL(string: self.pathForTestFile(file))!)
+			let reader = LzmaSDKObjCReader(fileURL: URL(string: self.pathForTestFile(testFilePath: file))!)
 
 			reader.passwordGetter = {
 				return "1234"
@@ -51,7 +51,7 @@ class Read: XCTestCase {
 			}
 
 			var archiveItems = [LzmaSDKObjCItem]()
-			var result = reader.iterateWithHandler({ (item: LzmaSDKObjCItem, error: NSError?) -> Bool in
+            var result = reader.iterate(handler: { (item, error) -> Bool in
 				XCTAssertNil(error)
 				archiveItems.append(item)
 				if item.fileName == "shutuptakemoney.jpg" {
@@ -73,11 +73,11 @@ class Read: XCTestCase {
 			result = reader.extract(archiveItems, toPath: extractPath, withFullPaths: false)
 			XCTAssertTrue(result)
 
-			let readed = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath(extractPath)
+			let readed = try? FileManager.default.contentsOfDirectory(atPath: extractPath)
 			XCTAssertTrue(readed!.count == archiveItems.count)
 
 			do {
-				try NSFileManager.defaultManager().removeItemAtPath(extractPath)
+				try FileManager.default.removeItem(atPath: extractPath)
 			} catch _ {
 
 			}

@@ -31,7 +31,7 @@ class TestDummy: XCTestCase {
     }
     
     func testPerformanceCreateItemSwift() {
-        self.measureBlock {
+        self.measure {
 			for _ in 0...99 {
 				let item = LzmaSDKObjCItem()
 				XCTAssertNotNil(item)
