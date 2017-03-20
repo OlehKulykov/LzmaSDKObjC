@@ -139,52 +139,12 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 10
+#define LZMASDKOBJC_VERSION_PATCH 11
 
 
 #import "LzmaSDKObjCTypes.h"
 #import "LzmaSDKObjCReader.h"
 #import "LzmaSDKObjCWriter.h"
-
-
-/**
- @brief Size in bytes of the read block size per single request.
- @detailed
- <li> @b CFilterCoder allocate buff for reading, was (1 << 20)
- <li> @b ISequentialOutStream max read block size, or available size, was (1 << 31)
- @warning This ammount of size will be allocated.
- */
-LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamReadSize;
-
-
-/**
- @brief Size in bytes for write per single request.
- @detailed
- <li> @b ISequentialOutStream max write block size, or available size, was (1 << 31)
- @warning This ammount of size will be allocated.
- */
-LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCStreamWriteSize;
-
-
-/**
- @brief Size in bytes for internal decoder buffer for holding coded data.
- @detailed
- <li> Lzma CDecoder in buffer, buff with coded data, was (1 << 20)
- <li> Lzma2 CDecoder in buffer, buff with coded data, was (1 << 20)
- @warning This ammount of size will be allocated.
- */
-LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderReadSize;
-
-
-/**
- @brief Size in bytes for internal decoder buffer for holding decoded data.
- @detailed
- <li> Lzma CDecoder out buffer, buff for decoded data, was (1 << 22)
- <li> Lzma2 CDecoder out buffer, buff for decoded data, was (1 << 22)
- @warning This ammount of size will be allocated.
- */
-LZMASDKOBJC_EXTERN unsigned int kLzmaSDKObjCDecoderWriteSize;
-
 
 
 /**

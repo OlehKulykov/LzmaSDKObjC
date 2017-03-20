@@ -27,8 +27,13 @@ namespace NLzma2 {
 CDecoder::CDecoder():
     _inBuf(NULL),
     _inBufSize(0),
+#if defined(__APPLE__)
+    _inBufSizeNew(kLzmaSDKObjCDecoderReadSize),
+    _outStepSize(kLzmaSDKObjCDecoderWriteSize),
+#else
     _inBufSizeNew(1 << 20),
     _outStepSize(1 << 22),
+#endif
     _outSizeDefined(false),
     _finishMode(false)
 {

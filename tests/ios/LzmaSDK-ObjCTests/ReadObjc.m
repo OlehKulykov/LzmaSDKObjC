@@ -47,6 +47,7 @@
 	XCTAssert([writePath length] > 0);
 }
 
+
 - (void) testRead {
 
 	for (NSString * file in @[@"lzma.7z", @"lzma_aes256.7z", @"lzma_aes256_encfn.7z"]) {

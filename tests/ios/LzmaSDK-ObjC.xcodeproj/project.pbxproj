@@ -21,7 +21,6 @@
 		3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
 		3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F64E81D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp */; };
-		3D2E95951D214D670051D463 /* Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41BB1D1B4EE400EF40A3 /* Write.swift */; };
 		3D37E5DA1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3D37E5DB1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
 		3D37E5DC1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD58E1C8E4AAB00081959 /* Wildcard.cpp */; };
@@ -42,14 +41,6 @@
 		3D37F5251D2193B6001C3BDB /* WriteObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D37F5241D2193B6001C3BDB /* WriteObjc.m */; };
 		3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B31D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm */; };
 		3D3E41B71D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */; };
-		3D947F971D229F36006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F951D229F36006713F2 /* München.png */; };
-		3D947F981D229F36006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F951D229F36006713F2 /* München.png */; };
-		3D947F991D229F36006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F961D229F36006713F2 /* Мюнхен.png */; };
-		3D947F9A1D229F36006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F961D229F36006713F2 /* Мюнхен.png */; };
-		3D947F9D1D22A8A0006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9B1D22A8A0006713F2 /* München.png */; };
-		3D947F9E1D22A8A0006713F2 /* München.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9B1D22A8A0006713F2 /* München.png */; };
-		3D947F9F1D22A8A0006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9C1D22A8A0006713F2 /* Мюнхен.png */; };
-		3D947FA01D22A8A0006713F2 /* Мюнхен.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D947F9C1D22A8A0006713F2 /* Мюнхен.png */; };
 		3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */; };
 		3D9BD4531C8E4A3D00081959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4521C8E4A3D00081959 /* ViewController.swift */; };
 		3D9BD4561C8E4A3D00081959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BD4541C8E4A3D00081959 /* Main.storyboard */; };
@@ -258,7 +249,6 @@
 		3D9BD6861C8E4AAB00081959 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
 		3D9BD6871C8E4AAB00081959 /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
 		3D9BD6A21C8E4BAC00081959 /* TestBaseObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69C1C8E4BAC00081959 /* TestBaseObjc.m */; };
-		3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */; };
 		3DA24A431D216C9B00DD235B /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4E11C8E4AAB00081959 /* XzCrc64.c */; };
 		3DA24A441D216C9C00DD235B /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4E11C8E4AAB00081959 /* XzCrc64.c */; };
 		3DA24A451D216C9C00DD235B /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4E11C8E4AAB00081959 /* XzCrc64.c */; };
@@ -272,7 +262,6 @@
 		3DB5BA531D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DE706A51D1BF47A008FA27F /* LzmaSDKObjCBaseCoder.cpp */; };
 		3DB5BA541D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DE706A51D1BF47A008FA27F /* LzmaSDKObjCBaseCoder.cpp */; };
 		3DB5BA551D1C1489007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DE706A51D1BF47A008FA27F /* LzmaSDKObjCBaseCoder.cpp */; };
-		3DB5BA5E1D1C14C5007DD865 /* TestDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69D1C8E4BAC00081959 /* TestDummy.swift */; };
 		3DB5BA5F1D1C14C5007DD865 /* TestDummyObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */; };
 		3DB9BF211D10331E00AD0992 /* ReadObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9BF201D10331E00AD0992 /* ReadObjc.m */; };
 		3DB9BF231D10334C00AD0992 /* TestBaseObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */; };
@@ -476,7 +465,6 @@
 		3DF59AC61D0ED8B000E855EF /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
 		3DF59ACC1D0ED8B000E855EF /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A41C8E4AAB00081959 /* PropVariant.cpp */; };
 		3DF59ACD1D0ED8B000E855EF /* PropVariantConv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD5A61C8E4AAB00081959 /* PropVariantConv.cpp */; };
-		3DF59AD01D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59ACF1D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift */; };
 		3DF59ADE1D0EDB1700E855EF /* bzip2.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD21D0EDB1700E855EF /* bzip2.7z */; };
 		3DF59ADF1D0EDB1700E855EF /* bzip2_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */; };
 		3DF59AE01D0EDB1700E855EF /* bzip2_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */; };
@@ -489,7 +477,6 @@
 		3DF59AE71D0EDB1700E855EF /* ppmd.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADB1D0EDB1700E855EF /* ppmd.7z */; };
 		3DF59AE81D0EDB1700E855EF /* ppmd_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADC1D0EDB1700E855EF /* ppmd_aes256.7z */; };
 		3DF59AE91D0EDB1700E855EF /* ppmd_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADD1D0EDB1700E855EF /* ppmd_aes256_encfn.7z */; };
-		3DF59AEB1D0EDB4000E855EF /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF59AEA1D0EDB4000E855EF /* Read.swift */; };
 		3DF59CD81D0EDC8900E855EF /* bzip2.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD21D0EDB1700E855EF /* bzip2.7z */; };
 		3DF59CD91D0EDC8900E855EF /* bzip2_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */; };
 		3DF59CDA1D0EDC8900E855EF /* bzip2_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */; };
@@ -502,14 +489,24 @@
 		3DF59CE11D0EDC8900E855EF /* ppmd.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADB1D0EDB1700E855EF /* ppmd.7z */; };
 		3DF59CE21D0EDC8900E855EF /* ppmd_aes256.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADC1D0EDB1700E855EF /* ppmd_aes256.7z */; };
 		3DF59CE31D0EDC8900E855EF /* ppmd_aes256_encfn.7z in Resources */ = {isa = PBXBuildFile; fileRef = 3DF59ADD1D0EDB1700E855EF /* ppmd_aes256_encfn.7z */; };
-		3DF8E1211D211C7500F55C32 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4E1CB16BB900D296BA /* Buffer.swift */; };
 		3DF8E1221D211C7500F55C32 /* BufferObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F4C1CB1539500D296BA /* BufferObjc.m */; };
-		3DF8E1231D211C7900F55C32 /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD6991C8E4BAC00081959 /* Read.swift */; };
 		3DF8E1241D211C7900F55C32 /* ReadObjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD69A1C8E4BAC00081959 /* ReadObjc.m */; };
 		3DFE765C1CB17BDD00695F1C /* LzmaSDKObjCBufferProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D090F451CB1447400D296BA /* LzmaSDKObjCBufferProcessor.mm */; };
 		876E44E529DDF6F859B5AC0C /* Pods_LzmaSDK_ObjC_OSXTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCEA55B2282C41C82D31328 /* Pods_LzmaSDK_ObjC_OSXTests.framework */; };
 		9CDAFE69B89AB35975685D47 /* Pods_LzmaSDK_ObjCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EC5A6B68022684B88E1A87 /* Pods_LzmaSDK_ObjCTests.framework */; };
 		C2E077F1F3F550FAF1C56536 /* Pods_LzmaSDK_ObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C268991E731B2DEE5E023A /* Pods_LzmaSDK_ObjC.framework */; };
+		E94457B21E800E5A00C31E3A /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */; };
+		E94457B31E800E5E00C31E3A /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */; };
+		E94457B41E800E5F00C31E3A /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */; };
+		E94457B51E800E5F00C31E3A /* LzmaSDKObjCExtern.mm in Sources */ = {isa = PBXBuildFile; fileRef = E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */; };
+		E94457B81E8019C200C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457B61E8019C200C31E3A /* München.jpg */; };
+		E94457B91E8019C200C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457B61E8019C200C31E3A /* München.jpg */; };
+		E94457BA1E8019C200C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457B71E8019C200C31E3A /* Мюнхен.jpg */; };
+		E94457BB1E8019C200C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457B71E8019C200C31E3A /* Мюнхен.jpg */; };
+		E94457BE1E8019DC00C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BC1E8019DC00C31E3A /* München.jpg */; };
+		E94457BF1E8019DC00C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BC1E8019DC00C31E3A /* München.jpg */; };
+		E94457C01E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
+		E94457C11E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -538,7 +535,6 @@
 		3D090F471CB1448E00D296BA /* LzmaSDKObjCBufferProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCBufferProcessor.h; path = ../../src/LzmaSDKObjCBufferProcessor.h; sourceTree = "<group>"; };
 		3D090F481CB1493000D296BA /* InBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InBuffer.cpp; path = ../../lzma/CPP/7zip/Common/InBuffer.cpp; sourceTree = "<group>"; };
 		3D090F4C1CB1539500D296BA /* BufferObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferObjc.m; sourceTree = "<group>"; };
-		3D090F4E1CB16BB900D296BA /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
 		3D1F64DF1D1B1DE100B1AAA1 /* DllExports2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DllExports2.h; path = ../../lzma/CPP/7zip/Archive/DllExports2.h; sourceTree = "<group>"; };
 		3D1F64E21D1B256A00B1AAA1 /* LzmaSDKObjCWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCWriter.h; path = ../../src/LzmaSDKObjCWriter.h; sourceTree = "<group>"; };
 		3D1F64E31D1B256A00B1AAA1 /* LzmaSDKObjCWriter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCWriter.mm; path = ../../src/LzmaSDKObjCWriter.mm; sourceTree = "<group>"; };
@@ -558,11 +554,6 @@
 		3D3E41B51D1B3B1200EF40A3 /* LzmaSDKObjCMutableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCMutableItem.h; path = ../../src/LzmaSDKObjCMutableItem.h; sourceTree = "<group>"; };
 		3D3E41B61D1B3B1300EF40A3 /* LzmaSDKObjCMutableItem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCMutableItem.mm; path = ../../src/LzmaSDKObjCMutableItem.mm; sourceTree = "<group>"; };
 		3D3E41BA1D1B4CD300EF40A3 /* LzmaSDKObjCMutableItem+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LzmaSDKObjCMutableItem+Private.h"; path = "../../src/LzmaSDKObjCMutableItem+Private.h"; sourceTree = "<group>"; };
-		3D3E41BB1D1B4EE400EF40A3 /* Write.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Write.swift; sourceTree = "<group>"; };
-		3D947F951D229F36006713F2 /* München.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "München.png"; sourceTree = "<group>"; };
-		3D947F961D229F36006713F2 /* Мюнхен.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Мюнхен.png"; sourceTree = "<group>"; };
-		3D947F9B1D22A8A0006713F2 /* München.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "München.png"; path = "../files/München.png"; sourceTree = "<group>"; };
-		3D947F9C1D22A8A0006713F2 /* Мюнхен.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Мюнхен.png"; path = "../files/Мюнхен.png"; sourceTree = "<group>"; };
 		3D9BD44D1C8E4A3D00081959 /* LzmaSDK-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LzmaSDK-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9BD4501C8E4A3D00081959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9BD4521C8E4A3D00081959 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -826,13 +817,10 @@
 		3D9BD5AD1C8E4AAB00081959 /* Synchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Synchronization.h; path = ../../lzma/CPP/Windows/Synchronization.h; sourceTree = "<group>"; };
 		3D9BD5B01C8E4AAB00081959 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../../lzma/CPP/Windows/Thread.h; sourceTree = "<group>"; };
 		3D9BD6981C8E4BAC00081959 /* LzmaSDK-ObjCTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LzmaSDK-ObjCTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		3D9BD6991C8E4BAC00081959 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
 		3D9BD69A1C8E4BAC00081959 /* ReadObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadObjc.m; sourceTree = "<group>"; };
 		3D9BD69B1C8E4BAC00081959 /* TestBaseObjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBaseObjc.h; sourceTree = "<group>"; };
 		3D9BD69C1C8E4BAC00081959 /* TestBaseObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseObjc.m; sourceTree = "<group>"; };
-		3D9BD69D1C8E4BAC00081959 /* TestDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDummy.swift; sourceTree = "<group>"; };
 		3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDummyObjc.m; sourceTree = "<group>"; };
-		3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BundleTestFile.swift"; sourceTree = "<group>"; };
 		3D9BD6A81C8E541F00081959 /* MyWindows.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyWindows.h; path = ../../lzma/CPP/Common/MyWindows.h; sourceTree = "<group>"; };
 		3DB9BF201D10331E00AD0992 /* ReadObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadObjc.m; sourceTree = "<group>"; };
 		3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseObjc.m; sourceTree = "<group>"; };
@@ -846,7 +834,6 @@
 		3DF599B11D0ED7F800E855EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DF599B61D0ED7F800E855EF /* LzmaSDK-ObjC-OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LzmaSDK-ObjC-OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DF599BC1D0ED7F800E855EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DF59ACF1D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+BundleTestFile.swift"; sourceTree = "<group>"; };
 		3DF59AD21D0EDB1700E855EF /* bzip2.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = bzip2.7z; sourceTree = "<group>"; };
 		3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = bzip2_aes256.7z; sourceTree = "<group>"; };
 		3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = bzip2_aes256_encfn.7z; sourceTree = "<group>"; };
@@ -859,7 +846,6 @@
 		3DF59ADB1D0EDB1700E855EF /* ppmd.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppmd.7z; sourceTree = "<group>"; };
 		3DF59ADC1D0EDB1700E855EF /* ppmd_aes256.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppmd_aes256.7z; sourceTree = "<group>"; };
 		3DF59ADD1D0EDB1700E855EF /* ppmd_aes256_encfn.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = ppmd_aes256_encfn.7z; sourceTree = "<group>"; };
-		3DF59AEA1D0EDB4000E855EF /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
 		3DF59CD71D0EDC0600E855EF /* LzmaSDK-ObjC-OSXTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LzmaSDK-ObjC-OSXTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		41E68B35FFD6CDB094D2ACB8 /* Pods-LzmaSDK-ObjC-OSXTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LzmaSDK-ObjC-OSXTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LzmaSDK-ObjC-OSXTests/Pods-LzmaSDK-ObjC-OSXTests.release.xcconfig"; sourceTree = "<group>"; };
 		52C268991E731B2DEE5E023A /* Pods_LzmaSDK_ObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LzmaSDK_ObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -870,6 +856,12 @@
 		8E355509EA81409D3BB748EF /* Pods-LzmaSDK-ObjCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LzmaSDK-ObjCTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LzmaSDK-ObjCTests/Pods-LzmaSDK-ObjCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0EC5A6B68022684B88E1A87 /* Pods_LzmaSDK_ObjCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LzmaSDK_ObjCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D213E29C36D7C3D431CA857D /* Pods-LzmaSDK-ObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LzmaSDK-ObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LzmaSDK-ObjC/Pods-LzmaSDK-ObjC.debug.xcconfig"; sourceTree = "<group>"; };
+		E94457B01E800E1500C31E3A /* LzmaSDKObjCExtern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LzmaSDKObjCExtern.h; path = ../../src/LzmaSDKObjCExtern.h; sourceTree = "<group>"; };
+		E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LzmaSDKObjCExtern.mm; path = ../../src/LzmaSDKObjCExtern.mm; sourceTree = "<group>"; };
+		E94457B61E8019C200C31E3A /* München.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "München.jpg"; path = "../files/München.jpg"; sourceTree = "<group>"; };
+		E94457B71E8019C200C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Мюнхен.jpg"; path = "../files/Мюнхен.jpg"; sourceTree = "<group>"; };
+		E94457BC1E8019DC00C31E3A /* München.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "München.jpg"; sourceTree = "<group>"; };
+		E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Мюнхен.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -911,7 +903,6 @@
 		3D090F4B1CB1537A00D296BA /* Buffer */ = {
 			isa = PBXGroup;
 			children = (
-				3D090F4E1CB16BB900D296BA /* Buffer.swift */,
 				3D090F4C1CB1539500D296BA /* BufferObjc.m */,
 			);
 			name = Buffer;
@@ -921,7 +912,6 @@
 			isa = PBXGroup;
 			children = (
 				3D1F64F51D1B2DAE00B1AAA1 /* WriteObjc.m */,
-				3D3E41BB1D1B4EE400EF40A3 /* Write.swift */,
 			);
 			name = Write;
 			sourceTree = "<group>";
@@ -981,7 +971,6 @@
 				3D090F4B1CB1537A00D296BA /* Buffer */,
 				3D9BD6A61C8E4DA200081959 /* Read */,
 				3D9BD6A71C8E4DB200081959 /* Dummy */,
-				3D9BD69F1C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift */,
 				3D9BD6981C8E4BAC00081959 /* LzmaSDK-ObjCTests-Bridging-Header.h */,
 				3D9BD69B1C8E4BAC00081959 /* TestBaseObjc.h */,
 				3D9BD69C1C8E4BAC00081959 /* TestBaseObjc.m */,
@@ -993,11 +982,11 @@
 		3D9BD4701C8E4A8000081959 /* files */ = {
 			isa = PBXGroup;
 			children = (
+				E94457B61E8019C200C31E3A /* München.jpg */,
+				E94457B71E8019C200C31E3A /* Мюнхен.jpg */,
 				3D37F5101D2176DC001C3BDB /* shutuptakemoney.jpg */,
 				3D37F5111D2176DC001C3BDB /* SouthPark.jpg */,
 				3D37F5121D2176DC001C3BDB /* zombies.jpg */,
-				3D947F9B1D22A8A0006713F2 /* München.png */,
-				3D947F9C1D22A8A0006713F2 /* Мюнхен.png */,
 				3D9BD4711C8E4A9000081959 /* bzip2.7z */,
 				3D9BD4721C8E4A9000081959 /* bzip2_aes256.7z */,
 				3D9BD4731C8E4A9000081959 /* bzip2_aes256_encfn.7z */,
@@ -1017,6 +1006,8 @@
 		3D9BD4AD1C8E4AAB00081959 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E94457B01E800E1500C31E3A /* LzmaSDKObjCExtern.h */,
+				E94457B11E800E5A00C31E3A /* LzmaSDKObjCExtern.mm */,
 				3D9BD4951C8E4AAB00081959 /* LzmaAppleCommon.h */,
 				3D9BD4961C8E4AAB00081959 /* LzmaSDKObjC.h */,
 				3D9BD4971C8E4AAB00081959 /* LzmaSDKObjC.mm */,
@@ -1378,7 +1369,6 @@
 		3D9BD6A61C8E4DA200081959 /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				3D9BD6991C8E4BAC00081959 /* Read.swift */,
 				3D9BD69A1C8E4BAC00081959 /* ReadObjc.m */,
 			);
 			name = Read;
@@ -1387,7 +1377,6 @@
 		3D9BD6A71C8E4DB200081959 /* Dummy */ = {
 			isa = PBXGroup;
 			children = (
-				3D9BD69D1C8E4BAC00081959 /* TestDummy.swift */,
 				3D9BD69E1C8E4BAC00081959 /* TestDummyObjc.m */,
 			);
 			name = Dummy;
@@ -1396,7 +1385,6 @@
 		3DB9BF1F1D10330500AD0992 /* Read */ = {
 			isa = PBXGroup;
 			children = (
-				3DF59AEA1D0EDB4000E855EF /* Read.swift */,
 				3DB9BF201D10331E00AD0992 /* ReadObjc.m */,
 			);
 			name = Read;
@@ -1421,7 +1409,6 @@
 				3DB9BF1F1D10330500AD0992 /* Read */,
 				3DB9BF241D10335700AD0992 /* TestBaseObjc.h */,
 				3DB9BF221D10334C00AD0992 /* TestBaseObjc.m */,
-				3DF59ACF1D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift */,
 				3DF59CD71D0EDC0600E855EF /* LzmaSDK-ObjC-OSXTests-Bridging-Header.h */,
 				3DF599BC1D0ED7F800E855EF /* Info.plist */,
 			);
@@ -1431,11 +1418,11 @@
 		3DF59AD11D0EDB1700E855EF /* files */ = {
 			isa = PBXGroup;
 			children = (
+				E94457BC1E8019DC00C31E3A /* München.jpg */,
+				E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */,
 				3D37F5191D217717001C3BDB /* shutuptakemoney.jpg */,
 				3D37F51A1D217717001C3BDB /* SouthPark.jpg */,
 				3D37F51B1D217717001C3BDB /* zombies.jpg */,
-				3D947F951D229F36006713F2 /* München.png */,
-				3D947F961D229F36006713F2 /* Мюнхен.png */,
 				3DF59AD21D0EDB1700E855EF /* bzip2.7z */,
 				3DF59AD31D0EDB1700E855EF /* bzip2_aes256.7z */,
 				3DF59AD41D0EDB1700E855EF /* bzip2_aes256_encfn.7z */,
@@ -1577,6 +1564,7 @@
 				TargetAttributes = {
 					3D9BD44C1C8E4A3D00081959 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0820;
 					};
 					3D9BD4601C8E4A3D00081959 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -1617,13 +1605,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94457B81E8019C200C31E3A /* München.jpg in Resources */,
 				3D9BD4831C8E4A9000081959 /* lzma.7z in Resources */,
 				3D9BD48B1C8E4A9000081959 /* lzma_aes256.7z in Resources */,
 				3D9BD4871C8E4A9000081959 /* lzma2_aes256.7z in Resources */,
 				3D37F5141D2176DC001C3BDB /* SouthPark.jpg in Resources */,
 				3D9BD45B1C8E4A3D00081959 /* LaunchScreen.storyboard in Resources */,
 				3D9BD4931C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
-				3D947F9D1D22A8A0006713F2 /* München.png in Resources */,
 				3D9BD4581C8E4A3D00081959 /* Assets.xcassets in Resources */,
 				3D37F5151D2176DC001C3BDB /* zombies.jpg in Resources */,
 				3D9BD47F1C8E4A9000081959 /* bzip2_aes256.7z in Resources */,
@@ -1636,7 +1624,7 @@
 				3D9BD48D1C8E4A9000081959 /* lzma_aes256_encfn.7z in Resources */,
 				3D9BD4891C8E4A9000081959 /* lzma2_aes256_encfn.7z in Resources */,
 				3D9BD4561C8E4A3D00081959 /* Main.storyboard in Resources */,
-				3D947F9F1D22A8A0006713F2 /* Мюнхен.png in Resources */,
+				E94457BA1E8019C200C31E3A /* Мюнхен.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1645,11 +1633,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9BD4921C8E4A9000081959 /* ppmd_aes256.7z in Resources */,
+				E94457B91E8019C200C31E3A /* München.jpg in Resources */,
 				3D37F5171D2176F5001C3BDB /* SouthPark.jpg in Resources */,
 				3D37F5161D2176F5001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3D9BD4861C8E4A9000081959 /* lzma2.7z in Resources */,
 				3D9BD48A1C8E4A9000081959 /* lzma2_aes256_encfn.7z in Resources */,
-				3D947F9E1D22A8A0006713F2 /* München.png in Resources */,
 				3D9BD4881C8E4A9000081959 /* lzma2_aes256.7z in Resources */,
 				3D9BD4901C8E4A9000081959 /* ppmd.7z in Resources */,
 				3D9BD48E1C8E4A9000081959 /* lzma_aes256_encfn.7z in Resources */,
@@ -1657,9 +1645,9 @@
 				3D9BD4801C8E4A9000081959 /* bzip2_aes256.7z in Resources */,
 				3D9BD4841C8E4A9000081959 /* lzma.7z in Resources */,
 				3D9BD48C1C8E4A9000081959 /* lzma_aes256.7z in Resources */,
-				3D947FA01D22A8A0006713F2 /* Мюнхен.png in Resources */,
 				3D9BD4941C8E4A9000081959 /* ppmd_aes256_encfn.7z in Resources */,
 				3D37F5181D2176F5001C3BDB /* zombies.jpg in Resources */,
+				E94457BB1E8019C200C31E3A /* Мюнхен.jpg in Resources */,
 				3D9BD47E1C8E4A9000081959 /* bzip2.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1670,21 +1658,21 @@
 			files = (
 				3DF59AE91D0EDB1700E855EF /* ppmd_aes256_encfn.7z in Resources */,
 				3DF59AE11D0EDB1700E855EF /* lzma.7z in Resources */,
+				E94457C01E8019DC00C31E3A /* Мюнхен.jpg in Resources */,
 				3DF59AE31D0EDB1700E855EF /* lzma2_aes256.7z in Resources */,
 				3DF59AE51D0EDB1700E855EF /* lzma_aes256.7z in Resources */,
 				3DF59AE71D0EDB1700E855EF /* ppmd.7z in Resources */,
 				3DF599AD1D0ED7F800E855EF /* Assets.xcassets in Resources */,
 				3DF59ADE1D0EDB1700E855EF /* bzip2.7z in Resources */,
-				3D947F971D229F36006713F2 /* München.png in Resources */,
 				3D37F51C1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59ADF1D0EDB1700E855EF /* bzip2_aes256.7z in Resources */,
 				3DF59AE61D0EDB1700E855EF /* lzma_aes256_encfn.7z in Resources */,
-				3D947F991D229F36006713F2 /* Мюнхен.png in Resources */,
 				3DF59AE81D0EDB1700E855EF /* ppmd_aes256.7z in Resources */,
 				3DF59AE21D0EDB1700E855EF /* lzma2.7z in Resources */,
 				3D37F5201D217717001C3BDB /* zombies.jpg in Resources */,
 				3DF599B01D0ED7F800E855EF /* MainMenu.xib in Resources */,
 				3D37F51E1D217717001C3BDB /* SouthPark.jpg in Resources */,
+				E94457BE1E8019DC00C31E3A /* München.jpg in Resources */,
 				3DF59AE41D0EDB1700E855EF /* lzma2_aes256_encfn.7z in Resources */,
 				3DF59AE01D0EDB1700E855EF /* bzip2_aes256_encfn.7z in Resources */,
 			);
@@ -1695,11 +1683,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF59CE21D0EDC8900E855EF /* ppmd_aes256.7z in Resources */,
+				E94457BF1E8019DC00C31E3A /* München.jpg in Resources */,
 				3D37F51F1D217717001C3BDB /* SouthPark.jpg in Resources */,
 				3D37F51D1D217717001C3BDB /* shutuptakemoney.jpg in Resources */,
 				3DF59CDC1D0EDC8900E855EF /* lzma2.7z in Resources */,
 				3DF59CDE1D0EDC8900E855EF /* lzma2_aes256_encfn.7z in Resources */,
-				3D947F981D229F36006713F2 /* München.png in Resources */,
 				3DF59CDD1D0EDC8900E855EF /* lzma2_aes256.7z in Resources */,
 				3DF59CE11D0EDC8900E855EF /* ppmd.7z in Resources */,
 				3DF59CE01D0EDC8900E855EF /* lzma_aes256_encfn.7z in Resources */,
@@ -1707,9 +1695,9 @@
 				3DF59CD91D0EDC8900E855EF /* bzip2_aes256.7z in Resources */,
 				3DF59CDB1D0EDC8900E855EF /* lzma.7z in Resources */,
 				3DF59CDF1D0EDC8900E855EF /* lzma_aes256.7z in Resources */,
-				3D947F9A1D229F36006713F2 /* Мюнхен.png in Resources */,
 				3DF59CE31D0EDC8900E855EF /* ppmd_aes256_encfn.7z in Resources */,
 				3D37F5211D217717001C3BDB /* zombies.jpg in Resources */,
+				E94457C11E8019DC00C31E3A /* Мюнхен.jpg in Resources */,
 				3DF59CD81D0EDC8900E855EF /* bzip2.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1744,7 +1732,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		238A4E90C993F6B7426D4B30 /* [CP] Check Pods Manifest.lock */ = {
@@ -1759,7 +1747,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		380132BC016CE4FB599A5314 /* [CP] Check Pods Manifest.lock */ = {
@@ -1774,7 +1762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		61F8F6BA73454DC5D1AB2B76 /* [CP] Embed Pods Frameworks */ = {
@@ -1879,7 +1867,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FD0A25E0F8EF0F96C888BC26 /* [CP] Embed Pods Frameworks */ = {
@@ -1987,6 +1975,7 @@
 				3DF235601D1E84F30079C647 /* BcjCoder.cpp in Sources */,
 				3D9BD5EC1C8E4AAB00081959 /* MtCoder.c in Sources */,
 				3D9BD63C1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
+				E94457B21E800E5A00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3D9BD5BC1C8E4AAB00081959 /* LzmaSDKObjCExtractCallback.mm in Sources */,
 				3D9BD5F61C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
 				3D9BD6161C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
@@ -2023,8 +2012,6 @@
 				3D9BD5E91C8E4AAB00081959 /* LzmaDec.c in Sources */,
 				3D9BD5ED1C8E4AAB00081959 /* MtCoder.c in Sources */,
 				3D9BD5B91C8E4AAB00081959 /* LzmaSDKObjCCommon.cpp in Sources */,
-				3DF8E1211D211C7500F55C32 /* Buffer.swift in Sources */,
-				3D9BD6A51C8E4BAC00081959 /* XCTestCase+BundleTestFile.swift in Sources */,
 				3D9BD63B1C8E4AAB00081959 /* MethodProps.cpp in Sources */,
 				3D9BD5EB1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
 				3D9BD5E11C8E4AAB00081959 /* LzFind.c in Sources */,
@@ -2043,6 +2030,7 @@
 				3D9BD6571C8E4AAB00081959 /* Lzma2Register.cpp in Sources */,
 				3D9BD6511C8E4AAB00081959 /* CopyCoder.cpp in Sources */,
 				3D9BD65F1C8E4AAB00081959 /* 7zAes.cpp in Sources */,
+				E94457B31E800E5E00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3D9BD65D1C8E4AAB00081959 /* LzmaRegister.cpp in Sources */,
 				3D9BD5D31C8E4AAB00081959 /* AesOpt.c in Sources */,
 				3D9BD5DD1C8E4AAB00081959 /* CpuArch.c in Sources */,
@@ -2081,7 +2069,6 @@
 				3D9BD5FF1C8E4AAB00081959 /* 7zDecode.cpp in Sources */,
 				3D9BD6491C8E4AAB00081959 /* VirtThread.cpp in Sources */,
 				3D9BD66F1C8E4AAB00081959 /* MyString.cpp in Sources */,
-				3DB5BA5E1D1C14C5007DD865 /* TestDummy.swift in Sources */,
 				3DA24A441D216C9C00DD235B /* XzCrc64.c in Sources */,
 				3D9BD6851C8E4AAB00081959 /* PropVariant.cpp in Sources */,
 				3D9BD5DB1C8E4AAB00081959 /* BraIA64.c in Sources */,
@@ -2097,7 +2084,6 @@
 				3D9BD6431C8E4AAB00081959 /* StreamBinder.cpp in Sources */,
 				3D9BD6A21C8E4BAC00081959 /* TestBaseObjc.m in Sources */,
 				3D9BD6771C8E4AAB00081959 /* StringToInt.cpp in Sources */,
-				3DF8E1231D211C7900F55C32 /* Read.swift in Sources */,
 				3DB5BA4D1D1C146B007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */,
 				3D9BD5D91C8E4AAB00081959 /* Bra86.c in Sources */,
 				3D9BD6671C8E4AAB00081959 /* RandGen.cpp in Sources */,
@@ -2105,7 +2091,6 @@
 				3D37E5DB1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */,
 				3D9BD6171C8E4AAB00081959 /* 7zUpdate.cpp in Sources */,
 				3D9BD6531C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
-				3D2E95951D214D670051D463 /* Write.swift in Sources */,
 				3D9BD5C31C8E4AAB00081959 /* LzmaSDKObjCItem.mm in Sources */,
 				3D9BD5E71C8E4AAB00081959 /* Lzma2Enc.c in Sources */,
 				3D9BD6591C8E4AAB00081959 /* LzmaDecoder.cpp in Sources */,
@@ -2180,6 +2165,7 @@
 				3DF59A701D0ED89B00E855EF /* CWrappers.cpp in Sources */,
 				3DF59A061D0ED87700E855EF /* Lzma2Dec.c in Sources */,
 				3DF59A5D1D0ED89300E855EF /* CoderMixer2.cpp in Sources */,
+				E94457B41E800E5F00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3DF59A691D0ED89700E855EF /* LzmaHandler.cpp in Sources */,
 				3D1F64E61D1B257100B1AAA1 /* LzmaSDKObjCWriter.mm in Sources */,
 				3DF59A961D0ED8A100E855EF /* LzmaDecoder.cpp in Sources */,
@@ -2251,10 +2237,10 @@
 				3DF59A861D0ED89C00E855EF /* LockedStream.cpp in Sources */,
 				3DF59A2D1D0ED87800E855EF /* Bra.c in Sources */,
 				3DF59AB91D0ED8AB00E855EF /* IntToString.cpp in Sources */,
-				3DF59AEB1D0EDB4000E855EF /* Read.swift in Sources */,
 				3DF59ACC1D0ED8B000E855EF /* PropVariant.cpp in Sources */,
 				3DF59A6B1D0ED89700E855EF /* ArchiveExports.cpp in Sources */,
 				3DF59A2B1D0ED87800E855EF /* AesOpt.c in Sources */,
+				E94457B51E800E5F00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3DF599C41D0ED80900E855EF /* LzmaSDKObjC.mm in Sources */,
 				3DF59A631D0ED89300E855EF /* DummyOutStream.cpp in Sources */,
 				3D37E5DD1D22F0BE0016F8B4 /* Wildcard.cpp in Sources */,
@@ -2305,7 +2291,6 @@
 				3DF59A371D0ED87800E855EF /* LzmaEnc.c in Sources */,
 				3DA24A461D216C9C00DD235B /* XzCrc64.c in Sources */,
 				3DF59A9D1D0ED8A100E855EF /* Lzma2Decoder.cpp in Sources */,
-				3DF59AD01D0EDAF500E855EF /* XCTestCase+BundleTestFile.swift in Sources */,
 				3DF59A811D0ED89C00E855EF /* FileStreams.cpp in Sources */,
 				3DF599C61D0ED80D00E855EF /* LzmaSDKObjCBufferProcessor.mm in Sources */,
 				3DF59A4F1D0ED88F00E855EF /* 7zDecode.cpp in Sources */,
@@ -2489,6 +2474,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "olehkulykov.LzmaSDK-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -2501,6 +2487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "olehkulykov.LzmaSDK-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

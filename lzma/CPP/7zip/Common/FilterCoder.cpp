@@ -18,9 +18,7 @@
   So the encoder and decoder write such last bytes without change.
 */
 
-#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
-#define kBufSize (1 << 20)
-#else
+#if !defined(__APPLE__)
 static const UInt32 kBufSize = 1 << 20;
 #endif
 
@@ -55,8 +53,13 @@ HRESULT CFilterCoder::Init_and_Alloc()
 
 CFilterCoder::CFilterCoder(bool encodeMode):
     _bufSize(0),
+#if defined(__APPLE__)
+    _inBufSize(kLzmaSDKObjCStreamReadSize),
+    _outBufSize(kLzmaSDKObjCStreamReadSize),
+#else
     _inBufSize(kBufSize),
     _outBufSize(kBufSize),
+#endif
     _encodeMode(encodeMode),
     _outSizeIsDefined(false),
     _outSize(0),

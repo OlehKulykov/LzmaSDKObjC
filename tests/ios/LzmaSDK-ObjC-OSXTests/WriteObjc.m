@@ -103,10 +103,10 @@
 		} else if ([item.fileName isEqualToString:@"zombies.jpg"]) {
 			XCTAssertTrue(item.originalSize == 83131);
 			XCTAssertTrue(item.crc32 == 0xb5e98c78);
-		} else if ([item.fileName isEqualToString:@"München.png"] ||
-				   [item.fileName isEqualToString:@"Мюнхен.png"]) {
-			XCTAssertTrue(item.originalSize == 10018);
-			XCTAssertTrue(item.crc32 == 0xaa7eaf66);
+		} else if ([item.fileName isEqualToString:@"München.jpg"] ||
+				   [item.fileName isEqualToString:@"Мюнхен.jpg"]) {
+			XCTAssertTrue(item.originalSize == 19100);
+			XCTAssertTrue(item.crc32 == 0x1d389528);
 		}
 		return YES;
 	}];
@@ -137,10 +137,10 @@
 			XCTAssertTrue(outSize == 83131);
 			XCTAssertTrue([fileData CRC32Value] == 0xb5e98c78);
 			locatedCount++;
-		} else if ([fileName isEqualToString:@"München.png"] ||
-				   [fileName isEqualToString:@"Мюнхен.png"]) {
-			XCTAssertTrue(outSize == 10018);
-			XCTAssertTrue([fileData CRC32Value] == 0xaa7eaf66);
+		} else if ([fileName isEqualToString:@"München.jpg"] ||
+				   [fileName isEqualToString:@"Мюнхен.jpg"]) {
+			XCTAssertTrue(outSize == 19100);
+			XCTAssertTrue([fileData CRC32Value] == 0x1d389528);
 			locatedCount++;
 		}
 	}
@@ -167,8 +167,8 @@
 								[writer addPath:[self pathForTestFile:@"shutuptakemoney.jpg"] forPath:@"shutuptakemoney.jpg"];
 								[writer addPath:[self pathForTestFile:@"SouthPark.jpg"] forPath:@"SouthPark.jpg"];
 								[writer addPath:[self pathForTestFile:@"zombies.jpg"] forPath:@"zombies.jpg"];
-								[writer addPath:[self pathForTestFile:@"München.png"] forPath:@"München.png"];
-								[writer addPath:[self pathForTestFile:@"Мюнхен.png"] forPath:@"Мюнхен.png"];
+								[writer addPath:[self pathForTestFile:@"München.jpg"] forPath:@"München.jpg"];
+								[writer addPath:[self pathForTestFile:@"Мюнхен.jpg"] forPath:@"Мюнхен.jpg"];
 								writer.passwordGetter = ^NSString*() {
 									return @"1234";
 								};
