@@ -11,7 +11,7 @@
 #include "RegisterCodec.h"
 
 #if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
-static const uint8_t kNumCodecsMax = 16;
+static const uint8_t kNumCodecsMax = 20;
 uint8_t g_NumCodecs = 0;
 #else
 static const unsigned kNumCodecsMax = 64;
@@ -37,7 +37,7 @@ void RegisterCodec(const CCodecInfo *codecInfo) throw()
 }
 
 #if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
-static const uint8_t kNumHashersMax = 8;
+static const uint8_t kNumHashersMax = 10;
 uint8_t g_NumHashers = 0;
 #else
 static const unsigned kNumHashersMax = 16;

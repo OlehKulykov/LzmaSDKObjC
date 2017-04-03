@@ -79,7 +79,7 @@ namespace LzmaSDKObjC {
 		_extractCallbackRef->setArchive(NULL);
 
 		if (result != S_OK) {
-			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lu", (unsigned long)result);
+			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lli", (long long)result);
 			return false;
 		}
 
@@ -130,14 +130,14 @@ namespace LzmaSDKObjC {
 			UInt32 numItems = 0;
 			res = _archive->GetNumberOfItems(&numItems);
 			if (res != S_OK) {
-				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items with result: %lu", (unsigned long)res);
+				this->setLastError(res, __LINE__, __FILE__, "Can't receive number of archive items with result: %lli", (long long)res);
 				return false;
 			}
 			_itemsCount = numItems;
 			return true;
 		}
 
-		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file with result: %lu", (unsigned long)res);
+		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file with result: %lli", (long long)res);
 		return false;
 	}
 

@@ -270,14 +270,6 @@
 		3DE706AB1D1C0CB6008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4A61C8E4AAB00081959 /* LzmaSDKObjCOpenCallback.cpp */; };
 		3DE706AC1D1C0CB6008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4A61C8E4AAB00081959 /* LzmaSDKObjCOpenCallback.cpp */; };
 		3DE706AD1D1C0CB7008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD4A61C8E4AAB00081959 /* LzmaSDKObjCOpenCallback.cpp */; };
-		3DF2355E1D1E84F30079C647 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
-		3DF2355F1D1E84F30079C647 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
-		3DF235601D1E84F30079C647 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
-		3DF235611D1E84F30079C647 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
-		3DF235621D1E84F40079C647 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
-		3DF235631D1E84F40079C647 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
-		3DF235641D1E84F50079C647 /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
-		3DF235651D1E84F50079C647 /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
 		3DF599AB1D0ED7F800E855EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF599AA1D0ED7F800E855EF /* AppDelegate.swift */; };
 		3DF599AD1D0ED7F800E855EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DF599AC1D0ED7F800E855EF /* Assets.xcassets */; };
 		3DF599B01D0ED7F800E855EF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DF599AE1D0ED7F800E855EF /* MainMenu.xib */; };
@@ -507,6 +499,54 @@
 		E94457BF1E8019DC00C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BC1E8019DC00C31E3A /* München.jpg */; };
 		E94457C01E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
 		E94457C11E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
+		E9A51E781E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
+		E9A51E791E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
+		E9A51E7A1E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
+		E9A51E7B1E9260EC0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
+		E9A51E7C1E9260F30006A8DD /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
+		E9A51E7D1E9260F40006A8DD /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
+		E9A51E7E1E9260F40006A8DD /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
+		E9A51E7F1E9260F50006A8DD /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */; };
+		E9A51E801E9260FE0006A8DD /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */; };
+		E9A51E811E9260FE0006A8DD /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */; };
+		E9A51E821E9260FF0006A8DD /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */; };
+		E9A51E831E9260FF0006A8DD /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */; };
+		E9A51E841E9261310006A8DD /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */; };
+		E9A51E851E9261310006A8DD /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */; };
+		E9A51E861E9261320006A8DD /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */; };
+		E9A51E871E9261320006A8DD /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */; };
+		E9A51E891E92618F0006A8DD /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E881E92618F0006A8DD /* Bcj2.c */; };
+		E9A51E8A1E92618F0006A8DD /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E881E92618F0006A8DD /* Bcj2.c */; };
+		E9A51E8B1E92618F0006A8DD /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E881E92618F0006A8DD /* Bcj2.c */; };
+		E9A51E8C1E92618F0006A8DD /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E881E92618F0006A8DD /* Bcj2.c */; };
+		E9A51E8E1E9261940006A8DD /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */; };
+		E9A51E8F1E9261940006A8DD /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */; };
+		E9A51E901E9261940006A8DD /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */; };
+		E9A51E911E9261940006A8DD /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */; };
+		E9A51E951E9263830006A8DD /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */; };
+		E9A51E961E9263830006A8DD /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */; };
+		E9A51E971E9263830006A8DD /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */; };
+		E9A51E981E9263830006A8DD /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */; };
+		E9A51E991E9263830006A8DD /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */; };
+		E9A51E9A1E9263830006A8DD /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */; };
+		E9A51E9B1E9263830006A8DD /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */; };
+		E9A51E9C1E9263830006A8DD /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */; };
+		E9A51E9D1E9263830006A8DD /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E941E9263830006A8DD /* PpmdRegister.cpp */; };
+		E9A51E9E1E9263830006A8DD /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E941E9263830006A8DD /* PpmdRegister.cpp */; };
+		E9A51E9F1E9263830006A8DD /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E941E9263830006A8DD /* PpmdRegister.cpp */; };
+		E9A51EA01E9263830006A8DD /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9A51E941E9263830006A8DD /* PpmdRegister.cpp */; };
+		E9A51EA41E9263D10006A8DD /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA11E9263D10006A8DD /* Ppmd7.c */; };
+		E9A51EA51E9263D10006A8DD /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA11E9263D10006A8DD /* Ppmd7.c */; };
+		E9A51EA61E9263D10006A8DD /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA11E9263D10006A8DD /* Ppmd7.c */; };
+		E9A51EA71E9263D10006A8DD /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA11E9263D10006A8DD /* Ppmd7.c */; };
+		E9A51EA81E9263D10006A8DD /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */; };
+		E9A51EA91E9263D10006A8DD /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */; };
+		E9A51EAA1E9263D10006A8DD /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */; };
+		E9A51EAB1E9263D10006A8DD /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */; };
+		E9A51EAC1E9263D10006A8DD /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */; };
+		E9A51EAD1E9263D10006A8DD /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */; };
+		E9A51EAE1E9263D10006A8DD /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */; };
+		E9A51EAF1E9263D10006A8DD /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -862,6 +902,16 @@
 		E94457B71E8019C200C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Мюнхен.jpg"; path = "../files/Мюнхен.jpg"; sourceTree = "<group>"; };
 		E94457BC1E8019DC00C31E3A /* München.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "München.jpg"; sourceTree = "<group>"; };
 		E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Мюнхен.jpg"; sourceTree = "<group>"; };
+		E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Coder.cpp; path = ../../lzma/CPP/7zip/Compress/Bcj2Coder.cpp; sourceTree = "<group>"; };
+		E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Register.cpp; path = ../../lzma/CPP/7zip/Compress/Bcj2Register.cpp; sourceTree = "<group>"; };
+		E9A51E881E92618F0006A8DD /* Bcj2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Bcj2.c; path = ../../lzma/C/Bcj2.c; sourceTree = "<group>"; };
+		E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Bcj2Enc.c; path = ../../lzma/C/Bcj2Enc.c; sourceTree = "<group>"; };
+		E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PpmdDecoder.cpp; path = ../../lzma/CPP/7zip/Compress/PpmdDecoder.cpp; sourceTree = "<group>"; };
+		E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PpmdEncoder.cpp; path = ../../lzma/CPP/7zip/Compress/PpmdEncoder.cpp; sourceTree = "<group>"; };
+		E9A51E941E9263830006A8DD /* PpmdRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PpmdRegister.cpp; path = ../../lzma/CPP/7zip/Compress/PpmdRegister.cpp; sourceTree = "<group>"; };
+		E9A51EA11E9263D10006A8DD /* Ppmd7.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Ppmd7.c; path = ../../lzma/C/Ppmd7.c; sourceTree = "<group>"; };
+		E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Ppmd7Dec.c; path = ../../lzma/C/Ppmd7Dec.c; sourceTree = "<group>"; };
+		E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Ppmd7Enc.c; path = ../../lzma/C/Ppmd7Enc.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1066,6 +1116,8 @@
 				3D9BD4B91C8E4AAB00081959 /* Alloc.c */,
 				3D9BD4BA1C8E4AAB00081959 /* Alloc.h */,
 				3D9BD4BB1C8E4AAB00081959 /* Bcj2.h */,
+				E9A51E881E92618F0006A8DD /* Bcj2.c */,
+				E9A51E8D1E9261940006A8DD /* Bcj2Enc.c */,
 				3D9BD4BC1C8E4AAB00081959 /* Bra.c */,
 				3D9BD4BD1C8E4AAB00081959 /* Bra.h */,
 				3D9BD4BE1C8E4AAB00081959 /* Bra86.c */,
@@ -1096,6 +1148,9 @@
 				3D9BD4D71C8E4AAB00081959 /* Ppmd7.h */,
 				3D9BD4D81C8E4AAB00081959 /* Precomp.h */,
 				3D9BD4D91C8E4AAB00081959 /* RotateDefs.h */,
+				E9A51EA11E9263D10006A8DD /* Ppmd7.c */,
+				E9A51EA21E9263D10006A8DD /* Ppmd7Dec.c */,
+				E9A51EA31E9263D10006A8DD /* Ppmd7Enc.c */,
 				3D9BD4DA1C8E4AAB00081959 /* Sha256.c */,
 				3D9BD4DB1C8E4AAB00081959 /* Sha256.h */,
 				3D9BD4DC1C8E4AAB00081959 /* Sort.h */,
@@ -1228,8 +1283,10 @@
 			isa = PBXGroup;
 			children = (
 				3D9BD5491C8E4AAB00081959 /* Bcj2Coder.h */,
-				3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */,
+				E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */,
+				E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */,
 				3D9BD54B1C8E4AAB00081959 /* BcjCoder.h */,
+				3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */,
 				3D9BD54C1C8E4AAB00081959 /* BcjRegister.cpp */,
 				3D9BD54D1C8E4AAB00081959 /* BranchMisc.h */,
 				3D9BD54E1C8E4AAB00081959 /* CodecExports.cpp */,
@@ -1247,6 +1304,9 @@
 				3D9BD55A1C8E4AAB00081959 /* LzmaRegister.cpp */,
 				3D9BD55B1C8E4AAB00081959 /* PpmdDecoder.h */,
 				3D9BD55C1C8E4AAB00081959 /* PpmdEncoder.h */,
+				E9A51E921E9263830006A8DD /* PpmdDecoder.cpp */,
+				E9A51E931E9263830006A8DD /* PpmdEncoder.cpp */,
+				E9A51E941E9263830006A8DD /* PpmdRegister.cpp */,
 				3D9BD55D1C8E4AAB00081959 /* StdAfx.h */,
 			);
 			name = Compress;
@@ -1904,6 +1964,7 @@
 				3D9BD6241C8E4AAB00081959 /* ArchiveExports.cpp in Sources */,
 				3D9BD6421C8E4AAB00081959 /* StreamBinder.cpp in Sources */,
 				3D9BD6681C8E4AAB00081959 /* C_FileIO.cpp in Sources */,
+				E9A51E801E9260FE0006A8DD /* Bcj2Register.cpp in Sources */,
 				3D9BD64E1C8E4AAB00081959 /* CodecExports.cpp in Sources */,
 				3D9BD6761C8E4AAB00081959 /* StringToInt.cpp in Sources */,
 				3D3E41B41D1B371200EF40A3 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
@@ -1919,6 +1980,7 @@
 				3D37E5DA1D22F0BD0016F8B4 /* Wildcard.cpp in Sources */,
 				3D9BD6201C8E4AAB00081959 /* ItemNameUtils.cpp in Sources */,
 				3D9BD66A1C8E4AAB00081959 /* CrcReg.cpp in Sources */,
+				E9A51E951E9263830006A8DD /* PpmdDecoder.cpp in Sources */,
 				3D9BD5EE1C8E4AAB00081959 /* Sha256.c in Sources */,
 				3D9BD5D41C8E4AAB00081959 /* Alloc.c in Sources */,
 				3D090F491CB1493000D296BA /* InBuffer.cpp in Sources */,
@@ -1934,6 +1996,7 @@
 				3D9BD65C1C8E4AAB00081959 /* LzmaRegister.cpp in Sources */,
 				3D9BD5BA1C8E4AAB00081959 /* LzmaSDKObjCError.mm in Sources */,
 				3DE706AA1D1C0CB5008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */,
+				E9A51EA81E9263D10006A8DD /* Ppmd7Dec.c in Sources */,
 				3D9BD6261C8E4AAB00081959 /* DllExports2.cpp in Sources */,
 				3D9BD6141C8E4AAB00081959 /* 7zSpecStream.cpp in Sources */,
 				3D9BD6721C8E4AAB00081959 /* Sha256Reg.cpp in Sources */,
@@ -1943,23 +2006,28 @@
 				3D9BD61A1C8E4AAB00081959 /* CoderMixer2.cpp in Sources */,
 				3D9BD6281C8E4AAB00081959 /* LzmaHandler.cpp in Sources */,
 				3D9BD5DE1C8E4AAB00081959 /* Delta.c in Sources */,
+				E9A51E7C1E9260F30006A8DD /* BcjRegister.cpp in Sources */,
+				E9A51E991E9263830006A8DD /* PpmdEncoder.cpp in Sources */,
 				3D9BD6041C8E4AAB00081959 /* 7zFolderInStream.cpp in Sources */,
 				3D9BD6621C8E4AAB00081959 /* MyAes.cpp in Sources */,
 				3D9BD6741C8E4AAB00081959 /* StringConvert.cpp in Sources */,
+				E9A51EA41E9263D10006A8DD /* Ppmd7.c in Sources */,
 				3D9BD5EA1C8E4AAB00081959 /* LzmaEnc.c in Sources */,
 				3D9BD6401C8E4AAB00081959 /* PropId.cpp in Sources */,
 				3D9BD6301C8E4AAB00081959 /* FileStreams.cpp in Sources */,
 				3D9BD6561C8E4AAB00081959 /* Lzma2Register.cpp in Sources */,
+				E9A51EAC1E9263D10006A8DD /* Ppmd7Enc.c in Sources */,
 				3D9BD6501C8E4AAB00081959 /* CopyCoder.cpp in Sources */,
 				3D9BD63E1C8E4AAB00081959 /* ProgressUtils.cpp in Sources */,
-				3DF235611D1E84F30079C647 /* BcjRegister.cpp in Sources */,
 				3D0DE3CE1CF6414A0091B7B2 /* 7zEncode.cpp in Sources */,
 				3D1F64EA1D1B270F00B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
 				3D9BD4511C8E4A3D00081959 /* AppDelegate.swift in Sources */,
 				3D9BD6661C8E4AAB00081959 /* RandGen.cpp in Sources */,
+				E9A51E8E1E9261940006A8DD /* Bcj2Enc.c in Sources */,
 				3D9BD5FE1C8E4AAB00081959 /* 7zDecode.cpp in Sources */,
 				3D9BD6481C8E4AAB00081959 /* VirtThread.cpp in Sources */,
 				3D9BD5B61C8E4AAB00081959 /* LzmaSDKObjC.mm in Sources */,
+				E9A51E9D1E9263830006A8DD /* PpmdRegister.cpp in Sources */,
 				3D9BD5B81C8E4AAB00081959 /* LzmaSDKObjCCommon.cpp in Sources */,
 				3D9BD6841C8E4AAB00081959 /* PropVariant.cpp in Sources */,
 				3D9BD6061C8E4AAB00081959 /* 7zHandler.cpp in Sources */,
@@ -1973,9 +2041,10 @@
 				3D9BD6381C8E4AAB00081959 /* LockedStream.cpp in Sources */,
 				3D9BD66C1C8E4AAB00081959 /* IntToString.cpp in Sources */,
 				3D9BD6581C8E4AAB00081959 /* LzmaDecoder.cpp in Sources */,
-				3DF235601D1E84F30079C647 /* BcjCoder.cpp in Sources */,
 				3D9BD5EC1C8E4AAB00081959 /* MtCoder.c in Sources */,
 				3D9BD63C1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
+				E9A51E841E9261310006A8DD /* Bcj2Coder.cpp in Sources */,
+				E9A51E781E9260EB0006A8DD /* BcjCoder.cpp in Sources */,
 				E94457B21E800E5A00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3D9BD5BC1C8E4AAB00081959 /* LzmaSDKObjCExtractCallback.mm in Sources */,
 				3D9BD5F61C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
@@ -1987,6 +2056,7 @@
 				3D9BD62C1C8E4AAB00081959 /* CreateCoder.cpp in Sources */,
 				3D9BD6541C8E4AAB00081959 /* Lzma2Encoder.cpp in Sources */,
 				3D9BD5CA1C8E4AAB00081959 /* 7zCrc.c in Sources */,
+				E9A51E891E92618F0006A8DD /* Bcj2.c in Sources */,
 				3D9BD6021C8E4AAB00081959 /* 7zExtract.cpp in Sources */,
 				3D9BD6221C8E4AAB00081959 /* OutStreamWithCRC.cpp in Sources */,
 				3D9BD5C61C8E4AAB00081959 /* LzmaSDKObjCOutFile.cpp in Sources */,
@@ -2008,7 +2078,6 @@
 				3D9BD5CF1C8E4AAB00081959 /* 7zStream.c in Sources */,
 				3DB5BA501D1C147F007DD865 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
 				3D9BD5CD1C8E4AAB00081959 /* 7zCrcOpt.c in Sources */,
-				3DF2355E1D1E84F30079C647 /* BcjCoder.cpp in Sources */,
 				3D9BD63F1C8E4AAB00081959 /* ProgressUtils.cpp in Sources */,
 				3D9BD5E91C8E4AAB00081959 /* LzmaDec.c in Sources */,
 				3D9BD5ED1C8E4AAB00081959 /* MtCoder.c in Sources */,
@@ -2026,6 +2095,7 @@
 				3D9BD5E51C8E4AAB00081959 /* Lzma2Dec.c in Sources */,
 				3D9BD67B1C8E4AAB00081959 /* XzCrc64Reg.cpp in Sources */,
 				3D9BD5C11C8E4AAB00081959 /* LzmaSDKObjCInFile.cpp in Sources */,
+				E9A51E791E9260EB0006A8DD /* BcjCoder.cpp in Sources */,
 				3D9BD6271C8E4AAB00081959 /* DllExports2.cpp in Sources */,
 				3D9BD6351C8E4AAB00081959 /* InOutTempBuffer.cpp in Sources */,
 				3D9BD6571C8E4AAB00081959 /* Lzma2Register.cpp in Sources */,
@@ -2034,9 +2104,13 @@
 				E94457B31E800E5E00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
 				3D9BD65D1C8E4AAB00081959 /* LzmaRegister.cpp in Sources */,
 				3D9BD5D31C8E4AAB00081959 /* AesOpt.c in Sources */,
+				E9A51EAD1E9263D10006A8DD /* Ppmd7Enc.c in Sources */,
 				3D9BD5DD1C8E4AAB00081959 /* CpuArch.c in Sources */,
+				E9A51E8A1E92618F0006A8DD /* Bcj2.c in Sources */,
 				3D9BD6331C8E4AAB00081959 /* FilterCoder.cpp in Sources */,
 				3D9BD66D1C8E4AAB00081959 /* IntToString.cpp in Sources */,
+				E9A51E8F1E9261940006A8DD /* Bcj2Enc.c in Sources */,
+				E9A51E7D1E9260F40006A8DD /* BcjRegister.cpp in Sources */,
 				3D9BD5BB1C8E4AAB00081959 /* LzmaSDKObjCError.mm in Sources */,
 				3D9BD6451C8E4AAB00081959 /* StreamObjects.cpp in Sources */,
 				3D1F64E51D1B257000B1AAA1 /* LzmaSDKObjCWriter.mm in Sources */,
@@ -2050,12 +2124,14 @@
 				3D9BD6371C8E4AAB00081959 /* LimitedStreams.cpp in Sources */,
 				3D9BD6251C8E4AAB00081959 /* ArchiveExports.cpp in Sources */,
 				3D9BD6071C8E4AAB00081959 /* 7zHandler.cpp in Sources */,
+				E9A51EA51E9263D10006A8DD /* Ppmd7.c in Sources */,
 				3D9BD6651C8E4AAB00081959 /* MyAesReg.cpp in Sources */,
 				3D9BD5E31C8E4AAB00081959 /* LzFindMt.c in Sources */,
 				3D9BD61D1C8E4AAB00081959 /* DummyOutStream.cpp in Sources */,
 				3D9BD62F1C8E4AAB00081959 /* CWrappers.cpp in Sources */,
 				3D9BD5DF1C8E4AAB00081959 /* Delta.c in Sources */,
 				3D9BD6551C8E4AAB00081959 /* Lzma2Encoder.cpp in Sources */,
+				E9A51E811E9260FE0006A8DD /* Bcj2Register.cpp in Sources */,
 				3D37F5221D217FF3001C3BDB /* WriteObjc.m in Sources */,
 				3D9BD5F71C8E4AAB00081959 /* XzCrc64Opt.c in Sources */,
 				3D9BD65B1C8E4AAB00081959 /* LzmaEncoder.cpp in Sources */,
@@ -2066,13 +2142,16 @@
 				3D1F64F11D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
 				3D9BD6731C8E4AAB00081959 /* Sha256Reg.cpp in Sources */,
 				3D9BD6091C8E4AAB00081959 /* 7zHandlerOut.cpp in Sources */,
-				3DF2355F1D1E84F30079C647 /* BcjRegister.cpp in Sources */,
+				E9A51E9A1E9263830006A8DD /* PpmdEncoder.cpp in Sources */,
 				3D9BD5FF1C8E4AAB00081959 /* 7zDecode.cpp in Sources */,
 				3D9BD6491C8E4AAB00081959 /* VirtThread.cpp in Sources */,
+				E9A51E961E9263830006A8DD /* PpmdDecoder.cpp in Sources */,
 				3D9BD66F1C8E4AAB00081959 /* MyString.cpp in Sources */,
 				3DA24A441D216C9C00DD235B /* XzCrc64.c in Sources */,
 				3D9BD6851C8E4AAB00081959 /* PropVariant.cpp in Sources */,
+				E9A51E851E9261310006A8DD /* Bcj2Coder.cpp in Sources */,
 				3D9BD5DB1C8E4AAB00081959 /* BraIA64.c in Sources */,
+				E9A51E9E1E9263830006A8DD /* PpmdRegister.cpp in Sources */,
 				3D9BD5C91C8E4AAB00081959 /* LzmaSDKObjCReader.mm in Sources */,
 				3D9BD63D1C8E4AAB00081959 /* OutBuffer.cpp in Sources */,
 				3DB5BA531D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */,
@@ -2094,6 +2173,7 @@
 				3D9BD6531C8E4AAB00081959 /* Lzma2Decoder.cpp in Sources */,
 				3D9BD5C31C8E4AAB00081959 /* LzmaSDKObjCItem.mm in Sources */,
 				3D9BD5E71C8E4AAB00081959 /* Lzma2Enc.c in Sources */,
+				E9A51EA91E9263D10006A8DD /* Ppmd7Dec.c in Sources */,
 				3D9BD6591C8E4AAB00081959 /* LzmaDecoder.cpp in Sources */,
 				3D9BD6131C8E4AAB00081959 /* 7zRegister.cpp in Sources */,
 				3D9BD5CB1C8E4AAB00081959 /* 7zCrc.c in Sources */,
@@ -2122,7 +2202,9 @@
 			files = (
 				3DF59A4B1D0ED88F00E855EF /* 7zRegister.cpp in Sources */,
 				3DF59A5F1D0ED89300E855EF /* HandlerOut.cpp in Sources */,
+				E9A51E861E9261320006A8DD /* Bcj2Coder.cpp in Sources */,
 				3DF599D11D0ED82300E855EF /* LzmaSDKObjCItem.mm in Sources */,
+				E9A51E9F1E9263830006A8DD /* PpmdRegister.cpp in Sources */,
 				3DF59A761D0ED89B00E855EF /* LockedStream.cpp in Sources */,
 				3DF599FF1D0ED87700E855EF /* Bra.c in Sources */,
 				3DF59AAF1D0ED8AB00E855EF /* IntToString.cpp in Sources */,
@@ -2144,6 +2226,7 @@
 				3DF59A0B1D0ED87700E855EF /* Sha256.c in Sources */,
 				3DF599FE1D0ED87700E855EF /* Alloc.c in Sources */,
 				3DB5BA541D1C1488007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */,
+				E9A51E901E9261940006A8DD /* Bcj2Enc.c in Sources */,
 				3DF59AB61D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */,
 				3DF59A461D0ED88F00E855EF /* 7zHandlerOut.cpp in Sources */,
 				3DF599CF1D0ED81D00E855EF /* LzmaSDKObjCInFile.cpp in Sources */,
@@ -2163,6 +2246,7 @@
 				3DF59A791D0ED89B00E855EF /* ProgressUtils.cpp in Sources */,
 				3DF59A4C1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */,
 				3DF59A421D0ED88F00E855EF /* 7zEncode.cpp in Sources */,
+				E9A51EAA1E9263D10006A8DD /* Ppmd7Dec.c in Sources */,
 				3DF59A701D0ED89B00E855EF /* CWrappers.cpp in Sources */,
 				3DF59A061D0ED87700E855EF /* Lzma2Dec.c in Sources */,
 				3DF59A5D1D0ED89300E855EF /* CoderMixer2.cpp in Sources */,
@@ -2170,16 +2254,18 @@
 				3DF59A691D0ED89700E855EF /* LzmaHandler.cpp in Sources */,
 				3D1F64E61D1B257100B1AAA1 /* LzmaSDKObjCWriter.mm in Sources */,
 				3DF59A961D0ED8A100E855EF /* LzmaDecoder.cpp in Sources */,
+				E9A51E8B1E92618F0006A8DD /* Bcj2.c in Sources */,
 				3DF59A941D0ED8A100E855EF /* Lzma2Encoder.cpp in Sources */,
 				3DF59A731D0ED89B00E855EF /* InBuffer.cpp in Sources */,
 				3DF59A031D0ED87700E855EF /* Delta.c in Sources */,
 				3DF59A441D0ED88F00E855EF /* 7zFolderInStream.cpp in Sources */,
-				3DF235621D1E84F40079C647 /* BcjCoder.cpp in Sources */,
+				E9A51E971E9263830006A8DD /* PpmdDecoder.cpp in Sources */,
 				3DF59A091D0ED87700E855EF /* LzmaEnc.c in Sources */,
 				3DF59A931D0ED8A100E855EF /* Lzma2Decoder.cpp in Sources */,
 				3DF59A711D0ED89B00E855EF /* FileStreams.cpp in Sources */,
 				3DF599C51D0ED80C00E855EF /* LzmaSDKObjCBufferProcessor.mm in Sources */,
 				3DF59A411D0ED88F00E855EF /* 7zDecode.cpp in Sources */,
+				E9A51EA61E9263D10006A8DD /* Ppmd7.c in Sources */,
 				3D1F64F21D1B2AC300B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
 				3DF59AB11D0ED8AB00E855EF /* MyWindows.cpp in Sources */,
 				3DF59A781D0ED89B00E855EF /* OutBuffer.cpp in Sources */,
@@ -2188,12 +2274,14 @@
 				3DF59AA41D0ED8A500E855EF /* 7zAesRegister.cpp in Sources */,
 				3DF59A451D0ED88F00E855EF /* 7zHandler.cpp in Sources */,
 				3DF59AC61D0ED8B000E855EF /* PropVariantConv.cpp in Sources */,
+				E9A51E9B1E9263830006A8DD /* PpmdEncoder.cpp in Sources */,
 				3DF59AAE1D0ED8AB00E855EF /* CrcReg.cpp in Sources */,
 				3DF59A971D0ED8A100E855EF /* LzmaEncoder.cpp in Sources */,
 				3DF59A741D0ED89B00E855EF /* InOutTempBuffer.cpp in Sources */,
 				3DF59A051D0ED87700E855EF /* LzFindMt.c in Sources */,
 				3DF599CD1D0ED81900E855EF /* LzmaSDKObjCFileDecoder.cpp in Sources */,
 				3DF59AA61D0ED8A500E855EF /* MyAesReg.cpp in Sources */,
+				E9A51EAE1E9263D10006A8DD /* Ppmd7Enc.c in Sources */,
 				3DF59A721D0ED89B00E855EF /* FilterCoder.cpp in Sources */,
 				3DF59A001D0ED87700E855EF /* Bra86.c in Sources */,
 				3DE706AC1D1C0CB6008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */,
@@ -2203,13 +2291,15 @@
 				3DF59A0A1D0ED87700E855EF /* MtCoder.c in Sources */,
 				3DF599CB1D0ED81600E855EF /* LzmaSDKObjCExtractCallback.mm in Sources */,
 				3DF59A0F1D0ED87700E855EF /* XzCrc64Opt.c in Sources */,
+				E9A51E7A1E9260EB0006A8DD /* BcjCoder.cpp in Sources */,
 				3DF59A4D1D0ED88F00E855EF /* 7zUpdate.cpp in Sources */,
+				E9A51E7E1E9260F40006A8DD /* BcjRegister.cpp in Sources */,
 				3DF59A081D0ED87700E855EF /* LzmaDec.c in Sources */,
 				3DF59A041D0ED87700E855EF /* LzFind.c in Sources */,
 				3DF59A6F1D0ED89B00E855EF /* CreateCoder.cpp in Sources */,
 				3DF59AB21D0ED8AB00E855EF /* Sha256Reg.cpp in Sources */,
+				E9A51E821E9260FF0006A8DD /* Bcj2Register.cpp in Sources */,
 				3DF59A771D0ED89B00E855EF /* MethodProps.cpp in Sources */,
-				3DF235631D1E84F40079C647 /* BcjRegister.cpp in Sources */,
 				3DB5BA521D1C1480007DD865 /* LzmaSDKObjCUpdateCallback.mm in Sources */,
 				3DA24A451D216C9C00DD235B /* XzCrc64.c in Sources */,
 				3DF599F91D0ED87700E855EF /* 7zCrc.c in Sources */,
@@ -2234,11 +2324,11 @@
 				3DF59A591D0ED88F00E855EF /* 7zRegister.cpp in Sources */,
 				3DF59A641D0ED89300E855EF /* HandlerOut.cpp in Sources */,
 				3DF599D21D0ED82400E855EF /* LzmaSDKObjCItem.mm in Sources */,
-				3DF235641D1E84F50079C647 /* BcjCoder.cpp in Sources */,
 				3DF59A861D0ED89C00E855EF /* LockedStream.cpp in Sources */,
 				3DF59A2D1D0ED87800E855EF /* Bra.c in Sources */,
 				3DF59AB91D0ED8AB00E855EF /* IntToString.cpp in Sources */,
 				3DF59ACC1D0ED8B000E855EF /* PropVariant.cpp in Sources */,
+				E9A51EA01E9263830006A8DD /* PpmdRegister.cpp in Sources */,
 				3DF59A6B1D0ED89700E855EF /* ArchiveExports.cpp in Sources */,
 				3DF59A2B1D0ED87800E855EF /* AesOpt.c in Sources */,
 				E94457B51E800E5F00C31E3A /* LzmaSDKObjCExtern.mm in Sources */,
@@ -2249,6 +2339,7 @@
 				3DF59A8A1D0ED89C00E855EF /* PropId.cpp in Sources */,
 				3DF59AA81D0ED8A600E855EF /* 7zAes.cpp in Sources */,
 				3DF59A561D0ED88F00E855EF /* 7zIn.cpp in Sources */,
+				E9A51E9C1E9263830006A8DD /* PpmdEncoder.cpp in Sources */,
 				3DF59A9F1D0ED8A100E855EF /* Lzma2Register.cpp in Sources */,
 				3D1F64E71D1B257100B1AAA1 /* LzmaSDKObjCWriter.mm in Sources */,
 				3DF59A571D0ED88F00E855EF /* 7zOut.cpp in Sources */,
@@ -2256,11 +2347,11 @@
 				3DF59AA21D0ED8A100E855EF /* LzmaRegister.cpp in Sources */,
 				3DF59A651D0ED89300E855EF /* ItemNameUtils.cpp in Sources */,
 				3DF59A391D0ED87800E855EF /* Sha256.c in Sources */,
+				E9A51E871E9261320006A8DD /* Bcj2Coder.cpp in Sources */,
 				3DF59A2C1D0ED87800E855EF /* Alloc.c in Sources */,
 				3DF59AC01D0ED8AB00E855EF /* XzCrc64Reg.cpp in Sources */,
 				3DF59A541D0ED88F00E855EF /* 7zHandlerOut.cpp in Sources */,
 				3DF599D01D0ED81E00E855EF /* LzmaSDKObjCInFile.cpp in Sources */,
-				3DF235651D1E84F50079C647 /* BcjRegister.cpp in Sources */,
 				3DF59A2F1D0ED87800E855EF /* BraIA64.c in Sources */,
 				3DF59A551D0ED88F00E855EF /* 7zHeader.cpp in Sources */,
 				3DF59ABA1D0ED8AB00E855EF /* MyString.cpp in Sources */,
@@ -2275,6 +2366,7 @@
 				3DF59A9C1D0ED8A100E855EF /* CopyCoder.cpp in Sources */,
 				3DF59AAC1D0ED8A600E855EF /* RandGen.cpp in Sources */,
 				3DF59A891D0ED89C00E855EF /* ProgressUtils.cpp in Sources */,
+				E9A51E831E9260FF0006A8DD /* Bcj2Register.cpp in Sources */,
 				3DF59A5A1D0ED88F00E855EF /* 7zSpecStream.cpp in Sources */,
 				3DF59A501D0ED88F00E855EF /* 7zEncode.cpp in Sources */,
 				3DF59A801D0ED89C00E855EF /* CWrappers.cpp in Sources */,
@@ -2288,11 +2380,14 @@
 				3DF59A831D0ED89C00E855EF /* InBuffer.cpp in Sources */,
 				3DF59A311D0ED87800E855EF /* Delta.c in Sources */,
 				3DF59A521D0ED88F00E855EF /* 7zFolderInStream.cpp in Sources */,
+				E9A51E911E9261940006A8DD /* Bcj2Enc.c in Sources */,
 				3DE706AD1D1C0CB7008FA27F /* LzmaSDKObjCOpenCallback.cpp in Sources */,
+				E9A51EAF1E9263D10006A8DD /* Ppmd7Enc.c in Sources */,
 				3DF59A371D0ED87800E855EF /* LzmaEnc.c in Sources */,
 				3DA24A461D216C9C00DD235B /* XzCrc64.c in Sources */,
 				3DF59A9D1D0ED8A100E855EF /* Lzma2Decoder.cpp in Sources */,
 				3DF59A811D0ED89C00E855EF /* FileStreams.cpp in Sources */,
+				E9A51E981E9263830006A8DD /* PpmdDecoder.cpp in Sources */,
 				3DF599C61D0ED80D00E855EF /* LzmaSDKObjCBufferProcessor.mm in Sources */,
 				3DF59A4F1D0ED88F00E855EF /* 7zDecode.cpp in Sources */,
 				3DF59ABB1D0ED8AB00E855EF /* MyWindows.cpp in Sources */,
@@ -2305,6 +2400,7 @@
 				3DF59AA11D0ED8A100E855EF /* LzmaEncoder.cpp in Sources */,
 				3DF59A841D0ED89C00E855EF /* InOutTempBuffer.cpp in Sources */,
 				3DF59A331D0ED87800E855EF /* LzFindMt.c in Sources */,
+				E9A51EA71E9263D10006A8DD /* Ppmd7.c in Sources */,
 				3DF599CE1D0ED81900E855EF /* LzmaSDKObjCFileDecoder.cpp in Sources */,
 				3DF59AAB1D0ED8A600E855EF /* MyAesReg.cpp in Sources */,
 				3DF59A821D0ED89C00E855EF /* FilterCoder.cpp in Sources */,
@@ -2328,13 +2424,17 @@
 				3DF599D61D0ED82B00E855EF /* LzmaSDKObjCOutFile.cpp in Sources */,
 				3DF59A8C1D0ED89C00E855EF /* StreamObjects.cpp in Sources */,
 				3DF599D81D0ED82F00E855EF /* LzmaSDKObjCReader.mm in Sources */,
+				E9A51E8C1E92618F0006A8DD /* Bcj2.c in Sources */,
+				E9A51EAB1E9263D10006A8DD /* Ppmd7Dec.c in Sources */,
 				3DB5BA4F1D1C146C007DD865 /* LzmaSDKObjCMutableItem.mm in Sources */,
 				3DB5BA551D1C1489007DD865 /* LzmaSDKObjCBaseCoder.cpp in Sources */,
 				3DF59A8E1D0ED89C00E855EF /* VirtThread.cpp in Sources */,
 				3D1F64F31D1B2AC400B1AAA1 /* LzmaSDKObjCFileEncoder.cpp in Sources */,
 				3DF59A291D0ED87800E855EF /* 7zStream.c in Sources */,
+				E9A51E7F1E9260F50006A8DD /* BcjRegister.cpp in Sources */,
 				3DF59A351D0ED87800E855EF /* Lzma2Enc.c in Sources */,
 				3DF59A281D0ED87800E855EF /* 7zCrcOpt.c in Sources */,
+				E9A51E7B1E9260EC0006A8DD /* BcjCoder.cpp in Sources */,
 				3DF59A2A1D0ED87800E855EF /* Aes.c in Sources */,
 				3DF59A8B1D0ED89C00E855EF /* StreamBinder.cpp in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.11"
+  s.version          = "2.0.12"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
@@ -85,6 +85,8 @@ The main advantages is:
     'lzma/CPP/7zip/Compress/*.{h}',
     'lzma/CPP/7zip/Compress/BcjCoder.cpp',
     'lzma/CPP/7zip/Compress/BcjRegister.cpp',
+    'lzma/CPP/7zip/Compress/Bcj2Register.cpp',
+    'lzma/CPP/7zip/Compress/Bcj2Coder.cpp',
     'lzma/CPP/7zip/Compress/CopyCoder.cpp',
     'lzma/CPP/7zip/Compress/CodecExports.cpp',
     'lzma/CPP/7zip/Compress/LzmaDecoder.cpp',
@@ -93,6 +95,9 @@ The main advantages is:
     'lzma/CPP/7zip/Compress/Lzma2Decoder.cpp',
     'lzma/CPP/7zip/Compress/Lzma2Encoder.cpp',
     'lzma/CPP/7zip/Compress/Lzma2Register.cpp',
+    'lzma/CPP/7zip/Compress/PpmdDecoder.cpp',
+    'lzma/CPP/7zip/Compress/PpmdEncoder.cpp',
+    'lzma/CPP/7zip/Compress/PpmdRegister.cpp',
     'lzma/CPP/7zip/Common/*.{h}',
     'lzma/CPP/7zip/Common/LimitedStreams.cpp',
     'lzma/CPP/7zip/Common/StreamObjects.cpp',
@@ -127,6 +132,9 @@ The main advantages is:
     'lzma/C/AesOpt.c',
     'lzma/C/Aes.c',
     'lzma/C/XzCrc64Opt.c',
+    'lzma/C/Ppmd7.c',
+    'lzma/C/Ppmd7Dec.c',
+    'lzma/C/Ppmd7Enc.c',
     'lzma/C/Sha256.c',
     'lzma/C/Delta.c',
     'lzma/C/7zCrcOpt.c',
@@ -136,6 +144,8 @@ The main advantages is:
     'lzma/C/Bra86.c',
     'lzma/C/BraIA64.c',
     'lzma/C/Bra.c',
+    'lzma/C/Bcj2.c',
+    'lzma/C/Bcj2Enc.c',
     'lzma/C/7zStream.c',
     'lzma/C/Alloc.c',
     'lzma/C/MtCoder.c',
