@@ -88,8 +88,9 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 		do {
 			item = nil;
 			error = nil;
-			PROPVARIANT prop = { 0 };
-			PROPVARIANT name = { 0 };
+            PROPVARIANT prop, name;
+            memset(&prop, 0, sizeof(PROPVARIANT));
+            memset(&name, 0, sizeof(PROPVARIANT));
 			bool r = _decoder->readIteratorProperty(&prop, kpidSize);
 			r |= _decoder->readIteratorProperty(&name, kpidPath);
 			if (r) {
@@ -97,32 +98,32 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 				if (item) {
 					item->_index = _decoder->iteratorIndex();
 					item->_orgSize = LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
-					prop = { 0 };
+                    memset(&prop, 0, sizeof(PROPVARIANT));
 
 					if (name.vt == VT_BSTR && name.bstrVal)
 						item->_path = [[NSString alloc] initWithBytes:name.bstrVal length:sizeof(wchar_t) * wcslen(name.bstrVal) encoding:NSUTF32LittleEndianStringEncoding];
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidCTime))
 						if (prop.vt == VT_FILETIME) item->_cDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidATime))
 						if (prop.vt == VT_FILETIME) item->_aDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidMTime))
 						if (prop.vt == VT_FILETIME) item->_mDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidEncrypted))
 						if (prop.vt == VT_BOOL && prop.boolVal) item->_flags |= LzmaObjcItemFlagIsEncrypted;
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidCRC))
 						item->_crc = (uint32_t)LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
 
-					prop = { 0 };
+					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidIsDir))
 						if (prop.vt == VT_BOOL && prop.boolVal) item->_flags |= LzmaObjcItemFlagIsDir;
 				} else {

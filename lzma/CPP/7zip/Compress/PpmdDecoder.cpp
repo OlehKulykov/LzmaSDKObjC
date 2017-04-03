@@ -13,7 +13,9 @@
 namespace NCompress {
 namespace NPpmd {
 
+#if !defined(__APPLE__)
 static const UInt32 kBufSize = (1 << 20);
+#endif
 
 enum
 {
@@ -40,7 +42,11 @@ STDMETHODIMP CDecoder::SetDecoderProperties2(const Byte *props, UInt32 size)
       memSize < PPMD7_MIN_MEM_SIZE ||
       memSize > PPMD7_MAX_MEM_SIZE)
     return E_NOTIMPL;
+#if defined(__APPLE__)
+  if (!_inStream.Alloc(kLzmaSDKObjCDecoderReadSize))
+#else
   if (!_inStream.Alloc(1 << 20))
+#endif
     return E_OUTOFMEMORY;
   if (!Ppmd7_Alloc(&_ppmd, memSize, &g_BigAlloc))
     return E_OUTOFMEMORY;
@@ -97,7 +103,11 @@ STDMETHODIMP CDecoder::Code(ISequentialInStream *inStream, ISequentialOutStream 
 {
   if (!_outBuf)
   {
+#if defined(__APPLE__)
+    _outBuf = (Byte *)::MidAlloc(kLzmaSDKObjCDecoderWriteSize);
+#else
     _outBuf = (Byte *)::MidAlloc(kBufSize);
+#endif
     if (!_outBuf)
       return E_OUTOFMEMORY;
   }
@@ -108,7 +118,11 @@ STDMETHODIMP CDecoder::Code(ISequentialInStream *inStream, ISequentialOutStream 
   do
   {
     const UInt64 startPos = _processedSize;
+#if defined(__APPLE__)
+    HRESULT res = CodeSpec(_outBuf, kLzmaSDKObjCDecoderWriteSize);
+#else
     HRESULT res = CodeSpec(_outBuf, kBufSize);
+#endif
     size_t processed = (size_t)(_processedSize - startPos);
     RINOK(WriteStream(outStream, _outBuf, processed));
     RINOK(res);

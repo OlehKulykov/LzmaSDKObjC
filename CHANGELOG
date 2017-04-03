@@ -1,6 +1,9 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
-Changes on version 2.0.12 (current):
+Changes on version 2.0.13 (current):
+- Added all default (de)coders.
+
+Changes on version 2.0.12:
 - Add BCJ2 and PPMdH (de)coders.
 
 Changes on version 2.0.10:
