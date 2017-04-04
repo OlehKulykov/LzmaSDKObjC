@@ -948,10 +948,10 @@
 		E9A51EB81E928FE40006A8DD /* XzEnc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = XzEnc.c; path = ../../lzma/C/XzEnc.c; sourceTree = "<group>"; };
 		E9A51EBD1E928FEE0006A8DD /* XzIn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = XzIn.c; path = ../../lzma/C/XzIn.c; sourceTree = "<group>"; };
 		E9A51EC21E9290100006A8DD /* XzDec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = XzDec.c; path = ../../lzma/C/XzDec.c; sourceTree = "<group>"; };
-		E9A51EC71E92906D0006A8DD /* BranchMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BranchMisc.cpp; path = ../../../1/CPP/7zip/Compress/BranchMisc.cpp; sourceTree = "<group>"; };
-		E9A51ECC1E9290730006A8DD /* BranchRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BranchRegister.cpp; path = ../../../1/CPP/7zip/Compress/BranchRegister.cpp; sourceTree = "<group>"; };
-		E9A51ED11E9290820006A8DD /* ByteSwap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ByteSwap.cpp; path = ../../../1/CPP/7zip/Compress/ByteSwap.cpp; sourceTree = "<group>"; };
-		E9A51ED61E9290A20006A8DD /* CopyRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CopyRegister.cpp; path = ../../../1/CPP/7zip/Compress/CopyRegister.cpp; sourceTree = "<group>"; };
+		E9A51EC71E92906D0006A8DD /* BranchMisc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BranchMisc.cpp; path = ../../lzma/CPP/7zip/Compress/BranchMisc.cpp; sourceTree = "<group>"; };
+		E9A51ECC1E9290730006A8DD /* BranchRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BranchRegister.cpp; path = ../../lzma/CPP/7zip/Compress/BranchRegister.cpp; sourceTree = "<group>"; };
+		E9A51ED11E9290820006A8DD /* ByteSwap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ByteSwap.cpp; path = ../../lzma/CPP/7zip/Compress/ByteSwap.cpp; sourceTree = "<group>"; };
+		E9A51ED61E9290A20006A8DD /* CopyRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CopyRegister.cpp; path = ../../lzma/CPP/7zip/Compress/CopyRegister.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
