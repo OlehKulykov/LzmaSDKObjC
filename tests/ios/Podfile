@@ -3,20 +3,20 @@ use_frameworks!
 
 target 'LzmaSDK-ObjC' do
   platform :ios, '8.0'
-  pod 'Inlineobjc'
+#  pod 'Inlineobjc'
 end
 
 target 'LzmaSDK-ObjCTests' do
   platform :ios, '8.0'
-  pod 'Inlineobjc'
+#  pod 'Inlineobjc'
 end
 
 target 'LzmaSDK-ObjC-OSX' do
   platform :osx, '10.9'
-  pod 'Inlineobjc'
+#  pod 'Inlineobjc'
 end
 
 target 'LzmaSDK-ObjC-OSXTests' do
   platform :osx, '10.9'
-  pod 'Inlineobjc'
+#  pod 'Inlineobjc'
 end

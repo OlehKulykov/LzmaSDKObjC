@@ -499,6 +499,10 @@
 		E94457BF1E8019DC00C31E3A /* München.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BC1E8019DC00C31E3A /* München.jpg */; };
 		E94457C01E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
 		E94457C11E8019DC00C31E3A /* Мюнхен.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */; };
+		E98179831EC74A36008CFBD6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E98179821EC74A36008CFBD6 /* libz.tbd */; };
+		E98179841EC74A45008CFBD6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E98179821EC74A36008CFBD6 /* libz.tbd */; };
+		E98179861EC74A61008CFBD6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E98179851EC74A61008CFBD6 /* libz.tbd */; };
+		E98179871EC74A6D008CFBD6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E98179851EC74A61008CFBD6 /* libz.tbd */; };
 		E9A51E781E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
 		E9A51E791E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
 		E9A51E7A1E9260EB0006A8DD /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BD54A1C8E4AAB00081959 /* BcjCoder.cpp */; };
@@ -934,6 +938,8 @@
 		E94457B71E8019C200C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Мюнхен.jpg"; path = "../files/Мюнхен.jpg"; sourceTree = "<group>"; };
 		E94457BC1E8019DC00C31E3A /* München.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "München.jpg"; sourceTree = "<group>"; };
 		E94457BD1E8019DC00C31E3A /* Мюнхен.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Мюнхен.jpg"; sourceTree = "<group>"; };
+		E98179821EC74A36008CFBD6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		E98179851EC74A61008CFBD6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E9A51E691E925F860006A8DD /* Bcj2Coder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Coder.cpp; path = ../../lzma/CPP/7zip/Compress/Bcj2Coder.cpp; sourceTree = "<group>"; };
 		E9A51E6E1E925F910006A8DD /* Bcj2Register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bcj2Register.cpp; path = ../../lzma/CPP/7zip/Compress/Bcj2Register.cpp; sourceTree = "<group>"; };
 		E9A51E881E92618F0006A8DD /* Bcj2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Bcj2.c; path = ../../lzma/C/Bcj2.c; sourceTree = "<group>"; };
@@ -959,6 +965,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98179831EC74A36008CFBD6 /* libz.tbd in Frameworks */,
 				C2E077F1F3F550FAF1C56536 /* Pods_LzmaSDK_ObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,6 +974,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98179841EC74A45008CFBD6 /* libz.tbd in Frameworks */,
 				9CDAFE69B89AB35975685D47 /* Pods_LzmaSDK_ObjCTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -975,6 +983,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98179861EC74A61008CFBD6 /* libz.tbd in Frameworks */,
 				363724765C5FE5A6E2D9A8E6 /* Pods_LzmaSDK_ObjC_OSX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -983,6 +992,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98179871EC74A6D008CFBD6 /* libz.tbd in Frameworks */,
 				876E44E529DDF6F859B5AC0C /* Pods_LzmaSDK_ObjC_OSXTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1566,6 +1576,8 @@
 		CB92584A59548C9F56C71272 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E98179851EC74A61008CFBD6 /* libz.tbd */,
+				E98179821EC74A36008CFBD6 /* libz.tbd */,
 				52C268991E731B2DEE5E023A /* Pods_LzmaSDK_ObjC.framework */,
 				76E739D43A3F9D55B1709D9C /* Pods_LzmaSDK_ObjC_OSX.framework */,
 				8CCEA55B2282C41C82D31328 /* Pods_LzmaSDK_ObjC_OSXTests.framework */,
