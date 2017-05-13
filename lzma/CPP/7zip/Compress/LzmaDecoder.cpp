@@ -30,9 +30,17 @@ CDecoder::CDecoder():
     FinishStream(false),
     _propsWereSet(false),
     _outSizeDefined(false),
+#if defined(__APPLE__)
+    _outStep(kLzmaSDKObjCDecoderWriteSize),
+#else
     _outStep(1 << 22),
+#endif
     _inBufSize(0),
+#if defined(__APPLE__)
+    _inBufSizeNew(kLzmaSDKObjCDecoderReadSize)
+#else
     _inBufSizeNew(1 << 20)
+#endif
 {
   _inProcessed = 0;
   _inPos = _inLim = 0;

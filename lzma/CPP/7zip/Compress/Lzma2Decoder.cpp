@@ -28,9 +28,17 @@ CDecoder::CDecoder():
     _inBuf(NULL),
     _finishMode(false),
     _outSizeDefined(false),
+#if defined(__APPLE__)
+    _outStep(kLzmaSDKObjCDecoderWriteSize),
+#else
     _outStep(1 << 22),
+#endif
     _inBufSize(0),
+#if defined(__APPLE__)
+    _inBufSizeNew(kLzmaSDKObjCDecoderReadSize)
+#else
     _inBufSizeNew(1 << 20)
+#endif
 {
   Lzma2Dec_Construct(&_state);
 }
