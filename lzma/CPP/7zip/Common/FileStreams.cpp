@@ -30,10 +30,7 @@ static inline HRESULT ConvertBoolToHRESULT(bool result)
 }
 
 
-#if !defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
 static const UInt32 kClusterSize = 1 << 18;
-#endif
-
 CInFileStream::CInFileStream():
   #ifdef SUPPORT_DEVICE_FILE
   VirtPos(0),

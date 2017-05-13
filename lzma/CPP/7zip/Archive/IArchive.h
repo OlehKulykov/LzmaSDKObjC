@@ -514,14 +514,14 @@ ARCHIVE_INTERFACE(IArchiveAllowTail, 0x05)
     { if (index >= ARRAY_SIZE(k)) return E_INVALIDARG; \
     *propID = k[index]; *varType = k7z_PROPID_To_VARTYPE[(unsigned)*propID];  *name = 0; return S_OK; } \
 
-#if !defined(__APPLE__)
+
 struct CStatProp
 {
   const char *Name;
   UInt32 PropID;
   VARTYPE vt;
 };
-#endif
+
 namespace NWindows {
 namespace NCOM {
 // PropVariant.cpp

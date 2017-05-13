@@ -1,7 +1,7 @@
 // DLLExports2.cpp
 
 #include "StdAfx.h"
-#include "DllExports2.h"
+
 #include "../../Common/MyWindows.h"
 
 #include "../../Common/MyInitGuid.h"

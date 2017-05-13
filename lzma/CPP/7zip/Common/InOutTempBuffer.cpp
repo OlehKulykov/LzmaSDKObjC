@@ -18,7 +18,7 @@ using namespace NDir;
 static const size_t kTempBufSize = (1 << 20);
 
 #if !defined(__APPLE__)
-static CFSTR kTempFilePrefixString = FTEXT("7zt");
+#define kTempFilePrefixString FTEXT("7zt")
 #endif
 
 CInOutTempBuffer::CInOutTempBuffer(): _buf(NULL) { }
@@ -45,8 +45,8 @@ void CInOutTempBuffer::InitWriting()
 bool CInOutTempBuffer::WriteToFile(const void *data, UInt32 size)
 {
 #if defined(__APPLE__)
-	assert(0);
-	return true;
+    assert(0);
+    return true;
 #else
   if (size == 0)
     return true;
@@ -87,8 +87,8 @@ bool CInOutTempBuffer::Write(const void *data, UInt32 size)
 HRESULT CInOutTempBuffer::WriteToStream(ISequentialOutStream *stream)
 {
 #if defined(__APPLE__)
-	assert(0);
-	return S_OK;
+    assert(0);
+    return S_OK;
 #else
   if (!_outFile.Close())
     return E_FAIL;

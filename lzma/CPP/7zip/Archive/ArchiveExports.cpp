@@ -10,15 +10,9 @@
 
 #include "../Common/RegisterArc.h"
 
-#if defined(LZMASDKOBJC_OMIT_UNUSED_CODE)
-static const uint8_t kNumArcsMax = 16;
-static uint8_t g_NumArcs = 0;
-static uint8_t g_DefaultArcIndex = 0;
-#else
 static const unsigned kNumArcsMax = 64;
 static unsigned g_NumArcs = 0;
 static unsigned g_DefaultArcIndex = 0;
-#endif
 static const CArcInfo *g_Arcs[kNumArcsMax];
 
 void RegisterArc(const CArcInfo *arcInfo) throw()

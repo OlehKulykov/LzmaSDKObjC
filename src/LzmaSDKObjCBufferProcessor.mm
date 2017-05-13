@@ -29,10 +29,23 @@
 #include "../lzma/C/Lzma2Dec.h"
 
 
-static void * LzmaSDKObjCBufferProcessorAlloc(size_t size) { return (size > 0) ? malloc(size) : NULL; }
-static void LzmaSDKObjCBufferProcessorFree(void *address) { if (address) free(address); }
-static void * LzmaSDKObjCBufferProcessorSzAlloc(void *p, size_t size) { return LzmaSDKObjCBufferProcessorAlloc(size); }
-static void LzmaSDKObjCBufferProcessorSzFree(void *p, void *address) { LzmaSDKObjCBufferProcessorFree(address); }
+static void * LzmaSDKObjCBufferProcessorAlloc(size_t size) {
+    return (size > 0) ? malloc(size) : NULL;
+}
+
+static void LzmaSDKObjCBufferProcessorFree(void *address) {
+    if (address) {
+        free(address);
+    }
+}
+
+static void * LzmaSDKObjCBufferProcessorSzAlloc(ISzAllocPtr p, size_t size) {
+    return LzmaSDKObjCBufferProcessorAlloc(size);
+}
+
+static void LzmaSDKObjCBufferProcessorSzFree(ISzAllocPtr p, void * address) {
+    LzmaSDKObjCBufferProcessorFree(address);
+}
 
 typedef struct _LzmaSDKObjCBufferProcessorReader : ISeqInStream {
 	const unsigned char * data;
@@ -45,13 +58,13 @@ typedef struct _LzmaSDKObjCBufferProcessorWriter : ISeqOutStream {
 } LzmaSDKObjCBufferProcessorWriter;
 
 
-static size_t LzmaSDKObjCBufferProcessorWrite(void *pp, const void *data, size_t size) {
+static size_t LzmaSDKObjCBufferProcessorWrite(const ISeqOutStream * pp, const void * data, size_t size) {
 	LzmaSDKObjCBufferProcessorWriter * p = (LzmaSDKObjCBufferProcessorWriter *)pp;
 	[p->data appendBytes:data length:size];
 	return size;
 }
 
-static SRes LzmaSDKObjCBufferProcessorRead(void *pp, void *data, size_t *size) {
+static SRes LzmaSDKObjCBufferProcessorRead(const ISeqInStream * pp, void * data, size_t * size) {
 	LzmaSDKObjCBufferProcessorReader * p = (LzmaSDKObjCBufferProcessorReader *)pp;
 	size_t sizeToRead = *size;
 	size_t avaiableSize = p->dataSize - p->offset;

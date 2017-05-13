@@ -22,7 +22,13 @@ class CRecordVector
     if (_size == _capacity)
     {
       unsigned newCapacity = _capacity + (_capacity >> 2) + 1;
+#if defined(__APPLE__)
       T *p = new T[newCapacity];
+#else
+      T *p;
+      MY_ARRAY_NEW(p, T, newCapacity);
+      // p = new T[newCapacity];
+#endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));
       delete []_items;
@@ -54,7 +60,12 @@ public:
   {
     if (size != 0)
     {
+#if defined(__APPLE__)
       _items = new T[size];
+#else
+      MY_ARRAY_NEW(_items, T, size)
+      // _items = new T[size];
+#endif
       _capacity = size;
     }
   }
@@ -63,7 +74,13 @@ public:
   {
     if (newCapacity > _capacity)
     {
+#if defined(__APPLE__)
       T *p = new T[newCapacity];
+#else
+      T *p;
+      MY_ARRAY_NEW(p, T, newCapacity);
+      // p = new T[newCapacity];
+#endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));
       delete []_items;
@@ -80,7 +97,12 @@ public:
       delete []_items;
       _items = NULL;
       _capacity = 0;
+#if defined(__APPLE__)
       _items = new T[newCapacity];
+#else
+      MY_ARRAY_NEW(_items, T, newCapacity)
+      // _items = new T[newCapacity];
+#endif
       _capacity = newCapacity;
     }
   }
@@ -95,7 +117,13 @@ public:
   {
     if (newSize > _capacity)
     {
+#if defined(__APPLE__)
       T *p = new T[newSize];
+#else
+      T *p;
+      MY_ARRAY_NEW(p, T, newSize)
+      // p = new T[newSize];
+#endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));
       delete []_items;
@@ -230,8 +258,8 @@ public:
         T& operator[](unsigned index)       { return _items[index]; }
   const T& Front() const { return _items[0]; }
         T& Front()       { return _items[0]; }
-  const T& Back() const  { return _items[_size - 1]; }
-        T& Back()        { return _items[_size - 1]; }
+  const T& Back() const  { return _items[(size_t)_size - 1]; }
+        T& Back()        { return _items[(size_t)_size - 1]; }
 
   /*
   void Swap(unsigned i, unsigned j)
@@ -370,7 +398,7 @@ public:
       unsigned s = (k << 1);
       if (s > size)
         break;
-      if (s < size && p[s + 1].Compare(p[s]) > 0)
+      if (s < size && p[(size_t)s + 1].Compare(p[s]) > 0)
         s++;
       if (temp.Compare(p[s]) >= 0)
         break;
@@ -453,8 +481,8 @@ public:
         T& operator[](unsigned index)       { return *((T *)_v[index]); }
   const T& Front() const { return operator[](0); }
         T& Front()       { return operator[](0); }
-  const T& Back() const  { return operator[](_v.Size() - 1); }
-        T& Back()        { return operator[](_v.Size() - 1); }
+  const T& Back() const  { return *(T *)_v.Back(); }
+        T& Back()        { return *(T *)_v.Back(); }
   
   void MoveToFront(unsigned index) { _v.MoveToFront(index); }
 
@@ -521,7 +549,7 @@ public:
 
   void DeleteBack()
   {
-    delete (T *)_v[_v.Size() - 1];
+    delete (T *)_v.Back();
     _v.DeleteBack();
   }
 

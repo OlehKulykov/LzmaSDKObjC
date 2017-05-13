@@ -12,9 +12,7 @@
 namespace NCompress {
 namespace NPpmd {
 
-#if !defined(__APPLE__)
 static const UInt32 kBufSize = (1 << 20);
-#endif
 
 static const Byte kOrders[10] = { 3, 4, 4, 5, 5, 6, 8, 16, 24, 32 };
 
@@ -45,7 +43,7 @@ CEncoder::CEncoder():
   _inBuf(NULL)
 {
   _props.Normalize(-1);
-  _rangeEnc.Stream = &_outStream.p;
+  _rangeEnc.Stream = &_outStream.vt;
   Ppmd7_Construct(&_ppmd);
 }
 
@@ -110,19 +108,11 @@ HRESULT CEncoder::Code(ISequentialInStream *inStream, ISequentialOutStream *outS
 {
   if (!_inBuf)
   {
-#if defined(__APPLE__)
-    _inBuf = (Byte *)::MidAlloc(kLzmaSDKObjCDecoderReadSize);
-#else
     _inBuf = (Byte *)::MidAlloc(kBufSize);
-#endif
     if (!_inBuf)
       return E_OUTOFMEMORY;
   }
-#if defined(__APPLE__)
-  if (!_outStream.Alloc(kLzmaSDKObjCDecoderWriteSize))
-#else
   if (!_outStream.Alloc(1 << 20))
-#endif
     return E_OUTOFMEMORY;
   if (!Ppmd7_Alloc(&_ppmd, _props.MemSize, &g_BigAlloc))
     return E_OUTOFMEMORY;
@@ -137,11 +127,7 @@ HRESULT CEncoder::Code(ISequentialInStream *inStream, ISequentialOutStream *outS
   for (;;)
   {
     UInt32 size;
-#if defined(__APPLE__)
-    RINOK(inStream->Read(_inBuf, kLzmaSDKObjCDecoderReadSize, &size));
-#else
     RINOK(inStream->Read(_inBuf, kBufSize, &size));
-#endif
     if (size == 0)
     {
       // We don't write EndMark in PPMD-7z.
