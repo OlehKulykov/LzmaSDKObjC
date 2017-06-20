@@ -61,10 +61,14 @@ typedef unsigned short UInt16;
 
 #ifdef _LZMA_UINT32_IS_ULONG
 typedef long Int32;
+#if !defined(__MACTYPES__) && !defined(__COREFOUNDATION_COREFOUNDATION__)
 typedef unsigned long UInt32;
+#endif
 #else
 typedef int Int32;
+#if !defined(__MACTYPES__) && !defined(__COREFOUNDATION_COREFOUNDATION__)
 typedef unsigned int UInt32;
+#endif
 #endif
 
 #ifdef _SZ_NO_INT_64
