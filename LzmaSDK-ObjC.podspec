@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.13"
+  s.version          = "2.0.14"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
@@ -167,6 +167,4 @@ The main advantages is:
 
   s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
   s.libraries    = 'stdc++'
-  # s.frameworks = 'UIKit'
-  s.dependency 'Inlineobjc'
 end

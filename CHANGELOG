@@ -1,16 +1,19 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
-Changes on version 2.0.13 (current):
-- Added all default (de)coders.
+Changes on version 2.0.14 (current):
+- Update C++ source to version 17.00 (1700 - latest for now).
+
+Changes on version 2.0.13:
+- Add all default (de)coders.
 
 Changes on version 2.0.12:
 - Add BCJ2 and PPMdH (de)coders.
 
 Changes on version 2.0.10:
-- Update C++ source to version 16.04 (1604 - latest for now).
+- Update C++ source to version 16.04.
 
 Changes on version 2.0.9:
-- Update C++ source to version 16.03 (1603 - latest for now).
+- Update C++ source to version 16.03.
 
 Changes on version 2.0.8:
 - Fix Cocoapod script.
@@ -36,17 +39,17 @@ Changes on version 2.0.0:
 - 7z archive writer.
 
 Changes on version 1.1.5:
-- Added error possible failure reason description.
+- Add error possible failure reason description.
   Use `NSLocalizedFailureReasonErrorKey` to get possible failure string.
 
 Changes on version 1.1.4:
-- Update C++ source to version 16.02 (1602 - latest for now).
+- Update C++ source to version 16.02.
 
 Changes on version 1.1.3:
 - Update C++ source to version 16.00.
 
 Changes on version 1.1.2:
-- Added functionality for compress/decompress single `NSData` buffer object with LZMA2.
+- Add functionality for compress/decompress single `NSData` buffer object with LZMA2.
 
 Changes on version 1.0.7:
 -  Fix Undefined value access.

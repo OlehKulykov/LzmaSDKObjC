@@ -94,25 +94,21 @@ namespace LzmaSDKObjC {
 		if (_isFullPath) {
 			NSString * subPath = [archivePath stringByDeletingLastPathComponent];
 			if (subPath && [subPath length] > 0) {
-				NSFileManager * manager = [[NSFileManager alloc] init];
-				if (![manager changeCurrentDirectoryPath:fullPath]) {
-					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't change current directory to: [%s]", [fullPath UTF8String]);
-					return E_ABORT;
-				}
-
+                NSString * fullSubPath = [fullPath stringByAppendingPathComponent:subPath];
+				NSFileManager * manager = [NSFileManager defaultManager];
 				BOOL isDir = NO;
 				NSError * error = nil;
-				if ([manager fileExistsAtPath:subPath isDirectory:&isDir]) {
+				if ([manager fileExistsAtPath:fullSubPath isDirectory:&isDir]) {
 					if (!isDir) {
 						this->setLastError(E_ABORT, __LINE__, __FILE__, "Destination path: [%s] exists in directory: [%s] and it's file", [subPath UTF8String], [fullPath UTF8String]);
 						return E_ABORT;
 					}
-				} else if (![manager createDirectoryAtPath:subPath withIntermediateDirectories:YES attributes:nil error:&error] || error) {
+				} else if (![manager createDirectoryAtPath:fullSubPath withIntermediateDirectories:YES attributes:nil error:&error] || error) {
 					this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't create subdirectory: [%s] in directory: [%s]", [subPath UTF8String], [fullPath UTF8String]);
 					return E_ABORT;
 				}
 
-				fullPath = [fullPath stringByAppendingPathComponent:subPath];
+				fullPath = fullSubPath;
 			}
 		}
 
@@ -264,7 +260,7 @@ namespace LzmaSDKObjC {
 
 		NSString * path = [NSString stringWithUTF8String:extractPath];
 
-		NSFileManager * manager = [[NSFileManager alloc] init];
+		NSFileManager * manager = [NSFileManager defaultManager];
 		BOOL isDir = NO;
 		if ([manager fileExistsAtPath:path isDirectory:&isDir]) {
 			if (!isDir) {

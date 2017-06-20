@@ -138,7 +138,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 	return NO;
 }
 
-- (BOOL) process:(NSArray<LzmaSDKObjCItem *> *) items
+- (BOOL) process:(nullable NSArray<LzmaSDKObjCItem *> *) items
 		  toPath:(const char *) path
    withFullPaths:(BOOL) isFullPaths {
 	const uint32_t count = items ? (uint32_t)[items count] : 0;
@@ -223,14 +223,14 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 #if defined(DEBUG) || defined(_DEBUG)
-- (nullable id) init {
+- (nullable instancetype) init {
 	LZMASDK_DEBUG_ERR("Reader can't be initialized with `init`, use 'initWithFileURL' instead");
 	NSAssert(0, @"Use 'initWithFileURL' instead");
 	return nil;
 }
 #endif
 
-- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL {
+- (nonnull instancetype) initWithFileURL:(nonnull NSURL *) fileURL {
 	self = [super init];
 	if (self) {
 		NSParameterAssert(fileURL);
@@ -244,7 +244,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 	return self;
 }
 
-- (nonnull id) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type {
+- (nonnull instancetype) initWithFileURL:(nonnull NSURL *) fileURL andType:(LzmaSDKObjCFileType) type {
 	self = [super init];
 	if (self) {
 		NSParameterAssert(fileURL);
