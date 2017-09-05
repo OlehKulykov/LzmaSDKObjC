@@ -1,7 +1,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![Version](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![License](https://img.shields.io/cocoapods/l/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
-[![Build Status](https://travis-ci.org/OlehKulykov/LzmaSDKObjC.svg?branch=master)](https://travis-ci.org/OlehKulykov/LzmaSDKObjC)
 [![OnlineDocumentation Status](https://img.shields.io/badge/online%20documentation-generated-brightgreen.svg)](http://cocoadocs.org/docsets/LzmaSDK-ObjC)
 
 
