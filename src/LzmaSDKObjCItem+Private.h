@@ -34,6 +34,7 @@
 	__strong NSString * _path;
 	
 	uint64_t _orgSize;
+    uint64_t _packedSize;
 	uint32_t _index;
 	uint32_t _crc;
 	time_t _cDate;

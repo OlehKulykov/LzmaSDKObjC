@@ -98,11 +98,14 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 				if (item) {
 					item->_index = _decoder->iteratorIndex();
 					item->_orgSize = LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
-                    memset(&prop, 0, sizeof(PROPVARIANT));
 
 					if (name.vt == VT_BSTR && name.bstrVal)
 						item->_path = [[NSString alloc] initWithBytes:name.bstrVal length:sizeof(wchar_t) * wcslen(name.bstrVal) encoding:NSUTF32LittleEndianStringEncoding];
 
+                    memset(&prop, 0, sizeof(PROPVARIANT));
+                    if (_decoder->readIteratorProperty(&prop, kpidPackSize))
+                        item->_packedSize = LzmaSDKObjC::Common::PROPVARIANTGetUInt64(&prop);
+                    
 					memset(&prop, 0, sizeof(PROPVARIANT));
 					if (_decoder->readIteratorProperty(&prop, kpidCTime))
 						if (prop.vt == VT_FILETIME) item->_cDate = LzmaSDKObjC::Common::FILETIMEToUnixTime(prop.filetime);

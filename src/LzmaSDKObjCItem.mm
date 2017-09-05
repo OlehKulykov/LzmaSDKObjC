@@ -30,6 +30,10 @@
 	return _orgSize;
 }
 
+- (unsigned long long) packedSize {
+    return _packedSize;
+}
+
 - (NSUInteger) crc32 {
 	return _crc;
 }
@@ -74,9 +78,10 @@
 
 #if defined(DEBUG) || defined(_DEBUG)
 - (NSString *) debugDescription {
-	return [NSString stringWithFormat:@"[\npath=%@\nsize=%llu\nmodf.date=%@\ncret.date=%@\naccs.date=%@\nencrypted=%@\nCRC=%u\ndirectory=%@\n]",
+	return [NSString stringWithFormat:@"[\npath=%@\nsize=%llu\npacked size=%llu\nmodf.date=%@\ncret.date=%@\naccs.date=%@\nencrypted=%@\nCRC=%u\ndirectory=%@\n]",
 			_path,
 			_orgSize,
+            _packedSize,
 			self.modificationDate,
 			self.creationDate,
 			self.accessDate,

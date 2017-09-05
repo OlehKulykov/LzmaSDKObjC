@@ -37,6 +37,12 @@
 
 
 /**
+ @brief Getter for packed file size.
+ */
+@property (nonatomic, assign, readonly) unsigned long long packedSize;
+
+
+/**
  @bief Item CRC32 if available.
  */
 @property (nonatomic, assign, readonly) NSUInteger crc32;

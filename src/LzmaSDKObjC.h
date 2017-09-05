@@ -28,7 +28,10 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.0.16 (current):
+ *   Changes on version 2.0.17 (current):
+ *   - Add packed size property to reader items.
+ *
+ *   Changes on version 2.0.16:
  *   - Update C++ source to version 17.01.
  *   - Extract only selected archive items in case of solid archive.
  *
@@ -152,7 +155,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 16
+#define LZMASDKOBJC_VERSION_PATCH 17
 
 
 #import "LzmaSDKObjCTypes.h"
