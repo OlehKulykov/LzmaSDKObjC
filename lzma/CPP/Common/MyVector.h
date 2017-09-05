@@ -23,11 +23,11 @@ class CRecordVector
     {
       unsigned newCapacity = _capacity + (_capacity >> 2) + 1;
 #if defined(__APPLE__)
-      T *p = new T[newCapacity];
+        T *p = new T[newCapacity];
 #else
-      T *p;
-      MY_ARRAY_NEW(p, T, newCapacity);
-      // p = new T[newCapacity];
+        T *p;
+        MY_ARRAY_NEW(p, T, newCapacity);
+        // p = new T[newCapacity];
 #endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));
@@ -61,10 +61,10 @@ public:
     if (size != 0)
     {
 #if defined(__APPLE__)
-      _items = new T[size];
+        _items = new T[size];
 #else
-      MY_ARRAY_NEW(_items, T, size)
-      // _items = new T[size];
+        MY_ARRAY_NEW(_items, T, size)
+        // _items = new T[size];
 #endif
       _capacity = size;
     }
@@ -75,11 +75,11 @@ public:
     if (newCapacity > _capacity)
     {
 #if defined(__APPLE__)
-      T *p = new T[newCapacity];
+        T *p = new T[newCapacity];
 #else
-      T *p;
-      MY_ARRAY_NEW(p, T, newCapacity);
-      // p = new T[newCapacity];
+        T *p;
+        MY_ARRAY_NEW(p, T, newCapacity);
+        // p = new T[newCapacity];
 #endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));
@@ -98,10 +98,10 @@ public:
       _items = NULL;
       _capacity = 0;
 #if defined(__APPLE__)
-      _items = new T[newCapacity];
+        _items = new T[newCapacity];
 #else
-      MY_ARRAY_NEW(_items, T, newCapacity)
-      // _items = new T[newCapacity];
+        MY_ARRAY_NEW(_items, T, newCapacity)
+        // _items = new T[newCapacity];
 #endif
       _capacity = newCapacity;
     }
@@ -118,11 +118,11 @@ public:
     if (newSize > _capacity)
     {
 #if defined(__APPLE__)
-      T *p = new T[newSize];
+        T *p = new T[newSize];
 #else
-      T *p;
-      MY_ARRAY_NEW(p, T, newSize)
-      // p = new T[newSize];
+        T *p;
+        MY_ARRAY_NEW(p, T, newSize)
+        // p = new T[newSize];
 #endif
       if (_size != 0)
         memcpy(p, _items, (size_t)_size * sizeof(T));

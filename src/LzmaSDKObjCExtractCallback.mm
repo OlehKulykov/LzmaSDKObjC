@@ -70,7 +70,8 @@ namespace LzmaSDKObjC {
 	}
 
 	HRESULT ExtractCallback::getExtractStream(uint32_t index, ISequentialOutStream **outStream) {
-		NWindows::NCOM::CPropVariant pathProp;
+		PROPVARIANT pathProp;
+        memset(&pathProp, 0, sizeof(PROPVARIANT));
 		if (_archive->GetProperty(index, kpidPath, &pathProp) != S_OK) {
 			this->setLastError(E_ABORT, __LINE__, __FILE__, "Can't read path property by index: %i", (int)index);
 			return E_ABORT;
@@ -162,6 +163,14 @@ namespace LzmaSDKObjC {
 			return E_ABORT;
 		}
 
+        if (_itemsIndices) {
+            uint32_t key = index;
+            uint32_t * indexPtr = (uint32_t *)bsearch(&key, _itemsIndices, _itemsIndicesCount, sizeof(uint32_t), LzmaSDKObjC::Common::compareIndices);
+            if (!indexPtr) {
+                return S_OK;
+            }
+        }
+        
 		switch (_mode) {
 			case NArchive::NExtract::NAskMode::kExtract:
 				return this->getExtractStream(index, outStream);
@@ -253,7 +262,7 @@ namespace LzmaSDKObjC {
 		}
 		return S_OK;
 	}
-
+    
 	bool ExtractCallback::prepare(const char * extractPath, bool isFullPath) {
 		_dstPath = extractPath;
 		_isFullPath = isFullPath;
@@ -282,7 +291,9 @@ namespace LzmaSDKObjC {
 		_outFileStreamRef(NULL),
 		_coder(NULL),
 		_archive(NULL),
+        _itemsIndices(NULL),
 		_total(0),
+        _itemsIndicesCount(0),
 		_mode(NArchive::NExtract::NAskMode::kSkip),
 		_isFullPath(false) {
 

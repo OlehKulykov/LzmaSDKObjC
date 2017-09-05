@@ -151,6 +151,9 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 			for (LzmaSDKObjCItem * item in items) itemsIndices[index++] = item->_index;
 			_decoder->context = (__bridge void *)self;
 			_decoder->setFloatCallback2 = _LzmaSDKObjCReaderSetFloatCallback;
+            if (_decoder->isSolidArchive()) {
+                qsort(itemsIndices, count, sizeof(uint32_t), LzmaSDKObjC::Common::compareIndices);
+            }
 			if (_decoder->process(itemsIndices, count, path, path ? (bool)isFullPaths : false)) isOK = YES;
 			free(itemsIndices);
 		} else {

@@ -91,4 +91,10 @@ namespace LzmaSDKObjC {
 		FT.dwHighDateTime = (DWORD)(ll >> 32);
 		return FT;
 	}
+    
+    int Common::compareIndices(const void * a, const void * b) {
+        if ( *(uint32_t*)a < *(uint32_t*)b ) return -1;
+        else if ( *(uint32_t*)a > *(uint32_t*)b ) return 1;
+        return 0;
+    }
 }

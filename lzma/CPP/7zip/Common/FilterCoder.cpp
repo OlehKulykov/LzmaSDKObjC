@@ -18,6 +18,7 @@
   So the encoder and decoder write such last bytes without change.
 */
 
+
 #if !defined(__APPLE__)
 static const UInt32 kBufSize = 1 << 20;
 #endif

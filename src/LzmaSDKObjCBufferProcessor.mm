@@ -112,10 +112,14 @@ NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompr
 	inStream.dataSize = dataSize;
 	inStream.Read = LzmaSDKObjCBufferProcessorRead;
 
-	res = Lzma2Enc_Encode(handle,
-						  (ISeqOutStream *)&outStream,
-						  (ISeqInStream *)&inStream,
-						  NULL);
+    res = Lzma2Enc_Encode2(handle,
+                           (ISeqOutStream *)&outStream,
+                           NULL,
+                           NULL,
+                           (ISeqInStream *)&inStream,
+                           NULL,
+                           0,
+                           NULL);
 
 	Lzma2Enc_Destroy(handle);
 	return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;

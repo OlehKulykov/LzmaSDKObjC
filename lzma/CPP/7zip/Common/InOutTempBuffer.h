@@ -17,10 +17,10 @@
 class CInOutTempBuffer
 {
 #if defined(__APPLE__)
-  NC::NFile::NIO::COutFile _outFile;
+    NC::NFile::NIO::COutFile _outFile;
 #else
-  NWindows::NFile::NDir::CTempFile _tempFile;
-  NWindows::NFile::NIO::COutFile _outFile;
+    NWindows::NFile::NDir::CTempFile _tempFile;
+    NWindows::NFile::NIO::COutFile _outFile;
 #endif
   Byte *_buf;
   size_t _bufPos;

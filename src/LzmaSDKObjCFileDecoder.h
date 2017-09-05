@@ -49,11 +49,12 @@ namespace LzmaSDKObjC {
 
 		uint32_t _itemsCount;
 		uint32_t _iterateIndex;
-
+        
 		void cleanOpenCallbackRef();
 		void cleanExtractCallbackRef();
 
 	public:
+        bool isSolidArchive() const;
 		uint32_t itemsCount() const;
 		void iterateStart();
 		bool iterateNext();

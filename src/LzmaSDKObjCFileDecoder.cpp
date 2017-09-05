@@ -74,9 +74,15 @@ namespace LzmaSDKObjC {
 		_extractCallbackRef->setCoder(this);
 		_extractCallbackRef->setArchive(_archive);
 		_extractCallbackRef->setMode(mode);
-
+        if (this->isSolidArchive()) {
+            _extractCallbackRef->setItemsIndices(itemsIndices, itemsCount);
+        } else {
+            _extractCallbackRef->setItemsIndices(NULL, 0);
+        }
+        
 		const HRESULT result = _archive->Extract(itemsIndices, itemsCount, mode, _extractCallback);
 		_extractCallbackRef->setArchive(NULL);
+        _extractCallbackRef->setItemsIndices(NULL, 0);
 
 		if (result != S_OK) {
 			this->setLastError(result, __LINE__, __FILE__, "Archive extract error with result: %lli", (long long)result);
@@ -140,7 +146,18 @@ namespace LzmaSDKObjC {
 		this->setLastError(res, __LINE__, __FILE__, "Can't open archive file with result: %lli", (long long)res);
 		return false;
 	}
-
+    
+    bool FileDecoder::isSolidArchive() const {
+        if (_archive != NULL) {
+            PROPVARIANT solidProp;
+            memset(&solidProp, 0, sizeof(PROPVARIANT));
+            if (_archive->GetArchiveProperty(kpidSolid, &solidProp) == S_OK) {
+                return Common::PROPVARIANTGetBool(&solidProp);
+            }
+        }
+        return false;
+    }
+    
 	uint32_t FileDecoder::itemsCount() const { return _itemsCount; }
 	void FileDecoder::iterateStart() { _iterateIndex = 0; }
 	bool FileDecoder::iterateNext() { return (++_iterateIndex < _itemsCount); }

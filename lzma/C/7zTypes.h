@@ -1,5 +1,5 @@
 /* 7zTypes.h -- Basic types
-2017-04-03 : Igor Pavlov : Public domain */
+2017-07-17 : Igor Pavlov : Public domain */
 
 #ifndef __7Z_TYPES_H
 #define __7Z_TYPES_H
@@ -43,13 +43,23 @@ EXTERN_C_BEGIN
 #define SZ_ERROR_NO_ARCHIVE 17
 
 typedef int SRes;
+typedef int32_t HRESULT;
 
 #ifdef _WIN32
+
 /* typedef DWORD WRes; */
 typedef unsigned WRes;
+#define MY_SRes_HRESULT_FROM_WRes(x) HRESULT_FROM_WIN32(x)
+
 #else
+
 typedef int WRes;
+#define MY__FACILITY_WIN32 7
+#define MY__FACILITY__WRes MY__FACILITY_WIN32
+#define MY_SRes_HRESULT_FROM_WRes(x) ((HRESULT)(x) <= 0 ? ((HRESULT)(x)) : ((HRESULT) (((x) & 0x0000FFFF) | (MY__FACILITY__WRes << 16) | 0x80000000)))
+
 #endif
+
 
 #ifndef RINOK
 #define RINOK(x) { int __result__ = (x); if (__result__ != 0) return __result__; }
@@ -61,14 +71,10 @@ typedef unsigned short UInt16;
 
 #ifdef _LZMA_UINT32_IS_ULONG
 typedef long Int32;
-#if !defined(__MACTYPES__) && !defined(__COREFOUNDATION_COREFOUNDATION__)
 typedef unsigned long UInt32;
-#endif
 #else
 typedef int Int32;
-#if !defined(__MACTYPES__) && !defined(__COREFOUNDATION_COREFOUNDATION__)
 typedef unsigned int UInt32;
-#endif
 #endif
 
 #ifdef _SZ_NO_INT_64

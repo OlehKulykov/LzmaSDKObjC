@@ -49,6 +49,8 @@ namespace LzmaSDKObjC {
 		static time_t FILETIMEToUnixTime(const FILETIME filetime);
 
 		static FILETIME UnixTimeToFILETIME(const time_t t);
+        
+        static int compareIndices(const void * a, const void * b);
 	};
 }
 

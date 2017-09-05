@@ -15,9 +15,9 @@ HRESULT ReadStream(ISequentialInStream *stream, void *data, size_t *processedSiz
   while (size != 0)
   {
 #if defined(__APPLE__)
-    const UInt32 curSize = (size < kLzmaSDKObjCStreamReadSize) ? (UInt32)size : kLzmaSDKObjCStreamReadSize;
+      const UInt32 curSize = (size < kLzmaSDKObjCStreamReadSize) ? (UInt32)size : kLzmaSDKObjCStreamReadSize;
 #else
-    UInt32 curSize = (size < kBlockSize) ? (UInt32)size : kBlockSize;
+      UInt32 curSize = (size < kBlockSize) ? (UInt32)size : kBlockSize;
 #endif
     UInt32 processedSizeLoc;
     HRESULT res = stream->Read(data, curSize, &processedSizeLoc);
@@ -50,9 +50,9 @@ HRESULT WriteStream(ISequentialOutStream *stream, const void *data, size_t size)
   while (size != 0)
   {
 #if defined(__APPLE__)
-    const UInt32 curSize = (size < kLzmaSDKObjCStreamWriteSize) ? (UInt32)size : kLzmaSDKObjCStreamWriteSize;
+      const UInt32 curSize = (size < kLzmaSDKObjCStreamWriteSize) ? (UInt32)size : kLzmaSDKObjCStreamWriteSize;
 #else
-    UInt32 curSize = (size < kBlockSize) ? (UInt32)size : kBlockSize;
+      UInt32 curSize = (size < kBlockSize) ? (UInt32)size : kBlockSize;
 #endif
     UInt32 processedSizeLoc;
     HRESULT res = stream->Write(data, curSize, &processedSizeLoc);

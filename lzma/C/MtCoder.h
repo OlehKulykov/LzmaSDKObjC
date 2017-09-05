@@ -1,5 +1,5 @@
 /* MtCoder.h -- Multi-thread Coder
-2017-04-03 : Igor Pavlov : Public domain */
+ 2017-04-03 : Igor Pavlov : Public domain */
 
 #ifndef __MT_CODER_H
 #define __MT_CODER_H
@@ -10,14 +10,14 @@ EXTERN_C_BEGIN
 
 typedef struct
 {
-  CThread thread;
-  CAutoResetEvent startEvent;
-  CAutoResetEvent finishedEvent;
-  int stop;
-  
-  THREAD_FUNC_TYPE func;
-  LPVOID param;
-  THREAD_FUNC_RET_TYPE res;
+    CThread thread;
+    CAutoResetEvent startEvent;
+    CAutoResetEvent finishedEvent;
+    int stop;
+    
+    THREAD_FUNC_TYPE func;
+    LPVOID param;
+    THREAD_FUNC_RET_TYPE res;
 } CLoopThread;
 
 void LoopThread_Construct(CLoopThread *p);
@@ -35,13 +35,13 @@ WRes LoopThread_WaitSubThread(CLoopThread *p);
 
 typedef struct
 {
-  UInt64 totalInSize;
-  UInt64 totalOutSize;
-  ICompressProgress *progress;
-  SRes res;
-  CCriticalSection cs;
-  UInt64 inSizes[NUM_MT_CODER_THREADS_MAX];
-  UInt64 outSizes[NUM_MT_CODER_THREADS_MAX];
+    UInt64 totalInSize;
+    UInt64 totalOutSize;
+    ICompressProgress *progress;
+    SRes res;
+    CCriticalSection cs;
+    UInt64 inSizes[NUM_MT_CODER_THREADS_MAX];
+    UInt64 outSizes[NUM_MT_CODER_THREADS_MAX];
 } CMtProgress;
 
 SRes MtProgress_Set(CMtProgress *p, unsigned index, UInt64 inSize, UInt64 outSize);
@@ -50,47 +50,47 @@ struct _CMtCoder;
 
 typedef struct
 {
-  struct _CMtCoder *mtCoder;
-  Byte *outBuf;
-  size_t outBufSize;
-  Byte *inBuf;
-  size_t inBufSize;
-  unsigned index;
-  CLoopThread thread;
-
-  Bool stopReading;
-  Bool stopWriting;
-  CAutoResetEvent canRead;
-  CAutoResetEvent canWrite;
+    struct _CMtCoder *mtCoder;
+    Byte *outBuf;
+    size_t outBufSize;
+    Byte *inBuf;
+    size_t inBufSize;
+    unsigned index;
+    CLoopThread thread;
+    
+    Bool stopReading;
+    Bool stopWriting;
+    CAutoResetEvent canRead;
+    CAutoResetEvent canWrite;
 } CMtThread;
 
 
 typedef struct IMtCoderCallback IMtCoderCallback;
 struct IMtCoderCallback
 {
-  SRes (*Code)(const IMtCoderCallback *p, unsigned index, Byte *dest, size_t *destSize,
-      const Byte *src, size_t srcSize, int finished);
+    SRes (*Code)(const IMtCoderCallback *p, unsigned index, Byte *dest, size_t *destSize,
+                 const Byte *src, size_t srcSize, int finished);
 };
 #define IMtCoderCallback_Code(p, index, dest, destSize, src, srcSize, finished) (p)->Code(p, index, dest, destSize, src, srcSize, finished)
 
 
 typedef struct _CMtCoder
 {
-  size_t blockSize;
-  size_t destBlockSize;
-  unsigned numThreads;
-  
-  ISeqInStream *inStream;
-  ISeqOutStream *outStream;
-  ICompressProgress *progress;
-  ISzAllocPtr alloc;
-
-  IMtCoderCallback *mtCallback;
-  CCriticalSection cs;
-  SRes res;
-
-  CMtProgress mtProgress;
-  CMtThread threads[NUM_MT_CODER_THREADS_MAX];
+    size_t blockSize;
+    size_t destBlockSize;
+    unsigned numThreads;
+    
+    ISeqInStream *inStream;
+    ISeqOutStream *outStream;
+    ICompressProgress *progress;
+    ISzAllocPtr alloc;
+    
+    IMtCoderCallback *mtCallback;
+    CCriticalSection cs;
+    SRes res;
+    
+    CMtProgress mtProgress;
+    CMtThread threads[NUM_MT_CODER_THREADS_MAX];
 } CMtCoder;
 
 void MtCoder_Construct(CMtCoder* p);

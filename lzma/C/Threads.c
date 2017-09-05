@@ -1,5 +1,5 @@
 /* Threads.c -- multithreading library
-2014-09-21 : Igor Pavlov : Public domain */
+ 2014-09-21 : Igor Pavlov : Public domain */
 
 // Replaced content
 

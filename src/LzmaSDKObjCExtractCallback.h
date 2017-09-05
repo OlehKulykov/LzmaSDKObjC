@@ -36,54 +36,55 @@
 #include "LzmaSDKObjCOutFile.h"
 
 namespace LzmaSDKObjC {
-	
-	class ExtractCallback :
-		public IArchiveExtractCallback,
-		public IArchiveExtractCallbackMessage,
-		public ICryptoGetTextPassword,
-		public ICryptoGetTextPassword2,
-		public ICompressProgressInfo,
-		public CMyUnknownImp,
-		public LzmaSDKObjC::LastErrorHolder {
-	private:
-		LzmaSDKObjC::OutFile * _outFileStreamRef;
-		LzmaSDKObjC::BaseCoder * _coder;
-		IInArchive * _archive;
-		CMyComPtr<ISequentialOutStream> _outFileStream;
-
-		AString _dstPath;
-		uint64_t _total;
-		int32_t _mode;
-		bool _isFullPath;
-
-
-		HRESULT getTestStream(uint32_t index, ISequentialOutStream **outStream);
-		HRESULT getExtractStream(uint32_t index, ISequentialOutStream **outStream);
-
-	public:
-		MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)
-
-		INTERFACE_IArchiveExtractCallback(;)
-		INTERFACE_IArchiveExtractCallbackMessage(;)
-
-		STDMETHOD(SetRatioInfo)(const UInt64 *inSize, const UInt64 *outSize);
-
-		// ICryptoGetTextPassword
-		STDMETHOD(CryptoGetTextPassword)(BSTR *password);
-
-		// ICryptoGetTextPassword2
-		STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
-
-		void setCoder(LzmaSDKObjC::BaseCoder * coder) { _coder = coder; }
-		void setArchive(IInArchive * a) { _archive = a; }
-		void setMode(int32_t mode) { _mode = mode; }
-
-		bool prepare(const char * extractPath, bool isFullPath);
-
-		ExtractCallback();
-		virtual ~ExtractCallback();
-	};
-	
+    
+    class ExtractCallback :
+        public IArchiveExtractCallback,
+        public IArchiveExtractCallbackMessage,
+        public ICryptoGetTextPassword,
+        public ICryptoGetTextPassword2,
+        public ICompressProgressInfo,
+        public CMyUnknownImp,
+        public LzmaSDKObjC::LastErrorHolder {
+    private:
+        LzmaSDKObjC::OutFile * _outFileStreamRef;
+        LzmaSDKObjC::BaseCoder * _coder;
+        IInArchive * _archive;
+        const uint32_t * _itemsIndices;
+        CMyComPtr<ISequentialOutStream> _outFileStream;
+        
+        AString _dstPath;
+        uint64_t _total;
+        uint32_t _itemsIndicesCount;
+        int32_t _mode;
+        bool _isFullPath;
+        
+        HRESULT getTestStream(uint32_t index, ISequentialOutStream **outStream);
+        HRESULT getExtractStream(uint32_t index, ISequentialOutStream **outStream);
+        
+    public:
+        MY_UNKNOWN_IMP4(IArchiveExtractCallbackMessage, ICryptoGetTextPassword, ICryptoGetTextPassword2, ICompressProgressInfo)
+        
+        INTERFACE_IArchiveExtractCallback(;)
+        INTERFACE_IArchiveExtractCallbackMessage(;)
+        
+        STDMETHOD(SetRatioInfo)(const UInt64 *inSize, const UInt64 *outSize);
+        
+        // ICryptoGetTextPassword
+        STDMETHOD(CryptoGetTextPassword)(BSTR *password);
+        
+        // ICryptoGetTextPassword2
+        STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
+        
+        void setCoder(LzmaSDKObjC::BaseCoder * coder) { _coder = coder; }
+        void setArchive(IInArchive * a) { _archive = a; }
+        void setMode(int32_t mode) { _mode = mode; }
+        void setItemsIndices(const uint32_t * indices, const uint32_t count) { _itemsIndices = indices; _itemsIndicesCount = count; }
+        bool prepare(const char * extractPath, bool isFullPath);
+        
+        ExtractCallback();
+        virtual ~ExtractCallback();
+    };
+    
 }
 
 #endif 

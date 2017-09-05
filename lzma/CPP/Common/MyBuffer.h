@@ -146,10 +146,10 @@ public:
     if (size != 0)
     {
 #if defined(__APPLE__)
-      _items = new T[size];
+        _items = new T[size];
 #else
-      MY_ARRAY_NEW(_items, T, size)
-      // _items = new T[size];
+        MY_ARRAY_NEW(_items, T, size)
+        // _items = new T[size];
 #endif
     }
   }
@@ -164,10 +164,10 @@ public:
     delete []_items;
     _items = 0;
 #if defined(__APPLE__)
-    _items = new T[newSize];
+      _items = new T[newSize];
 #else
-    MY_ARRAY_NEW(_items, T, newSize)
-    // _items = new T[newSize];
+      MY_ARRAY_NEW(_items, T, newSize)
+      // _items = new T[newSize];
 #endif
   }
 };
@@ -238,10 +238,10 @@ public:
     if (size != 0)
     {
 #if defined(__APPLE__)
-      newBuffer = new T[size];
+        newBuffer = new T[size];
 #else
-      MY_ARRAY_NEW(newBuffer, T, size)
-      // newBuffer = new T[size];
+        MY_ARRAY_NEW(newBuffer, T, size)
+        // newBuffer = new T[size];
 #endif
     }
     delete []_items;

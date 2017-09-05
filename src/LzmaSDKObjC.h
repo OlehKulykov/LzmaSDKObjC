@@ -28,8 +28,12 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.0.14 (current):
- *   - Update C++ source to version 17.00 (1700 - latest for now).
+ *   Changes on version 2.0.15 (current):
+ *   - Update C++ source to version 17.01.
+ *   - Extract only selected archive items in case of solid archive.
+ *
+ *   Changes on version 2.0.14:
+ *   - Update C++ source to version 17.00.
  *
  *   Changes on version 2.0.13:
  *   - Add all default (de)coders.
@@ -47,8 +51,8 @@
  *   - Fix Cocoapod script.
  *
  *   Changes on version 2.0.5:
- *   - Omin some unused code.
- *   - Disable Unicode, used UTF8 instead.
+ *   - Remove unused code.
+ *   - Use UTF8 instead of Unicode.
  *
  *   Changes on version 2.0.3:
  *   - Remove redurant string conversion code.
@@ -148,7 +152,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 14
+#define LZMASDKOBJC_VERSION_PATCH 15
 
 
 #import "LzmaSDKObjCTypes.h"
