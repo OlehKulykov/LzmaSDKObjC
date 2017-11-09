@@ -16,8 +16,6 @@ let packages = Package(
             name: "LzmaSDKObjC",
             path:".",
             sources: ["src", "lmza"],
-            publicHeadersPath: "src/include")
+            publicHeadersPath: "src")
     ]
 )
-
-
