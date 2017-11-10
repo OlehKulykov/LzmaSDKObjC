@@ -9,7 +9,7 @@
 #include "MyWindows.h"
 
 #if defined(__APPLE__)
-#include "Synchronization.h"
+#include "../Windows/Synchronization.h" 
 #endif
 
 static inline void *AllocateForBSTR(size_t cb) { return ::malloc(cb); }
@@ -17,11 +17,11 @@ static inline void FreeForBSTR(void *pv) { ::free(pv);}
 
 /* Win32 uses DWORD (32-bit) type to store size of string before (OLECHAR *) string.
  We must select CBstrSizeType for another systems (not Win32):
- 
+
  if (CBstrSizeType is UINT32),
  then we support only strings smaller than 4 GB.
  Win32 version always has that limitation.
- 
+
  if (CBstrSizeType is UINT),
  (UINT can be 16/32/64-bit)
  We can support strings larger than 4 GB (if UINT is 64-bit),
@@ -41,10 +41,10 @@ BSTR SysAllocStringByteLen(LPCSTR s, UINT len)
 {
     /* Original SysAllocStringByteLen in Win32 maybe fills only unaligned null OLECHAR at the end.
      We provide also aligned null OLECHAR at the end. */
-    
+
     if (len >= (k_BstrSize_Max - sizeof(OLECHAR) - sizeof(OLECHAR) - sizeof(CBstrSizeType)))
         return NULL;
-    
+
     UINT size = (len + sizeof(OLECHAR) + sizeof(OLECHAR) - 1) & ~(sizeof(OLECHAR) - 1);
     void *p = AllocateForBSTR(size + sizeof(CBstrSizeType));
     if (!p)
@@ -62,7 +62,7 @@ BSTR SysAllocStringLen(const OLECHAR *s, UINT len)
 {
     if (len >= (k_BstrSize_Max - sizeof(OLECHAR) - sizeof(CBstrSizeType)) / sizeof(OLECHAR))
         return NULL;
-    
+
     UINT size = len * sizeof(OLECHAR);
     void *p = AllocateForBSTR(size + sizeof(CBstrSizeType) + sizeof(OLECHAR));
     if (!p)
@@ -152,7 +152,7 @@ DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wai
 {
     unsigned int wait_count = 1;
     unsigned int wait_delta = 0;
-    
+
     switch (timeout)
     {
         case 0        : wait_delta = 1; break; // trick - one "while"
@@ -161,14 +161,14 @@ DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wai
             printf("\n\n INTERNAL ERROR - WaitForMultipleObjects(...) timeout(%u) != 0 or INFINITE\n\n",(unsigned)timeout);
             abort();
     }
-    
+
     myEnter();
     if (wait_all) {
         while(wait_count) {
             bool found_all = true;
             for(DWORD i=0;i<count;i++) {
                 NWindows::NSynchronization::CBaseHandle* hitem = (NWindows::NSynchronization::CBaseHandle*)handles[i];
-                
+
                 switch (hitem->type)
                 {
                     case NWindows::NSynchronization::CBaseHandle::EVENT :
@@ -189,7 +189,7 @@ DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wai
             if (found_all) {
                 for(DWORD i=0;i<count;i++) {
                     NWindows::NSynchronization::CBaseHandle* hitem = (NWindows::NSynchronization::CBaseHandle*)handles[i];
-                    
+
                     switch (hitem->type)
                     {
                         case NWindows::NSynchronization::CBaseHandle::EVENT :
@@ -216,7 +216,7 @@ DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wai
         while(wait_count) {
             for(DWORD i=0;i<count;i++) {
                 NWindows::NSynchronization::CBaseHandle* hitem = (NWindows::NSynchronization::CBaseHandle*)handles[i];
-                
+
                 switch (hitem->type)
                 {
                     case NWindows::NSynchronization::CBaseHandle::EVENT :
