@@ -229,7 +229,7 @@ static void * _LzmaSDKObjCReaderGetVoidCallback1(void * context) {
 }
 
 #if defined(DEBUG) || defined(_DEBUG)
-- (nullable instancetype) init {
+- (instancetype) init {
 	LZMASDK_DEBUG_ERR("Reader can't be initialized with `init`, use 'initWithFileURL' instead");
 	NSAssert(0, @"Use 'initWithFileURL' instead");
 	return nil;

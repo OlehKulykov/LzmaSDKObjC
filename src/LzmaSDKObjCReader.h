@@ -159,8 +159,8 @@ LZMASDKOBJC_EXTERN NSString * const _Nonnull kLzmaSDKObjCErrorDescrEncDecNotCrea
 - (BOOL) test:(nullable NSArray<LzmaSDKObjCItem *> *) items;
 
 #pragma mark - Unavailable
-- (nullable instancetype) init NS_UNAVAILABLE;
-+ (nullable instancetype) new NS_UNAVAILABLE;
+- (_Null_unspecified instancetype) init NS_UNAVAILABLE;
++ (_Null_unspecified instancetype) new NS_UNAVAILABLE;
 
 @end
 
