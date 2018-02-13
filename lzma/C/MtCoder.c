@@ -325,3 +325,4 @@ SRes MtCoder_Code(CMtCoder *p)
         CMtThread_CloseEvents(&p->threads[i]);
     return (res == SZ_OK) ? p->res : res;
 }
+

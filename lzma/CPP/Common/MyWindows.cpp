@@ -251,10 +251,10 @@ DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wai
 Bool WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds)
 {
     ULONGLONG tmp = Time->QuadPart;
-    //	TRACEN((printf("RtlTimeToSecondsSince1970-1 %llx\n",tmp)))
+    //    TRACEN((printf("RtlTimeToSecondsSince1970-1 %llx\n",tmp)))
     tmp /= TICKSPERSEC;
     tmp -= SECS_1601_TO_1970;
-    //	TRACEN((printf("RtlTimeToSecondsSince1970-2 %llx\n",tmp)))
+    //    TRACEN((printf("RtlTimeToSecondsSince1970-2 %llx\n",tmp)))
     if (tmp > 0xffffffff) return FALSE;
     *Seconds = (DWORD)tmp;
     return TRUE;
@@ -262,7 +262,7 @@ Bool WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds)
 
 DWORD WINAPI GetTickCount(void)
 {
-    //	fprintf(stdout, "DWORD WINAPI GetTickCount \n");
+    //    fprintf(stdout, "DWORD WINAPI GetTickCount \n");
     struct timeval tv;
     if(gettimeofday(&tv, NULL) != 0)
         return 0;
@@ -277,3 +277,4 @@ DWORD GetLastError()
 }
 
 #endif
+

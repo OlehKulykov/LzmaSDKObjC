@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2015 - 2017 Kulykov Oleh <info@resident.name>
+ *   Copyright (c) 2015 - 2018 Oleh Kulykov <info@resident.name>
  *
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
  *   of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,10 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.0.17 (current):
+ *   Changes on version 2.0.18 (current):
+ *   - Update C++ source to version 18.01.
+ *
+ *   Changes on version 2.0.17:
  *   - Add packed size property to reader items.
  *
  *   Changes on version 2.0.16:
@@ -155,7 +158,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 0
-#define LZMASDKOBJC_VERSION_PATCH 17
+#define LZMASDKOBJC_VERSION_PATCH 18
 
 
 #import "LzmaSDKObjCTypes.h"

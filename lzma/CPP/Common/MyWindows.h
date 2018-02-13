@@ -113,16 +113,16 @@ typedef struct _BY_HANDLE_FILE_INFORMATION {
 } BY_HANDLE_FILE_INFORMATION, *PBY_HANDLE_FILE_INFORMATION, *LPBY_HANDLE_FILE_INFORMATION;
 
 //typedef struct _OVERLAPPED {
-//	ULONG_PTR Internal;
-//	ULONG_PTR InternalHigh;
-//	union {
-//		struct {
-//			DWORD Offset;
-//			DWORD OffsetHigh;
-//		};
-//		PVOID  Pointer;
-//	};
-//	HANDLE    hEvent;
+//    ULONG_PTR Internal;
+//    ULONG_PTR InternalHigh;
+//    union {
+//        struct {
+//            DWORD Offset;
+//            DWORD OffsetHigh;
+//        };
+//        PVOID  Pointer;
+//    };
+//    HANDLE    hEvent;
 //} OVERLAPPED, *LPOVERLAPPED;
 typedef enum _MEDIA_TYPE {
     Unknown         = 0x00,
@@ -221,7 +221,7 @@ typedef struct _SYSTEMTIME {
 #define ERROR_NO_MORE_FILES         0x100123 // FIXME
 #define WAIT_TIMEOUT                ETIMEDOUT
 #define WAIT_OBJECT_0 0
-#define INFINITE	0xFFFFFFFF
+#define INFINITE    0xFFFFFFFF
 #define ERROR_NEGATIVE_SEEK 131L
 #ifndef FALSE
 #define FALSE 0
@@ -415,3 +415,4 @@ typedef enum tagSTREAM_SEEK
 
 #endif
 #endif
+

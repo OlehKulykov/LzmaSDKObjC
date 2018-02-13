@@ -582,3 +582,4 @@ WRes AutoResetEvent_Create(CAutoResetEvent *p, int initialSignaled)
 { return Event_Create(p, FALSE, initialSignaled); }
 WRes AutoResetEvent_CreateNotSignaled(CAutoResetEvent *p)
 { return AutoResetEvent_Create(p, 0); }
+

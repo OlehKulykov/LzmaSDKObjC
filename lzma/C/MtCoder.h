@@ -100,3 +100,4 @@ SRes MtCoder_Code(CMtCoder *p);
 EXTERN_C_END
 
 #endif
+
