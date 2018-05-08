@@ -46,7 +46,7 @@ namespace LzmaSDKObjC {
 	
 	class UpdateCallback;
 
-	class FileEncoder : public LzmaSDKObjC::BaseCoder {
+	class FileEncoder final : public LzmaSDKObjC::BaseCoder {
 	private:
 		LzmaSDKObjC::UpdateCallback * _updateCallbackRef;
 		COutFileStream * _outFileStreamRef;
@@ -63,13 +63,13 @@ namespace LzmaSDKObjC {
 	public:
 		bool encodeItems(void * items, const uint32_t numItems);
 
-		virtual bool requiredCallback1() const; // pwd.
+		virtual bool requiredCallback1() const override final; // pwd.
 
 		// Required section, `LzmaSDKObjC::BaseCoder`
 		// find codec, create encode/decode object and check error.
-		virtual bool prepare(const LzmaSDKObjCFileType type);
+		virtual bool prepare(const LzmaSDKObjCFileType type) override final;
 
-		virtual bool openFile(const char * path);
+		virtual bool openFile(const char * path) override final;
 
 		// Properties
 		void setSettingsValue(const bool value, const unsigned char flag);

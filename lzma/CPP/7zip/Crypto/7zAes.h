@@ -17,7 +17,7 @@ const unsigned kKeySize = 32;
 const unsigned kSaltSizeMax = 16;
 const unsigned kIvSizeMax = 16; // AES_BLOCK_SIZE;
 
-class CKeyInfo
+class CKeyInfo final
 {
 public:
   unsigned NumCyclesPower;
@@ -39,7 +39,7 @@ public:
   }
 };
 
-class CKeyInfoCache
+class CKeyInfoCache final
 {
   unsigned Size;
   CObjectVector<CKeyInfo> Keys;
@@ -79,7 +79,7 @@ public:
 
 #ifndef EXTRACT_ONLY
 
-class CEncoder:
+class CEncoder final:
   public CBaseCoder,
   public ICompressWriteCoderProperties,
   // public ICryptoResetSalt,
@@ -100,7 +100,7 @@ public:
 
 #endif
 
-class CDecoder:
+class CDecoder final:
   public CBaseCoder,
   public ICompressSetDecoderProperties2
 {

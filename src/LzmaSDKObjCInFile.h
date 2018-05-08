@@ -33,7 +33,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class InFile : public IInStream, public CMyUnknownImp {
+	class InFile final : public IInStream, public CMyUnknownImp {
 	private:
 		FILE * _f;
 		

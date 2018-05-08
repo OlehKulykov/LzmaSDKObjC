@@ -19,7 +19,7 @@ HRESULT ParsePropToUInt32(const UString &name, const PROPVARIANT &prop, UInt32 &
 
 HRESULT ParseMtProp(const UString &name, const PROPVARIANT &prop, UInt32 defaultNumThreads, UInt32 &numThreads);
 
-struct CProp
+struct CProp final
 {
   PROPID Id;
   bool IsOptional;

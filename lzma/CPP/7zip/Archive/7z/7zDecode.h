@@ -10,7 +10,7 @@
 namespace NArchive {
 namespace N7z {
 
-struct CBindInfoEx: public NCoderMixer2::CBindInfo
+struct CBindInfoEx final: public NCoderMixer2::CBindInfo
 {
   CRecordVector<CMethodId> CoderMethodIDs;
 
@@ -21,7 +21,7 @@ struct CBindInfoEx: public NCoderMixer2::CBindInfo
   }
 };
 
-class CDecoder
+class CDecoder final
 {
   bool _bindInfoPrev_Defined;
   CBindInfoEx _bindInfoPrev;
@@ -59,8 +59,8 @@ public:
       
       _7Z_DECODER_CRYPRO_VARS_DECL
       
-      #if !defined(_7ZIP_ST) && !defined(_SFX)
-      , bool mtMode, UInt32 numThreads
+      #if !defined(_7ZIP_ST)
+      , bool mtMode, UInt32 numThreads, UInt64 memUsage
       #endif
       );
 };

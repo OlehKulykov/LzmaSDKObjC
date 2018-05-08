@@ -33,7 +33,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class NSDataFileStream: public ISequentialInStream, public CMyUnknownImp {
+	class NSDataFileStream final : public ISequentialInStream, public CMyUnknownImp {
 	private:
 		NSData * _data;
 		NSUInteger _pos;

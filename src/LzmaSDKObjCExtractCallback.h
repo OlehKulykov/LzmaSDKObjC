@@ -37,7 +37,7 @@
 
 namespace LzmaSDKObjC {
     
-    class ExtractCallback :
+    class ExtractCallback final :
         public IArchiveExtractCallback,
         public IArchiveExtractCallbackMessage,
         public ICryptoGetTextPassword,

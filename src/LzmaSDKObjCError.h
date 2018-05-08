@@ -29,7 +29,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class Error {
+	class Error final {
 	public:
 		AString description;
 		AString possibleReason;

@@ -9,7 +9,7 @@
 
 namespace NWindows {
 
-class CThread
+class CThread final
 {
   ::CThread thread;
 public:

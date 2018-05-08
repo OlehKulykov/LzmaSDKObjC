@@ -31,7 +31,7 @@ struct IInFileStream_Callback
   virtual void InFileStream_On_Destroy(My_UINT_PTR val) = 0;
 };
 
-class CInFileStream:
+class CInFileStream final:
   public IInStream,
   public IStreamGetSize,
   #ifdef USE_WIN_FILE
@@ -94,7 +94,7 @@ public:
   #endif
 };
 
-class CStdInFileStream:
+class CStdInFileStream final:
   public ISequentialInStream,
   public CMyUnknownImp
 {
@@ -105,7 +105,7 @@ public:
   STDMETHOD(Read)(void *data, UInt32 size, UInt32 *processedSize);
 };
 
-class COutFileStream:
+class COutFileStream final:
   public IOutStream,
   public CMyUnknownImp
 {
@@ -149,7 +149,7 @@ public:
   HRESULT GetSize(UInt64 *size);
 };
 
-class CStdOutFileStream:
+class CStdOutFileStream final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {

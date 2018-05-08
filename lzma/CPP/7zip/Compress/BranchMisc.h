@@ -16,7 +16,7 @@ EXTERN_C_END
 namespace NCompress {
 namespace NBranch {
 
-class CCoder:
+class CCoder final:
   public ICompressFilter,
   public CMyUnknownImp
 {

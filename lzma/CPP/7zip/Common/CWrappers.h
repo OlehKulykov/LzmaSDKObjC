@@ -9,7 +9,7 @@
 SRes HRESULT_To_SRes(HRESULT res, SRes defaultRes) throw();
 HRESULT SResToHRESULT(SRes res) throw();
 
-struct CCompressProgressWrap
+struct CCompressProgressWrap final
 {
   ICompressProgress vt;
   ICompressProgressInfo *Progress;
@@ -19,7 +19,7 @@ struct CCompressProgressWrap
 };
 
 
-struct CSeqInStreamWrap
+struct CSeqInStreamWrap final
 {
   ISeqInStream vt;
   ISequentialInStream *Stream;
@@ -30,7 +30,7 @@ struct CSeqInStreamWrap
 };
 
 
-struct CSeekInStreamWrap
+struct CSeekInStreamWrap final
 {
   ISeekInStream vt;
   IInStream *Stream;
@@ -40,7 +40,7 @@ struct CSeekInStreamWrap
 };
 
 
-struct CSeqOutStreamWrap
+struct CSeqOutStreamWrap final
 {
   ISeqOutStream vt;
   ISequentialOutStream *Stream;
@@ -51,7 +51,7 @@ struct CSeqOutStreamWrap
 };
 
 
-struct CByteInBufWrap
+struct CByteInBufWrap final
 {
   IByteIn vt;
   const Byte *Cur;
@@ -85,7 +85,7 @@ struct CByteInBufWrap
 };
 
 
-struct CByteOutBufWrap
+struct CByteOutBufWrap final
 {
   IByteOut vt;
   Byte *Cur;

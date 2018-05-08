@@ -37,7 +37,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class UpdateCallback:
+	class UpdateCallback final :
 		public IArchiveUpdateCallback2,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,

@@ -12,7 +12,7 @@
 namespace NCompress {
 namespace NBcj {
 
-class CCoder:
+class CCoder final:
   public ICompressFilter,
   public CMyUnknownImp
 {

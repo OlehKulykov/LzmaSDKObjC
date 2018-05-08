@@ -15,7 +15,7 @@
 namespace NCompress {
 namespace NPpmd {
 
-class CDecoder :
+class CDecoder final:
   public ICompressCoder,
   public ICompressSetDecoderProperties2,
   public ICompressGetInStreamProcessedSize,

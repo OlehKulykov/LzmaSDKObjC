@@ -37,7 +37,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class FileDecoder : public LzmaSDKObjC::BaseCoder {
+	class FileDecoder final : public LzmaSDKObjC::BaseCoder {
 	private:
 		LzmaSDKObjC::OpenCallback * _openCallbackRef;
 		LzmaSDKObjC::ExtractCallback * _extractCallbackRef;
@@ -69,9 +69,9 @@ namespace LzmaSDKObjC {
 
 		// Required section, `LzmaSDKObjC::BaseCoder`
 		// find codec, create encode/decode object and check error.
-		virtual bool prepare(const LzmaSDKObjCFileType type);
+		virtual bool prepare(const LzmaSDKObjCFileType type) override final;
 
-		virtual bool openFile(const char * path);
+		virtual bool openFile(const char * path) override final;
 
 		FileDecoder();
 		virtual ~FileDecoder();

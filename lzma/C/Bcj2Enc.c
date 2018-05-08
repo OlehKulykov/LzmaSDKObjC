@@ -1,5 +1,5 @@
 /* Bcj2Enc.c -- BCJ2 Encoder (Converter for x86 code)
-2017-04-03 : Igor Pavlov : Public domain */
+2017-04-28 : Igor Pavlov : Public domain */
 
 #include "Precomp.h"
 
@@ -12,9 +12,6 @@
 #define PRF(x)
 #endif
 
-#if !defined(__APPLE__)
-#include <windows.h>
-#endif
 #include <string.h>
 
 #include "Bcj2.h"

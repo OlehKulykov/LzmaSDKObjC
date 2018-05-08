@@ -8,13 +8,13 @@
 #include "../../Common/MyException.h"
 
 #ifndef _NO_EXCEPTIONS
-struct COutBufferException: public CSystemException
+struct COutBufferException final: public CSystemException
 {
   COutBufferException(HRESULT errorCode): CSystemException(errorCode) {}
 };
 #endif
 
-class COutBuffer
+class COutBuffer final
 {
 protected:
   Byte *_buf;

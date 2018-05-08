@@ -7,7 +7,7 @@
 #include "../../Common/MyBuffer.h"
 #include "../../Common/MyVector.h"
 
-struct CUniqBlocks
+struct CUniqBlocks final
 {
   CObjectVector<CByteBuffer> Bufs;
   CUIntVector Sorted;

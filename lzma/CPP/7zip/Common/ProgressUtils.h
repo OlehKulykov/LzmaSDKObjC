@@ -8,7 +8,7 @@
 #include "../ICoder.h"
 #include "../IProgress.h"
 
-class CLocalProgress:
+class CLocalProgress final:
   public ICompressProgressInfo,
   public CMyUnknownImp
 {

@@ -14,7 +14,7 @@
 namespace NArchive {
 namespace N7z {
 
-class CWriteBufferLoc
+class CWriteBufferLoc final
 {
   Byte *_data;
   size_t _size;
@@ -46,7 +46,7 @@ public:
 };
 
 
-struct CHeaderOptions
+struct CHeaderOptions final
 {
   bool CompressMainHeader;
   /*
@@ -66,7 +66,7 @@ struct CHeaderOptions
 };
 
 
-struct CFileItem2
+struct CFileItem2 final
 {
   UInt64 CTime;
   UInt64 ATime;
@@ -120,7 +120,7 @@ struct COutFolders
 };
 
 
-struct CArchiveDatabaseOut: public COutFolders
+struct CArchiveDatabaseOut final: public COutFolders
 {
   CRecordVector<UInt64> PackSizes;
   CUInt32DefVector PackCRCs;
@@ -238,7 +238,7 @@ struct CArchiveDatabaseOut: public COutFolders
 };
 
 
-class COutArchive
+class COutArchive final
 {
   UInt64 _prefixHeaderPos;
 

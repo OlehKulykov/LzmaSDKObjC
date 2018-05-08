@@ -30,7 +30,6 @@ you can change this h file or h files included in this file.
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
 
-#if !defined(__APPLE__)
 /* There is BUG in MSVC 6.0 compiler for operator new[]:
    It doesn't check overflow, when it calculates size in bytes for allocated array.
    So we can use MY_ARRAY_NEW macro instead of new[] operator. */
@@ -39,7 +38,6 @@ you can change this h file or h files included in this file.
   #define MY_ARRAY_NEW(p, T, size) p = new T[(size > (unsigned)0xFFFFFFFF / sizeof(T)) ? (unsigned)0xFFFFFFFF / sizeof(T) : size];
 #else
   #define MY_ARRAY_NEW(p, T, size) p = new T[size];
-#endif
 #endif
 
 #endif

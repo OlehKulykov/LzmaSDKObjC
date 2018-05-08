@@ -14,7 +14,7 @@
 namespace NArchive {
 namespace N7z {
 
-class CFolderInStream:
+class CFolderInStream final:
   public ISequentialInStream,
   public ICompressGetSubStreamSize,
   public CMyUnknownImp

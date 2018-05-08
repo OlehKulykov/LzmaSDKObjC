@@ -12,7 +12,7 @@
 namespace NArchive {
 namespace N7z {
 
-class CMtEncMultiProgress:
+class CMtEncMultiProgress final:
   public ICompressProgressInfo,
   public CMyUnknownImp
 {
@@ -41,7 +41,7 @@ public:
   STDMETHOD(SetRatioInfo)(const UInt64 *inSize, const UInt64 *outSize);
 };
 
-class CEncoder
+class CEncoder final
 {
   #ifdef USE_MIXER_ST
     NCoderMixer2::CMixerST *_mixerST;

@@ -145,12 +145,8 @@ public:
   {
     if (size != 0)
     {
-#if defined(__APPLE__)
-        _items = new T[size];
-#else
-        MY_ARRAY_NEW(_items, T, size)
-        // _items = new T[size];
-#endif
+      MY_ARRAY_NEW(_items, T, size)
+      // _items = new T[size];
     }
   }
   CObjArray(): _items(0) {};
@@ -163,12 +159,8 @@ public:
   {
     delete []_items;
     _items = 0;
-#if defined(__APPLE__)
-      _items = new T[newSize];
-#else
-      MY_ARRAY_NEW(_items, T, newSize)
-      // _items = new T[newSize];
-#endif
+    MY_ARRAY_NEW(_items, T, newSize)
+    // _items = new T[newSize];
   }
 };
 
@@ -237,12 +229,8 @@ public:
     T *newBuffer = NULL;
     if (size != 0)
     {
-#if defined(__APPLE__)
-        newBuffer = new T[size];
-#else
-        MY_ARRAY_NEW(newBuffer, T, size)
-        // newBuffer = new T[size];
-#endif
+      MY_ARRAY_NEW(newBuffer, T, size)
+      // newBuffer = new T[size];
     }
     delete []_items;
     _items = newBuffer;

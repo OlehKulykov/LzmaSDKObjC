@@ -32,7 +32,7 @@ public:
   off_t Seek(off_t distanceToMove, int moveMethod) const;
 };
 
-class CInFile: public CFileBase
+class CInFile final: public CFileBase
 {
 public:
   bool Open(const char *name);
@@ -40,7 +40,7 @@ public:
   ssize_t Read(void *data, size_t size);
 };
 
-class COutFile: public CFileBase
+class COutFile final: public CFileBase
 {
 public:
   bool Create(const char *name, bool createAlways);

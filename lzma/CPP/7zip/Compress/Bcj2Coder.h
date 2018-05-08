@@ -28,7 +28,7 @@ public:
 
 #ifndef EXTRACT_ONLY
 
-class CEncoder:
+class CEncoder final:
   public ICompressCoder2,
   public ICompressSetCoderProperties,
   public ICompressSetBufSize,
@@ -59,7 +59,7 @@ public:
 
 #endif
 
-class CDecoder:
+class CDecoder final:
   public ICompressCoder2,
   public ICompressSetFinishMode,
   public ICompressGetInStreamProcessedSize2,

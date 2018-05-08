@@ -7,7 +7,7 @@
 
 #include "../IStream.h"
 
-class COffsetOutStream:
+class COffsetOutStream final:
   public IOutStream,
   public CMyUnknownImp
 {

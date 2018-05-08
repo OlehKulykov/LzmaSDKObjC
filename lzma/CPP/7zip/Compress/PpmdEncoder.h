@@ -29,7 +29,7 @@ struct CEncProps
   void Normalize(int level);
 };
 
-class CEncoder :
+class CEncoder final:
   public ICompressCoder,
   public ICompressSetCoderProperties,
   public ICompressWriteCoderProperties,

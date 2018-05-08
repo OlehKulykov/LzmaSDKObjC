@@ -9,7 +9,7 @@
 
 namespace NCompress {
 
-class CCopyCoder:
+class CCopyCoder final:
   public ICompressCoder,
   public ICompressSetInStream,
   public ISequentialInStream,

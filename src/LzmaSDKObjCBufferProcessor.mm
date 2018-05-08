@@ -47,13 +47,13 @@ static void LzmaSDKObjCBufferProcessorSzFree(ISzAllocPtr p, void * address) {
     LzmaSDKObjCBufferProcessorFree(address);
 }
 
-typedef struct _LzmaSDKObjCBufferProcessorReader : ISeqInStream {
+typedef struct _LzmaSDKObjCBufferProcessorReader final : ISeqInStream {
 	const unsigned char * data;
 	unsigned int dataSize;
 	unsigned int offset;
 } LzmaSDKObjCBufferProcessorReader;
 
-typedef struct _LzmaSDKObjCBufferProcessorWriter : ISeqOutStream {
+typedef struct _LzmaSDKObjCBufferProcessorWriter final : ISeqOutStream {
 	__strong NSMutableData * data;
 } LzmaSDKObjCBufferProcessorWriter;
 

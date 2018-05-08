@@ -12,7 +12,7 @@
 namespace NCompress {
 namespace NLzma {
 
-class CEncoder:
+class CEncoder final:
   public ICompressCoder,
   public ICompressSetCoderProperties,
   public ICompressWriteCoderProperties,

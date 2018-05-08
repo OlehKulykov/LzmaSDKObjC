@@ -39,7 +39,7 @@ struct CStartHeader
 const UInt32 kStartHeaderSize = 20;
 
 #ifdef _7Z_VOL
-struct CFinishHeader: public CStartHeader
+struct CFinishHeader final: public CStartHeader
 {
   UInt64 ArchiveStartOffset;  // data offset from end if that struct
   UInt64 AdditionalStartBlockSize; // start  signature & start header size

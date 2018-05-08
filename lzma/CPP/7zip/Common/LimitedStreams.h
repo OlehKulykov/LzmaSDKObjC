@@ -8,7 +8,7 @@
 #include "../../Common/MyVector.h"
 #include "../IStream.h"
 
-class CLimitedSequentialInStream:
+class CLimitedSequentialInStream final:
   public ISequentialInStream,
   public CMyUnknownImp
 {
@@ -34,7 +34,7 @@ public:
   bool WasFinished() const { return _wasFinished; }
 };
 
-class CLimitedInStream:
+class CLimitedInStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -66,7 +66,7 @@ public:
 
 HRESULT CreateLimitedInStream(IInStream *inStream, UInt64 pos, UInt64 size, ISequentialInStream **resStream);
 
-class CClusterInStream:
+class CClusterInStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -101,13 +101,13 @@ public:
   STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
 };
 
-struct CSeekExtent
+struct CSeekExtent final
 {
   UInt64 Phy;
   UInt64 Virt;
 };
 
-class CExtentsStream:
+class CExtentsStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -134,7 +134,7 @@ public:
   }
 };
 
-class CLimitedSequentialOutStream:
+class CLimitedSequentialOutStream final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {
@@ -158,7 +158,7 @@ public:
 };
 
 
-class CTailInStream:
+class CTailInStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -180,7 +180,7 @@ public:
   HRESULT SeekToStart() { return Stream->Seek(Offset, STREAM_SEEK_SET, NULL); }
 };
 
-class CLimitedCachedInStream:
+class CLimitedCachedInStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -224,7 +224,7 @@ public:
   HRESULT SeekToStart() { return Seek(0, STREAM_SEEK_SET, NULL); }
 };
 
-class CTailOutStream:
+class CTailOutStream final:
   public IOutStream,
   public CMyUnknownImp
 {

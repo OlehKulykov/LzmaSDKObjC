@@ -42,12 +42,12 @@ public:
   STDMETHOD(SetCoderProperties)(const PROPID *propIDs, const PROPVARIANT *props, UInt32 numProps);
 };
 
-struct CAesCbcEncoder: public CAesCbcCoder
+struct CAesCbcEncoder final : public CAesCbcCoder
 {
   CAesCbcEncoder(unsigned keySize = 0): CAesCbcCoder(true, keySize) {}
 };
 
-struct CAesCbcDecoder: public CAesCbcCoder
+struct CAesCbcDecoder final : public CAesCbcCoder
 {
   CAesCbcDecoder(unsigned keySize = 0): CAesCbcCoder(false, keySize) {}
 };

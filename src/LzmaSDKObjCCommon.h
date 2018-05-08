@@ -33,7 +33,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class Common {
+	class Common final {
 	private:
 		static bool _isInitialized;
 		

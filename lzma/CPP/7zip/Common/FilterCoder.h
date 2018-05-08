@@ -56,7 +56,7 @@ struct CAlignedMidBuffer
   #endif
 };
 
-class CFilterCoder:
+class CFilterCoder final:
   public ICompressCoder,
   
   public ICompressSetOutStreamSize,
@@ -137,7 +137,7 @@ public:
   CFilterCoder(bool encodeMode);
   ~CFilterCoder();
 
-  class C_InStream_Releaser
+  class C_InStream_Releaser final
   {
   public:
     CFilterCoder *FilterCoder;
@@ -145,7 +145,7 @@ public:
     ~C_InStream_Releaser() { if (FilterCoder) FilterCoder->ReleaseInStream(); }
   };
   
-  class C_OutStream_Releaser
+  class C_OutStream_Releaser final
   {
   public:
     CFilterCoder *FilterCoder;
@@ -153,7 +153,7 @@ public:
     ~C_OutStream_Releaser() { if (FilterCoder) FilterCoder->ReleaseOutStream(); }
   };
 
-  class C_Filter_Releaser
+  class C_Filter_Releaser final
   {
   public:
     CFilterCoder *FilterCoder;

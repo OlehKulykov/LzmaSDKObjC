@@ -33,7 +33,7 @@
 
 namespace LzmaSDKObjC {
 	
-	class OpenCallback :
+	class OpenCallback final :
 		public IArchiveOpenCallback,
 		public ICryptoGetTextPassword,
 		public ICryptoGetTextPassword2,

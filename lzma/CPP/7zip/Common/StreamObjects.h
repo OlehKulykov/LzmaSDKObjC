@@ -9,7 +9,7 @@
 
 #include "../IStream.h"
 
-class CBufferInStream:
+class CBufferInStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -24,7 +24,7 @@ public:
   STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
 };
 
-struct CReferenceBuf:
+struct CReferenceBuf final:
   public IUnknown,
   public CMyUnknownImp
 {
@@ -60,7 +60,7 @@ void Create_BufInStream_WithNewBuffer(const void *data, size_t size, ISequential
 inline void Create_BufInStream_WithNewBuffer(const CByteBuffer &buf, ISequentialInStream **stream)
   { Create_BufInStream_WithNewBuffer(buf, buf.Size(), stream); }
 
-class CByteDynBuffer
+class CByteDynBuffer final
 {
   size_t _capacity;
   Byte *_buf;
@@ -75,7 +75,7 @@ public:
   bool EnsureCapacity(size_t capacity) throw();
 };
 
-class CDynBufSeqOutStream:
+class CDynBufSeqOutStream final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {
@@ -94,7 +94,7 @@ public:
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 };
 
-class CBufPtrSeqOutStream:
+class CBufPtrSeqOutStream final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {
@@ -114,7 +114,7 @@ public:
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 };
 
-class CSequentialOutStreamSizeCount:
+class CSequentialOutStreamSizeCount final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {
@@ -129,7 +129,7 @@ public:
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 };
 
-class CCachedInStream:
+class CCachedInStream: 
   public IInStream,
   public CMyUnknownImp
 {

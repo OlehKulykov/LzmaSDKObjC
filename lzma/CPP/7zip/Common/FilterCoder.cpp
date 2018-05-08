@@ -19,9 +19,7 @@
 */
 
 
-#if !defined(__APPLE__)
 static const UInt32 kBufSize = 1 << 20;
-#endif
 
 STDMETHODIMP CFilterCoder::SetInBufSize(UInt32 , UInt32 size) { _inBufSize = size; return S_OK; }
 STDMETHODIMP CFilterCoder::SetOutBufSize(UInt32 , UInt32 size) { _outBufSize = size; return S_OK; }
@@ -54,13 +52,8 @@ HRESULT CFilterCoder::Init_and_Alloc()
 
 CFilterCoder::CFilterCoder(bool encodeMode):
     _bufSize(0),
-#if defined(__APPLE__)
-    _inBufSize(kLzmaSDKObjCStreamReadSize),
-    _outBufSize(kLzmaSDKObjCStreamReadSize),
-#else
     _inBufSize(kBufSize),
     _outBufSize(kBufSize),
-#endif
     _encodeMode(encodeMode),
     _outSizeIsDefined(false),
     _outSize(0),
