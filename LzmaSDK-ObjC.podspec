@@ -36,8 +36,8 @@ The main advantages is:
   s.source           = { :git => "https://github.com/OlehKulykov/LzmaSDKObjC.git", :tag => s.version.to_s }
 
 # Platforms
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.7"
+  s.ios.deployment_target = "9.0"
+  s.osx.deployment_target = "10.9"
 
   s.requires_arc = true
 
@@ -167,5 +167,5 @@ The main advantages is:
     'lzma/CPP/Windows/PropVariantConv.cpp'
 
   s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
-  s.libraries    = 'stdc++'
+  s.libraries    = 'c++'
 end
