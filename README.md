@@ -34,7 +34,7 @@ The main advantages is:
 #### Podfile
 ```ruby
 use_frameworks!
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target '<REPLACE_WITH_YOUR_TARGET>' do
     pod 'LzmaSDK-ObjC', :inhibit_warnings => true
