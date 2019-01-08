@@ -129,7 +129,7 @@ public:
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 };
 
-class CCachedInStream: 
+class CCachedInStream:
   public IInStream,
   public CMyUnknownImp
 {

@@ -11,7 +11,7 @@ static const wchar_t kOsPathSepar = WCHAR_PATH_SEPARATOR;
 #if !defined(__APPLE__)
 static const wchar_t kUnixPathSepar = L'/';
 #endif
-    
+
 void ReplaceSlashes_OsToUnix
 #if WCHAR_PATH_SEPARATOR != L'/'
   (UString &name)

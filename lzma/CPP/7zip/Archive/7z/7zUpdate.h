@@ -28,7 +28,7 @@ struct CTreeFolder
 };
 */
 
-struct CUpdateItem
+struct CUpdateItem final
 {
   int IndexInArchive;
   int IndexInClient;
@@ -84,7 +84,7 @@ struct CUpdateItem
   // UString GetExtension() const;
 };
 
-struct CUpdateOptions
+struct CUpdateOptions final
 {
   const CCompressionMethodMode *Method;
   const CCompressionMethodMode *HeaderMethod;

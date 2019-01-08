@@ -242,7 +242,7 @@ bool StringsAreEqualNoCase_Ascii(const wchar_t *s1, const wchar_t *s2) throw();
 #define FORBID_STRING_OPS_UString(t) FORBID_STRING_OPS(UString, t)
 #define FORBID_STRING_OPS_UString2(t) FORBID_STRING_OPS(UString2, t)
 
-class AString
+class AString final
 {
   char *_chars;
   unsigned _len;
@@ -307,6 +307,7 @@ public:
 
   void ReplaceOneCharAtPos(unsigned pos, char c) { _chars[pos] = c; }
 
+  char *GetBuf() { return _chars; }
   /* GetBuf(minLen): provides the buffer that can store
      at least (minLen) characters and additional null terminator.
      9.35: GetBuf doesn't preserve old characters and terminator */
@@ -475,7 +476,7 @@ void operator-(const AString &s, int c);
 void operator-(const AString &s, unsigned c);
 
 
-class UString
+class UString final
 {
   wchar_t *_chars;
   unsigned _len;
@@ -728,7 +729,7 @@ void operator-(const UString &s1, unsigned c);
 
 
 
-class UString2
+class UString2 final
 {
   wchar_t *_chars;
   unsigned _len;

@@ -8,7 +8,7 @@
 
 #include "../../IStream.h"
 
-class CMultiStream:
+class CMultiStream final:
   public IInStream,
   public CMyUnknownImp
 {
@@ -18,7 +18,7 @@ class CMultiStream:
 
 public:
 
-  struct CSubStreamInfo
+  struct CSubStreamInfo final
   {
     CMyComPtr<IInStream> Stream;
     UInt64 Size;

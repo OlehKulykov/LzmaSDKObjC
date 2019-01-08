@@ -8,7 +8,7 @@
 /* 7-Zip now uses CBuffer only as CByteBuffer.
    So there is no need to use MY_ARRAY_NEW macro in CBuffer code. */
 
-template <class T> class CBuffer
+template <class T> class CBuffer final
 {
   T *_items;
   size_t _size;
@@ -127,7 +127,7 @@ bool operator!=(const CBuffer<T>& b1, const CBuffer<T>& b2)
 typedef CBuffer<unsigned char> CByteBuffer;
 
 
-template <class T> class CObjArray
+template <class T> class CObjArray final
 {
 protected:
   T *_items;
@@ -170,7 +170,7 @@ typedef CObjArray<int> CIntArr;
 typedef CObjArray<unsigned> CUIntArr;
 
 
-template <class T> class CObjArray2
+template <class T> class CObjArray2 final
 {
   T *_items;
   unsigned _size;

@@ -5,7 +5,7 @@
 
 #include "MyTypes.h"
 
-typedef struct {
+typedef struct final {
   UInt32 Data1;
   UInt16 Data2;
   UInt16 Data3;

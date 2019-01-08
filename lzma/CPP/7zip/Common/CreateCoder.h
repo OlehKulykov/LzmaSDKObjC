@@ -138,7 +138,7 @@ void GetHashMethods(
     CRecordVector<CMethodId> &methods);
 
 
-struct CCreatedCoder
+struct CCreatedCoder final
 {
   CMyComPtr<ICompressCoder> Coder;
   CMyComPtr<ICompressCoder2> Coder2;

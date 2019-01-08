@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2015 - 2018 Oleh Kulykov <info@resident.name>
+ *   Copyright (c) 2015 - 2019 Oleh Kulykov <info@resident.name>
  *
  *   Permission is hereby granted, free of charge, to any person obtaining a copy
  *   of this software and associated documentation files (the "Software"), to deal
@@ -97,7 +97,7 @@ typedef uint32_t DWORD;
 
 
 // MyWindows.h - removed prev. definition & MyWindows.cpp - implemented
-LZMASDKOBJC_EXTERN DWORD GetLastError();
+LZMASDKOBJC_EXTERN DWORD GetLastError(void);
 
 // unused
 // void SetLastError(DWORD err) { errno = err; }

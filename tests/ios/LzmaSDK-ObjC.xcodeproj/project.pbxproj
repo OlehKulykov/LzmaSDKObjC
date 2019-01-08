@@ -1678,7 +1678,7 @@
 				TargetAttributes = {
 					3D9BD44C1C8E4A3D00081959 = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1010;
 					};
 					3D9BD4601C8E4A3D00081959 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -2570,7 +2570,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "olehkulykov.LzmaSDK-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2583,7 +2583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "olehkulykov.LzmaSDK-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

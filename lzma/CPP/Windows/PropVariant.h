@@ -43,7 +43,7 @@ inline void PropVarEm_Set_Bool(PROPVARIANT *p, bool b) throw()
 }
 
 
-class CPropVariant final : public tagPROPVARIANT
+class CPropVariant final: public tagPROPVARIANT
 {
 public:
   CPropVariant()

@@ -9,7 +9,7 @@
 
 #include "../../IStream.h"
 
-class CSequentialInStreamWithCRC:
+class CSequentialInStreamWithCRC final:
   public ISequentialInStream,
   public CMyUnknownImp
 {
@@ -36,7 +36,7 @@ public:
   bool WasFinished() const { return _wasFinished; }
 };
 
-class CInStreamWithCRC:
+class CInStreamWithCRC final:
   public IInStream,
   public CMyUnknownImp
 {

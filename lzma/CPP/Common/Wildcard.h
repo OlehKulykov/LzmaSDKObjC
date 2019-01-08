@@ -30,7 +30,7 @@ bool IsDriveColonName(const wchar_t *s);
 unsigned GetNumPrefixParts_if_DrivePath(UStringVector &pathParts);
 #endif
 
-struct CItem
+struct CItem final
 {
   UStringVector PathParts;
   bool Recursive;
@@ -51,7 +51,7 @@ struct CItem
   bool CheckPath(const UStringVector &pathParts, bool isFile) const;
 };
 
-class CCensorNode
+class CCensorNode final
 {
   CCensorNode *Parent;
   
@@ -87,7 +87,7 @@ public:
   void ExtendExclude(const CCensorNode &fromNodes);
 };
 
-struct CPair
+struct CPair final
 {
   UString Prefix;
   CCensorNode Head;
@@ -102,7 +102,7 @@ enum ECensorPathMode
   k_AbsPath     // full path in Tree
 };
 
-struct CCensorPath
+struct CCensorPath final
 {
   UString Path;
   bool Include;
@@ -116,7 +116,7 @@ struct CCensorPath
     {}
 };
 
-class CCensor
+class CCensor final
 {
   int FindPrefix(const UString &prefix) const;
 public:

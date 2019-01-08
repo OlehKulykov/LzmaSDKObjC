@@ -92,14 +92,14 @@ typedef unsigned long ULONG_PTR;
 #endif
 #endif
 
-typedef struct _FILETIME
+typedef struct _FILETIME final
 {
     DWORD dwLowDateTime;
     DWORD dwHighDateTime;
 } FILETIME;
 
 #if defined(__APPLE__)
-typedef struct _BY_HANDLE_FILE_INFORMATION {
+typedef struct _BY_HANDLE_FILE_INFORMATION final {
     DWORD    dwFileAttributes;
     FILETIME ftCreationTime;
     FILETIME ftLastAccessTime;
@@ -152,14 +152,14 @@ typedef enum _MEDIA_TYPE {
     F3_240M_512     = 0x18,
     F3_32M_512      = 0x19
 } MEDIA_TYPE;
-typedef struct _DISK_GEOMETRY {
+typedef struct _DISK_GEOMETRY final {
     LARGE_INTEGER Cylinders;
     MEDIA_TYPE    MediaType;
     DWORD         TracksPerCylinder;
     DWORD         SectorsPerTrack;
     DWORD         BytesPerSector;
 } DISK_GEOMETRY;
-typedef struct _SYSTEMTIME {
+typedef struct _SYSTEMTIME final {
     WORD wYear;
     WORD wMonth;
     WORD wDayOfWeek;
@@ -378,7 +378,7 @@ typedef VARIANT VARIANTARG;
 MY_EXTERN_C HRESULT VariantClear(VARIANTARG *prop);
 MY_EXTERN_C HRESULT VariantCopy(VARIANTARG *dest, const VARIANTARG *src);
 
-typedef struct tagSTATPROPSTG
+typedef struct tagSTATPROPSTG final
 {
     LPOLESTR lpwstrName;
     PROPID propid;
@@ -396,8 +396,8 @@ MY_EXTERN_C UINT SysStringLen(BSTR bstr);
 MY_EXTERN_C LONG CompareFileTime(const FILETIME* ft1, const FILETIME* ft2);
 
 #if defined(__APPLE__)
-DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, Bool wait_all, DWORD timeout);
-Bool WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds);
+DWORD WINAPI WaitForMultipleObjects(DWORD count, const HANDLE *handles, BoolInt wait_all, DWORD timeout);
+BoolInt WINAPI RtlTimeToSecondsSince1970(const LARGE_INTEGER *Time, DWORD *Seconds);
 DWORD WINAPI GetTickCount(void);
 const TCHAR kAnyStringWildcard = '*';
 #endif
