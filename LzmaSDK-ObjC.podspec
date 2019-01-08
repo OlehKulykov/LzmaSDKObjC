@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "LzmaSDK-ObjC"
-  s.version          = "2.0.19"
+  s.version          = "2.0.20"
   s.summary          = "Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code"
   s.description      = <<-DESC
 It's not yet another wrapper around C part of the LZMA SDK with all it's limitations.
-Based on C++ LZMA SDK version 18.05 (1805 - latest for now) and patched for iOS & MacOS platforms.
+Based on C++ LZMA SDK version 18.06 (1806 - latest for now) and patched for iOS & MacOS platforms.
 Can be used with Swift and Objective-C.
 The main advantages is:
 - List, extract 7z files (Lzma & Lzma2 compression method).
@@ -36,8 +36,8 @@ The main advantages is:
   s.source           = { :git => "https://github.com/OlehKulykov/LzmaSDKObjC.git", :tag => s.version.to_s }
 
 # Platforms
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.7"
+  s.ios.deployment_target = "9.0"
+  s.osx.deployment_target = "10.9"
 
   s.requires_arc = true
 
@@ -167,5 +167,5 @@ The main advantages is:
     'lzma/CPP/Windows/PropVariantConv.cpp'
 
   s.compiler_flags = '-DLZMASDKOBJC=1', '-DLZMASDKOBJC_OMIT_UNUSED_CODE=1'
-  s.libraries    = 'stdc++'
+  s.libraries    = 'c++'
 end

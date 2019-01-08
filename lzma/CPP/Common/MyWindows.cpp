@@ -137,7 +137,7 @@ LONG CompareFileTime(const FILETIME* ft1, const FILETIME* ft2)
   return 0;
 }
 
-DWORD GetLastError()
+DWORD GetLastError(void)
 {
   return 0;
 }

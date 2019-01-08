@@ -14,7 +14,7 @@
 namespace NCompress {
 namespace NPpmd {
 
-struct CEncProps
+struct CEncProps final
 {
   UInt32 MemSize;
   UInt32 ReduceSize;

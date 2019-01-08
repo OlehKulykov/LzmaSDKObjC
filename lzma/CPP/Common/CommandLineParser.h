@@ -21,7 +21,7 @@ namespace NSwitchType
   };
 }
 
-struct CSwitchForm
+struct CSwitchForm final
 {
   const char *Key;
   Byte Type;
@@ -31,7 +31,7 @@ struct CSwitchForm
   const char *PostCharSet;
 };
 
-struct CSwitchResult
+struct CSwitchResult final
 {
   bool ThereIs;
   bool WithMinus;
@@ -41,7 +41,7 @@ struct CSwitchResult
   CSwitchResult(): ThereIs(false) {};
 };
   
-class CParser
+class CParser final
 {
   CSwitchResult *_switches;
 

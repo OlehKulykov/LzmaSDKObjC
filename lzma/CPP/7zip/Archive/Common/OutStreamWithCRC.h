@@ -9,7 +9,7 @@
 
 #include "../../IStream.h"
 
-class COutStreamWithCRC:
+class COutStreamWithCRC final:
   public ISequentialOutStream,
   public CMyUnknownImp
 {

@@ -90,7 +90,7 @@ public:
   WRes Lock(DWORD timeoutInterval = INFINITE)
     { return (::WaitForSingleObject(_handle, timeoutInterval) == WAIT_OBJECT_0 ? 0 : ::GetLastError()); }
 };
-class CMutex: public CObject
+class CMutex final: public CObject
 {
 public:
   WRes Create(bool initiallyOwn, LPCTSTR name = NULL, LPSECURITY_ATTRIBUTES sa = NULL)
@@ -114,7 +114,7 @@ public:
     return ::ReleaseMutex(_handle) ? 0 : ::GetLastError();
   }
 };
-class CMutexLock
+class CMutexLock final
 {
   CMutex *_object;
 public:

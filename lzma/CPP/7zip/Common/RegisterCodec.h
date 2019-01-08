@@ -9,7 +9,7 @@
 
 typedef void * (*CreateCodecP)();
 
-struct CCodecInfo
+struct CCodecInfo final
 {
   CreateCodecP CreateDecoder;
   CreateCodecP CreateEncoder;
@@ -84,7 +84,7 @@ void RegisterCodec(const CCodecInfo *codecInfo) throw();
 
 
 
-struct CHasherInfo
+struct CHasherInfo final
 {
   IHasher * (*CreateHasher)();
   CMethodId Id;

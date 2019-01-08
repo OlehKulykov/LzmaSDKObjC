@@ -3,7 +3,7 @@
 #ifndef __COMMON_DYNAMIC_BUFFER_H
 #define __COMMON_DYNAMIC_BUFFER_H
 
-template <class T> class CDynamicBuffer
+template <class T> class CDynamicBuffer final
 {
   T *_items;
   size_t _size;

@@ -17,7 +17,7 @@ typedef UInt32 CNum;
 const CNum kNumMax     = 0x7FFFFFFF;
 const CNum kNumNoIndex = 0xFFFFFFFF;
 
-struct CCoderInfo
+struct CCoderInfo final
 {
   CMethodId MethodID;
   CByteBuffer Props;
@@ -27,7 +27,7 @@ struct CCoderInfo
 };
 
 
-struct CBond
+struct CBond final
 {
   UInt32 PackIndex;
   UInt32 UnpackIndex;
@@ -90,7 +90,7 @@ public:
 };
 
 
-struct CUInt32DefVector
+struct CUInt32DefVector final
 {
   CBoolVector Defs;
   CRecordVector<UInt32> Vals;
@@ -132,7 +132,7 @@ struct CUInt32DefVector
 };
 
 
-struct CUInt64DefVector
+struct CUInt64DefVector final
 {
   CBoolVector Defs;
   CRecordVector<UInt64> Vals;
@@ -166,7 +166,7 @@ struct CUInt64DefVector
 };
 
 
-struct CFileItem
+struct CFileItem final
 {
   UInt64 Size;
   UInt32 Crc;

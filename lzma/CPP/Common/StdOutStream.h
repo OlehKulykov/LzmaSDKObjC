@@ -8,7 +8,7 @@
 #include "MyString.h"
 #include "MyTypes.h"
 
-class CStdOutStream
+class CStdOutStream final
 {
   FILE *_stream;
   bool _streamIsOpen;

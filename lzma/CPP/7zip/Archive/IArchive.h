@@ -525,7 +525,7 @@ ARCHIVE_INTERFACE(IArchiveAllowTail, 0x05)
     *propID = k[index]; *varType = k7z_PROPID_To_VARTYPE[(unsigned)*propID];  *name = 0; return S_OK; } \
 
 
-struct CStatProp
+struct CStatProp final
 {
   const char *Name;
   UInt32 PropID;
