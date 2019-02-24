@@ -7,7 +7,7 @@
 #include "../IStream.h"
 
 #ifndef _NO_EXCEPTIONS
-struct CInBufferException final : public CSystemException
+struct CInBufferException final: public CSystemException
 {
   CInBufferException(HRESULT errorCode): CSystemException(errorCode) {}
 };
@@ -81,7 +81,7 @@ public:
   size_t Skip(size_t size);
 };
 
-class CInBuffer final : public CInBufferBase
+class CInBuffer final: public CInBufferBase
 {
 public:
   ~CInBuffer() { Free(); }

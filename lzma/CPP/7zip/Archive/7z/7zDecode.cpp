@@ -354,11 +354,11 @@ HRESULT CDecoder::Decode(
   UInt32 unpackStreamIndexStart = folders.FoToCoderUnpackSizes[folderIndex];
 
   unsigned i;
-    
-#if !defined(__APPLE__)
+
+#if !defined(_7ZIP_ST)
   bool mt_wasUsed = false;
 #endif
-    
+
   for (i = 0; i < folderInfo.Coders.Size(); i++)
   {
     const CCoderInfo &coderInfo = folderInfo.Coders[i];
