@@ -27,7 +27,8 @@
 
 #include "../lzma/C/Lzma2Enc.h"
 #include "../lzma/C/Lzma2Dec.h"
-
+#include "../lzma/C/LzmaEnc.h"
+#include "../lzma/C/LzmaDec.h"
 
 static void * LzmaSDKObjCBufferProcessorAlloc(size_t size) {
     return (size > 0) ? malloc(size) : NULL;
@@ -123,6 +124,55 @@ NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompr
 
 	Lzma2Enc_Destroy(handle);
 	return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;
+}
+
+NSData * _Nullable LzmaSDKObjCBufferCompressLZMA(NSData * _Nonnull dataForCompress, int lc, int lp, int pb, UInt32 dictSize) {
+    if (!dataForCompress) return nil;
+    const unsigned char * data = (const unsigned char *)[dataForCompress bytes];
+    const unsigned int dataSize = (unsigned int)[dataForCompress length];
+
+    ISzAlloc localAlloc = { LzmaSDKObjCBufferProcessorSzAlloc, LzmaSDKObjCBufferProcessorSzFree };
+
+    CLzmaEncHandle handle = LzmaEnc_Create(&localAlloc);
+    if (!handle) return nil;
+
+    CLzmaEncProps props;
+    LzmaEncProps_Init(&props);
+    props.lc = lc;
+    props.lp = lp;
+    props.pb = pb;
+    props.dictSize = dictSize;
+
+    SRes res = LzmaEnc_SetProps(handle, &props);
+    if (res != SZ_OK) return nil;
+
+    Byte header[LZMA_PROPS_SIZE + 8];
+    size_t headerSize = LZMA_PROPS_SIZE;
+    UInt64 fileSize;
+    res = LzmaEnc_WriteProperties(handle, header, &headerSize);
+    for (int i = 0; i < 8; i++) header[headerSize++] = (Byte)((unsigned long long)dataSize >> (8 * i));
+
+    LzmaSDKObjCBufferProcessorWriter outStream;
+    memset(&outStream, 0, sizeof(LzmaSDKObjCBufferProcessorWriter));
+    outStream.data = [NSMutableData dataWithCapacity:dataSize / 4];
+    [outStream.data appendBytes:&header length:headerSize];
+    outStream.Write = LzmaSDKObjCBufferProcessorWrite;
+
+    LzmaSDKObjCBufferProcessorReader inStream;
+    memset(&inStream, 0, sizeof(LzmaSDKObjCBufferProcessorReader));
+    inStream.data = data;
+    inStream.dataSize = dataSize;
+    inStream.Read = LzmaSDKObjCBufferProcessorRead;
+
+    res = LzmaEnc_Encode(handle,
+                   (ISeqOutStream *)&outStream,
+                   (ISeqInStream *)&inStream,
+                   NULL,
+                   &localAlloc,
+                   &localAlloc);
+
+    LzmaEnc_Destroy(handle, &localAlloc, &localAlloc);
+    return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;
 }
 
 NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress) {

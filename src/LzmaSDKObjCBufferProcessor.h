@@ -33,6 +33,7 @@
  */
 LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio);
 
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA(NSData * _Nonnull dataForCompress, int lc, int lp, int pb, UInt32 dictSize);
 
 /**
  @brief Decompress non-empty buffer object compressed with LZMA2 and have first byte as properties.
