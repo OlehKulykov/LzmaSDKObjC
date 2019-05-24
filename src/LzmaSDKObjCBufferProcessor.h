@@ -43,3 +43,5 @@ LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA(NSData * _No
  @return Decompressed data or nil on error.
  */
 LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress);
+
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA(NSData * _Nonnull dataForDecompress);

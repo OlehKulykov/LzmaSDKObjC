@@ -228,3 +228,57 @@ NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDec
 
 	return [outData length] > 0 ? outData : nil;
 }
+
+NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA(NSData * _Nonnull dataForDecompress) {
+    if (!dataForDecompress) return nil;
+    const unsigned char * data = (const unsigned char *)[dataForDecompress bytes];
+    const unsigned int dataSize = (unsigned int)[dataForDecompress length];
+    if (!data || dataSize <= LZMA_PROPS_SIZE + 8) return nil;
+
+    CLzmaDec dec;
+    LzmaDec_Construct(&dec);
+
+    const Byte * inData = data;
+    SizeT inSize = dataSize;
+    const Byte * properties = inData;
+    inData += LZMA_PROPS_SIZE + 8;
+    inSize -= LZMA_PROPS_SIZE + 8;
+
+    ISzAlloc localAlloc = { LzmaSDKObjCBufferProcessorSzAlloc, LzmaSDKObjCBufferProcessorSzFree };
+
+    SRes res = LzmaDec_AllocateProbs(&dec, properties, LZMA_PROPS_SIZE, &localAlloc);
+    if (res != SZ_OK) return nil;
+
+    res = LzmaDec_Allocate(&dec, properties, LZMA_PROPS_SIZE, &localAlloc);
+    if (res != SZ_OK) return nil;
+
+    LzmaDec_Init(&dec);
+
+    NSMutableData * outData = [NSMutableData dataWithCapacity:dataSize];
+    Byte dstBuff[10240];
+    while ((inSize > 0) && (res == SZ_OK)) {
+        ELzmaStatus status = LZMA_STATUS_NOT_SPECIFIED;
+        SizeT dstSize = 10240;
+        SizeT srcSize = inSize;
+
+        res = LzmaDec_DecodeToBuf(&dec,
+                                  dstBuff,
+                                  &dstSize,
+                                  inData,
+                                  &srcSize,
+                                  LZMA_FINISH_ANY,
+                                  &status);
+        if ((inSize >= srcSize) && (res == SZ_OK)) {
+            inData += srcSize;
+            inSize -= srcSize;
+            [outData appendBytes:dstBuff length:dstSize];
+        } else {
+            break;
+        }
+    }
+
+    LzmaDec_FreeProbs(&dec, &localAlloc);
+    LzmaDec_Free(&dec, &localAlloc);
+
+    return [outData length] > 0 ? outData : nil;
+}
