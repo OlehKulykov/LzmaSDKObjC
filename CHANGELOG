@@ -1,6 +1,12 @@
 Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
 
-Changes on version 2.0.21 (current):
+ Changes on version 2.1.0 (current):
+- Pull request #40: Add crc functionality to public interface.
+  Thanks to 'jakubvano'.
+- Pull request #39: Add direct NSData compression & decompression.
+  Thanks to 'jakubvano'.
+
+Changes on version 2.0.21:
 - Update C++ source to version 19.00.
 
 Changes on version 2.0.20:
