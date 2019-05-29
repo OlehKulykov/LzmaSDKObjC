@@ -33,6 +33,18 @@
  */
 LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompress, const float compressionRatio);
 
+/**
+ @brief Compress non-empty buffer object with LZMA.
+ @warning First 13 bytes of return data is LZMA header: properties (5 bytes) & uncompressed data size (8 bytes)
+ @warning Input buffer should be less or equal to 4Gb.
+ @param dataForCompress Non-empty buffer to compress.
+ @param lc Number of "literal context" bits
+ @param lp Number of "literal pos" bits
+ @param pb Number of "pos" bits
+ @param dictSize Dictionary size
+ @return Compressed data or nil on error.
+ */
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA(NSData * _Nonnull dataForCompress, int lc, int lp, int pb, UInt32 dictSize);
 
 /**
  @brief Decompress non-empty buffer object compressed with LZMA2 and have first byte as properties.
@@ -42,3 +54,12 @@ LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _N
  @return Decompressed data or nil on error.
  */
 LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress);
+
+/**
+ @brief Decompress non-empty buffer object compressed with LZMA.
+ @warning First 13 of input data should be LZMA header: properties (5 bytes) & uncompressed data size (8 bytes)
+ @warning Input buffer should be less or equal to 4Gb.
+ @param dataForDecompress Non-empty compressed buffer.
+ @return Decompressed data or nil on error.
+ */
+LZMASDKOBJC_EXTERN NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA(NSData * _Nonnull dataForDecompress);

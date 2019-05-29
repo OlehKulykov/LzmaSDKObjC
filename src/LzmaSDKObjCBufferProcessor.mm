@@ -27,7 +27,8 @@
 
 #include "../lzma/C/Lzma2Enc.h"
 #include "../lzma/C/Lzma2Dec.h"
-
+#include "../lzma/C/LzmaEnc.h"
+#include "../lzma/C/LzmaDec.h"
 
 static void * LzmaSDKObjCBufferProcessorAlloc(size_t size) {
     return (size > 0) ? malloc(size) : NULL;
@@ -125,6 +126,55 @@ NSData * _Nullable LzmaSDKObjCBufferCompressLZMA2(NSData * _Nonnull dataForCompr
 	return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;
 }
 
+NSData * _Nullable LzmaSDKObjCBufferCompressLZMA(NSData * _Nonnull dataForCompress, int lc, int lp, int pb, UInt32 dictSize) {
+    if (!dataForCompress) return nil;
+    const unsigned char * data = (const unsigned char *)[dataForCompress bytes];
+    const unsigned int dataSize = (unsigned int)[dataForCompress length];
+
+    ISzAlloc localAlloc = { LzmaSDKObjCBufferProcessorSzAlloc, LzmaSDKObjCBufferProcessorSzFree };
+
+    CLzmaEncHandle handle = LzmaEnc_Create(&localAlloc);
+    if (!handle) return nil;
+
+    CLzmaEncProps props;
+    LzmaEncProps_Init(&props);
+    props.lc = lc;
+    props.lp = lp;
+    props.pb = pb;
+    props.dictSize = dictSize;
+
+    SRes res = LzmaEnc_SetProps(handle, &props);
+    if (res != SZ_OK) return nil;
+
+    Byte header[LZMA_PROPS_SIZE + 8];
+    size_t headerSize = LZMA_PROPS_SIZE;
+    UInt64 fileSize;
+    res = LzmaEnc_WriteProperties(handle, header, &headerSize);
+    for (int i = 0; i < 8; i++) header[headerSize++] = (Byte)((unsigned long long)dataSize >> (8 * i));
+
+    LzmaSDKObjCBufferProcessorWriter outStream;
+    memset(&outStream, 0, sizeof(LzmaSDKObjCBufferProcessorWriter));
+    outStream.data = [NSMutableData dataWithCapacity:dataSize / 4];
+    [outStream.data appendBytes:&header length:headerSize];
+    outStream.Write = LzmaSDKObjCBufferProcessorWrite;
+
+    LzmaSDKObjCBufferProcessorReader inStream;
+    memset(&inStream, 0, sizeof(LzmaSDKObjCBufferProcessorReader));
+    inStream.data = data;
+    inStream.dataSize = dataSize;
+    inStream.Read = LzmaSDKObjCBufferProcessorRead;
+
+    res = LzmaEnc_Encode(handle,
+                   (ISeqOutStream *)&outStream,
+                   (ISeqInStream *)&inStream,
+                   NULL,
+                   &localAlloc,
+                   &localAlloc);
+
+    LzmaEnc_Destroy(handle, &localAlloc, &localAlloc);
+    return [outStream.data length] > sizeof(Byte) ? outStream.data : nil;
+}
+
 NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDecompress) {
 	if (!dataForDecompress) return nil;
 	const unsigned char * data = (const unsigned char *)[dataForDecompress bytes];
@@ -177,4 +227,58 @@ NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA2(NSData * _Nonnull dataForDec
 	Lzma2Dec_Free(&dec, &localAlloc);
 
 	return [outData length] > 0 ? outData : nil;
+}
+
+NSData * _Nullable LzmaSDKObjCBufferDecompressLZMA(NSData * _Nonnull dataForDecompress) {
+    if (!dataForDecompress) return nil;
+    const unsigned char * data = (const unsigned char *)[dataForDecompress bytes];
+    const unsigned int dataSize = (unsigned int)[dataForDecompress length];
+    if (!data || dataSize <= LZMA_PROPS_SIZE + 8) return nil;
+
+    CLzmaDec dec;
+    LzmaDec_Construct(&dec);
+
+    const Byte * inData = data;
+    SizeT inSize = dataSize;
+    const Byte * properties = inData;
+    inData += LZMA_PROPS_SIZE + 8;
+    inSize -= LZMA_PROPS_SIZE + 8;
+
+    ISzAlloc localAlloc = { LzmaSDKObjCBufferProcessorSzAlloc, LzmaSDKObjCBufferProcessorSzFree };
+
+    SRes res = LzmaDec_AllocateProbs(&dec, properties, LZMA_PROPS_SIZE, &localAlloc);
+    if (res != SZ_OK) return nil;
+
+    res = LzmaDec_Allocate(&dec, properties, LZMA_PROPS_SIZE, &localAlloc);
+    if (res != SZ_OK) return nil;
+
+    LzmaDec_Init(&dec);
+
+    NSMutableData * outData = [NSMutableData dataWithCapacity:dataSize];
+    Byte dstBuff[10240];
+    while ((inSize > 0) && (res == SZ_OK)) {
+        ELzmaStatus status = LZMA_STATUS_NOT_SPECIFIED;
+        SizeT dstSize = 10240;
+        SizeT srcSize = inSize;
+
+        res = LzmaDec_DecodeToBuf(&dec,
+                                  dstBuff,
+                                  &dstSize,
+                                  inData,
+                                  &srcSize,
+                                  LZMA_FINISH_ANY,
+                                  &status);
+        if ((inSize >= srcSize) && (res == SZ_OK)) {
+            inData += srcSize;
+            inSize -= srcSize;
+            [outData appendBytes:dstBuff length:dstSize];
+        } else {
+            break;
+        }
+    }
+
+    LzmaDec_FreeProbs(&dec, &localAlloc);
+    LzmaDec_Free(&dec, &localAlloc);
+
+    return [outData length] > 0 ? outData : nil;
 }
