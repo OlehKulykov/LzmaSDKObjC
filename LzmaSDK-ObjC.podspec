@@ -48,6 +48,7 @@ The main advantages is:
     'src/LzmaSDKObjCItem.h',
     'src/LzmaSDKObjCMutableItem.h',
     'src/LzmaSDKObjCBufferProcessor.h',
+    'src/LzmaSDKObjCCrc.h',
     'src/LzmaSDKObjC.h'
 
   s.source_files = 'src/*.{h,cpp,mm}',
