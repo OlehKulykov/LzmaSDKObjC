@@ -83,7 +83,7 @@ extension ReaderDelegateObject: LzmaSDKObjCReaderDelegate {
 ```
 ##### Objective-C
 ```objc
-// select full path to archive file with 7z extension
+// Select full path to archive file with 7z extension.
 NSString * archivePath = <path to archive>;
 
 // 1.1 Create and hold strongly reader object.
@@ -133,7 +133,7 @@ NSLog(@"Open error: %@", _reader.lastError);
 var items = [LzmaSDKObjCItem]()  // Array with selected items.
 // Iterate all archive items, track what items do you need & hold them in array.
 reader.iterateWithHandler({(item: LzmaSDKObjCItem, error: NSError?) -> Bool in
-	items.append(item) // if needs this item - store to array.
+	items.append(item) // If needed, store to array.
 	return true // true - continue iterate, false - stop iteration
 })
 ```
@@ -143,7 +143,7 @@ NSMutableArray * items = [NSMutableArray array]; // Array with selected items.
 // Iterate all archive items, track what items do you need & hold them in array.
 [_reader iterateWithHandler:^BOOL(LzmaSDKObjCItem * item, NSError * error){
 	NSLog(@"\n%@", item);
-	if (item) [items addObject:item]; // if needs this item - store to array.
+	if (item) [items addObject:item]; // If needed, store to array.
 	return YES; // YES - continue iterate, NO - stop iteration
 }];
 NSLog(@"Iteration error: %@", _reader.lastError);
