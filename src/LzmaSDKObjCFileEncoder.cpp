@@ -95,6 +95,7 @@ namespace LzmaSDKObjC {
 		switch ((LzmaSDKObjCMethod)method) {
 			case LzmaSDKObjCMethodLZMA: values[0] = L"LZMA"; break;
 			case LzmaSDKObjCMethodLZMA2: values[0] = L"LZMA2"; break;
+            case LzmaSDKObjCMethodPPMd:values[0] = L"PPMD";break;
 			default: break;
 		}
 
