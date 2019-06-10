@@ -28,7 +28,11 @@
 /*
  *   Lzma SDK for Objective-C based on extended functionality of the C++ LZMA code
  *
- *   Changes on version 2.1.0 (current):
+ *   Changes on version 2.1.1 (current):
+ *   - Pull request #41: Enable ppmd for plain text compress.
+ *     Thanks to 'enefry'.
+ *
+ *   Changes on version 2.1.0:
  *   - Pull request #40: Add crc functionality to public interface.
  *     Thanks to 'jakubvano'.
  *   - Pull request #39: Add direct NSData compression & decompression.
@@ -173,7 +177,7 @@
 
 #define LZMASDKOBJC_VERSION_MAJOR 2
 #define LZMASDKOBJC_VERSION_MINOR 1
-#define LZMASDKOBJC_VERSION_PATCH 0
+#define LZMASDKOBJC_VERSION_PATCH 1
 
 
 #import "LzmaSDKObjCTypes.h"

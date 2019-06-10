@@ -38,12 +38,12 @@
 #endif
 
 typedef enum _LzmaSDKObjCFileType {
-	LzmaSDKObjCFileTypeUndefined = 0,
-	LzmaSDKObjCFileType7z = 1
+    LzmaSDKObjCFileTypeUndefined = 0,
+    LzmaSDKObjCFileType7z = 1
 } LzmaSDKObjCFileType;
 
 typedef enum _LzmaSDKObjCMethod {
-	LzmaSDKObjCMethodLZMA = 0,
+    LzmaSDKObjCMethodLZMA = 0,
     LzmaSDKObjCMethodLZMA2 = 1,
     LzmaSDKObjCMethodPPMd = 2,
 } LzmaSDKObjCMethod;
