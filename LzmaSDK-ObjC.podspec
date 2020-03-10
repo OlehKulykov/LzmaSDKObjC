@@ -22,9 +22,9 @@ The main advantages is:
 - Create encrypted (password protected) 7z archives (Lzma & Lzma2 compression method).
 - Create encrypted (password protected) + encrypted header (no visible content, files list, without password) 7z archives (Lzma & Lzma2 compression method).
 - Manage memory allocations during listing/extracting.
-- Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (no hardcoded definitions).
-- Manage IO read/write operations, aslo can be easly changed runtime (no hardcoded definitions).
-- Track smoothed progress, which becomes possible with prev.
+- Tuned up for using less than 500Kb for listing/extracting, can be easly changed at runtime (no hardcoded definitions).
+- Manage IO read/write operations, also can be easly changed at runtime (no hardcoded definitions).
+- Track smoothed progress.
 - Support reading and extracting archive files with size more than 4GB. HugeFiles=on
 - UTF8 support.
 - Extra compression/decompression functionality of single NSData object with Lzma2.
@@ -32,7 +32,7 @@ The main advantages is:
 
   s.homepage         = "https://github.com/OlehKulykov/LzmaSDKObjC"
   s.license          = 'MIT'
-  s.author           = { "OlehKulykov" => "info@resident.name" }
+  s.author           = { "OlehKulykov" => "olehkulykov@gmail.com" }
   s.source           = { :git => "https://github.com/OlehKulykov/LzmaSDKObjC.git", :tag => s.version.to_s }
 
 # Platforms
