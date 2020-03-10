@@ -22,9 +22,9 @@ The main advantages is:
 - Create **encrypted** (*password protected*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
 - Create **encrypted** (*password protected*) + **encrypted header** (*no visible content, files list, without password*) **7z** archives (**Lzma** & **Lzma2** *compression method*).
 - Manage memory allocations during listing/extracting. See below section: **Tune up speed, performance and disk IO operations**.
-- Tuned up for using less than 500Kb for listing/extracting, can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
-- Manage IO read/write operations, aslo can be easly changed runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
-- Track smoothed progress, which becomes possible with prev.
+- Tuned up for using less than 500Kb for listing/extracting, can be easily changed at runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
+- Manage IO read/write operations, also can be easily changed at runtime (*no hardcoded definitions*). See below section: **Tune up speed, performance and disk IO operations**.
+- Track smoothed progress.
 - Support reading and extracting archive files with size more than 4GB.
 - UTF8 support.
 - Extra compression/decompression functionality of single **NSData** object with **Lzma2**.
