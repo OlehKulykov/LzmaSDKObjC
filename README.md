@@ -1,3 +1,13 @@
+This lib/pod is no longer supported, but has a Swift successor: [PLzmaSDK].
+
+For all Apple platforms, the [PLzmaSDK] is available via [CocoaPods] and [Swift Package Manager].
+
+In a case of supporting old Objective-C code, there are 3 options of using the [PLzmaSDK]:
+1. Use pure C bindings interface within the Objective-C code(*.m file).
+2. Use pure C++ interface(the core) within the Objective-C++ code(*.mm file).
+3. Use bridging header.
+
+
 [![Platform](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![Version](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![License](https://img.shields.io/cocoapods/l/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
@@ -380,4 +390,4 @@ THE SOFTWARE.
 
 [LZMA SDK]:http://www.7-zip.org/sdk.html
 [CocoaPods]:http://cocoapods.org/pods/LzmaSDK-ObjC
-
+[PLzmaSDK]:https://github.com/OlehKulykov/PLzmaSDK
