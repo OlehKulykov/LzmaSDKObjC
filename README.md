@@ -1,12 +1,12 @@
 ### Deprecation
-This lib/pod is no longer supported, but has a Swift successor: [PLzmaSDK].
+This lib/pod is no longer supported, but has a successor: [PLzmaSDK].
 
 For all Apple platforms, the [PLzmaSDK] is available via [CocoaPods] and [Swift Package Manager].
 
 In a case of supporting old Objective-C code, there are 3 options of using the [PLzmaSDK]:
-1. Use pure C bindings interface within the Objective-C code(*.m file).
-2. Use pure C++ interface(the core) within the Objective-C++ code(*.mm file).
-3. Use bridging header.
+1. Use Objective-C bridging.
+2. Use pure C interface in Objective-C code(*.m file).
+3. Use pure C++ interface(the core) in Objective-C++ code(*.mm file).
 
 
 ### LzmaSDKObjC
