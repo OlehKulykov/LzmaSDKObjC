@@ -13,8 +13,7 @@ In a case of supporting old Objective-C code, there are 3 options of using the [
 [![Platform](https://img.shields.io/cocoapods/p/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![Version](https://img.shields.io/cocoapods/v/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
 [![License](https://img.shields.io/cocoapods/l/LzmaSDK-ObjC.svg?style=flat)](http://cocoapods.org/pods/LzmaSDK-ObjC)
-[![OnlineDocumentation Status](https://img.shields.io/badge/online%20documentation-generated-brightgreen.svg)](http://cocoadocs.org/docsets/LzmaSDK-ObjC)
-
+[![Tier badge](https://opencollective.com/plzmasdk/tiers/backer/badge.svg?label=backer&color=brightgreen)](https://opencollective.com/plzmasdk)
 
 It's not yet another wrapper around C part of the [LZMA SDK] with all it's limitations.   
 Based on C++ [LZMA SDK] version 19.00 (1900 - latest for now) and patched for iOS & Mac OS platforms.   
